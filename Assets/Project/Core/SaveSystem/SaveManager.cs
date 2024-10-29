@@ -15,9 +15,9 @@ namespace Project.Core.SaveSystem
     }
 
 // Save Manager to handle saving/loading
-    public class SaveManager : MonoBehaviour
+    public class NewSaveManager : MonoBehaviour
     {
-        public static SaveManager Instance { get; private set; }
+        public static NewSaveManager Instance { get; private set; }
         public SaveData CurrentSave { get; private set; }
     
         void Awake()
