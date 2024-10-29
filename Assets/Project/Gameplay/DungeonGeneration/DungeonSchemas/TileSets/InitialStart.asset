@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TileWeights:
     Weights:
-    - Value: {fileID: 5621577931518629914, guid: 116325d44706e2742bc5d8a6445385de,
+    - Value: {fileID: 5029581878353219251, guid: 75cb59b268cd6b841bd301518827c934,
         type: 3}
       MainPathWeight: 1
       BranchPathWeight: 1
@@ -42,5 +42,5 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-      TileSet: {fileID: 0}
+      TileSet: {fileID: 11400000}
   LockPrefabs: []
