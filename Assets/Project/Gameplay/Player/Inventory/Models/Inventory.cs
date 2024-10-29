@@ -1,4 +1,6 @@
-﻿namespace Project.Gameplay.Player.Inventory.Models
+﻿using System.Collections.Generic;
+
+namespace Project.Gameplay.Player.Inventory.Models
 {
     [System.Serializable]
     public class Inventory

@@ -1,28 +1,45 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Project.Gameplay.DungeonGeneration.Generators;
 using UnityEngine;
-using RoomTemplate = Project.Gameplay.DungeonGeneration.Rooms.Models.RoomTemplate;
 
-public class NewDungeonGenerator : MonoBehaviour
+namespace Project.Gameplay.DungeonGeneration.Generators
 {
-    [SerializeField] private List<RoomTemplate> roomTemplates;
-    [SerializeField] private int dungeonSize;
-    
-    public async Task<DungeonData> GenerateDungeon(int seed)
+    public class NewDungeonGenerator : MonoBehaviour
     {
-        Random.InitState(seed);
-        
-        var dungeonData = new DungeonData {
-            Seed = seed,
-            Rooms = new List<RoomData>()
-        };
-        
-        // Generate layout
-        // Place rooms
-        // Add corridors
-        // Populate enemies/items
-        
-        return dungeonData;
+        private NewDungeonGenerator generator;
+
+        private void Awake()
+        {
+            // Add DungeonGenerator component if it doesn't exist
+            generator = gameObject.GetComponent<NewDungeonGenerator>();
+            if (generator == null)
+            {
+                generator = gameObject.AddComponent<NewDungeonGenerator>();
+            }
+        }
+
+        public async Task GenerateNewDungeon(int seed)
+        {
+            try 
+            {
+                // var dungeonData = await generator.GenerateDungeon(seed);
+            
+                // TODO: Implement these methods
+                // SpawnPlayer();
+                // PopulateRooms();
+                // InitializeEnemies();
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError($"Failed to generate dungeon: {e.Message}");
+                throw;
+            }
+        }
+
+        public void LoadDungeon(DungeonData data)
+        {
+            // TODO: Implement
+            throw new System.NotImplementedException();
+        }
     }
 }

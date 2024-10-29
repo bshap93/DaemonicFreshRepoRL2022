@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Project.Gameplay.DungeonGeneration.Rooms.Models;
 using UnityEngine;
 
 namespace Project.Gameplay.DungeonGeneration.Generators
