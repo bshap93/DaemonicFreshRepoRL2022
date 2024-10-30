@@ -415,6 +415,8 @@ MonoBehaviour:
   runtimeDungeon: {fileID: 1465320953805552402}
   playerPrefab: {fileID: 4194478886614523176, guid: 33911cec535715a4bbb0eacb8f0ef2f5,
     type: 3}
+  cameraPrefab: {fileID: 1139337632270628088, guid: d37de697d8f04d246a2d839b2dbb2849,
+    type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

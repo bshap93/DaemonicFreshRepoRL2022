@@ -2,7 +2,10 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Characters.Player.Scripts;
+using Cinemachine;
 using DunGen;
+using Library.Characters.Player.Scripts;
+using Library.Core.Cameras.InputHandlers;
 using Project.Gameplay.DungeonGeneration.Generators;
 using Project.Gameplay.DungeonGeneration.Spawning;
 using UnityEngine;
@@ -19,7 +22,10 @@ namespace Project.Gameplay.DungeonGeneration
         private TaskCompletionSource<bool> _generationTaskSource;
         private SpawnPointManager _spawnPointManager;
         [SerializeField] private GameObject playerPrefab;  // Assign your player prefab in inspector
+        [SerializeField] private GameObject cameraPrefab;  // Assign your camera prefab in inspector
         private GameObject _playerInstance;
+        private GameObject _cameraInstance;
+        private PlayerCameraMovementInputHandler _cameraMovementInputHandler;
 
 
 
@@ -69,9 +75,37 @@ namespace Project.Gameplay.DungeonGeneration
 
             if (startPoint != null)
             {
-                // Spawn player
-                PlayerCharacter.Instance.transform.position = startPoint.transform.position;
-                PlayerCharacter.Instance.transform.rotation = startPoint.transform.rotation;
+                // Spawn player if needed
+                if (_playerInstance == null)
+                {
+                    Debug.Log($"Spawning player at position: {startPoint.transform.position}");
+                    _playerInstance = Instantiate(playerPrefab, startPoint.transform.position, startPoint.transform.rotation);
+                }
+                else
+                {
+                    _playerInstance.transform.position = startPoint.transform.position;
+                    _playerInstance.transform.rotation = startPoint.transform.rotation;
+                }
+                
+                // Spawn camera if needed
+                if (_cameraInstance == null)
+                {
+                    Debug.Log("Spawning camera system");
+                    _cameraInstance = Instantiate(cameraPrefab);
+                    _cameraMovementInputHandler = _cameraInstance.GetComponent<PlayerCameraMovementInputHandler>();
+                    _cameraMovementInputHandler.player = _playerInstance.transform;
+                    var virtualCamera = _cameraInstance.GetComponentInChildren<CinemachineVirtualCamera>();
+                    
+                    if (virtualCamera != null)
+                    {
+                        virtualCamera.Follow = _playerInstance.transform;
+                        
+                    }
+                    else
+                    {
+                        Debug.LogError("No CinemachineVirtualCamera found in camera prefab!");
+                    }
+                }
                 startPoint.MarkOccupied();
             }
 

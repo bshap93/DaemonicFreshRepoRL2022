@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Characters.Player.Scripts;
 using Cysharp.Threading.Tasks;
+using Library.Characters.Player.Scripts;
 using Project.Gameplay.DungeonGeneration.Spawning;
 using UnityEngine;
 
@@ -48,7 +49,7 @@ namespace Project.Core.SaveSystem
             return levelTransitions.TryGetValue(levelId, out var data) ? data : null;
         }
         
-        public async Task HandleLevelTransition(string targetLevelId, string targetSpawnPointId, SpawnDirection direction)
+        public Task HandleLevelTransition(string targetLevelId, string targetSpawnPointId, SpawnDirection direction)
         {
             // Save current level state
             SaveGame();
@@ -66,6 +67,8 @@ namespace Project.Core.SaveSystem
                 // Notify spawn point of transition
                 spawnPoint.OnLevelTransition(direction);
             }
+
+            return Task.CompletedTask;
         }
         public static NewSaveManager Instance { get; private set; }
         public SaveData CurrentSave { get; private set; }
@@ -90,7 +93,7 @@ namespace Project.Core.SaveSystem
             }
         }
 
-        public async void SaveGame(string slot = "default")
+        public void SaveGame(string slot = "default")
         {
             try
             {

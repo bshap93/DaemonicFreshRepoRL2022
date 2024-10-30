@@ -1025,7 +1025,6 @@ GameObject:
   - component: {fileID: 4289979665733679182}
   - component: {fileID: 3499101652646640742}
   - component: {fileID: 939006425655966393}
-  - component: {fileID: 7731632885172491076}
   - component: {fileID: 6740322010645961593}
   m_Layer: 0
   m_Name: Player
@@ -1163,8 +1162,7 @@ MonoBehaviour:
   playerStateController: {fileID: 939006425655966393}
   equippableHandler: {fileID: 0}
   hotbar: {fileID: 0}
-  mainPlayerAnimator: {fileID: 0}
-  equippedItem: {fileID: 0}
+  mainPlayerAnimator: {fileID: 2202077426921942116}
 --- !u!114 &4289979665733679182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1192,7 +1190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00b21ccac15d4b33824881fee991427f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealthChangedEvent:
+  playerStatChangedEvent:
     m_PersistentCalls:
       m_Calls: []
   playerOxygenChangedEvent:
@@ -1231,24 +1229,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0197c74d7b24f57b7bd862574f05c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7731632885172491076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4194478886614523176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10f78b43fd5e430e8f75bf0331fcdec5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterName: Player
-  currentSuitIntegrity: 100
-  currentOxygen: 100
-  oxygenStateInitial: 1
-  oxygenDepletionRate: 1
-  inGameConsoleManager: {fileID: 0}
 --- !u!114 &6740322010645961593
 MonoBehaviour:
   m_ObjectHideFlags: 0

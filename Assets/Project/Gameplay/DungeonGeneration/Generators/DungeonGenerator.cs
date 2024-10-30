@@ -18,7 +18,7 @@ namespace Project.Gameplay.DungeonGeneration.Generators
             }
         }
 
-        public async Task GenerateNewDungeon(int seed)
+        public Task GenerateNewDungeon(int seed)
         {
             try 
             {
@@ -34,6 +34,8 @@ namespace Project.Gameplay.DungeonGeneration.Generators
                 Debug.LogError($"Failed to generate dungeon: {e.Message}");
                 throw;
             }
+
+            return Task.CompletedTask;
         }
 
         public void LoadDungeon(DungeonData data)

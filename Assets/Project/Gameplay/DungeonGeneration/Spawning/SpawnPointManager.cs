@@ -16,10 +16,9 @@ namespace Project.Gameplay.DungeonGeneration.Spawning
             _spawnPointsById = new Dictionary<string, SpawnPoint>();
         }
 
-        // Called after DunGen finishes generating
         public void InitializeSpawnPoints(Dungeon dungeon)
         {
-            _spawnPointsByTile.Clear();
+            _spawnPointsById.Clear();
             _spawnPointsById.Clear();
 
             // Gather all spawn points from all tiles
@@ -27,22 +26,12 @@ namespace Project.Gameplay.DungeonGeneration.Spawning
             {
                 var points = tile.GetComponentsInChildren<SpawnPoint>();
                 _spawnPointsByTile[tile] = points.ToList();
-                
+            
                 foreach (var point in points)
                 {
                     // Now using runtime-generated IDs
                     var pointId = point.PointId;
                     _spawnPointsById[pointId] = point;
-                    // Validate unique IDs
-                    if (!string.IsNullOrEmpty(point.PointId))
-                    {
-                        if (_spawnPointsById.ContainsKey(point.PointId))
-                        {
-                            Debug.LogError($"Duplicate spawn point ID found: {point.PointId}");
-                            continue;
-                        }
-                        _spawnPointsById[point.PointId] = point;
-                    }
                 }
             }
         }
