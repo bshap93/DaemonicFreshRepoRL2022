@@ -5,6 +5,7 @@ using Project.Core.SaveSystem;
 using Project.Gameplay.DungeonGeneration;
 using Unity.AI.Navigation.Samples;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Project.Core.GameInitialization
 {
@@ -12,7 +13,8 @@ namespace Project.Core.GameInitialization
     {
         private static GameInitiator _instance;
         private NewSaveManager _saveManager;
-        private NewDungeonManager _dungeonManager;
+        [FormerlySerializedAs("_dungeonManager")] 
+        [SerializeField] NewDungeonManager dungeonManager;
         private RuntimeDungeon _runtimeDungeon;
 
         private void Awake()
@@ -26,10 +28,10 @@ namespace Project.Core.GameInitialization
             _instance = this;
         
             // Find references in our prefab structure
-            _dungeonManager = GetComponentInChildren<NewDungeonManager>();
+            // dungeonManager = GetComponentInChildren<NewDungeonManager>();
             _runtimeDungeon = GetComponentInChildren<RuntimeDungeon>();
         
-            if (_dungeonManager == null || _runtimeDungeon == null)
+            if (dungeonManager == null || _runtimeDungeon == null)
             {
                 Debug.LogError("Missing required components in PortableSystems prefab!");
             }
@@ -60,7 +62,7 @@ namespace Project.Core.GameInitialization
         private async Task StartNewGame()
         {
             int seed = Random.Range(0, int.MaxValue);
-            await _dungeonManager.GenerateNewDungeon(seed);
+            await dungeonManager.GenerateNewDungeon(seed);
         }
     }
 }

@@ -240,6 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 112aa9161be03fc4e96dc498fc877452, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dungeonManager: {fileID: 8915066346323247544}
 --- !u!4 &3116649579664088304
 Transform:
   m_ObjectHideFlags: 0
@@ -411,6 +412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad852606f755d4d4a835b2f15d0d3baa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  runtimeDungeon: {fileID: 1465320953805552402}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
