@@ -23,7 +23,28 @@ namespace Project.Gameplay.DungeonGeneration.Spawning
     public class SpawnPoint : MonoBehaviour 
     {
         [SerializeField] protected SpawnPointType type;
-        [SerializeField] public string PointId; // Unique identifier for save/load
+        [SerializeField] protected string basePointId; // The ID set in the prefab
+        protected string RuntimePointId; // Generated at runtime based on tile/instance
+        public string PointId 
+        { 
+            get 
+            {
+                if (string.IsNullOrEmpty(RuntimePointId))
+                {
+                    // Generate runtime ID using tile info
+                    var tile = GetComponentInParent<DunGen.Tile>();
+                    if (tile != null)
+                    {
+                        RuntimePointId = $"{tile.name}_{basePointId}_{System.Guid.NewGuid().ToString("N").Substring(0, 8)}";
+                    }
+                    else
+                    {
+                        Debug.LogError($"SpawnPoint {gameObject.name} is not placed inside a DunGen Tile!");
+                    }
+                }
+                return RuntimePointId;
+            }
+        }
 
         [SerializeField] protected bool oneTimeUse = true;
         [SerializeField] protected bool isOccupied;

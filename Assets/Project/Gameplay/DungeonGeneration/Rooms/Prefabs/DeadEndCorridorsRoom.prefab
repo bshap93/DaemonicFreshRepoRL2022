@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 3
-  PointId: PlayerInitialSpawn
+  basePointId: LevelStart
   oneTimeUse: 1
   isOccupied: 0
   difficultyMin: 0

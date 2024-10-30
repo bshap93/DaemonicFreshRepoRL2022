@@ -30,6 +30,9 @@ namespace Project.Gameplay.DungeonGeneration.Spawning
                 
                 foreach (var point in points)
                 {
+                    // Now using runtime-generated IDs
+                    var pointId = point.PointId;
+                    _spawnPointsById[pointId] = point;
                     // Validate unique IDs
                     if (!string.IsNullOrEmpty(point.PointId))
                     {
