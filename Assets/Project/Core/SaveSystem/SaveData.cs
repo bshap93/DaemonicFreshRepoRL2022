@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Project.Gameplay.DungeonGeneration.Spawning;
 using UnityEngine;
 
 namespace Project.Core.SaveSystem
@@ -137,6 +138,16 @@ namespace Project.Core.SaveSystem
             flags = new Dictionary<string, bool>();
             customGameData = new Dictionary<string, object>();
         }
+    }
+    
+    // Add to SaveData class:
+    public class LevelTransitionData
+    {
+        public string levelId;             // Scene/level name
+        public string lastSpawnPointId;    // ID of spawn point used
+        public SpawnDirection direction;   // Direction of transition
+        public Vector3 playerPosition;     // Exact position (for precise spawning)
+        public Quaternion playerRotation;  // Exact rotation
     }
 
 

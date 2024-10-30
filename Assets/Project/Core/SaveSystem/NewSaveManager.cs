@@ -1,7 +1,10 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Characters.Player.Scripts;
 using Cysharp.Threading.Tasks;
+using Project.Gameplay.DungeonGeneration.Spawning;
 using UnityEngine;
 
 namespace Project.Core.SaveSystem
@@ -17,11 +20,64 @@ namespace Project.Core.SaveSystem
 // Save Manager to handle saving/loading
     public class NewSaveManager : MonoBehaviour
     {
+        // Track level transitions for save/load
+        private Dictionary<string, LevelTransitionData> levelTransitions = new();
+        
+        private SpawnPointManager spawnPointManager;
+        
+
+
+        private SpawnPoint FindSpawnPoint(string spawnPointId)
+        {
+            return spawnPointManager.GetSpawnPointById(spawnPointId);
+        }
+        
+        public void SetLastTransitionPoint(string levelId, string spawnPointId, SpawnDirection direction)
+        {
+            levelTransitions[levelId] = new LevelTransitionData
+            {
+                levelId = levelId,
+                lastSpawnPointId = spawnPointId,
+                direction = direction,
+                playerPosition = PlayerCharacter.Instance.transform.position,
+                playerRotation = PlayerCharacter.Instance.transform.rotation
+            };
+        }
+        public LevelTransitionData GetLevelTransitionData(string levelId)
+        {
+            return levelTransitions.TryGetValue(levelId, out var data) ? data : null;
+        }
+        
+        public async Task HandleLevelTransition(string targetLevelId, string targetSpawnPointId, SpawnDirection direction)
+        {
+            // Save current level state
+            SaveGame();
+
+            // Load new level
+            // TODO: Implement level loading
+        
+            // Find target spawn point and position player
+            var spawnPoint = FindSpawnPoint(targetSpawnPointId);
+            if (spawnPoint != null)
+            {
+                PlayerCharacter.Instance.transform.position = spawnPoint.transform.position;
+                PlayerCharacter.Instance.transform.rotation = spawnPoint.transform.rotation;
+            
+                // Notify spawn point of transition
+                spawnPoint.OnLevelTransition(direction);
+            }
+        }
         public static NewSaveManager Instance { get; private set; }
         public SaveData CurrentSave { get; private set; }
     
         void Awake()
         {
+            spawnPointManager = FindObjectOfType<SpawnPointManager>();
+            if (spawnPointManager == null)
+            {
+                Debug.LogError("No SpawnPointManager found in scene!");
+            }
+            
             if (Instance == null)
             {
                 Instance = this;
@@ -87,5 +143,6 @@ namespace Project.Core.SaveSystem
                 return false;
             }
         }
+
     }
 }

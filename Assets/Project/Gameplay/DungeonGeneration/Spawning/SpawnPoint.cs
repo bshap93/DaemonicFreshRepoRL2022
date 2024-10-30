@@ -11,18 +11,32 @@ namespace Project.Gameplay.DungeonGeneration.Spawning
         Boss,
         Decoration
     }
+    
+    // Direction of level transition
+    public enum SpawnDirection
+    {
+        Up,     // Moving to previous level
+        Down    // Moving to next level
+    }
 
     [System.Serializable]
     public class SpawnPoint : MonoBehaviour 
     {
-        [SerializeField] private SpawnPointType type;
-        [SerializeField] private bool oneTimeUse = true;
-        [SerializeField] private bool isOccupied;
+        [SerializeField] protected SpawnPointType type;
+        [SerializeField] public string PointId; // Unique identifier for save/load
+
+        [SerializeField] protected bool oneTimeUse = true;
+        [SerializeField] protected bool isOccupied;
 
         // Optional spawn weights/restrictions
         [SerializeField] private float difficultyMin;
         [SerializeField] private float difficultyMax = float.MaxValue;
         [SerializeField] private string[] allowedPrefabTags;
+        
+        
+        
+        // For level transitions
+        public virtual void OnLevelTransition(SpawnDirection direction) { }
 
         // Optional visualization for editor
         private void OnDrawGizmos()
@@ -43,12 +57,15 @@ namespace Project.Gameplay.DungeonGeneration.Spawning
             {
                 Gizmos.DrawWireCube(transform.position, Vector3.one * 0.3f);
             }
+            
         }
+        
 
-        public bool CanSpawn()
+        public virtual bool CanSpawn()
         {
             return !isOccupied || !oneTimeUse;
         }
+
 
         public void MarkOccupied()
         {
