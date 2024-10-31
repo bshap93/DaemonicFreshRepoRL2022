@@ -1,13 +1,10 @@
 using System;
-using System.Linq;
 using System.Threading.Tasks;
-using Characters.Player.Scripts;
 using Cinemachine;
 using DunGen;
-using Library.Characters.Player.Scripts;
-using Library.Core.Cameras.InputHandlers;
 using Project.Gameplay.DungeonGeneration.Generators;
 using Project.Gameplay.DungeonGeneration.Spawning;
+using TopDownEngine.Common.Scripts.Characters.Core;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -17,25 +14,20 @@ namespace Project.Gameplay.DungeonGeneration
 {
     public class NewDungeonManager : MonoBehaviour
     {
-        [FormerlySerializedAs("_runtimeDungeon")] 
-        [SerializeField] RuntimeDungeon runtimeDungeon;
-        private TaskCompletionSource<bool> _generationTaskSource;
-        private SpawnPointManager _spawnPointManager;
-        [SerializeField] private GameObject playerPrefab;  // Assign your player prefab in inspector
-        [SerializeField] private GameObject cameraPrefab;  // Assign your camera prefab in inspector
-        private GameObject _playerInstance;
-        private GameObject _cameraInstance;
-        private PlayerCameraMovementInputHandler _cameraMovementInputHandler;
+        [FormerlySerializedAs("_runtimeDungeon")] [SerializeField]
+        RuntimeDungeon runtimeDungeon;
+        [SerializeField] GameObject playerPrefab; // Assign your player prefab in inspector
+        [SerializeField] GameObject playerSpawnPoint; // Assign your player spawn point in inspector
+        [SerializeField] CinemachineVirtualCamera virtualCamera; // Assign your virtual camera in inspector
+        TaskCompletionSource<bool> _generationTaskSource;
+        GameObject _playerInstance;
+        SpawnPointManager _spawnPointManager;
 
 
-
-        private void Awake()
+        void Awake()
         {
             _spawnPointManager = gameObject.GetComponent<SpawnPointManager>();
-            if (_spawnPointManager == null)
-            {
-                _spawnPointManager = gameObject.AddComponent<SpawnPointManager>();
-            }
+            if (_spawnPointManager == null) _spawnPointManager = gameObject.AddComponent<SpawnPointManager>();
             // runtimeDungeon = gameObject.GetComponent<RuntimeDungeon>();
             if (runtimeDungeon == null)
             {
@@ -47,87 +39,37 @@ namespace Project.Gameplay.DungeonGeneration
             runtimeDungeon.Generator.OnGenerationComplete += OnDungeonGenerationComplete;
         }
 
-        private void OnDestroy()
+        void OnDestroy()
         {
             if (runtimeDungeon != null && runtimeDungeon.Generator != null)
-            {
                 runtimeDungeon.Generator.OnGenerationComplete -= OnDungeonGenerationComplete;
-            }
         }
 
-        private void OnDungeonGenerationComplete(DungeonGenerator generator)
+        void OnDungeonGenerationComplete(DungeonGenerator generator)
         {
             _generationTaskSource?.TrySetResult(true);
-            // Initialize spawn points after dungeon is generated
-            _spawnPointManager.InitializeSpawnPoints(generator.CurrentDungeon);
-            
-            // Create player if it doesn't exist
-            if (_playerInstance == null)
+            _playerInstance = FindObjectOfType<Character>().gameObject;
+            virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
+
+            Debug.Log("Dungeon generation complete! with: " + _playerInstance);
+
+            if (virtualCamera != null)
             {
-                _playerInstance = Instantiate(playerPrefab);
+                virtualCamera.Follow = _playerInstance.transform;
+                Debug.Log("Camera following player");
             }
-
-
-            // Example: Spawn player at start point
-            var startPoint = _spawnPointManager.GetAvailableSpawnPoints(SpawnPointType.Player)
-                .OfType<PlayerSpawnPoint>()
-                .FirstOrDefault(p => p.SpawnType == PlayerSpawnPoint.PlayerSpawnType.LevelStart);
-
-            if (startPoint != null)
-            {
-                // Spawn player if needed
-                if (_playerInstance == null)
-                {
-                    Debug.Log($"Spawning player at position: {startPoint.transform.position}");
-                    _playerInstance = Instantiate(playerPrefab, startPoint.transform.position, startPoint.transform.rotation);
-                }
-                else
-                {
-                    _playerInstance.transform.position = startPoint.transform.position;
-                    _playerInstance.transform.rotation = startPoint.transform.rotation;
-                }
-                
-                // Spawn camera if needed
-                if (_cameraInstance == null)
-                {
-                    Debug.Log("Spawning camera system");
-                    _cameraInstance = Instantiate(cameraPrefab);
-                    _cameraMovementInputHandler = _cameraInstance.GetComponent<PlayerCameraMovementInputHandler>();
-                    _cameraMovementInputHandler.player = _playerInstance.transform;
-                    var virtualCamera = _cameraInstance.GetComponentInChildren<CinemachineVirtualCamera>();
-                    
-                    if (virtualCamera != null)
-                    {
-                        virtualCamera.Follow = _playerInstance.transform;
-                        
-                    }
-                    else
-                    {
-                        Debug.LogError("No CinemachineVirtualCamera found in camera prefab!");
-                    }
-                }
-                startPoint.MarkOccupied();
-            }
-
-            // Example: Spawn enemies based on difficulty
-            var enemySpawns = _spawnPointManager.GetAvailableSpawnPoints(SpawnPointType.Enemy);
-            foreach (var spawn in enemySpawns)
-            {
-                // TODO: Spawn appropriate enemy based on difficulty
-                spawn.MarkOccupied();
-            }
-            
         }
+
 
         public async Task GenerateNewDungeon(int seed)
         {
-            try 
+            try
             {
                 _generationTaskSource = new TaskCompletionSource<bool>();
-            
+
                 runtimeDungeon.Generator.Seed = seed;
                 runtimeDungeon.Generate();
-            
+
                 // Wait for generation complete event
                 await _generationTaskSource.Task;
             }

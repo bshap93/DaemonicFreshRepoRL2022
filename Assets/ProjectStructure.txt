@@ -1,0 +1,3564 @@
+Project Directory Structure:
+Assets/
+  ├── polyperfect/
+  │   ├── Common/
+  │   │   ├── - Code/
+  │   │   │   ├── Attributes/
+  │   │   │   │   ├── DisableInInspectorAttribute.cs
+  │   │   │   │   ├── HighlightNullAttribute.cs
+  │   │   │   │   ├── HighPriorityAttribute.cs
+  │   │   │   │   └── LowPriorityAttribute.cs
+  │   │   │   ├── Extensions/
+  │   │   │   │   ├── CollectionExtensions.cs
+  │   │   │   │   ├── GameObjectExtensions.cs
+  │   │   │   │   ├── IEnumerableExtensions.cs
+  │   │   │   │   ├── IIncludeInVisualization.cs
+  │   │   │   │   ├── PolyTweener.cs
+  │   │   │   │   ├── StringExtensions.cs
+  │   │   │   │   └── TypeExtensions.cs
+  │   │   │   ├── Scripts/
+  │   │   │   │   ├── AgentAnimator.cs
+  │   │   │   │   ├── BaseInstantiatingCursor.cs
+  │   │   │   │   ├── CameraRotationMatch.cs
+  │   │   │   │   ├── DelayedEvent.cs
+  │   │   │   │   ├── Destroyer.cs
+  │   │   │   │   ├── ElementAnimation.cs
+  │   │   │   │   ├── InitialForce.cs
+  │   │   │   │   ├── InteractiveCursor.cs
+  │   │   │   │   ├── ObjectCursor.cs
+  │   │   │   │   ├── PivotAnimation.cs
+  │   │   │   │   ├── PositionAnimation.cs
+  │   │   │   │   ├── Printer.cs
+  │   │   │   │   ├── RemainUpright.cs
+  │   │   │   │   ├── RotateAnimation.cs
+  │   │   │   │   ├── ScaleAnimation.cs
+  │   │   │   │   ├── SceneReloader.cs
+  │   │   │   │   ├── ShowAndHideable.cs
+  │   │   │   │   ├── SimpleEvents.cs
+  │   │   │   │   ├── SimpleOscillate.cs
+  │   │   │   │   ├── SimpleRotate.cs
+  │   │   │   │   ├── SimpleTranslate.cs
+  │   │   │   │   ├── StandaloneInputModuleButItWorksWithLockedCursor.cs
+  │   │   │   │   ├── SurfaceCursor.cs
+  │   │   │   │   └── Unparenter.cs
+  │   │   │   ├── EventSequence.cs
+  │   │   │   ├── PolyMono.cs
+  │   │   │   ├── PolyObject.cs
+  │   │   │   ├── RandomExtensions.cs
+  │   │   │   ├── UI_Constants.cs
+  │   │   │   └── VisualElementExtensions.cs
+  │   │   ├── - Presets/
+  │   │   ├── Editor/
+  │   │   │   ├── AssetUtility.cs
+  │   │   │   ├── NoteBox.cs
+  │   │   │   └── PolyEditor.cs
+  │   ├── Crafting System/
+  │   │   ├── - Animations/
+  │   │   ├── - Code/
+  │   │   │   ├── Demo/
+  │   │   │   │   ├── AdditionalSlotEvents.cs
+  │   │   │   │   ├── AutoUpdateSceneNavmesh.cs
+  │   │   │   │   ├── BaseInteractable.cs
+  │   │   │   │   ├── ChangeEquippedUsingAxis.cs
+  │   │   │   │   ├── CombineSlotsOnCollide.cs
+  │   │   │   │   ├── CommandablePlayer.cs
+  │   │   │   │   ├── ConveyorBeltMovement.cs
+  │   │   │   │   ├── DefaultInventory.cs
+  │   │   │   │   ├── DisplayItemModel.cs
+  │   │   │   │   ├── DynamicTrack.cs
+  │   │   │   │   ├── EquippableEvents.cs
+  │   │   │   │   ├── EquippedSlot.cs
+  │   │   │   │   ├── FirstPersonCommandablePlayer.cs
+  │   │   │   │   ├── GatherInteractable.cs
+  │   │   │   │   ├── ICommand.cs
+  │   │   │   │   ├── ICommandable.cs
+  │   │   │   │   ├── InheritPlacedItem.cs
+  │   │   │   │   ├── ItemConsumer.cs
+  │   │   │   │   ├── ItemExtractQueue.cs
+  │   │   │   │   ├── ItemGenerator.cs
+  │   │   │   │   ├── ItemPlacer.cs
+  │   │   │   │   ├── LinkSlotsToInstanceValues.cs
+  │   │   │   │   ├── PlayerCommander.cs
+  │   │   │   │   ├── PlayerMover.cs
+  │   │   │   │   ├── ReceiverPort.cs
+  │   │   │   │   ├── SimpleFirstPersonCamera.cs
+  │   │   │   │   ├── SimpleFirstPersonMovement.cs
+  │   │   │   │   ├── TextDataDisplay.cs
+  │   │   │   │   ├── ThirdPersonCommandablePlayer.cs
+  │   │   │   │   └── TransferPort.cs
+  │   │   │   ├── Editor/
+  │   │   │   │   ├── Manipulators/
+  │   │   │   │   │   ├── ClickEater.cs
+  │   │   │   │   │   ├── DataDragManipulator.cs
+  │   │   │   │   │   ├── DataDropManipulator.cs
+  │   │   │   │   │   ├── DirtyOnChangeManipulator.cs
+  │   │   │   │   │   ├── MouseHoverManipulator.cs
+  │   │   │   │   │   └── OpenForEditManipulator.cs
+  │   │   │   │   ├── VisualElements/
+  │   │   │   │   │   ├── FilterableListview.cs
+  │   │   │   │   │   ├── GridView.cs
+  │   │   │   │   │   ├── HoverLabel.cs
+  │   │   │   │   │   ├── MemberGroupControl.cs
+  │   │   │   │   │   ├── SearchableItemCollection.cs
+  │   │   │   │   │   ├── SimpleIconElement.cs
+  │   │   │   │   │   └── VisualElementPresets.cs
+  │   │   │   │   ├── BaseObjectWithIDDrawer.cs
+  │   │   │   │   ├── CategoryObjectEditor.cs
+  │   │   │   │   ├── EditorItemDatabase.cs
+  │   │   │   │   ├── EditorItemIconAccessor.cs
+  │   │   │   │   ├── EditorItemNameAccessor.cs
+  │   │   │   │   ├── ExperimentWindow.cs
+  │   │   │   │   ├── FragmentSelectionView.cs
+  │   │   │   │   ├── IconDataDrawer.cs
+  │   │   │   │   ├── InventorySaveEditor.cs
+  │   │   │   │   ├── ItemFragmentView.cs
+  │   │   │   │   ├── ItemObjectEditor.cs
+  │   │   │   │   ├── ItemObjectWithQuantityDrawer.cs
+  │   │   │   │   ├── ItemStackConstraintCollectionDrawer.cs
+  │   │   │   │   ├── ItemsWindow.cs
+  │   │   │   │   ├── ObjectEditWindow.cs
+  │   │   │   │   ├── QuantityContainerEditor.cs
+  │   │   │   │   ├── QuantityDrawer.cs
+  │   │   │   │   ├── RecipeEditor.cs
+  │   │   │   │   ├── ReplaceWithPeekInPlaymodeDrawer.cs
+  │   │   │   │   ├── Serialized2DItemListEditor.cs
+  │   │   │   │   └── TableRecipeEditor.cs
+  │   │   │   ├── Framework/
+  │   │   │   │   ├── Abstracts/
+  │   │   │   │   │   ├── IChangeable.cs
+  │   │   │   │   │   ├── IDataAccessorLookup.cs
+  │   │   │   │   │   ├── IExtract.cs
+  │   │   │   │   │   ├── IFactory.cs
+  │   │   │   │   │   ├── IHasID.cs
+  │   │   │   │   │   ├── IIndexed.cs
+  │   │   │   │   │   ├── IInsert.cs
+  │   │   │   │   │   ├── IMultiplicable.cs
+  │   │   │   │   │   ├── IPeek.cs
+  │   │   │   │   │   ├── IRecipe.cs
+  │   │   │   │   │   ├── ISatisfier.cs
+  │   │   │   │   │   ├── ISlot.cs
+  │   │   │   │   │   ├── ITransfer.cs
+  │   │   │   │   │   ├── IValue.cs
+  │   │   │   │   │   └── IValueAndID.cs
+  │   │   │   │   ├── Concretes/
+  │   │   │   │   │   ├── AnyPositionItemQuantitySatisfier.cs
+  │   │   │   │   │   ├── MatchesIDSatisfier.cs
+  │   │   │   │   │   ├── MatchingPositionSatisfier.cs
+  │   │   │   │   │   ├── QuantityAndIDSatisfier.cs
+  │   │   │   │   │   └── ValueAndIDSatisfier.cs
+  │   │   │   │   ├── Data/
+  │   │   │   │   │   ├── Quantity.cs
+  │   │   │   │   │   └── RuntimeID.cs
+  │   │   │   │   ├── Tests/
+  │   │   │   │   │   └── ExtensionsTesting.cs
+  │   │   │   │   └── ObjectExtensions.cs
+  │   │   │   ├── Integration/
+  │   │   │   │   ├── Abstracts/
+  │   │   │   │   │   ├── BaseObjectWithID.cs
+  │   │   │   │   │   ├── IDimensions.cs
+  │   │   │   │   │   ├── IPeek2D.cs
+  │   │   │   │   │   └── ItemStackConstraintCollection.cs
+  │   │   │   │   ├── Attributes/
+  │   │   │   │   │   ├── CreateMenuTitleAttribute.cs
+  │   │   │   │   │   └── ReplaceWithPeekInPlaymodeAttribute.cs
+  │   │   │   │   ├── Data/
+  │   │   │   │   │   ├── BaseCategoryObject.cs
+  │   │   │   │   │   ├── BaseCategoryWithData.cs
+  │   │   │   │   │   ├── BaseInventory.cs
+  │   │   │   │   │   ├── BaseItemObject.cs
+  │   │   │   │   │   ├── BaseRecipeObject.cs
+  │   │   │   │   │   ├── CategoryObject.cs
+  │   │   │   │   │   ├── CategoryWithFloat.cs
+  │   │   │   │   │   ├── CategoryWithInt.cs
+  │   │   │   │   │   ├── CategoryWithPrefab.cs
+  │   │   │   │   │   ├── CategoryWithText.cs
+  │   │   │   │   │   ├── FuncProcessor.cs
+  │   │   │   │   │   ├── IconData.cs
+  │   │   │   │   │   ├── IconsCategory.cs
+  │   │   │   │   │   ├── IItemWorld.cs
+  │   │   │   │   │   ├── IProcessor.cs
+  │   │   │   │   │   ├── ItemSlotWithProcessor.cs
+  │   │   │   │   │   ├── ItemStack.cs
+  │   │   │   │   │   ├── ItemStackEvent.cs
+  │   │   │   │   │   ├── ItemStackSlot.cs
+  │   │   │   │   │   ├── ItemStackSlotWithCapacity.cs
+  │   │   │   │   │   ├── ItemWorld.cs
+  │   │   │   │   │   ├── ItemWorldExtensions.cs
+  │   │   │   │   │   ├── ItemWorldFragment.cs
+  │   │   │   │   │   ├── List2D.cs
+  │   │   │   │   │   ├── MultiItemFactory.cs
+  │   │   │   │   │   ├── ObjectItemStack.cs
+  │   │   │   │   │   ├── PathLocatorObject.cs
+  │   │   │   │   │   ├── QuantityContainer.cs
+  │   │   │   │   │   ├── RecipeCategoryObject.cs
+  │   │   │   │   │   ├── RecipeObject.cs
+  │   │   │   │   │   ├── RequireCategoryConstraint.cs
+  │   │   │   │   │   ├── SimpleItem.cs
+  │   │   │   │   │   ├── SimpleItemSlot.cs
+  │   │   │   │   │   ├── SimpleItemWorld.cs
+  │   │   │   │   │   ├── SimpleRecipe.cs
+  │   │   │   │   │   ├── SimpleStackTransfer.cs
+  │   │   │   │   │   ├── SimpleTransferer.cs
+  │   │   │   │   │   ├── SlottedInventory.cs
+  │   │   │   │   │   ├── SpecifiedDataAccessorLookup.cs
+  │   │   │   │   │   ├── StaticCategories.cs
+  │   │   │   │   │   ├── TableRecipe.cs
+  │   │   │   │   │   ├── TableRecipeObject.cs
+  │   │   │   │   │   ├── TableSatisfier.cs
+  │   │   │   │   │   └── TransferUtilities.cs
+  │   │   │   │   ├── Extensions/
+  │   │   │   │   │   └── InventoryOps.cs
+  │   │   │   │   ├── Scripts/
+  │   │   │   │   │   ├── BaseItemSlotComponent.cs
+  │   │   │   │   │   ├── CategoryFloatUser.cs
+  │   │   │   │   │   ├── CategoryIntUser.cs
+  │   │   │   │   │   ├── CategoryPrefabUser.cs
+  │   │   │   │   │   ├── CategoryStringUser.cs
+  │   │   │   │   │   ├── CategoryValueUser.cs
+  │   │   │   │   │   ├── ChildConstructor.cs
+  │   │   │   │   │   ├── ChildSlotsInventory.cs
+  │   │   │   │   │   ├── Crafter.cs
+  │   │   │   │   │   ├── DualSlot.cs
+  │   │   │   │   │   ├── ILockable.cs
+  │   │   │   │   │   ├── InventorySaver.cs
+  │   │   │   │   │   ├── ItemGameObjectCreator.cs
+  │   │   │   │   │   ├── ItemSlotComponent.cs
+  │   │   │   │   │   ├── ItemSlotLink.cs
+  │   │   │   │   │   ├── ItemUserBase.cs
+  │   │   │   │   │   ├── ItemWorldReference.cs
+  │   │   │   │   │   ├── LinkedItemSlotComponent.cs
+  │   │   │   │   │   ├── LinkedUGUITransferableItemSlotComponent.cs
+  │   │   │   │   │   ├── MouseFollow.cs
+  │   │   │   │   │   ├── RecipeDisplay.cs
+  │   │   │   │   │   ├── SlotConstraints.cs
+  │   │   │   │   │   ├── StackInsertionConstraint.cs
+  │   │   │   │   │   ├── TransferOverTime.cs
+  │   │   │   │   │   ├── UGUIHoverEvents.cs
+  │   │   │   │   │   └── UGUITransferableItemSlot.cs
+  │   │   │   │   ├── Tests/
+  │   │   │   │   │   ├── EditMode/
+  │   │   │   │   │   │   ├── BasicTest.cs
+  │   │   │   │   │   │   ├── CollectionTests.cs
+  │   │   │   │   │   │   ├── CraftingAndRecipesTesting.cs
+  │   │   │   │   │   │   ├── InstancedItemTests.cs
+  │   │   │   │   │   │   ├── ItemDataTests.cs
+  │   │   │   │   │   │   └── ItemStackTests.cs
+  │   │   │   │   │   ├── PlayMode/
+  │   │   │   │   │   │   └── UGUITests.cs
+  │   │   │   │   ├── UI/
+  │   │   │   │   │   ├── UGUI/
+  │   │   │   │   │   │   ├── UGUICrafter.cs
+  │   │   │   │   │   │   ├── UGUIInvisibleRaycastTarget.cs
+  │   │   │   │   │   │   ├── UGUIItemDisplay.cs
+  │   │   │   │   │   │   ├── UGUIItemTransfer.cs
+  │   │   │   │   │   │   ├── UGUIItemTransferListener.cs
+  │   │   │   │   │   │   ├── UGUITableBasedCrafter.cs
+  │   │   │   │   │   │   └── UGUITabs.cs
+  │   │   │   ├── Placement/
+  │   │   │   │   ├── ConnectorPort.cs
+  │   │   │   │   ├── ConnectorPortGroup.cs
+  │   │   │   │   ├── IPlacementPostprocessor.cs
+  │   │   │   │   ├── IPlacementProcessor.cs
+  │   │   │   │   ├── IPort.cs
+  │   │   │   │   ├── Placement_AxisRotationSnapper.cs
+  │   │   │   │   ├── Placement_ChildMaterialReplacer.cs
+  │   │   │   │   ├── Placement_GridSnapper.cs
+  │   │   │   │   ├── Placement_PortSnapper.cs
+  │   │   │   │   ├── Placement_SurfaceSnapper.cs
+  │   │   │   │   ├── Placement_TransformMatcher.cs
+  │   │   │   │   ├── PlacementInfo.cs
+  │   │   │   │   ├── PortConnectEvent.cs
+  │   │   │   │   ├── PortIdentifier.cs
+  │   │   │   │   └── PortManager.cs
+  │   │   ├── - Items/
+  │   │   │   ├── Attributes/
+  │   │   │   │   ├── Conveyor_In.asset
+  │   │   │   │   ├── Conveyor_Out.asset
+  │   │   │   │   ├── Floor_In.asset
+  │   │   │   │   ├── Floor_Out.asset
+  │   │   │   │   ├── Power_In.asset
+  │   │   │   │   ├── Power_Out.asset
+  │   │   │   │   ├── Wall_In.asset
+  │   │   │   │   └── Wall_Out.asset
+  │   │   │   ├── Categories/
+  │   │   │   │   ├── __DirectoryForNewCategories.asset
+  │   │   │   │   ├── _Icon.asset
+  │   │   │   │   ├── 3D Printer Needed.asset
+  │   │   │   │   ├── Alloy.asset
+  │   │   │   │   ├── Axe.asset
+  │   │   │   │   ├── Chemical Lab Needed.asset
+  │   │   │   │   ├── Composites.asset
+  │   │   │   │   ├── Consumable.asset
+  │   │   │   │   ├── Container.asset
+  │   │   │   │   ├── CraftableAtCraftingTable.asset
+  │   │   │   │   ├── DamageInflicting.asset
+  │   │   │   │   ├── Deposit.asset
+  │   │   │   │   ├── Electricity.asset
+  │   │   │   │   ├── Extractor.asset
+  │   │   │   │   ├── Item Prefab.asset
+  │   │   │   │   ├── ItemWithModel.asset
+  │   │   │   │   ├── Mechanical Workshop Needed.asset
+  │   │   │   │   ├── Models.asset
+  │   │   │   │   ├── Pistol.asset
+  │   │   │   │   ├── Placeable.asset
+  │   │   │   │   ├── Placement Vessel.asset
+  │   │   │   │   ├── Power Capacity.asset
+  │   │   │   │   ├── Power Stored.asset
+  │   │   │   │   ├── Resource.asset
+  │   │   │   │   ├── Resources.asset
+  │   │   │   │   ├── Smelter Needed.asset
+  │   │   │   │   ├── SpaceSuit Modifier.asset
+  │   │   │   │   ├── StackSize.asset
+  │   │   │   │   ├── Tool Upgrade.asset
+  │   │   │   │   ├── Tool.asset
+  │   │   │   │   ├── Weapon.asset
+  │   │   │   │   └── Workbench Needed.asset
+  │   │   │   ├── Objects/
+  │   │   │   │   ├── __DirectoryForNewItems.asset
+  │   │   │   │   ├── 3D Printer.asset
+  │   │   │   │   ├── Advanced Circuit.asset
+  │   │   │   │   ├── Advanced Scanner.asset
+  │   │   │   │   ├── Al Superalloy.asset
+  │   │   │   │   ├── Aluminum.asset
+  │   │   │   │   ├── Automated Line.asset
+  │   │   │   │   ├── Basic Energy Cell.asset
+  │   │   │   │   ├── Battery.asset
+  │   │   │   │   ├── Buggy Cabin.asset
+  │   │   │   │   ├── Buggy Wheel.asset
+  │   │   │   │   ├── Buggy.asset
+  │   │   │   │   ├── Canteen.asset
+  │   │   │   │   ├── Carbon.asset
+  │   │   │   │   ├── Chassis.asset
+  │   │   │   │   ├── Chemical Lab.asset
+  │   │   │   │   ├── Chlorine.asset
+  │   │   │   │   ├── Conductive Wire.asset
+  │   │   │   │   ├── CRP.asset
+  │   │   │   │   ├── Door.asset
+  │   │   │   │   ├── ElectricalJumperTool.asset
+  │   │   │   │   ├── Epoxy Resin.asset
+  │   │   │   │   ├── Fiberglass.asset
+  │   │   │   │   ├── Fire Extinguisher.asset
+  │   │   │   │   ├── Flashlight.asset
+  │   │   │   │   ├── Floor.asset
+  │   │   │   │   ├── Hydrogen.asset
+  │   │   │   │   ├── Iron Ore.asset
+  │   │   │   │   ├── Iron.asset
+  │   │   │   │   ├── LaserTool.asset
+  │   │   │   │   ├── Lattice Adhesive.asset
+  │   │   │   │   ├── Low Voltage.asset
+  │   │   │   │   ├── MagBoots.asset
+  │   │   │   │   ├── Magma Mineral.asset
+  │   │   │   │   ├── Matter Manipulator.asset
+  │   │   │   │   ├── Mechanical Workshop.asset
+  │   │   │   │   ├── Med Kit.asset
+  │   │   │   │   ├── Metal Scraps.asset
+  │   │   │   │   ├── Oxygen Cylinder.asset
+  │   │   │   │   ├── Oxygen Generator.asset
+  │   │   │   │   ├── Oxygen.asset
+  │   │   │   │   ├── Player's LaserTool.asset
+  │   │   │   │   ├── PowerAxe.asset
+  │   │   │   │   ├── Printed Circuit.asset
+  │   │   │   │   ├── Resource Canister.asset
+  │   │   │   │   ├── Robotic Arm.asset
+  │   │   │   │   ├── Roof.asset
+  │   │   │   │   ├── Salt.asset
+  │   │   │   │   ├── Scandium.asset
+  │   │   │   │   ├── Screw.asset
+  │   │   │   │   ├── Silicon.asset
+  │   │   │   │   ├── Smelter.asset
+  │   │   │   │   ├── Solar Panel.asset
+  │   │   │   │   ├── Steel Reinforcement.asset
+  │   │   │   │   ├── Steel.asset
+  │   │   │   │   ├── Suit Mend Tool.asset
+  │   │   │   │   ├── Tape.asset
+  │   │   │   │   ├── Thermos.asset
+  │   │   │   │   ├── Wall.asset
+  │   │   │   │   ├── Water.asset
+  │   │   │   │   ├── Wind Turbine.asset
+  │   │   │   │   ├── Wire.asset
+  │   │   │   │   └── WireSpool.asset
+  │   │   │   ├── Recipes/
+  │   │   │   │   ├── __DirectoryForNewRecipes.asset
+  │   │   │   │   ├── Advanced Scanner.asset
+  │   │   │   │   ├── Buggy.asset
+  │   │   │   │   ├── Chem CRP.asset
+  │   │   │   │   ├── Chem Epoxy Resin.asset
+  │   │   │   │   ├── Chem Fiberglass.asset
+  │   │   │   │   ├── Electrical Jumper Tool.asset
+  │   │   │   │   ├── Health Kit.asset
+  │   │   │   │   ├── Print Buggy Cabin.asset
+  │   │   │   │   ├── Print Chemical Lab.asset
+  │   │   │   │   ├── Print Door.asset
+  │   │   │   │   ├── Print Floor.asset
+  │   │   │   │   ├── Print Mechanical Workshop.asset
+  │   │   │   │   ├── Print Printed Circuit.asset
+  │   │   │   │   ├── Print Resource Canister.asset
+  │   │   │   │   ├── Print Roof.asset
+  │   │   │   │   ├── Print Smelter.asset
+  │   │   │   │   ├── Print Wall.asset
+  │   │   │   │   ├── Smelt Al Superalloy.asset
+  │   │   │   │   ├── Smelt Chassis.asset
+  │   │   │   │   ├── Smelt Iron.asset
+  │   │   │   │   ├── Smelt Oxygen Cylinder.asset
+  │   │   │   │   ├── Smelt Screws.asset
+  │   │   │   │   ├── Smelt Steel Reinforcement.asset
+  │   │   │   │   ├── Smelt Steel.asset
+  │   │   │   │   ├── Suit Repair Tool.asset
+  │   │   │   │   ├── Workbench Battery.asset
+  │   │   │   │   ├── Workbench Buggy.asset
+  │   │   │   │   ├── Workshop 3D Printer.asset
+  │   │   │   │   ├── Workshop Automated Line.asset
+  │   │   │   │   ├── Workshop Battery.asset
+  │   │   │   │   ├── Workshop Buggy Wheels.asset
+  │   │   │   │   ├── Workshop Conductive Wire.asset
+  │   │   │   │   ├── Workshop Oxygen Generator.asset
+  │   │   │   │   ├── Workshop Robotic Arm.asset
+  │   │   │   │   ├── Workshop Solar Panel.asset
+  │   │   │   │   └── Workshop Wind Turbine.asset
+  │   │   │   ├── InstantiateConstraint.asset
+  │   │   │   └── StandardSlotConstraints.asset
+  │   │   ├── - Prefabs/
+  │   │   │   ├── CraftingStations/
+  │   │   │   │   ├── Crafter.prefab
+  │   │   │   │   ├── CraftingStation.prefab
+  │   │   │   │   ├── CraftingStation_3DPrinter.prefab
+  │   │   │   │   ├── CraftingStation_ChemicalLab.prefab
+  │   │   │   │   ├── CraftingStation_Smelter.prefab
+  │   │   │   │   ├── CraftingStation_Workshop.prefab
+  │   │   │   │   ├── TableCrafter.prefab
+  │   │   │   │   ├── TableCraftingStation.prefab
+  │   │   │   │   └── TableCraftingStation_Workbench.prefab
+  │   │   │   ├── Deposits/
+  │   │   │   │   ├── ResourceDeposit.prefab
+  │   │   │   │   ├── ResourceDeposit_Iron.prefab
+  │   │   │   │   ├── ResourceDeposit_Magma.prefab
+  │   │   │   │   ├── ResourceDeposit_Salt.prefab
+  │   │   │   │   └── ResourceDeposit_Water.prefab
+  │   │   │   ├── Models/
+  │   │   │   │   ├── Belts/
+  │   │   │   │   │   ├── belt-moving-column.prefab
+  │   │   │   │   │   ├── belt-moving-curve.prefab
+  │   │   │   │   │   ├── belt-moving-curve-up.prefab
+  │   │   │   │   │   ├── belt-moving-straight.prefab
+  │   │   │   │   │   └── belt-moving-up.prefab
+  │   │   │   │   ├── Nature/
+  │   │   │   │   │   ├── crater-big.prefab
+  │   │   │   │   │   ├── crater-deep.prefab
+  │   │   │   │   │   ├── palm.prefab
+  │   │   │   │   │   ├── palm-angle.prefab
+  │   │   │   │   │   ├── palm-round.prefab
+  │   │   │   │   │   ├── palm-small.prefab
+  │   │   │   │   │   ├── shrub-round.prefab
+  │   │   │   │   │   ├── stone-flat.prefab
+  │   │   │   │   │   └── stone-oval.prefab
+  │   │   │   │   ├── People/
+  │   │   │   │   │   ├── Rigs/
+  │   │   │   │   │   │   ├── alien-ufo_Rig.prefab
+  │   │   │   │   │   │   ├── ControllableCharacter.prefab
+  │   │   │   │   │   │   ├── ControllableCharacterWithInventory.prefab
+  │   │   │   │   │   │   ├── FirstPersonPlayer.prefab
+  │   │   │   │   │   │   └── man-astronaut_Rig.prefab
+  │   │   │   │   ├── Props/
+  │   │   │   │   │   ├── scifi-box.prefab
+  │   │   │   │   │   ├── scifi-box-divided.prefab
+  │   │   │   │   │   ├── scifi-chair.prefab
+  │   │   │   │   │   ├── scifi-locker.prefab
+  │   │   │   │   │   ├── scifi-lockers.prefab
+  │   │   │   │   │   ├── scifi-neon-screen.prefab
+  │   │   │   │   │   ├── scifi-table.prefab
+  │   │   │   │   │   └── solar-panel.prefab
+  │   │   │   │   ├── Structure/
+  │   │   │   │   │   ├── scifi-door-metal.prefab
+  │   │   │   │   │   ├── scifi-floor.prefab
+  │   │   │   │   │   ├── scifi-floor-bottom.prefab
+  │   │   │   │   │   ├── scifi-floor-bottom-offset.prefab
+  │   │   │   │   │   ├── scifi-floor-center.prefab
+  │   │   │   │   │   ├── scifi-floor-corridor.prefab
+  │   │   │   │   │   ├── scifi-floor-narrow.prefab
+  │   │   │   │   │   ├── scifi-pillar.prefab
+  │   │   │   │   │   ├── scifi-pillar-corridor.prefab
+  │   │   │   │   │   ├── scifi-pillar-light.prefab
+  │   │   │   │   │   ├── scifi-pillar-stripe.prefab
+  │   │   │   │   │   ├── scifi-roof-corridor.prefab
+  │   │   │   │   │   ├── scifi-roof-lights-corridor.prefab
+  │   │   │   │   │   ├── scifi-stairs.prefab
+  │   │   │   │   │   ├── scifi-stairs-narrow.prefab
+  │   │   │   │   │   ├── scifi-wall.prefab
+  │   │   │   │   │   ├── scifi-wall-corner.prefab
+  │   │   │   │   │   ├── scifi-wall-corner-stripe.prefab
+  │   │   │   │   │   ├── scifi-wall-corridor.prefab
+  │   │   │   │   │   ├── scifi-wall-corridor-corner.prefab
+  │   │   │   │   │   ├── scifi-wall-corridor-corner-stripe.prefab
+  │   │   │   │   │   ├── scifi-wall-corridor-edge.prefab
+  │   │   │   │   │   ├── scifi-wall-corridor-edge-stripe.prefab
+  │   │   │   │   │   ├── scifi-wall-corridor-stripe.prefab
+  │   │   │   │   │   ├── scifi-wall-edge.prefab
+  │   │   │   │   │   ├── scifi-wall-edge-stripe.prefab
+  │   │   │   │   │   ├── scifi-wall-outside.prefab
+  │   │   │   │   │   ├── scifi-wall-stripe.prefab
+  │   │   │   │   │   ├── scifi-wall-windows.prefab
+  │   │   │   │   │   ├── scifi-wall-windows-stripe.prefab
+  │   │   │   │   │   ├── scifi-window-big.prefab
+  │   │   │   │   │   ├── scifi-window-corridor.prefab
+  │   │   │   │   │   ├── scifi-window-corridor-stripe.prefab
+  │   │   │   │   │   ├── scifi-window-corridor-turn.prefab
+  │   │   │   │   │   ├── scifi-windows-corridor.prefab
+  │   │   │   │   │   └── scifi-windows-corridor-stripe.prefab
+  │   │   │   │   ├── Terrains/
+  │   │   │   │   │   └── terrain-plane-plain.prefab
+  │   │   │   │   ├── aluminium.prefab
+  │   │   │   │   ├── battery-9v.prefab
+  │   │   │   │   ├── belt-moving-connector.prefab
+  │   │   │   │   ├── carbon.prefab
+  │   │   │   │   ├── carbon-fiber.prefab
+  │   │   │   │   ├── conductive-wire.prefab
+  │   │   │   │   ├── crater-water.prefab
+  │   │   │   │   ├── deposit-salt.prefab
+  │   │   │   │   ├── epoxi-resin.prefab
+  │   │   │   │   ├── fiberglass.prefab
+  │   │   │   │   ├── gear-wheel.prefab
+  │   │   │   │   ├── gold-brick.prefab
+  │   │   │   │   ├── iron.prefab
+  │   │   │   │   ├── iron-ore.prefab
+  │   │   │   │   ├── magma-ore.prefab
+  │   │   │   │   ├── matter-manipulator.prefab
+  │   │   │   │   ├── oxygen-cylinder.prefab
+  │   │   │   │   ├── printed-circuit.prefab
+  │   │   │   │   ├── salt.prefab
+  │   │   │   │   ├── scandium.prefab
+  │   │   │   │   ├── scifi-buggy.prefab
+  │   │   │   │   ├── scifi-buggy-cabin.prefab
+  │   │   │   │   ├── scifi-buggy-chassis.prefab
+  │   │   │   │   ├── scifi-chemistry-lab.prefab
+  │   │   │   │   ├── scifi-oxygen-generator.prefab
+  │   │   │   │   ├── scifi-pc.prefab
+  │   │   │   │   ├── scifi-pipe-corridor.prefab
+  │   │   │   │   ├── scifi-pipe-corridor-end.prefab
+  │   │   │   │   ├── scifi-printer-3D.prefab
+  │   │   │   │   ├── scifi-resource-canister.prefab
+  │   │   │   │   ├── scifi-robotic-arm.prefab
+  │   │   │   │   ├── scifi-ship-motor.prefab
+  │   │   │   │   ├── scifi-smelter.prefab
+  │   │   │   │   ├── scifi-teleport.prefab
+  │   │   │   │   ├── scifi-tube-specimen.prefab
+  │   │   │   │   ├── scifi-wind-turbine.prefab
+  │   │   │   │   ├── screws.prefab
+  │   │   │   │   ├── steel-beam.prefab
+  │   │   │   │   ├── steel-reinforcement.prefab
+  │   │   │   │   ├── steel-rod.prefab
+  │   │   │   │   └── superalloy.prefab
+  │   │   │   ├── SceneVisuals/
+  │   │   │   │   ├── Placeable/
+  │   │   │   │   │   ├── ChargeableBattery.prefab
+  │   │   │   │   │   ├── DynamicConveyor.prefab
+  │   │   │   │   │   ├── DynamicFloor.prefab
+  │   │   │   │   │   ├── DynamicWall.prefab
+  │   │   │   │   │   └── PlacedSolarPanel.prefab
+  │   │   │   │   ├── Ports/
+  │   │   │   │   │   ├── MultiPort.prefab
+  │   │   │   │   │   └── MultiPort_Floor Variant.prefab
+  │   │   │   │   ├── Vessels/
+  │   │   │   │   │   ├── Vessel.prefab
+  │   │   │   │   │   ├── Vessel_PortSnapping.prefab
+  │   │   │   │   │   └── Vessel_RequiredPortSnapping.prefab
+  │   │   │   │   ├── InteractiveObject.prefab
+  │   │   │   │   ├── ItemClump.prefab
+  │   │   │   │   ├── ItemClump_Placed.prefab
+  │   │   │   │   ├── ItemClump_Tossed.prefab
+  │   │   │   │   ├── ItemPopup.prefab
+  │   │   │   │   ├── ObjectCursor.prefab
+  │   │   │   │   ├── SurfaceCursor.prefab
+  │   │   │   │   └── WorldspaceSpinner.prefab
+  │   │   │   ├── UI/
+  │   │   │   │   ├── Bar.prefab
+  │   │   │   │   ├── LoadingBar.prefab
+  │   │   │   │   ├── MouseCanvas.prefab
+  │   │   │   │   ├── PlayerItemUI.prefab
+  │   │   │   │   ├── Slot.prefab
+  │   │   │   │   ├── Slot_Dual.prefab
+  │   │   │   │   ├── Slot_Transferable.prefab
+  │   │   │   │   ├── Slot_TransferableRO.prefab
+  │   │   │   │   ├── Slot_TransferableRO_NoBG.prefab
+  │   │   │   │   ├── Slot_TransferableRO_PlainBG.prefab
+  │   │   │   │   ├── Slot_TransferableRO_WithText.prefab
+  │   │   │   │   ├── SlotConstructor.prefab
+  │   │   │   │   ├── SlotConstructor_Readonly.prefab
+  │   │   │   │   ├── SlotConstructor_ReadonlyWithText.prefab
+  │   │   │   │   └── Spacer.prefab
+  │   │   │   └── Poly Crafting World.prefab
+  │   │   ├── - Scenes/
+  │   │   │   ├── DemoScene_FirstPerson.unity
+  │   │   │   ├── DemoScene_SpaceShip.unity
+  │   │   │   └── Models.unity
+  │   │   ├── - UI/
+  │   │   │   ├── - Icons/
+  │   │   │   ├── - UXML/
+  │   │   └── DemoFragment.asset
+  │   ├── CraftingFragments/
+  │   │   └── Fragment01.asset
+  ├── Project/
+  │   ├── Core/
+  │   │   ├── GameInitialization/
+  │   │   │   ├── GameInitiator.cs
+  │   │   │   └── SystemsBootstrapper.cs
+  │   │   ├── Graphical/
+  │   │   │   ├── Materials/
+  │   │   ├── Prefabs/
+  │   │   │   ├── Cameras/
+  │   │   │   │   └── NewCameraApparat.prefab
+  │   │   │   ├── TopDownEngine/
+  │   │   │   │   ├── GameManager.prefab
+  │   │   │   │   ├── Level.prefab
+  │   │   │   │   ├── Managers --------------------------------------------------------.prefab
+  │   │   │   │   ├── Minimal3DCameras --------------------------------------------------------.prefab
+  │   │   │   │   └── SoundManager.prefab
+  │   │   │   ├── Cameras.prefab
+  │   │   │   ├── PlayerTopDown.prefab
+  │   │   │   └── PortableSystems.prefab
+  │   │   ├── SaveSystem/
+  │   │   │   ├── SaveTriggers/
+  │   │   │   ├── NewSaveManager.cs
+  │   │   │   └── SaveData.cs
+  │   │   ├── Settings/
+  │   │   │   ├── DefaultVolumeProfile.asset
+  │   │   │   ├── Mobile_Renderer.asset
+  │   │   │   ├── Mobile_RPAsset.asset
+  │   │   │   ├── PC_Renderer.asset
+  │   │   │   ├── PC_RPAsset.asset
+  │   │   │   ├── SampleSceneProfile.asset
+  │   │   │   └── UniversalRenderPipelineGlobalSettings.asset
+  │   │   ├── StateManagement/
+  │   │   │   ├── States/
+  │   │   │   └── GameState.cs
+  │   ├── Gameplay/
+  │   │   ├── DungeonGeneration/
+  │   │   │   ├── DungeonSchemas/
+  │   │   │   │   ├── Archetypes/
+  │   │   │   │   │   └── InitialArchetypeExample.asset
+  │   │   │   │   ├── Doorways/
+  │   │   │   │   │   ├── LargerTransitionWiderTD.asset
+  │   │   │   │   │   └── LargeTransitionWay.asset
+  │   │   │   │   ├── DungeonFlows/
+  │   │   │   │   │   └── InitialDungeonFlow.asset
+  │   │   │   │   ├── TileSets/
+  │   │   │   │   │   ├── InitialEndExample.asset
+  │   │   │   │   │   ├── InitialMiddleExample.asset
+  │   │   │   │   │   └── InitialStart.asset
+  │   │   │   ├── Generators/
+  │   │   │   │   ├── DungeonData.cs
+  │   │   │   │   └── DungeonGenerator.cs
+  │   │   │   ├── Rooms/
+  │   │   │   │   ├── Models/
+  │   │   │   │   │   ├── DoorPoint.cs
+  │   │   │   │   │   └── RoomTemplate.cs
+  │   │   │   │   ├── Prefabs/
+  │   │   │   │   │   ├── DeadEndCorridorsRoom.prefab
+  │   │   │   │   │   ├── SewerPoolRoom.prefab
+  │   │   │   │   │   ├── ThreeWayCornerCorridorRoom.prefab
+  │   │   │   │   │   └── TwoWayArena01.prefab
+  │   │   │   ├── Spawning/
+  │   │   │   │   ├── EnemySpawnPointType.cs
+  │   │   │   │   ├── ItemSpawnPoint.cs
+  │   │   │   │   ├── PlayerSpawnPoint.cs
+  │   │   │   │   ├── SpawnPoint.cs
+  │   │   │   │   └── SpawnPointManager.cs
+  │   │   │   └── NewDungeonManager.cs
+  │   │   ├── Enemies/
+  │   │   │   ├── Behaviors/
+  │   │   │   ├── Types/
+  │   │   │   └── EnemyBase.cs
+  │   │   ├── Input/
+  │   │   │   ├── IInputActionCollection.cs
+  │   │   │   └── InputActions.cs
+  │   │   ├── Player/
+  │   │   │   ├── Animation/
+  │   │   │   ├── Combat/
+  │   │   │   ├── Inventory/
+  │   │   │   │   ├── Models/
+  │   │   │   │   │   ├── Inventory.cs
+  │   │   │   │   │   └── InventoryItem.cs
+  │   │   │   ├── Prefabs/
+  │   │   │   │   └── PlayerCharacter.prefab
+  │   │   │   ├── PlayerController.cs
+  │   │   │   └── PlayerStats.cs
+  │   ├── Scenes/
+  │   │   ├── CleanScene.unity
+  │   │   └── StarterScene.unity
+  │   ├── UI/
+  │   │   ├── HUD/
+  │   │   ├── Menus/
+  │   │   └── UIManager.cs
+  │   └── GameSystems.prefab
+  ├── Settings/
+  │   ├── Beautiful_PipelineAsset.asset
+  │   ├── Beautiful_PipelineAsset_ForwardRenderer.asset
+  │   ├── Fantastic_PipelineAsset.asset
+  │   ├── Fantastic_PipelineAsset_ForwardRenderer.asset
+  │   ├── Fast_PipelineAsset.asset
+  │   ├── Fast_PipelineAsset_ForwardRenderer.asset
+  │   ├── Fastest_PipelineAsset.asset
+  │   ├── Fastest_PipelineAsset_ForwardRenderer.asset
+  │   ├── Good_PipelineAsset.asset
+  │   ├── Good_PipelineAsset_ForwardRenderer.asset
+  │   ├── Simple_PipelineAsset.asset
+  │   ├── Simple_PipelineAsset_ForwardRenderer.asset
+  │   ├── URP.asset
+  │   └── URP_Renderer.asset
+  ├── TopDownEngine/
+  │   ├── Common/
+  │   │   ├── Animations/
+  │   │   ├── Data/
+  │   │   │   ├── DamageTypes/
+  │   │   │   │   ├── Electricity.asset
+  │   │   │   │   ├── Fire.asset
+  │   │   │   │   ├── Ice.asset
+  │   │   │   │   └── Poison.asset
+  │   │   ├── Editor/
+  │   │   │   ├── Characters/
+  │   │   │   │   ├── CharacterAbilities/
+  │   │   │   │   │   └── CharacterAbilityInspector.cs
+  │   │   │   │   ├── Core/
+  │   │   │   │   │   └── CharacterInspector.cs
+  │   │   │   ├── DefineSymbols/
+  │   │   │   │   └── TopDownEngineDefineSymbols.cs
+  │   │   │   ├── Items/
+  │   │   │   │   └── PickableAbilityInspector.cs
+  │   │   │   ├── Welcome/
+  │   │   │   │   ├── DependencyInstaller.cs
+  │   │   │   │   └── WelcomeWindow.cs
+  │   │   ├── Fonts/
+  │   │   ├── PhysicsMaterials/
+  │   │   ├── Prefabs/
+  │   │   │   ├── GUI/
+  │   │   │   │   ├── ButtonPrompt.prefab
+  │   │   │   │   ├── DialogueBox.prefab
+  │   │   │   │   ├── DialogueBox3D.prefab
+  │   │   │   │   ├── HealthBar.prefab
+  │   │   │   │   ├── MMFaderRound.prefab
+  │   │   │   │   └── UICamera.prefab
+  │   │   ├── Resources/
+  │   │   │   ├── Achievements/
+  │   │   │   │   └── AchievementList.asset
+  │   │   ├── Scripts/
+  │   │   │   ├── Achievements/
+  │   │   │   │   └── AchievementRules.cs
+  │   │   │   ├── Camera/
+  │   │   │   │   ├── LevelLimits.cs
+  │   │   │   │   └── MMCameraEvent.cs
+  │   │   │   ├── Characters/
+  │   │   │   │   ├── AI/
+  │   │   │   │   │   ├── Advanced/
+  │   │   │   │   │   │   ├── AIActionAimObject.cs
+  │   │   │   │   │   │   ├── AIActionAimWeaponAtMovement.cs
+  │   │   │   │   │   │   ├── AIActionAimWeaponAtTarget2D.cs
+  │   │   │   │   │   │   ├── AIActionAimWeaponAtTarget3D.cs
+  │   │   │   │   │   │   ├── AIActionChangeWeapon.cs
+  │   │   │   │   │   │   ├── AIActionCrouchStart.cs
+  │   │   │   │   │   │   ├── AIActionCrouchStop.cs
+  │   │   │   │   │   │   ├── AIActionDash.cs
+  │   │   │   │   │   │   ├── AIActionDoNothing.cs
+  │   │   │   │   │   │   ├── AIActionFaceTowardsTarget2D.cs
+  │   │   │   │   │   │   ├── AIActionInvertPatrolDirection.cs
+  │   │   │   │   │   │   ├── AIActionMMFeedbacks.cs
+  │   │   │   │   │   │   ├── AIActionMoveAwayFromTarget2D.cs
+  │   │   │   │   │   │   ├── AIActionMoveAwayFromTarget3D.cs
+  │   │   │   │   │   │   ├── AIActionMovePatrol2D.cs
+  │   │   │   │   │   │   ├── AIActionMovePatrol3D.cs
+  │   │   │   │   │   │   ├── AIActionMoveRandomly2D.cs
+  │   │   │   │   │   │   ├── AIActionMoveRandomly3D.cs
+  │   │   │   │   │   │   ├── AIActionMoveRandomlyGrid.cs
+  │   │   │   │   │   │   ├── AIActionMoveTowardsTarget2D.cs
+  │   │   │   │   │   │   ├── AIActionMoveTowardsTarget3D.cs
+  │   │   │   │   │   │   ├── AIActionPathfinderToPatrol3D.cs
+  │   │   │   │   │   │   ├── AIActionPathfinderToTarget3D.cs
+  │   │   │   │   │   │   ├── AIActionReload.cs
+  │   │   │   │   │   │   ├── AIActionResetTarget.cs
+  │   │   │   │   │   │   ├── AIActionRotateConeOfVision2D.cs
+  │   │   │   │   │   │   ├── AIActionRotateTowardsTarget2D.cs
+  │   │   │   │   │   │   ├── AIActionRotateTowardsTarget3D.cs
+  │   │   │   │   │   │   ├── AIActionRunStart.cs
+  │   │   │   │   │   │   ├── AIActionRunStop.cs
+  │   │   │   │   │   │   ├── AIActionSelfDestruct.cs
+  │   │   │   │   │   │   ├── AIActionSetLastKnownPositionAsTarget.cs
+  │   │   │   │   │   │   ├── AIActionSetPlayerAsTarget.cs
+  │   │   │   │   │   │   ├── AIActionSetTransformAsTarget.cs
+  │   │   │   │   │   │   ├── AIActionShoot2D.cs
+  │   │   │   │   │   │   ├── AIActionShoot3D.cs
+  │   │   │   │   │   │   ├── AIActionSwapBrain.cs
+  │   │   │   │   │   │   ├── AIActionUnityEvents.cs
+  │   │   │   │   │   │   ├── AIDecisionConditionState.cs
+  │   │   │   │   │   │   ├── AIDecisionDetectTargetConeOfVision2D.cs
+  │   │   │   │   │   │   ├── AIDecisionDetectTargetConeOfVision3D.cs
+  │   │   │   │   │   │   ├── AIDecisionDetectTargetLine2D.cs
+  │   │   │   │   │   │   ├── AIDecisionDetectTargetLine3D.cs
+  │   │   │   │   │   │   ├── AIDecisionDetectTargetRadius2D.cs
+  │   │   │   │   │   │   ├── AIDecisionDetectTargetRadius3D.cs
+  │   │   │   │   │   │   ├── AIDecisionDistanceToTarget.cs
+  │   │   │   │   │   │   ├── AIDecisionGrounded.cs
+  │   │   │   │   │   │   ├── AIDecisionHealth.cs
+  │   │   │   │   │   │   ├── AIDecisionHit.cs
+  │   │   │   │   │   │   ├── AIDecisionLineOfSightToTarget2D.cs
+  │   │   │   │   │   │   ├── AIDecisionLineOfSightToTarget3D.cs
+  │   │   │   │   │   │   ├── AIDecisionMMPathEndReached.cs
+  │   │   │   │   │   │   ├── AIDecisionNextFrame.cs
+  │   │   │   │   │   │   ├── AIDecisionPathfinderPathToTargetExists.cs
+  │   │   │   │   │   │   ├── AIDecisionRandom.cs
+  │   │   │   │   │   │   ├── AIDecisionReloadNeeded.cs
+  │   │   │   │   │   │   ├── AIDecisionTargetFacingAI2D.cs
+  │   │   │   │   │   │   ├── AIDecisionTargetIsAlive.cs
+  │   │   │   │   │   │   ├── AIDecisionTargetIsNull.cs
+  │   │   │   │   │   │   ├── AIDecisionTimeInState.cs
+  │   │   │   │   │   │   └── AIDecisionTimeSinceStart.cs
+  │   │   │   │   │   ├── Automation/
+  │   │   │   │   │   │   ├── MouseDrivenPathfinderAI3D.cs
+  │   │   │   │   │   │   ├── PathedProjectile.cs
+  │   │   │   │   │   │   ├── PathedProjectileSpawner.cs
+  │   │   │   │   │   │   └── TimedSpawner.cs
+  │   │   │   │   ├── Animations/
+  │   │   │   │   │   ├── CharacterAnimationFeedbacks.cs
+  │   │   │   │   │   └── CharacterAnimationParametersInitializer.cs
+  │   │   │   │   ├── CharacterAbilities/
+  │   │   │   │   │   ├── CharacterAbility.cs
+  │   │   │   │   │   ├── CharacterAbilityNodeSwap.cs
+  │   │   │   │   │   ├── CharacterButtonActivation.cs
+  │   │   │   │   │   ├── CharacterConeOfVision.cs
+  │   │   │   │   │   ├── CharacterCrouch.cs
+  │   │   │   │   │   ├── CharacterDamageDash2D.cs
+  │   │   │   │   │   ├── CharacterDamageDash3D.cs
+  │   │   │   │   │   ├── CharacterDash2D.cs
+  │   │   │   │   │   ├── CharacterDash3D.cs
+  │   │   │   │   │   ├── CharacterDirectionMarker.cs
+  │   │   │   │   │   ├── CharacterDisableIKOnReload.cs
+  │   │   │   │   │   ├── CharacterFallDownHoles2D.cs
+  │   │   │   │   │   ├── CharacterGridMovement.cs
+  │   │   │   │   │   ├── CharacterHandleSecondaryWeapon.cs
+  │   │   │   │   │   ├── CharacterHandleWeapon.cs
+  │   │   │   │   │   ├── CharacterInventory.cs
+  │   │   │   │   │   ├── CharacterJump2D.cs
+  │   │   │   │   │   ├── CharacterJump3D.cs
+  │   │   │   │   │   ├── CharacterMovement.cs
+  │   │   │   │   │   ├── CharacterOrientation2D.cs
+  │   │   │   │   │   ├── CharacterOrientation3D.cs
+  │   │   │   │   │   ├── CharacterPathfinder3D.cs
+  │   │   │   │   │   ├── CharacterPathfindToMouse3D.cs
+  │   │   │   │   │   ├── CharacterPause.cs
+  │   │   │   │   │   ├── CharacterPersistence.cs
+  │   │   │   │   │   ├── CharacterPush3D.cs
+  │   │   │   │   │   ├── CharacterRagdollOnDeath.cs
+  │   │   │   │   │   ├── CharacterRotation2D.cs
+  │   │   │   │   │   ├── CharacterRun.cs
+  │   │   │   │   │   ├── CharacterStun.cs
+  │   │   │   │   │   ├── CharacterSurfaceSounds.cs
+  │   │   │   │   │   ├── CharacterSwap.cs
+  │   │   │   │   │   ├── CharacterSwitchModel.cs
+  │   │   │   │   │   └── CharacterTimeControl.cs
+  │   │   │   │   ├── Core/
+  │   │   │   │   │   ├── Character.cs
+  │   │   │   │   │   ├── CharacterEvents.cs
+  │   │   │   │   │   ├── CharacterStates.cs
+  │   │   │   │   │   ├── TopDownController.cs
+  │   │   │   │   │   ├── TopDownController2D.cs
+  │   │   │   │   │   └── TopDownController3D.cs
+  │   │   │   │   ├── Damage/
+  │   │   │   │   │   ├── DamageOnTouch.cs
+  │   │   │   │   │   ├── KillZone.cs
+  │   │   │   │   │   └── TypedDamage.cs
+  │   │   │   │   ├── Health/
+  │   │   │   │   │   ├── DamageResistance.cs
+  │   │   │   │   │   ├── DamageResistanceProcessor.cs
+  │   │   │   │   │   ├── DamageType.cs
+  │   │   │   │   │   ├── Health.cs
+  │   │   │   │   │   └── HealthAutoRefill.cs
+  │   │   │   │   ├── Weapons/
+  │   │   │   │   │   ├── AimMarker.cs
+  │   │   │   │   │   ├── Bomb.cs
+  │   │   │   │   │   ├── BouncyProjectile.cs
+  │   │   │   │   │   ├── ChargeWeapon.cs
+  │   │   │   │   │   ├── ComboWeapon.cs
+  │   │   │   │   │   ├── HitscanWeapon.cs
+  │   │   │   │   │   ├── MeleeWeapon.cs
+  │   │   │   │   │   ├── PhysicsProjectile.cs
+  │   │   │   │   │   ├── Projectile.cs
+  │   │   │   │   │   ├── ProjectileWeapon.cs
+  │   │   │   │   │   ├── PusherProjectile3D.cs
+  │   │   │   │   │   ├── StunZone.cs
+  │   │   │   │   │   ├── ThrownObject.cs
+  │   │   │   │   │   ├── Weapon.cs
+  │   │   │   │   │   ├── WeaponAim.cs
+  │   │   │   │   │   ├── WeaponAim2D.cs
+  │   │   │   │   │   ├── WeaponAim3D.cs
+  │   │   │   │   │   ├── WeaponAimMouseOverride.cs
+  │   │   │   │   │   ├── WeaponAmmo.cs
+  │   │   │   │   │   ├── WeaponAutoAim.cs
+  │   │   │   │   │   ├── WeaponAutoAim2D.cs
+  │   │   │   │   │   ├── WeaponAutoAim3D.cs
+  │   │   │   │   │   ├── WeaponAutoAimRadiusCircle.cs
+  │   │   │   │   │   ├── WeaponAutoShoot.cs
+  │   │   │   │   │   ├── WeaponIK.cs
+  │   │   │   │   │   ├── WeaponIKDisabler.cs
+  │   │   │   │   │   ├── WeaponLaserSight.cs
+  │   │   │   │   │   ├── WeaponModel.cs
+  │   │   │   │   │   ├── WeaponModelEnabler.cs
+  │   │   │   │   │   ├── WeaponPreventShooting.cs
+  │   │   │   │   │   ├── WeaponPreventShootingWhenCloseToWalls2D.cs
+  │   │   │   │   │   ├── WeaponPreventShootingWhenCloseToWalls3D.cs
+  │   │   │   │   │   └── WeaponSpriteSortingOrderThreshold.cs
+  │   │   │   ├── Environment/
+  │   │   │   │   ├── AppearDisappear.cs
+  │   │   │   │   ├── ButtonActivated.cs
+  │   │   │   │   ├── ButtonActivatedZone.cs
+  │   │   │   │   ├── ButtonActivator.cs
+  │   │   │   │   ├── CharacterDetector.cs
+  │   │   │   │   ├── CrouchZone.cs
+  │   │   │   │   ├── DashZone3D.cs
+  │   │   │   │   ├── FallingPlatform2D.cs
+  │   │   │   │   ├── FallingPlatform3D.cs
+  │   │   │   │   ├── KeyOperatedZone.cs
+  │   │   │   │   ├── Magnetic.cs
+  │   │   │   │   ├── MagneticEnabler.cs
+  │   │   │   │   ├── MovementZone.cs
+  │   │   │   │   ├── MovingPlatform2D.cs
+  │   │   │   │   ├── MovingPlatform3D.cs
+  │   │   │   │   ├── ProximityManaged.cs
+  │   │   │   │   ├── ProximityMine.cs
+  │   │   │   │   ├── SurfaceModifier.cs
+  │   │   │   │   ├── Switch.cs
+  │   │   │   │   ├── TimeZone.cs
+  │   │   │   │   └── WeaponHandler.cs
+  │   │   │   ├── GUI/
+  │   │   │   │   ├── AmmoDisplay.cs
+  │   │   │   │   ├── ButtonPrompt.cs
+  │   │   │   │   ├── DialogueBox.cs
+  │   │   │   │   ├── DialogueZone.cs
+  │   │   │   │   ├── LevelSelector.cs
+  │   │   │   │   ├── MusicSwitch.cs
+  │   │   │   │   ├── PauseButton.cs
+  │   │   │   │   ├── SfxSwitch.cs
+  │   │   │   │   └── StartScreen.cs
+  │   │   │   ├── Items/
+  │   │   │   │   ├── Coin.cs
+  │   │   │   │   ├── DamageOverTimeInterrupter.cs
+  │   │   │   │   ├── InventoryEngineChest.cs
+  │   │   │   │   ├── InventoryEngineHealth.cs
+  │   │   │   │   ├── InventoryEngineKey.cs
+  │   │   │   │   ├── InventoryPickableItem.cs
+  │   │   │   │   ├── InventoryWeapon.cs
+  │   │   │   │   ├── Loot.cs
+  │   │   │   │   ├── PickableAbility.cs
+  │   │   │   │   ├── PickableAction.cs
+  │   │   │   │   ├── PickableDamageResistance.cs
+  │   │   │   │   ├── PickableDash2D.cs
+  │   │   │   │   ├── PickableItem.cs
+  │   │   │   │   ├── PickableWeapon.cs
+  │   │   │   │   ├── Star.cs
+  │   │   │   │   └── Stimpack.cs
+  │   │   │   ├── Managers/
+  │   │   │   │   ├── CharacterSwapManager.cs
+  │   │   │   │   ├── CharacterSwitchManager.cs
+  │   │   │   │   ├── GameManager.cs
+  │   │   │   │   ├── GridManager.cs
+  │   │   │   │   ├── GUIManager.cs
+  │   │   │   │   ├── InputManager.cs
+  │   │   │   │   ├── KillsManager.cs
+  │   │   │   │   ├── LayerManager.cs
+  │   │   │   │   ├── LevelManager.cs
+  │   │   │   │   ├── MultiplayerGUIManager.cs
+  │   │   │   │   ├── MultiplayerLevelManager.cs
+  │   │   │   │   ├── ProximityManager.cs
+  │   │   │   │   ├── SoundManager.cs
+  │   │   │   │   └── TopDownMonoBehaviour.cs
+  │   │   │   ├── MMFeedbacks/
+  │   │   │   │   ├── MMF_TopDownEngineEvent.cs
+  │   │   │   │   └── MMF_TopDownEngineFloatingText.cs
+  │   │   │   ├── Procedural/
+  │   │   │   │   └── TilemapLevelGenerator.cs
+  │   │   │   ├── Sound/
+  │   │   │   │   ├── BackgroundMusic.cs
+  │   │   │   │   └── PersistentBackgroundMusic.cs
+  │   │   │   ├── Spawn/
+  │   │   │   │   ├── AutoRespawn.cs
+  │   │   │   │   ├── CharacterSelector.cs
+  │   │   │   │   ├── CheckPoint.cs
+  │   │   │   │   ├── FinishLevel.cs
+  │   │   │   │   ├── GoToLevelEntryPoint.cs
+  │   │   │   │   └── Respawnable.cs
+  │   │   │   ├── Sprites/
+  │   │   │   │   ├── MMDoubleSpriteMask.cs
+  │   │   │   │   └── MMSpriteMask.cs
+  │   │   │   ├── Welcome/
+  │   │   ├── ScriptsCinemachine/
+  │   │   │   ├── Camera/
+  │   │   │   │   ├── CinemachineAxisLocker.cs
+  │   │   │   │   ├── CinemachineBrainController.cs
+  │   │   │   │   ├── CinemachineCameraController.cs
+  │   │   │   │   ├── MultiplayerCameraGroupTarget.cs
+  │   │   │   │   ├── MultiplayerSplitCameraRig.cs
+  │   │   │   │   ├── TopDownCinemachineZone2D.cs
+  │   │   │   │   └── TopDownCinemachineZone3D.cs
+  │   │   │   ├── Character/
+  │   │   │   │   └── CharacterRotateCamera.cs
+  │   │   │   ├── Editor/
+  │   │   │   │   ├── Environment/
+  │   │   │   │   │   ├── RoomEditor.cs
+  │   │   │   │   │   └── TeleporterEditor.cs
+  │   │   │   ├── Environment/
+  │   │   │   │   ├── Room.cs
+  │   │   │   │   └── Teleporter.cs
+  │   │   ├── ScriptsInputSystem/
+  │   │   │   ├── InputActions/
+  │   │   │   │   └── TopDownEngineInputActions.cs
+  │   │   │   ├── Lighting/
+  │   │   │   ├── Prefabs/
+  │   │   │   │   ├── Minimal3DCameras - InputSystem --------------------------------------------------------.prefab
+  │   │   │   │   └── Minimal3DCameras - InputSystem Multiplayer.prefab
+  │   │   │   ├── Scripts/
+  │   │   │   │   ├── InputSystemManager.cs
+  │   │   │   │   ├── InputSystemManagerBase.cs
+  │   │   │   │   └── InputSystemManagerEventsBased.cs
+  │   │   │   ├── MinimalScene3D_InputSystem.unity
+  │   │   │   └── MinimalScene3D_InputSystem_Multiplayer.unity
+  │   │   ├── ScriptsPostProcessing/
+  │   │   │   └── AutoBindAutoFocus.cs
+  │   │   ├── Sprites/
+  │   │   │   ├── GUI/
+  │   │   │   ├── Materials/
+  │   ├── Demos/
+  │   │   ├── Colonel/
+  │   │   │   ├── Animations/
+  │   │   │   │   ├── Run/
+  │   │   │   │   ├── Unarmed/
+  │   │   │   │   ├── Various/
+  │   │   │   │   ├── Walk/
+  │   │   │   │   ├── WalkCrouching/
+  │   │   │   ├── Lighting/
+  │   │   │   ├── Materials/
+  │   │   │   ├── Models/
+  │   │   │   ├── PostProcessing/
+  │   │   │   │   └── ColonelCameraProfile.asset
+  │   │   │   ├── Prefabs/
+  │   │   │   │   ├── PlayableCharacters/
+  │   │   │   │   │   └── Colonel.prefab
+  │   │   │   │   ├── Weapons/
+  │   │   │   │   │   ├── ColonelAimMarker.prefab
+  │   │   │   │   │   ├── ColonelAssaultRifleAutoAim.prefab
+  │   │   │   │   │   ├── ColonelAssaultRifleAutoShoot.prefab
+  │   │   │   │   │   ├── ColonelAssaultRifleMouseAim.prefab
+  │   │   │   │   │   ├── ColonelAssaultRifleSecondaryAim.prefab
+  │   │   │   │   │   ├── ColonelCharge1Bullet.prefab
+  │   │   │   │   │   ├── ColonelCharge2Bullet.prefab
+  │   │   │   │   │   ├── ColonelCharge3Bullet.prefab
+  │   │   │   │   │   ├── ColonelChargeWeapon.prefab
+  │   │   │   │   │   ├── ColonelDashPicker.prefab
+  │   │   │   │   │   ├── ColonelNoWeapon.prefab
+  │   │   │   │   │   ├── ColonelStunMine.prefab
+  │   │   │   │   │   └── ColonelWeaponPicker.prefab
+  │   │   │   ├── Sounds/
+  │   │   │   ├── Sprites/
+  │   │   │   └── Colonel.unity
+  │   │   ├── Deadline/
+  │   │   │   ├── Animations/
+  │   │   │   ├── Materials/
+  │   │   │   ├── PostProcessing/
+  │   │   │   │   └── DeadlinePostProcessingProfile.asset
+  │   │   │   ├── Prefabs/
+  │   │   │   │   ├── Enemies/
+  │   │   │   │   │   ├── DeadlineEnemyPatrol.prefab
+  │   │   │   │   │   ├── DeadlineEnemyPatrolWithConeOfVision.prefab
+  │   │   │   │   │   └── DeadlineEnemyStatic.prefab
+  │   │   │   │   ├── Items/
+  │   │   │   │   │   ├── DeadlineHandgunPicker.prefab
+  │   │   │   │   │   └── StarPicker.prefab
+  │   │   │   │   ├── Managers/
+  │   │   │   │   │   ├── DeadlineInventories.prefab
+  │   │   │   │   │   └── DeadlineProgressManager.prefab
+  │   │   │   │   ├── PlayableCharacters/
+  │   │   │   │   │   ├── DeadlineJules.prefab
+  │   │   │   │   │   └── DeadlineNaomi.prefab
+  │   │   │   │   ├── Props/
+  │   │   │   │   │   ├── DeadlineCollectionExplosion.prefab
+  │   │   │   │   │   ├── DeadlineDoor.prefab
+  │   │   │   │   │   ├── DeadlineExplosion.prefab
+  │   │   │   │   │   ├── DeadlineStairs.prefab
+  │   │   │   │   │   └── Prop.prefab
+  │   │   │   │   ├── UI/
+  │   │   │   │   │   ├── DeadlineCamera.prefab
+  │   │   │   │   │   ├── DeadlineCrosshair.prefab
+  │   │   │   │   │   └── DeadlineLevelSelectionButton.prefab
+  │   │   │   │   ├── Weapons/
+  │   │   │   │   │   ├── DeadlineEnemyHandgun.prefab
+  │   │   │   │   │   ├── DeadlineEnemyHandgunBullet.prefab
+  │   │   │   │   │   ├── DeadlineHandgun.prefab
+  │   │   │   │   │   ├── DeadlineHandgunBullet.prefab
+  │   │   │   │   │   └── DeadlinePunchWeapon.prefab
+  │   │   │   ├── Resources/
+  │   │   │   │   ├── Items/
+  │   │   │   │   │   ├── DeadlineHandgun.asset
+  │   │   │   │   │   └── DeadlinePunch.asset
+  │   │   │   ├── Scenes/
+  │   │   │   │   ├── Lighting/
+  │   │   │   │   ├── DeadlineCharacterSelection.unity
+  │   │   │   │   ├── DeadlineLevel1.unity
+  │   │   │   │   ├── DeadlineLevel2.unity
+  │   │   │   │   ├── DeadlineLevel3.unity
+  │   │   │   │   ├── DeadlineLevel4.unity
+  │   │   │   │   ├── DeadlineLevel5.unity
+  │   │   │   │   └── DeadlineLevelSelection.unity
+  │   │   │   ├── Scripts/
+  │   │   │   │   ├── DeadlineAvatar.cs
+  │   │   │   │   ├── DeadlineCollectible.cs
+  │   │   │   │   ├── DeadlineDoor.cs
+  │   │   │   │   ├── DeadlineFinishLevel.cs
+  │   │   │   │   ├── DeadlineLevelSelectionButton.cs
+  │   │   │   │   ├── DeadlineProgressManager.cs
+  │   │   │   │   ├── DeadlineStar.cs
+  │   │   │   │   └── DeadlineStartMenuButton.cs
+  │   │   │   ├── Shaders/
+  │   │   │   ├── Sprites/
+  │   │   │   ├── Tiles/
+  │   │   │   │   ├── DeadlineTilePalette.prefab
+  │   │   │   │   └── DeadlineWallRuleTile.asset
+  │   │   │   └── Deadline.unity
+  │   │   ├── Editor/
+  │   │   │   ├── Deadline/
+  │   │   │   │   └── DeadlineProgressManagerMenu.cs
+  │   │   ├── Explodudes/
+  │   │   │   ├── Animations/
+  │   │   │   │   ├── Bomb/
+  │   │   │   │   ├── Characters/
+  │   │   │   │   │   ├── MM/
+  │   │   │   │   ├── Title/
+  │   │   │   ├── Camera/
+  │   │   │   │   └── ExplodudesPostProcessingProfile.asset
+  │   │   │   ├── Explodudes/
+  │   │   │   │   └── LightingData.asset
+  │   │   │   ├── Lighting/
+  │   │   │   ├── Materials/
+  │   │   │   │   ├── Background/
+  │   │   │   │   ├── Bomb/
+  │   │   │   │   ├── Characters/
+  │   │   │   │   ├── Picker/
+  │   │   │   ├── Models/
+  │   │   │   ├── Prefabs/
+  │   │   │   │   ├── Items/
+  │   │   │   │   │   └── ExplodudesBombPicker.prefab
+  │   │   │   │   ├── Level/
+  │   │   │   │   │   ├── ExplodudesBorderRock.prefab
+  │   │   │   │   │   ├── ExplodudesCrate.prefab
+  │   │   │   │   │   ├── ExplodudesCrateBonus.prefab
+  │   │   │   │   │   └── ExplodudesRock.prefab
+  │   │   │   │   ├── PlayableCharacters/
+  │   │   │   │   │   ├── Explodude.prefab
+  │   │   │   │   │   ├── ExplodudeBlue.prefab
+  │   │   │   │   │   ├── ExplodudeGreen.prefab
+  │   │   │   │   │   ├── ExplodudeRed.prefab
+  │   │   │   │   │   └── ExplodudeYellow.prefab
+  │   │   │   │   ├── VFX/
+  │   │   │   │   │   └── ExplodudesWalkParticles.prefab
+  │   │   │   │   ├── Weapons/
+  │   │   │   │   │   ├── ExplodudesBomb.prefab
+  │   │   │   │   │   └── ExplodudesWeapon.prefab
+  │   │   │   ├── Scripts/
+  │   │   │   │   ├── ExplodudesBomb.cs
+  │   │   │   │   ├── ExplodudesBombPicker.cs
+  │   │   │   │   ├── ExplodudesCrate.cs
+  │   │   │   │   ├── ExplodudesDecoration.cs
+  │   │   │   │   ├── ExplodudesMultiplayerLevelManager.cs
+  │   │   │   │   ├── ExplodudesStartScreen.cs
+  │   │   │   │   ├── ExplodudesWeapon.cs
+  │   │   │   │   └── ExplodudesWinnerScreen.cs
+  │   │   │   ├── Sounds/
+  │   │   │   ├── Textures/
+  │   │   │   └── Explodudes.unity
+  │   │   ├── Grasslands/
+  │   │   │   ├── Animations/
+  │   │   │   │   ├── HornsBlue/
+  │   │   │   │   ├── HornsGreen/
+  │   │   │   │   ├── HornsRed/
+  │   │   │   │   ├── HornsYellow/
+  │   │   │   ├── Lighting/
+  │   │   │   ├── Materials/
+  │   │   │   ├── Prefabs/
+  │   │   │   │   ├── Camera/
+  │   │   │   │   │   ├── GrasslandsCameraProfilePlayer1.asset
+  │   │   │   │   │   ├── GrasslandsCameraProfilePlayer2.asset
+  │   │   │   │   │   ├── GrasslandsCameraProfilePlayer3.asset
+  │   │   │   │   │   └── GrasslandsCameraProfilePlayer4.asset
+  │   │   │   │   ├── GUI/
+  │   │   │   │   │   └── GrasslandsHUD.prefab
+  │   │   │   │   ├── PlayableCharacters/
+  │   │   │   │   │   ├── GrasslandsHornsBlue.prefab
+  │   │   │   │   │   ├── GrasslandsHornsGreen.prefab
+  │   │   │   │   │   ├── GrasslandsHornsRed.prefab
+  │   │   │   │   │   └── GrasslandsHornsYellow.prefab
+  │   │   │   │   ├── Props/
+  │   │   │   │   │   ├── GrasslandsBush.prefab
+  │   │   │   │   │   ├── GrasslandsCoin.prefab
+  │   │   │   │   │   ├── GrasslandsTree1.prefab
+  │   │   │   │   │   ├── GrasslandsTree2.prefab
+  │   │   │   │   │   └── GrasslandsTree3.prefab
+  │   │   │   │   ├── Weapons/
+  │   │   │   │   │   ├── GrasslandsHornsSword1.prefab
+  │   │   │   │   │   ├── GrasslandsHornsSword2.prefab
+  │   │   │   │   │   ├── GrasslandsHornsSword3.prefab
+  │   │   │   │   │   └── GrasslandsHornsSword4.prefab
+  │   │   │   ├── Scripts/
+  │   │   │   │   ├── GrasslandHUD.cs
+  │   │   │   │   └── GrasslandsMultiplayerLevelManager.cs
+  │   │   │   ├── Sprites/
+  │   │   │   ├── Tiles/
+  │   │   │   │   ├── GrasslandsCliffTiles.asset
+  │   │   │   │   ├── GrasslandsFenceTiles.asset
+  │   │   │   │   ├── GrasslandsPathTiles.asset
+  │   │   │   │   ├── GrasslandsPavingTiles.asset
+  │   │   │   │   ├── GrasslandsTiles.asset
+  │   │   │   │   ├── GrasslandsWallsTiles.asset
+  │   │   │   │   └── GrasslandsWaterTiles.asset
+  │   │   │   └── Grasslands.unity
+  │   │   ├── Koala2D/
+  │   │   │   ├── Animations/
+  │   │   │   ├── Lighting/
+  │   │   │   ├── Materials/
+  │   │   │   ├── Prefabs/
+  │   │   │   │   ├── AI/
+  │   │   │   │   │   ├── KoalaGuide.prefab
+  │   │   │   │   │   ├── KoalaNinja.prefab
+  │   │   │   │   │   ├── KoalaNinjaPatrol.prefab
+  │   │   │   │   │   ├── KoalaNinjaRifleman.prefab
+  │   │   │   │   │   ├── KoalaNinjaSwordMaster.prefab
+  │   │   │   │   │   └── KoalaPoolableNinja.prefab
+  │   │   │   │   ├── Camera/
+  │   │   │   │   │   ├── KoalaCameras --------------------------------------------------------.prefab
+  │   │   │   │   │   ├── KoalaCinemachineCamera2D Profile.asset
+  │   │   │   │   │   └── KoalaConeOfVision.prefab
+  │   │   │   │   ├── Effects/
+  │   │   │   │   │   ├── KoalaCollectionExplosionBlue.prefab
+  │   │   │   │   │   ├── KoalaCollectionExplosionGreen.prefab
+  │   │   │   │   │   ├── KoalaCollectionExplosionRed.prefab
+  │   │   │   │   │   ├── KoalaCollectionExplosionYellow.prefab
+  │   │   │   │   │   └── KoalaLootExplosion.prefab
+  │   │   │   │   ├── Gates/
+  │   │   │   │   │   ├── KoalaDungeonGateBottom.prefab
+  │   │   │   │   │   ├── KoalaDungeonGateTop.prefab
+  │   │   │   │   │   └── KoalaDungeonGateVertical.prefab
+  │   │   │   │   ├── ItemPickers/
+  │   │   │   │   │   ├── KoalaCoinPicker.prefab
+  │   │   │   │   │   ├── KoalaGunAmmoPicker.prefab
+  │   │   │   │   │   ├── KoalaGunPicker.prefab
+  │   │   │   │   │   ├── KoalaHealth.prefab
+  │   │   │   │   │   ├── KoalaMagneticCoin.prefab
+  │   │   │   │   │   ├── KoalaPlasmaAmmoPicker.prefab
+  │   │   │   │   │   ├── KoalaPlasmaPicker.prefab
+  │   │   │   │   │   ├── KoalaPoisonCure.prefab
+  │   │   │   │   │   ├── KoalaRifleAmmoPicker.prefab
+  │   │   │   │   │   ├── KoalaRiflePicker.prefab
+  │   │   │   │   │   ├── KoalaShieldGiver.prefab
+  │   │   │   │   │   ├── KoalaShotgunAmmoPicker.prefab
+  │   │   │   │   │   ├── KoalaShotgunPicker.prefab
+  │   │   │   │   │   ├── KoalaStimpack.prefab
+  │   │   │   │   │   ├── KoalaSwordPicker.prefab
+  │   │   │   │   │   ├── MetalKeyPicker.prefab
+  │   │   │   │   │   └── WoodenKeyPicker.prefab
+  │   │   │   │   ├── Loot/
+  │   │   │   │   │   └── KoalaDungeonLootTable.asset
+  │   │   │   │   ├── PlayableCharacters/
+  │   │   │   │   │   ├── Koala.prefab
+  │   │   │   │   │   ├── KoalaRotating.prefab
+  │   │   │   │   │   └── KoalaSwitchModel.prefab
+  │   │   │   │   ├── Props/
+  │   │   │   │   │   ├── Doors/
+  │   │   │   │   │   │   ├── KoalaMetalDoor.prefab
+  │   │   │   │   │   │   ├── KoalaOpenDoor.prefab
+  │   │   │   │   │   │   ├── KoalaVerticalDoor.prefab
+  │   │   │   │   │   │   └── KoalaWoodenDoor.prefab
+  │   │   │   │   │   ├── CannonAndSwitch.prefab
+  │   │   │   │   │   ├── KoalaAppearDisappearPlatform.prefab
+  │   │   │   │   │   ├── KoalaDungeonChangeLevel.prefab
+  │   │   │   │   │   ├── KoalaDungeonChest.prefab
+  │   │   │   │   │   ├── KoalaDungeonFallingPlatform.prefab
+  │   │   │   │   │   ├── KoalaDungeonMovingPlatform.prefab
+  │   │   │   │   │   ├── KoalaDungeonPortal.prefab
+  │   │   │   │   │   ├── KoalaDungeonPot.prefab
+  │   │   │   │   │   ├── KoalaDungeonPushableBlock.prefab
+  │   │   │   │   │   ├── KoalaDungeonSpikes.prefab
+  │   │   │   │   │   ├── KoalaDungeonSwitch.prefab
+  │   │   │   │   │   ├── KoalaDungeonTorch.prefab
+  │   │   │   │   │   ├── KoalaStandardCoin.prefab
+  │   │   │   │   │   ├── KoalaTeleporterBlue.prefab
+  │   │   │   │   │   └── KoalaTeleporterOrange.prefab
+  │   │   │   │   ├── Weapons/
+  │   │   │   │   │   ├── Projectiles/
+  │   │   │   │   │   │   ├── KoalaCannonBall.prefab
+  │   │   │   │   │   │   ├── KoalaCannonBallElectricity.prefab
+  │   │   │   │   │   │   ├── KoalaCannonBallFire.prefab
+  │   │   │   │   │   │   ├── KoalaCannonBallIce.prefab
+  │   │   │   │   │   │   ├── KoalaCannonBallPoison.prefab
+  │   │   │   │   │   │   ├── KoalaGunBullet.prefab
+  │   │   │   │   │   │   ├── KoalaNinjaRifleBullet.prefab
+  │   │   │   │   │   │   ├── KoalaPlasmaBullet.prefab
+  │   │   │   │   │   │   ├── KoalaRifleBullet.prefab
+  │   │   │   │   │   │   └── KoalaShotgunBullet.prefab
+  │   │   │   │   │   ├── Reticles/
+  │   │   │   │   │   │   ├── KoalaSceneReticle.prefab
+  │   │   │   │   │   │   └── KoalaUIReticle.prefab
+  │   │   │   │   │   ├── Weapons/
+  │   │   │   │   │   │   ├── KoalaCannonWeapon.prefab
+  │   │   │   │   │   │   ├── KoalaChargeSword.prefab
+  │   │   │   │   │   │   ├── KoalaGun.prefab
+  │   │   │   │   │   │   ├── KoalaNinjaRifle.prefab
+  │   │   │   │   │   │   ├── KoalaNinjaSword.prefab
+  │   │   │   │   │   │   ├── KoalaPlasma.prefab
+  │   │   │   │   │   │   ├── KoalaRifle.prefab
+  │   │   │   │   │   │   ├── KoalaShotgun.prefab
+  │   │   │   │   │   │   └── KoalaSword.prefab
+  │   │   │   │   │   ├── WeaponsAmmoBased/
+  │   │   │   │   │   │   ├── KoalaGunAmmoBased.prefab
+  │   │   │   │   │   │   ├── KoalaPlasmaAmmoBased.prefab
+  │   │   │   │   │   │   ├── KoalaRifleAmmoBased.prefab
+  │   │   │   │   │   │   └── KoalaShotgunAmmoBased.prefab
+  │   │   │   ├── Resources/
+  │   │   │   │   ├── Items/
+  │   │   │   │   │   ├── KoalaCoin.asset
+  │   │   │   │   │   ├── KoalaGun.asset
+  │   │   │   │   │   ├── KoalaGunAmmo.asset
+  │   │   │   │   │   ├── KoalaHealth.asset
+  │   │   │   │   │   ├── KoalaMetalKey.asset
+  │   │   │   │   │   ├── KoalaPlasma.asset
+  │   │   │   │   │   ├── KoalaPlasmaAmmo.asset
+  │   │   │   │   │   ├── KoalaRifle.asset
+  │   │   │   │   │   ├── KoalaRifleAmmo.asset
+  │   │   │   │   │   ├── KoalaShotgun.asset
+  │   │   │   │   │   ├── KoalaShotgunAmmo.asset
+  │   │   │   │   │   ├── KoalaSword.asset
+  │   │   │   │   │   └── KoalaWoodenKey.asset
+  │   │   │   ├── Scripts/
+  │   │   │   │   ├── DungeonDoor.cs
+  │   │   │   │   ├── DungeonPortal.cs
+  │   │   │   │   └── WeightedRandomTile.cs
+  │   │   │   ├── Sounds/
+  │   │   │   ├── Sprites/
+  │   │   │   │   ├── Dungeon/
+  │   │   │   │   ├── Effects/
+  │   │   │   │   ├── Guide/
+  │   │   │   │   ├── Koala/
+  │   │   │   │   ├── Ninja/
+  │   │   │   │   ├── UI/
+  │   │   │   │   ├── Weapons/
+  │   │   │   ├── Tiles/
+  │   │   │   │   ├── KoalaDungeonCarpetTiles.asset
+  │   │   │   │   ├── KoalaDungeonGroundBeigeCheckersDarkTiles.asset
+  │   │   │   │   ├── KoalaDungeonGroundBeigeCheckersLightTiles.asset
+  │   │   │   │   ├── KoalaDungeonGroundBeigeStairsTiles.asset
+  │   │   │   │   ├── KoalaDungeonGroundBeigeTiles.asset
+  │   │   │   │   ├── KoalaDungeonGroundGreyCheckersDarkTiles.asset
+  │   │   │   │   ├── KoalaDungeonGroundGreyCheckersLightTiles.asset
+  │   │   │   │   ├── KoalaDungeonGroundGreyStairsTiles.asset
+  │   │   │   │   ├── KoalaDungeonGroundGreyTiles.asset
+  │   │   │   │   ├── KoalaDungeonGroundOrangeCheckersDarkTiles.asset
+  │   │   │   │   ├── KoalaDungeonGroundOrangeCheckersLightTiles.asset
+  │   │   │   │   ├── KoalaDungeonGroundOrangeStairsTiles.asset
+  │   │   │   │   ├── KoalaDungeonGroundOrangeTiles.asset
+  │   │   │   │   ├── KoalaDungeonHolesTiles.asset
+  │   │   │   │   ├── KoalaDungeonWallsTiles.asset
+  │   │   │   │   ├── KoalaRetroRedPlatforms.asset
+  │   │   │   │   ├── KoalaRetroYellowPlatforms.asset
+  │   │   │   │   └── KoalaTilePalette.prefab
+  │   │   │   ├── KoalaCinemachineZones.unity
+  │   │   │   ├── KoalaDungeon.unity
+  │   │   │   ├── KoalaHealth.unity
+  │   │   │   ├── KoalaProceduralTilemap.unity
+  │   │   │   └── KoalaRooms.unity
+  │   │   ├── LevelSelection/
+  │   │   │   ├── Prefabs/
+  │   │   │   │   ├── LevelSelectionCarousel.prefab
+  │   │   │   │   └── LevelSelectionPixelCorgi.prefab
+  │   │   │   ├── Sprites/
+  │   │   │   └── LevelSelection.unity
+  │   │   ├── Loft3D/
+  │   │   │   ├── Animations/
+  │   │   │   ├── Materials/
+  │   │   │   │   ├── Loft/
+  │   │   │   │   │   ├── LoftFurniture/
+  │   │   │   ├── Models/
+  │   │   │   │   ├── Ammo/
+  │   │   │   │   ├── Characters/
+  │   │   │   │   │   ├── Materials/
+  │   │   │   │   │   ├── Suit/
+  │   │   │   │   │   │   ├── Materials/
+  │   │   │   │   │   ├── Suspenders/
+  │   │   │   │   │   │   ├── Materials/
+  │   │   │   │   │   ├── Tie/
+  │   │   │   │   │   │   ├── Materials/
+  │   │   │   │   ├── Furniture/
+  │   │   │   │   │   ├── Materials/
+  │   │   │   │   ├── LoftCar/
+  │   │   │   │   ├── Walls/
+  │   │   │   │   ├── WeaponCrate/
+  │   │   │   │   ├── Weapons/
+  │   │   │   │   │   ├── Animations/
+  │   │   │   │   │   ├── Materials/
+  │   │   │   │   │   ├── Models/
+  │   │   │   │   │   ├── Textures/
+  │   │   │   ├── Prefabs/
+  │   │   │   │   ├── AI/
+  │   │   │   │   │   ├── Loft3DBlueCube.prefab
+  │   │   │   │   │   ├── LoftPatrolAndPathfinderAI.prefab
+  │   │   │   │   │   ├── LoftPatrolAndShootAI.prefab
+  │   │   │   │   │   ├── LoftPatrolConeSeekAndDestroyAI.prefab
+  │   │   │   │   │   ├── LoftPatrolSeekAndDestroyAI.prefab
+  │   │   │   │   │   ├── LoftPatrolSeekAndDestroyReloadingAI.prefab
+  │   │   │   │   │   ├── LoftSuitAI.prefab
+  │   │   │   │   │   ├── LoftSuitRagdollAI.prefab
+  │   │   │   │   │   ├── LoftTieAI.prefab
+  │   │   │   │   │   └── LoftTieMouseDrivenPathfinderAI.prefab
+  │   │   │   │   ├── Cameras/
+  │   │   │   │   │   ├── 3DCameras --------------------------------------------------------.prefab
+  │   │   │   │   │   └── LoftCameraProfile.asset
+  │   │   │   │   ├── ItemPickers/
+  │   │   │   │   │   ├── Loft3DLootTable.asset
+  │   │   │   │   │   ├── LoftAmmoCrateAssaultRifle.prefab
+  │   │   │   │   │   ├── LoftAmmoCrateHandgun.prefab
+  │   │   │   │   │   ├── LoftAmmoCrateShotgun.prefab
+  │   │   │   │   │   ├── LoftAmmoCrateSniperRifle.prefab
+  │   │   │   │   │   ├── LoftStimpack.prefab
+  │   │   │   │   │   ├── LoftWeaponCrateAssaultRifle.prefab
+  │   │   │   │   │   ├── LoftWeaponCrateHandgun.prefab
+  │   │   │   │   │   ├── LoftWeaponCrateShotgun.prefab
+  │   │   │   │   │   ├── LoftWeaponCrateSniperRifle.prefab
+  │   │   │   │   │   └── LoftWeaponCrateSword.prefab
+  │   │   │   │   ├── PlayableCharacters/
+  │   │   │   │   │   ├── LoftSuit.prefab
+  │   │   │   │   │   ├── LoftSuspenders.prefab
+  │   │   │   │   │   ├── LoftSuspendersMouseDriven.prefab
+  │   │   │   │   │   └── LoftTie.prefab
+  │   │   │   │   ├── Props/
+  │   │   │   │   │   ├── LoftFurniture/
+  │   │   │   │   │   │   ├── LoftBarChair.prefab
+  │   │   │   │   │   │   ├── LoftBed.prefab
+  │   │   │   │   │   │   ├── LoftBlender.prefab
+  │   │   │   │   │   │   ├── LoftBookCase.prefab
+  │   │   │   │   │   │   ├── LoftChair.prefab
+  │   │   │   │   │   │   ├── LoftCoffeeMachine.prefab
+  │   │   │   │   │   │   ├── LoftCoffeeTable.prefab
+  │   │   │   │   │   │   ├── LoftDesk.prefab
+  │   │   │   │   │   │   ├── LoftDeskChair.prefab
+  │   │   │   │   │   │   ├── LoftDeskCorner.prefab
+  │   │   │   │   │   │   ├── LoftKitchenBar.prefab
+  │   │   │   │   │   │   ├── LoftKitchenCabinet.prefab
+  │   │   │   │   │   │   ├── LoftKitchenCabinetCorner.prefab
+  │   │   │   │   │   │   ├── LoftKitchenCabinetUpper.prefab
+  │   │   │   │   │   │   ├── LoftKitchenFridge.prefab
+  │   │   │   │   │   │   ├── LoftKitchenSink.prefab
+  │   │   │   │   │   │   ├── LoftKitchenStove.prefab
+  │   │   │   │   │   │   ├── LoftLamp.prefab
+  │   │   │   │   │   │   ├── LoftLampSmall.prefab
+  │   │   │   │   │   │   ├── LoftLaptop.prefab
+  │   │   │   │   │   │   ├── LoftMicrowave.prefab
+  │   │   │   │   │   │   ├── LoftPlant.prefab
+  │   │   │   │   │   │   ├── LoftSofa.prefab
+  │   │   │   │   │   │   ├── LoftSofaChair.prefab
+  │   │   │   │   │   │   ├── LoftSofaCorner.prefab
+  │   │   │   │   │   │   ├── LoftSofaLong.prefab
+  │   │   │   │   │   │   ├── LoftSpeaker.prefab
+  │   │   │   │   │   │   ├── LoftTable.prefab
+  │   │   │   │   │   │   ├── LoftTV.prefab
+  │   │   │   │   │   │   └── LoftTvCabinet.prefab
+  │   │   │   │   │   ├── LoftBlueExplosive1x1.prefab
+  │   │   │   │   │   ├── LoftCar.prefab
+  │   │   │   │   │   ├── LoftCrouchBarrier.prefab
+  │   │   │   │   │   ├── LoftDeathVFX.prefab
+  │   │   │   │   │   ├── LoftDoor.prefab
+  │   │   │   │   │   ├── LoftExplosion.prefab
+  │   │   │   │   │   ├── LoftExplosionFeedback.prefab
+  │   │   │   │   │   └── LoftNavmesh.prefab
+  │   │   │   │   ├── Walls/
+  │   │   │   │   │   ├── WallThick.prefab
+  │   │   │   │   │   ├── WallThickLong.prefab
+  │   │   │   │   │   ├── WallThin.prefab
+  │   │   │   │   │   └── WallThinLong.prefab
+  │   │   │   │   ├── Weapons/
+  │   │   │   │   │   ├── Projectiles/
+  │   │   │   │   │   │   ├── LoftAssaultRifleBullet.prefab
+  │   │   │   │   │   │   ├── LoftAssaultRifleBulletAI.prefab
+  │   │   │   │   │   │   ├── LoftAssaultRifleBulletBouncy.prefab
+  │   │   │   │   │   │   ├── LoftBulletImpact.prefab
+  │   │   │   │   │   │   ├── LoftGrenade.prefab
+  │   │   │   │   │   │   ├── LoftGrenadeExplosion.prefab
+  │   │   │   │   │   │   ├── LoftHandgunBullet.prefab
+  │   │   │   │   │   │   ├── LoftShotgunBullet.prefab
+  │   │   │   │   │   │   └── LoftSniperRifleBullet.prefab
+  │   │   │   │   │   ├── Reticles/
+  │   │   │   │   │   │   ├── LoftSceneReticle.prefab
+  │   │   │   │   │   │   └── LoftUIReticle.prefab
+  │   │   │   │   │   ├── Weapons/
+  │   │   │   │   │   │   ├── LoftAIAssaultRifle.prefab
+  │   │   │   │   │   │   ├── LoftAIAssaultRifleWithReload.prefab
+  │   │   │   │   │   │   ├── LoftAISword.prefab
+  │   │   │   │   │   │   ├── LoftAssaultRifle.prefab
+  │   │   │   │   │   │   ├── LoftGrenadeLauncher.prefab
+  │   │   │   │   │   │   ├── LoftHandgun.prefab
+  │   │   │   │   │   │   ├── LoftShotgun.prefab
+  │   │   │   │   │   │   ├── LoftSniperRifle.prefab
+  │   │   │   │   │   │   ├── LoftSword.prefab
+  │   │   │   │   │   │   └── LoftSwordFast.prefab
+  │   │   │   │   │   ├── WeaponsAmmoBased/
+  │   │   │   │   │   │   ├── LoftAssaultRifleWithAmmo.prefab
+  │   │   │   │   │   │   ├── LoftHandgunWithAmmo.prefab
+  │   │   │   │   │   │   ├── LoftShotgunWithAmmo.prefab
+  │   │   │   │   │   │   └── LoftSniperRifleWithAmmo.prefab
+  │   │   │   ├── Resources/
+  │   │   │   │   ├── Items/
+  │   │   │   │   │   ├── LoftAssaultRifle.asset
+  │   │   │   │   │   ├── LoftAssaultRifleAmmo.asset
+  │   │   │   │   │   ├── LoftHandgun.asset
+  │   │   │   │   │   ├── LoftHandgunAmmo.asset
+  │   │   │   │   │   ├── LoftShotgun.asset
+  │   │   │   │   │   ├── LoftShotgunAmmo.asset
+  │   │   │   │   │   ├── LoftSniperRifle.asset
+  │   │   │   │   │   ├── LoftSniperRifleAmmo.asset
+  │   │   │   │   │   └── LoftSword.asset
+  │   │   │   ├── Scenes/
+  │   │   │   │   ├── Loft/
+  │   │   │   │   │   └── NavMesh-Navmesh.asset
+  │   │   │   ├── Scripts/
+  │   │   │   │   └── Door3D.cs
+  │   │   │   ├── Sounds/
+  │   │   │   ├── Sprites/
+  │   │   │   ├── Textures/
+  │   │   │   └── Loft3D.unity
+  │   │   ├── Minimal2D/
+  │   │   │   ├── Lighting/
+  │   │   │   ├── Prefabs/
+  │   │   │   │   ├── PlayableCharacters/
+  │   │   │   │   │   ├── MinimalCharacter2D.prefab
+  │   │   │   │   │   ├── MinimalCharacter2DGrid.prefab
+  │   │   │   │   │   ├── MinimalCharacter2DPlayer1.prefab
+  │   │   │   │   │   ├── MinimalCharacter2DPlayer2.prefab
+  │   │   │   │   │   └── MinimalCharacter2DSwap.prefab
+  │   │   │   │   ├── Props/
+  │   │   │   │   │   ├── Minimal2DBlueDoor.prefab
+  │   │   │   │   │   ├── Minimal2DBluePortal.prefab
+  │   │   │   │   │   ├── Minimal2DDamageZone.prefab
+  │   │   │   │   │   ├── Minimal2DDestructibleBlock.prefab
+  │   │   │   │   │   ├── Minimal2DGateToNextLevel.prefab
+  │   │   │   │   │   ├── Minimal2DGreenDoor.prefab
+  │   │   │   │   │   ├── Minimal2DKillZone.prefab
+  │   │   │   │   │   ├── Minimal2DMovingPlatform.prefab
+  │   │   │   │   │   ├── Minimal2DOrangePortal.prefab
+  │   │   │   │   │   ├── Minimal2DPushableBlock.prefab
+  │   │   │   │   │   ├── MinimalGridGround.prefab
+  │   │   │   │   │   ├── MinimalShootingRangeTarget.prefab
+  │   │   │   │   │   └── MinimalSignPost2D.prefab
+  │   │   │   │   ├── Walls/
+  │   │   │   │   │   ├── MinimalWall2D1.prefab
+  │   │   │   │   │   ├── MinimalWall2D10.prefab
+  │   │   │   │   │   ├── MinimalWall2D11.prefab
+  │   │   │   │   │   ├── MinimalWall2D12.prefab
+  │   │   │   │   │   ├── MinimalWall2D13.prefab
+  │   │   │   │   │   ├── MinimalWall2D14.prefab
+  │   │   │   │   │   ├── MinimalWall2D15.prefab
+  │   │   │   │   │   ├── MinimalWall2D16.prefab
+  │   │   │   │   │   ├── MinimalWall2D17.prefab
+  │   │   │   │   │   ├── MinimalWall2D18.prefab
+  │   │   │   │   │   ├── MinimalWall2D19.prefab
+  │   │   │   │   │   ├── MinimalWall2D2.prefab
+  │   │   │   │   │   ├── MinimalWall2D20.prefab
+  │   │   │   │   │   ├── MinimalWall2D21.prefab
+  │   │   │   │   │   ├── MinimalWall2D22.prefab
+  │   │   │   │   │   ├── MinimalWall2D23.prefab
+  │   │   │   │   │   ├── MinimalWall2D24.prefab
+  │   │   │   │   │   ├── MinimalWall2D25.prefab
+  │   │   │   │   │   ├── MinimalWall2D3.prefab
+  │   │   │   │   │   ├── MinimalWall2D4.prefab
+  │   │   │   │   │   ├── MinimalWall2D5.prefab
+  │   │   │   │   │   ├── MinimalWall2D6.prefab
+  │   │   │   │   │   ├── MinimalWall2D7.prefab
+  │   │   │   │   │   ├── MinimalWall2D8.prefab
+  │   │   │   │   │   └── MinimalWall2D9.prefab
+  │   │   │   │   ├── Minimal2DCameras --------------------------------------------------------.prefab
+  │   │   │   │   └── MinimalGround.prefab
+  │   │   │   ├── Sprites/
+  │   │   │   │   ├── Background/
+  │   │   │   │   ├── Blocks/
+  │   │   │   │   ├── Props/
+  │   │   │   │   │   ├── Materials/
+  │   │   │   ├── Minimal2DCharacterSwap.unity
+  │   │   │   ├── Minimal2DCharacterSwitch.unity
+  │   │   │   ├── Minimal2DDoors1.unity
+  │   │   │   ├── Minimal2DDoors2.unity
+  │   │   │   ├── Minimal2DGrid.unity
+  │   │   │   ├── MinimalMultiplayer2D.unity
+  │   │   │   ├── MinimalSandbox2D.unity
+  │   │   │   └── MinimalScene2D.unity
+  │   │   ├── Minimal3D/
+  │   │   │   ├── Lighting/
+  │   │   │   ├── Materials/
+  │   │   │   ├── MinimalAI3D/
+  │   │   │   │   └── NavMesh-Navmesh.asset
+  │   │   │   ├── MinimalGrid3D/
+  │   │   │   │   └── LightingData.asset
+  │   │   │   ├── MinimalPathfinding3D/
+  │   │   │   │   └── NavMesh-Navmesh.asset
+  │   │   │   ├── MinimalRooms3D/
+  │   │   │   │   └── LightingData.asset
+  │   │   │   ├── MinimalScene3D/
+  │   │   │   │   └── LightingData.asset
+  │   │   │   ├── Models/
+  │   │   │   ├── Prefabs/
+  │   │   │   │   ├── AI/
+  │   │   │   │   │   └── MinimalGuide.prefab
+  │   │   │   │   ├── Camera/
+  │   │   │   │   │   ├── Minimal3DCameraProfile.asset
+  │   │   │   │   │   └── Minimal3DCameras --------------------------------------------------------.prefab
+  │   │   │   │   ├── PlayableCharacters/
+  │   │   │   │   │   ├── MinimalCharacter.prefab
+  │   │   │   │   │   ├── MinimalCharacterInfiniteHealth.prefab
+  │   │   │   │   │   └── MinimalGridCharacter.prefab
+  │   │   │   │   ├── Props/
+  │   │   │   │   │   ├── Minimal3DCoin.prefab
+  │   │   │   │   │   ├── Minimal3DCoinExplosion.prefab
+  │   │   │   │   │   ├── Minimal3DCollectionExplosion.prefab
+  │   │   │   │   │   ├── Minimal3DExplosion.prefab
+  │   │   │   │   │   ├── Minimal3DFallingPlatform.prefab
+  │   │   │   │   │   ├── Minimal3DGateToNextLevel.prefab
+  │   │   │   │   │   ├── Minimal3DMovingPlatform.prefab
+  │   │   │   │   │   ├── Minimal3DPushableBlock.prefab
+  │   │   │   │   │   ├── Minimal3DSignPost3D.prefab
+  │   │   │   │   │   ├── Minimal3DTeleporterBlue.prefab
+  │   │   │   │   │   ├── Minimal3DTeleporterOrange.prefab
+  │   │   │   │   │   ├── Minimal3DTimeZone.prefab
+  │   │   │   │   │   └── MinimalMagnetic3DCoin.prefab
+  │   │   │   │   ├── PrototypeProps/
+  │   │   │   │   │   ├── Materials/
+  │   │   │   │   │   ├── Prefabs/
+  │   │   │   │   │   │   ├── PlatformsBlue/
+  │   │   │   │   │   │   │   ├── Minimal3D_1x1 Blue.prefab
+  │   │   │   │   │   │   │   ├── Minimal3D_2x1 Blue.prefab
+  │   │   │   │   │   │   │   ├── Minimal3D_4x1 Blue Thin.prefab
+  │   │   │   │   │   │   │   ├── Minimal3D_4x1 Blue.prefab
+  │   │   │   │   │   │   │   └── Minimal3D_point5xpoint5 Blue.prefab
+  │   │   │   │   │   │   ├── PlatformsGreen/
+  │   │   │   │   │   │   │   ├── Minimal3D_1x1 Green.prefab
+  │   │   │   │   │   │   │   ├── Minimal3D_2x1 Green.prefab
+  │   │   │   │   │   │   │   ├── Minimal3D_4x1 Green Thin.prefab
+  │   │   │   │   │   │   │   ├── Minimal3D_4x1 Green.prefab
+  │   │   │   │   │   │   │   └── Minimal3D_point5xpoint5 Green.prefab
+  │   │   │   │   │   │   ├── PlatformsGrey/
+  │   │   │   │   │   │   │   ├── Minimal3D_1x1 Grey.prefab
+  │   │   │   │   │   │   │   ├── Minimal3D_2x1 Grey.prefab
+  │   │   │   │   │   │   │   ├── Minimal3D_4x1 Grey Thin.prefab
+  │   │   │   │   │   │   │   ├── Minimal3D_4x1 Grey.prefab
+  │   │   │   │   │   │   │   └── Minimal3D_point5xpoint5 Grey.prefab
+  │   │   │   │   │   │   ├── PlatformsOrange/
+  │   │   │   │   │   │   │   ├── Minimal3D_1x1 Orange.prefab
+  │   │   │   │   │   │   │   ├── Minimal3D_2x1 Orange.prefab
+  │   │   │   │   │   │   │   ├── Minimal3D_4x1 Orange Thin.prefab
+  │   │   │   │   │   │   │   ├── Minimal3D_4x1 Orange.prefab
+  │   │   │   │   │   │   │   └── Minimal3D_point5xpoint5 Orange.prefab
+  │   │   │   │   │   │   ├── PlatformsYellow/
+  │   │   │   │   │   │   │   ├── Minimal3D_1x1 Yellow.prefab
+  │   │   │   │   │   │   │   ├── Minimal3D_2x1 Yellow.prefab
+  │   │   │   │   │   │   │   ├── Minimal3D_4x1 Yellow Thin.prefab
+  │   │   │   │   │   │   │   ├── Minimal3D_4x1 Yellow.prefab
+  │   │   │   │   │   │   │   └── Minimal3D_point5xpoint5 Yellow.prefab
+  │   │   │   │   │   │   ├── Props/
+  │   │   │   │   │   │   │   ├── Materials/
+  │   │   │   │   │   │   │   ├── Minimal3D_1WayPlatform3D.prefab
+  │   │   │   │   │   │   │   ├── Minimal3D_BlockBackground.prefab
+  │   │   │   │   │   │   │   ├── Minimal3D_FallingPlatform.prefab
+  │   │   │   │   │   │   │   ├── Minimal3D_Jumper3D.prefab
+  │   │   │   │   │   │   │   ├── Minimal3D_PushablePlatform.prefab
+  │   │   │   │   │   │   │   └── Minimal3D_WaterCube.prefab
+  │   │   │   │   │   ├── Textures/
+  │   │   │   ├── MinimalAI3D.unity
+  │   │   │   ├── MinimalGrid3D.unity
+  │   │   │   ├── MinimalPathfinding3D.unity
+  │   │   │   ├── MinimalPerformance.unity
+  │   │   │   ├── MinimalRooms3D.unity
+  │   │   │   ├── MinimalSandbox3D.unity
+  │   │   │   ├── MinimalScene3D.unity
+  │   │   │   └── MinimalSword3D.unity
+  │   │   ├── StartScreen/
+  │   │   │   ├── Camera/
+  │   │   │   │   └── StartScreenProfile.asset
+  │   │   │   ├── Lighting/
+  │   │   │   ├── Material/
+  │   │   │   ├── Sprites/
+  │   │   │   └── StartScreen.unity
+  │   │   ├── Tanks/
+  │   │   │   ├── Audio/
+  │   │   │   ├── Lighting/
+  │   │   │   ├── Materials/
+  │   │   │   ├── Models/
+  │   │   │   ├── Prefabs/
+  │   │   │   │   ├── EnemyTank.prefab
+  │   │   │   │   ├── PlayerTank.prefab
+  │   │   │   │   ├── TankCannon.prefab
+  │   │   │   │   ├── TankCannonAI.prefab
+  │   │   │   │   ├── TankCannonBullet.prefab
+  │   │   │   │   ├── TankCannonBulletAI.prefab
+  │   │   │   │   ├── TankCannonExplosion.prefab
+  │   │   │   │   ├── TankMachineGun.prefab
+  │   │   │   │   └── TankMachineGunBullet.prefab
+  │   │   │   ├── Scripts/
+  │   │   │   │   └── CharacterTank.cs
+  │   │   │   ├── Tanks/
+  │   │   │   │   ├── NavMesh.asset
+  │   │   │   │   └── NavMesh-Navmesh.asset
+  │   │   │   ├── Textures/
+  │   │   │   └── Tanks.unity
+  │   ├── ThirdParty/
+  │   │   ├── MoreMountains/
+  │   │   │   ├── InventoryEngine/
+  │   │   │   │   ├── Demos/
+  │   │   │   │   │   ├── PixelRogue/
+  │   │   │   │   │   │   ├── Animations/
+  │   │   │   │   │   │   ├── Physics/
+  │   │   │   │   │   │   ├── Prefabs/
+  │   │   │   │   │   │   │   ├── ItemsPickers/
+  │   │   │   │   │   │   │   │   ├── Apple.prefab
+  │   │   │   │   │   │   │   │   ├── ArmorBlue.prefab
+  │   │   │   │   │   │   │   │   ├── ArmorGreen.prefab
+  │   │   │   │   │   │   │   │   ├── Axe.prefab
+  │   │   │   │   │   │   │   │   ├── Bomb.prefab
+  │   │   │   │   │   │   │   │   ├── Coin.prefab
+  │   │   │   │   │   │   │   │   ├── Minigun.prefab
+  │   │   │   │   │   │   │   │   ├── Revolver.prefab
+  │   │   │   │   │   │   │   │   ├── Rifle.prefab
+  │   │   │   │   │   │   │   │   ├── Shotgun.prefab
+  │   │   │   │   │   │   │   │   └── Sword.prefab
+  │   │   │   │   │   │   │   ├── Adventurer.prefab
+  │   │   │   │   │   │   │   ├── Ball.prefab
+  │   │   │   │   │   │   │   ├── Slot.prefab
+  │   │   │   │   │   │   │   ├── SlotIcon.prefab
+  │   │   │   │   │   │   │   └── UICamera.prefab
+  │   │   │   │   │   │   ├── Resources/
+  │   │   │   │   │   │   │   ├── Items/
+  │   │   │   │   │   │   │   │   ├── Apple.asset
+  │   │   │   │   │   │   │   │   ├── ArmorBlue.asset
+  │   │   │   │   │   │   │   │   ├── ArmorGreen.asset
+  │   │   │   │   │   │   │   │   ├── Axe.asset
+  │   │   │   │   │   │   │   │   ├── Bomb.asset
+  │   │   │   │   │   │   │   │   ├── Coin.asset
+  │   │   │   │   │   │   │   │   ├── Minigun.asset
+  │   │   │   │   │   │   │   │   ├── Revolver.asset
+  │   │   │   │   │   │   │   │   ├── Rifle.asset
+  │   │   │   │   │   │   │   │   ├── Shotgun.asset
+  │   │   │   │   │   │   │   │   └── Sword.asset
+  │   │   │   │   │   │   ├── Scripts/
+  │   │   │   │   │   │   │   ├── Items/
+  │   │   │   │   │   │   │   │   ├── ArmorItem.cs
+  │   │   │   │   │   │   │   │   ├── BombItem.cs
+  │   │   │   │   │   │   │   │   ├── HealthBonusItem.cs
+  │   │   │   │   │   │   │   │   └── WeaponItem.cs
+  │   │   │   │   │   │   │   ├── ChangeLevel.cs
+  │   │   │   │   │   │   │   ├── DemoCharacterInputManager.cs
+  │   │   │   │   │   │   │   ├── InventoryDemoCharacter.cs
+  │   │   │   │   │   │   │   ├── InventoryDemoGameManager.cs
+  │   │   │   │   │   │   │   ├── InventoryDemoStorageBox.cs
+  │   │   │   │   │   │   │   └── PixelRogueDemoResetAll.cs
+  │   │   │   │   │   │   ├── Sounds/
+  │   │   │   │   │   │   ├── Sprites/
+  │   │   │   │   │   │   ├── Minimal1.unity
+  │   │   │   │   │   │   ├── Minimal2.unity
+  │   │   │   │   │   │   ├── PixelRogueMultiplayer.unity
+  │   │   │   │   │   │   ├── PixelRogueRoom1.unity
+  │   │   │   │   │   │   ├── PixelRogueRoom2.unity
+  │   │   │   │   │   │   └── PixelRogueWeaponBar.unity
+  │   │   │   │   ├── InventoryEngine/
+  │   │   │   │   │   ├── Editor/
+  │   │   │   │   │   │   ├── Core/
+  │   │   │   │   │   │   │   ├── InventoryEditor.cs
+  │   │   │   │   │   │   │   ├── InventoryEngineMenu.cs
+  │   │   │   │   │   │   │   ├── InventoryItemEditor.cs
+  │   │   │   │   │   │   │   └── PickableInventoryItemEditor.cs
+  │   │   │   │   │   │   ├── DefineSymbols/
+  │   │   │   │   │   │   │   └── InventoryEngineDefineSymbols.cs
+  │   │   │   │   │   │   ├── GUI/
+  │   │   │   │   │   │   │   ├── InventoryDisplayEditor.cs
+  │   │   │   │   │   │   │   └── InventorySlotEditor.cs
+  │   │   │   │   │   ├── Fonts/
+  │   │   │   │   │   ├── Scripts/
+  │   │   │   │   │   │   ├── Core/
+  │   │   │   │   │   │   │   ├── Inventory.cs
+  │   │   │   │   │   │   │   ├── InventoryCharacterIdentifier.cs
+  │   │   │   │   │   │   │   ├── InventoryEvents.cs
+  │   │   │   │   │   │   │   ├── InventoryInputActions.cs
+  │   │   │   │   │   │   │   ├── InventoryInputManager.cs
+  │   │   │   │   │   │   │   ├── InventoryItem.cs
+  │   │   │   │   │   │   │   ├── InventoryItemClasses.cs
+  │   │   │   │   │   │   │   ├── ItemPicker.cs
+  │   │   │   │   │   │   │   └── SerializedInventory.cs
+  │   │   │   │   │   │   ├── GUI/
+  │   │   │   │   │   │   │   ├── InventoryCounterDisplay.cs
+  │   │   │   │   │   │   │   ├── InventoryDetails.cs
+  │   │   │   │   │   │   │   ├── InventoryDisplay.cs
+  │   │   │   │   │   │   │   ├── InventoryDisplayGrid.cs
+  │   │   │   │   │   │   │   ├── InventoryDisplayTitle.cs
+  │   │   │   │   │   │   │   ├── InventoryHotbar.cs
+  │   │   │   │   │   │   │   ├── InventorySelectionMarker.cs
+  │   │   │   │   │   │   │   ├── InventorySlot.cs
+  │   │   │   │   │   │   │   └── InventorySoundPlayer.cs
+  │   │   │   │   │   │   ├── Items/
+  │   │   │   │   │   │   │   └── BaseItem.cs
+  │   │   │   │   │   │   ├── Tests/
+  │   │   │   │   │   │   │   ├── EventTester.cs
+  │   │   │   │   │   │   │   └── InventoryTester.cs
+  │   │   │   │   │   ├── Sounds/
+  │   │   │   │   │   │   ├── DefaultSounds/
+  │   │   │   ├── MMFeedbacks/
+  │   │   │   │   ├── Authorizations/
+  │   │   │   │   │   └── MMFeedbacksAuthorizations.cs
+  │   │   │   │   ├── Demos/
+  │   │   │   │   │   ├── MMFeedbacksDemo/
+  │   │   │   │   │   │   ├── Animations/
+  │   │   │   │   │   │   ├── Camera/
+  │   │   │   │   │   │   │   ├── Gizmos/
+  │   │   │   │   │   │   │   │   ├── Cinemachine/
+  │   │   │   │   │   │   │   ├── MMFeedbacksDemo Alt Camera Profile.asset
+  │   │   │   │   │   │   │   ├── MMFeedbacksDemo Filter Camera Profile.asset
+  │   │   │   │   │   │   │   └── MMFeedbacksDemo Main Camera Profile.asset
+  │   │   │   │   │   │   ├── Materials/
+  │   │   │   │   │   │   ├── Models/
+  │   │   │   │   │   │   │   ├── Background/
+  │   │   │   │   │   │   │   │   ├── Background.fbm/
+  │   │   │   │   │   │   │   ├── Dude/
+  │   │   │   │   │   │   ├── Prefabs/
+  │   │   │   │   │   │   │   ├── FeedbackDemoBackgroundCube.prefab
+  │   │   │   │   │   │   │   ├── FeedbackDemoMiniSpheresFX.prefab
+  │   │   │   │   │   │   │   ├── FeedbackDemoSparks.prefab
+  │   │   │   │   │   │   │   └── FeedbackDemoSphere.prefab
+  │   │   │   │   │   │   ├── Scripts/
+  │   │   │   │   │   │   │   ├── DemoBall.cs
+  │   │   │   │   │   │   │   ├── DemoButton.cs
+  │   │   │   │   │   │   │   ├── DemoGhost.cs
+  │   │   │   │   │   │   │   ├── DemoPackageTester.cs
+  │   │   │   │   │   │   │   └── MMFDependencyInstaller.cs
+  │   │   │   │   │   │   ├── Sounds/
+  │   │   │   │   │   │   ├── TestScene/
+  │   │   │   │   │   │   │   └── LightingData.asset
+  │   │   │   │   │   │   ├── Textures/
+  │   │   │   │   │   │   │   ├── Paper/
+  │   │   │   │   │   │   ├── TMP/
+  │   │   │   │   │   │   ├── UI/
+  │   │   │   │   │   │   │   ├── Button.prefab
+  │   │   │   │   │   │   │   ├── Spacer.prefab
+  │   │   │   │   │   │   │   └── Title.prefab
+  │   │   │   │   │   │   └── MMF_PlayerDemo.unity
+  │   │   │   │   │   ├── SequencingDemo/
+  │   │   │   │   │   │   ├── DemoSequences/
+  │   │   │   │   │   │   │   ├── DrumSequence.asset
+  │   │   │   │   │   │   │   ├── FeedbacksSequence.asset
+  │   │   │   │   │   │   │   └── RecordedSequence.asset
+  │   │   │   │   │   │   ├── Lighting/
+  │   │   │   │   │   │   ├── Materials/
+  │   │   │   │   │   │   ├── Prefabs/
+  │   │   │   │   │   │   ├── SequencerDemo_Profiles/
+  │   │   │   │   │   │   │   ├── MMSequencerDemoGlobalPPP.asset
+  │   │   │   │   │   │   │   └── MMSequencerDemoMovingPPP.asset
+  │   │   │   │   │   │   ├── Sounds/
+  │   │   │   │   │   │   │   ├── Kit/
+  │   │   │   │   │   │   ├── Textures/
+  │   │   │   │   │   │   │   ├── wip/
+  │   │   │   │   │   │   └── SequencerDemo.unity
+  │   │   │   │   ├── Editor/
+  │   │   │   │   │   ├── Core/
+  │   │   │   │   │   │   ├── AttributeDrawers.cs
+  │   │   │   │   │   │   ├── MMF_FeedbackInspector.cs
+  │   │   │   │   │   │   ├── MMF_FeedbackInspectorStyle.cs
+  │   │   │   │   │   │   ├── MMF_PlayerConfiguration.cs
+  │   │   │   │   │   │   ├── MMF_PlayerCopy.cs
+  │   │   │   │   │   │   ├── MMF_PlayerEditor.cs
+  │   │   │   │   │   │   ├── MMF_PlayerStyling.cs
+  │   │   │   │   │   │   ├── MMFeedbacksColors.cs
+  │   │   │   │   │   │   ├── MMFeedbacksConfiguration.cs
+  │   │   │   │   │   │   └── MMFeedbackStyling.cs
+  │   │   │   │   │   ├── Curves/
+  │   │   │   │   │   │   ├── Editor/
+  │   │   │   │   │   ├── FeedbackListOutputter/
+  │   │   │   │   │   │   └── FeedbackListOutputer.cs
+  │   │   │   │   │   ├── Legacy/
+  │   │   │   │   │   │   └── MMFeedbacksEditor.cs
+  │   │   │   │   │   ├── Resources/
+  │   │   │   │   │   │   ├── MMF_PlayerConfiguration.asset
+  │   │   │   │   │   │   └── MMFeedbacksConfiguration.asset
+  │   │   │   │   │   ├── Sequencing/
+  │   │   │   │   │   │   ├── Resources/
+  │   │   │   │   │   │   ├── MMInputSequenceRecorderEditor.cs
+  │   │   │   │   │   │   └── MMSequencerEditor.cs
+  │   │   │   │   │   ├── Shakers/
+  │   │   │   │   │   │   └── MMWiggleEditor.cs
+  │   │   │   │   │   ├── Springs/
+  │   │   │   │   │   │   ├── MMSpringColorPropertyDrawer.cs
+  │   │   │   │   │   │   ├── MMSpringDebugPropertyDrawer.cs
+  │   │   │   │   │   │   ├── MMSpringFloatPropertyDrawer.cs
+  │   │   │   │   │   │   ├── MMSpringVector2PropertyDrawer.cs
+  │   │   │   │   │   │   ├── MMSpringVector3PropertyDrawer.cs
+  │   │   │   │   │   │   └── MMSpringVector4PropertyDrawer.cs
+  │   │   │   │   ├── MMFeedbacks/
+  │   │   │   │   │   ├── Core/
+  │   │   │   │   │   │   ├── Legacy/
+  │   │   │   │   │   │   │   ├── MMFeedback.cs
+  │   │   │   │   │   │   │   ├── MMFeedbacks.cs
+  │   │   │   │   │   │   │   └── MMFeedbacksEnabler.cs
+  │   │   │   │   │   │   ├── MMChannels/
+  │   │   │   │   │   │   │   ├── ChannelA.asset
+  │   │   │   │   │   │   │   ├── ChannelB.asset
+  │   │   │   │   │   │   │   ├── ChannelC.asset
+  │   │   │   │   │   │   │   └── MMChannel.cs
+  │   │   │   │   │   │   ├── MMF_Player/
+  │   │   │   │   │   │   │   ├── MMF_Feedback.cs
+  │   │   │   │   │   │   │   ├── MMF_FeedbackAttributes.cs
+  │   │   │   │   │   │   │   ├── MMF_Player.cs
+  │   │   │   │   │   │   │   ├── MMF_PlayerDebugInput.cs
+  │   │   │   │   │   │   │   └── MMF_PlayerEnabler.cs
+  │   │   │   │   │   │   ├── ObjectPool/
+  │   │   │   │   │   │   │   ├── MMMiniObjectPooler.cs
+  │   │   │   │   │   │   │   └── MMMiniPoolableObject.cs
+  │   │   │   │   │   │   ├── MMFeedbacksCoroutine.cs
+  │   │   │   │   │   │   ├── MMFeedbacksEvents.cs
+  │   │   │   │   │   │   ├── MMFeedbacksHelpers.cs
+  │   │   │   │   │   │   ├── MMFeedbacksInspectorColors.cs
+  │   │   │   │   │   │   ├── MMFeedbackTargetAcquisition.cs
+  │   │   │   │   │   │   ├── MMFeedbackTiming.cs
+  │   │   │   │   │   │   └── MMShaker.cs
+  │   │   │   │   │   ├── Feedbacks/
+  │   │   │   │   │   │   ├── MMF_Animation.cs
+  │   │   │   │   │   │   ├── MMF_AnimationCrossfade.cs
+  │   │   │   │   │   │   ├── MMF_AnimatorSpeed.cs
+  │   │   │   │   │   │   ├── MMF_AudioFilterDistortion.cs
+  │   │   │   │   │   │   ├── MMF_AudioFilterEcho.cs
+  │   │   │   │   │   │   ├── MMF_AudioFilterHighPass.cs
+  │   │   │   │   │   │   ├── MMF_AudioFilterLowPass.cs
+  │   │   │   │   │   │   ├── MMF_AudioFilterReverb.cs
+  │   │   │   │   │   │   ├── MMF_AudioMixerSnapshotTransition.cs
+  │   │   │   │   │   │   ├── MMF_AudioSource.cs
+  │   │   │   │   │   │   ├── MMF_AudioSourcePitch.cs
+  │   │   │   │   │   │   ├── MMF_AudioSourceStereoPan.cs
+  │   │   │   │   │   │   ├── MMF_AudioSourceVolume.cs
+  │   │   │   │   │   │   ├── MMF_CameraClippingPlanes.cs
+  │   │   │   │   │   │   ├── MMF_CameraFieldOfView.cs
+  │   │   │   │   │   │   ├── MMF_CameraOrthographicSize.cs
+  │   │   │   │   │   │   ├── MMF_CameraShake.cs
+  │   │   │   │   │   │   ├── MMF_CameraZoom.cs
+  │   │   │   │   │   │   ├── MMF_CanvasGroupBlocksRaycasts.cs
+  │   │   │   │   │   │   ├── MMF_Collider.cs
+  │   │   │   │   │   │   ├── MMF_Collider2D.cs
+  │   │   │   │   │   │   ├── MMF_DestinationTransform.cs
+  │   │   │   │   │   │   ├── MMF_Destroy.cs
+  │   │   │   │   │   │   ├── MMF_Enable.cs
+  │   │   │   │   │   │   ├── MMF_Events.cs
+  │   │   │   │   │   │   ├── MMF_Feedbacks.cs
+  │   │   │   │   │   │   ├── MMF_Flash.cs
+  │   │   │   │   │   │   ├── MMF_Flicker.cs
+  │   │   │   │   │   │   ├── MMF_FreezeFrame.cs
+  │   │   │   │   │   │   ├── MMF_Graphic.cs
+  │   │   │   │   │   │   ├── MMF_GraphicCrossFade.cs
+  │   │   │   │   │   │   ├── MMF_HoldingPause.cs
+  │   │   │   │   │   │   ├── MMF_Image.cs
+  │   │   │   │   │   │   ├── MMF_ImageMaterial.cs
+  │   │   │   │   │   │   ├── MMF_ImageRaycastTarget.cs
+  │   │   │   │   │   │   ├── MMF_ImageTextureOffset.cs
+  │   │   │   │   │   │   ├── MMF_ImageTextureScale.cs
+  │   │   │   │   │   │   ├── MMF_InstantiateObject.cs
+  │   │   │   │   │   │   ├── MMF_Light.cs
+  │   │   │   │   │   │   ├── MMF_LookAt.cs
+  │   │   │   │   │   │   ├── MMF_Looper.cs
+  │   │   │   │   │   │   ├── MMF_LooperStart.cs
+  │   │   │   │   │   │   ├── MMF_Material.cs
+  │   │   │   │   │   │   ├── MMF_MaterialSetProperty.cs
+  │   │   │   │   │   │   ├── MMF_Particles.cs
+  │   │   │   │   │   │   ├── MMF_ParticlesInstantiation.cs
+  │   │   │   │   │   │   ├── MMF_Pause.cs
+  │   │   │   │   │   │   ├── MMF_PlayerChain.cs
+  │   │   │   │   │   │   ├── MMF_PlayerControl.cs
+  │   │   │   │   │   │   ├── MMF_Position.cs
+  │   │   │   │   │   │   ├── MMF_PositionShake.cs
+  │   │   │   │   │   │   ├── MMF_PositionSpring.cs
+  │   │   │   │   │   │   ├── MMF_ReferenceHolder.cs
+  │   │   │   │   │   │   ├── MMF_Rigidbody.cs
+  │   │   │   │   │   │   ├── MMF_Rigidbody2D.cs
+  │   │   │   │   │   │   ├── MMF_RotatePositionAround.cs
+  │   │   │   │   │   │   ├── MMF_Rotation.cs
+  │   │   │   │   │   │   ├── MMF_RotationShake.cs
+  │   │   │   │   │   │   ├── MMF_RotationSpring.cs
+  │   │   │   │   │   │   ├── MMF_Scale.cs
+  │   │   │   │   │   │   ├── MMF_ScaleShake.cs
+  │   │   │   │   │   │   ├── MMF_ScaleSpring.cs
+  │   │   │   │   │   │   ├── MMF_SetActive.cs
+  │   │   │   │   │   │   ├── MMF_SetParent.cs
+  │   │   │   │   │   │   ├── MMF_ShaderGlobal.cs
+  │   │   │   │   │   │   ├── MMF_Skybox.cs
+  │   │   │   │   │   │   ├── MMF_SpriteRenderer.cs
+  │   │   │   │   │   │   ├── MMF_SquashAndStretch.cs
+  │   │   │   │   │   │   ├── MMF_SquashAndStretchSpring.cs
+  │   │   │   │   │   │   ├── MMF_Text.cs
+  │   │   │   │   │   │   ├── MMF_TextColor.cs
+  │   │   │   │   │   │   ├── MMF_TextureOffset.cs
+  │   │   │   │   │   │   ├── MMF_TextureScale.cs
+  │   │   │   │   │   │   ├── MMF_TimescaleModifier.cs
+  │   │   │   │   │   │   ├── MMF_UnloadScene.cs
+  │   │   │   │   │   │   ├── MMF_VideoPlayer.cs
+  │   │   │   │   │   │   └── MMF_Wiggle.cs
+  │   │   │   │   │   ├── MMFloatingText/
+  │   │   │   │   │   │   ├── Prefabs/
+  │   │   │   │   │   │   │   ├── MMFloatingText.prefab
+  │   │   │   │   │   │   │   └── MMFloatingTextPixel.prefab
+  │   │   │   │   │   │   ├── MMFloatingText.cs
+  │   │   │   │   │   │   └── MMFloatingTextSpawner.cs
+  │   │   │   │   │   ├── Sequencing/
+  │   │   │   │   │   │   ├── Scripts/
+  │   │   │   │   │   │   │   ├── MMAudioSourceSequencer.cs
+  │   │   │   │   │   │   │   ├── MMFeedbacksSequencer.cs
+  │   │   │   │   │   │   │   ├── MMInputSequenceRecorder.cs
+  │   │   │   │   │   │   │   ├── MMSequence.cs
+  │   │   │   │   │   │   │   ├── MMSequencer.cs
+  │   │   │   │   │   │   │   └── MMSoundSequencer.cs
+  │   │   │   │   │   ├── Shakers/
+  │   │   │   │   │   │   ├── MMAudioFilterDistortionShaker.cs
+  │   │   │   │   │   │   ├── MMAudioFilterEchoShaker.cs
+  │   │   │   │   │   │   ├── MMAudioFilterHighPassShaker.cs
+  │   │   │   │   │   │   ├── MMAudioFilterLowPassShaker.cs
+  │   │   │   │   │   │   ├── MMAudioFilterReverbShaker.cs
+  │   │   │   │   │   │   ├── MMAudioSourcePitchShaker.cs
+  │   │   │   │   │   │   ├── MMAudioSourceStereoPanShaker.cs
+  │   │   │   │   │   │   ├── MMAudioSourceVolumeShaker.cs
+  │   │   │   │   │   │   ├── MMBlink.cs
+  │   │   │   │   │   │   ├── MMCameraClippingPlanesShaker.cs
+  │   │   │   │   │   │   ├── MMCameraFieldOfViewShaker.cs
+  │   │   │   │   │   │   ├── MMCameraOrthographicSizeShaker.cs
+  │   │   │   │   │   │   ├── MMCameraShaker.cs
+  │   │   │   │   │   │   ├── MMCameraShakerRotation.cs
+  │   │   │   │   │   │   ├── MMCameraZoom.cs
+  │   │   │   │   │   │   ├── MMFeedbacksShaker.cs
+  │   │   │   │   │   │   ├── MMFlash.cs
+  │   │   │   │   │   │   ├── MMLightShaker.cs
+  │   │   │   │   │   │   ├── MMLookAtShaker.cs
+  │   │   │   │   │   │   ├── MMPositionShaker.cs
+  │   │   │   │   │   │   ├── MMRotationShaker.cs
+  │   │   │   │   │   │   ├── MMScaleShaker.cs
+  │   │   │   │   │   │   ├── MMSpriteRendererShaker.cs
+  │   │   │   │   │   │   └── MMWiggle.cs
+  │   │   │   │   │   ├── Springs/
+  │   │   │   │   │   │   ├── Core/
+  │   │   │   │   │   │   │   ├── Components/
+  │   │   │   │   │   │   │   │   ├── MMSpringColorComponent.cs
+  │   │   │   │   │   │   │   │   ├── MMSpringFloatComponent.cs
+  │   │   │   │   │   │   │   │   ├── MMSpringVector2Component.cs
+  │   │   │   │   │   │   │   │   ├── MMSpringVector3Component.cs
+  │   │   │   │   │   │   │   │   └── MMSpringVector4Component.cs
+  │   │   │   │   │   │   │   ├── MMSpringClampSettings.cs
+  │   │   │   │   │   │   │   ├── MMSpringColor.cs
+  │   │   │   │   │   │   │   ├── MMSpringComponentBase.cs
+  │   │   │   │   │   │   │   ├── MMSpringDebug.cs
+  │   │   │   │   │   │   │   ├── MMSpringDefinition.cs
+  │   │   │   │   │   │   │   ├── MMSpringFloat.cs
+  │   │   │   │   │   │   │   ├── MMSpringVector2.cs
+  │   │   │   │   │   │   │   ├── MMSpringVector3.cs
+  │   │   │   │   │   │   │   └── MMSpringVector4.cs
+  │   │   │   │   │   │   ├── Feedbacks/
+  │   │   │   │   │   │   │   ├── MMF_SpringColor.cs
+  │   │   │   │   │   │   │   ├── MMF_SpringFloat.cs
+  │   │   │   │   │   │   │   ├── MMF_SpringVector2.cs
+  │   │   │   │   │   │   │   ├── MMF_SpringVector3.cs
+  │   │   │   │   │   │   │   └── MMF_SpringVector4.cs
+  │   │   │   │   │   │   ├── Springs/
+  │   │   │   │   │   │   │   ├── MMSpringAnimatorSpeed.cs
+  │   │   │   │   │   │   │   ├── MMSpringAudioSourcePitch.cs
+  │   │   │   │   │   │   │   ├── MMSpringAudioSourceVolume.cs
+  │   │   │   │   │   │   │   ├── MMSpringCameraFieldOfView.cs
+  │   │   │   │   │   │   │   ├── MMSpringCameraOrthographicSize.cs
+  │   │   │   │   │   │   │   ├── MMSpringImageAlpha.cs
+  │   │   │   │   │   │   │   ├── MMSpringImageColor.cs
+  │   │   │   │   │   │   │   ├── MMSpringImageFillAmount.cs
+  │   │   │   │   │   │   │   ├── MMSpringLightColor.cs
+  │   │   │   │   │   │   │   ├── MMSpringLightIntensity.cs
+  │   │   │   │   │   │   │   ├── MMSpringLightRange.cs
+  │   │   │   │   │   │   │   ├── MMSpringMMTimeScale.cs
+  │   │   │   │   │   │   │   ├── MMSpringPosition.cs
+  │   │   │   │   │   │   │   ├── MMSpringRectTransformPosition.cs
+  │   │   │   │   │   │   │   ├── MMSpringRectTransformSizeDelta.cs
+  │   │   │   │   │   │   │   ├── MMSpringRotation.cs
+  │   │   │   │   │   │   │   ├── MMSpringRotationAround.cs
+  │   │   │   │   │   │   │   ├── MMSpringScale.cs
+  │   │   │   │   │   │   │   ├── MMSpringShaderController.cs
+  │   │   │   │   │   │   │   ├── MMSpringSpriteColor.cs
+  │   │   │   │   │   │   │   ├── MMSpringSquashAndStretch.cs
+  │   │   │   │   │   │   │   ├── MMSpringTextureOffset.cs
+  │   │   │   │   │   │   │   ├── MMSpringTextureScale.cs
+  │   │   │   │   │   │   │   ├── MMSpringTMPAlpha.cs
+  │   │   │   │   │   │   │   ├── MMSpringTMPCharacterSpacing.cs
+  │   │   │   │   │   │   │   ├── MMSpringTMPDilate.cs
+  │   │   │   │   │   │   │   ├── MMSpringTMPFontSize.cs
+  │   │   │   │   │   │   │   ├── MMSpringTMPLineSpacing.cs
+  │   │   │   │   │   │   │   ├── MMSpringTMPSoftness.cs
+  │   │   │   │   │   │   │   ├── MMSpringTMPTextColor.cs
+  │   │   │   │   │   │   │   └── MMSpringTMPWordSpacing.cs
+  │   │   │   │   ├── MMFeedbacksForThirdParty/
+  │   │   │   │   │   ├── Cinemachine/
+  │   │   │   │   │   │   ├── Feedbacks/
+  │   │   │   │   │   │   │   ├── MMF_CinemachineImpulse.cs
+  │   │   │   │   │   │   │   ├── MMF_CinemachineImpulseClear.cs
+  │   │   │   │   │   │   │   ├── MMF_CinemachineImpulseSource.cs
+  │   │   │   │   │   │   │   └── MMF_CinemachineTransition.cs
+  │   │   │   │   │   │   ├── Helpers/
+  │   │   │   │   │   │   │   └── MMCinemachineHelpers.cs
+  │   │   │   │   │   │   ├── Resources/
+  │   │   │   │   │   │   │   └── MM_6D_Shake.asset
+  │   │   │   │   │   │   ├── Shakers/
+  │   │   │   │   │   │   │   ├── MMCinemachineCameraShaker.cs
+  │   │   │   │   │   │   │   ├── MMCinemachineClippingPlanesShaker.cs
+  │   │   │   │   │   │   │   ├── MMCinemachineFieldOfViewShaker.cs
+  │   │   │   │   │   │   │   ├── MMCinemachineFreeLookZoom.cs
+  │   │   │   │   │   │   │   ├── MMCinemachineOrthographicSizeShaker.cs
+  │   │   │   │   │   │   │   ├── MMCinemachinePriorityBrainListener.cs
+  │   │   │   │   │   │   │   ├── MMCinemachinePriorityListener.cs
+  │   │   │   │   │   │   │   └── MMCinemachineZoom.cs
+  │   │   │   │   │   ├── HDRP/
+  │   │   │   │   │   │   ├── Feedbacks/
+  │   │   │   │   │   │   │   ├── MMF_Bloom_HDRP.cs
+  │   │   │   │   │   │   │   ├── MMF_ChannelMixer_HDRP.cs
+  │   │   │   │   │   │   │   ├── MMF_ChromaticAberration_HDRP.cs
+  │   │   │   │   │   │   │   ├── MMF_ColorAdjustments_HDRP.cs
+  │   │   │   │   │   │   │   ├── MMF_DepthOfField_HDRP.cs
+  │   │   │   │   │   │   │   ├── MMF_Exposure_HDRP.cs
+  │   │   │   │   │   │   │   ├── MMF_FilmGrain_HDRP.cs
+  │   │   │   │   │   │   │   ├── MMF_LensDistortion_HDRP.cs
+  │   │   │   │   │   │   │   ├── MMF_MotionBlur_HDRP.cs
+  │   │   │   │   │   │   │   ├── MMF_PaniniProjection_HDRP.cs
+  │   │   │   │   │   │   │   ├── MMF_Vignette_HDRP.cs
+  │   │   │   │   │   │   │   └── MMF_WhiteBalance_HDRP.cs
+  │   │   │   │   │   │   ├── Helpers/
+  │   │   │   │   │   │   │   └── MMHDRPHelpers.cs
+  │   │   │   │   │   │   ├── Shakers/
+  │   │   │   │   │   │   │   ├── MMBloomShaker_HDRP.cs
+  │   │   │   │   │   │   │   ├── MMChannelMixerShaker_HDRP.cs
+  │   │   │   │   │   │   │   ├── MMChromaticAberrationShaker_HDRP.cs
+  │   │   │   │   │   │   │   ├── MMColorAdjustmentsShaker_HDRP.cs
+  │   │   │   │   │   │   │   ├── MMDepthOfFieldShaker_HDRP.cs
+  │   │   │   │   │   │   │   ├── MMExposureShaker_HDRP.cs
+  │   │   │   │   │   │   │   ├── MMFilmGrainShaker_HDRP.cs
+  │   │   │   │   │   │   │   ├── MMLensDistortionShaker_HDRP.cs
+  │   │   │   │   │   │   │   ├── MMMotionBlurShaker_HDRP.cs
+  │   │   │   │   │   │   │   ├── MMPaniniProjectionShaker_HDRP.cs
+  │   │   │   │   │   │   │   ├── MMVignetteShaker_HDRP.cs
+  │   │   │   │   │   │   │   └── MMWhiteBalanceShaker_HDRP.cs
+  │   │   │   │   │   │   ├── Springs/
+  │   │   │   │   │   │   │   ├── MMSpringBloomIntensity_HDRP.cs
+  │   │   │   │   │   │   │   ├── MMSpringChromaticAberrationIntensity_HDRP.cs
+  │   │   │   │   │   │   │   ├── MMSpringColorAdjustmentsContrast_HDRP.cs
+  │   │   │   │   │   │   │   ├── MMSpringColorAdjustmentsHueShift_HDRP.cs
+  │   │   │   │   │   │   │   ├── MMSpringColorAdjustmentsSaturation_HDRP.cs
+  │   │   │   │   │   │   │   ├── MMSpringDepthOfFieldFocusDistance_HDRP.cs
+  │   │   │   │   │   │   │   ├── MMSpringLensDistortionIntensity_HDRP.cs
+  │   │   │   │   │   │   │   ├── MMSpringMotionBlurIntensity_HDRP.cs
+  │   │   │   │   │   │   │   ├── MMSpringPaniniProjectionDistance_HDRP.cs
+  │   │   │   │   │   │   │   ├── MMSpringVignetteCenter_HDRP.cs
+  │   │   │   │   │   │   │   ├── MMSpringVignetteColor_HDRP.cs
+  │   │   │   │   │   │   │   ├── MMSpringVignetteIntensity_HDRP.cs
+  │   │   │   │   │   │   │   ├── MMSpringWhiteBalanceTemperature_HDRP.cs
+  │   │   │   │   │   │   │   └── MMSpringWhiteBalanceTint_HDRP.cs
+  │   │   │   │   │   ├── MMTools/
+  │   │   │   │   │   │   ├── Feedbacks/
+  │   │   │   │   │   │   │   ├── MMF_Blink.cs
+  │   │   │   │   │   │   │   ├── MMF_Broadcast.cs
+  │   │   │   │   │   │   │   ├── MMF_BroadcastProxy.cs
+  │   │   │   │   │   │   │   ├── MMF_CanvasGroup.cs
+  │   │   │   │   │   │   │   ├── MMF_DebugBreak.cs
+  │   │   │   │   │   │   │   ├── MMF_DebugComment.cs
+  │   │   │   │   │   │   │   ├── MMF_DebugLog.cs
+  │   │   │   │   │   │   │   ├── MMF_Fade.cs
+  │   │   │   │   │   │   │   ├── MMF_FloatController.cs
+  │   │   │   │   │   │   │   ├── MMF_FloatingText.cs
+  │   │   │   │   │   │   │   ├── MMF_Fog.cs
+  │   │   │   │   │   │   │   ├── MMF_ImageAlpha.cs
+  │   │   │   │   │   │   │   ├── MMF_ImageFill.cs
+  │   │   │   │   │   │   │   ├── MMF_LoadScene.cs
+  │   │   │   │   │   │   │   ├── MMF_MMGameEvent.cs
+  │   │   │   │   │   │   │   ├── MMF_MMSoundManagerAllSoundsControl.cs
+  │   │   │   │   │   │   │   ├── MMF_MMSoundManagerSaveLoad.cs
+  │   │   │   │   │   │   │   ├── MMF_MMSoundManagerSound.cs
+  │   │   │   │   │   │   │   ├── MMF_MMSoundManagerSoundControl.cs
+  │   │   │   │   │   │   │   ├── MMF_MMSoundManagerSoundData.cs
+  │   │   │   │   │   │   │   ├── MMF_MMSoundManagerSoundFade.cs
+  │   │   │   │   │   │   │   ├── MMF_MMSoundManagerTrackControl.cs
+  │   │   │   │   │   │   │   ├── MMF_MMSoundManagerTrackFade.cs
+  │   │   │   │   │   │   │   ├── MMF_Playlist.cs
+  │   │   │   │   │   │   │   ├── MMF_PPMovingFilter.cs
+  │   │   │   │   │   │   │   ├── MMF_Property.cs
+  │   │   │   │   │   │   │   ├── MMF_RadioSignal.cs
+  │   │   │   │   │   │   │   ├── MMF_RectTransformAnchor.cs
+  │   │   │   │   │   │   │   ├── MMF_RectTransformOffset.cs
+  │   │   │   │   │   │   │   ├── MMF_RectTransformPivot.cs
+  │   │   │   │   │   │   │   ├── MMF_RectTransformSizeDelta.cs
+  │   │   │   │   │   │   │   ├── MMF_ShaderController.cs
+  │   │   │   │   │   │   │   ├── MMF_Sound.cs
+  │   │   │   │   │   │   │   └── MMF_TextFontSize.cs
+  │   │   │   │   │   │   ├── MMRadio/
+  │   │   │   │   │   │   │   ├── Legacy/
+  │   │   │   │   │   │   │   │   └── MMFeedbackBase.cs
+  │   │   │   │   │   │   │   └── MMF_FeedbackBase.cs
+  │   │   │   │   │   │   ├── Shakers/
+  │   │   │   │   │   │   │   └── MMPostProcessingMovingFilter.cs
+  │   │   │   │   │   ├── NiceVibrations/
+  │   │   │   │   │   │   ├── Feedbacks/
+  │   │   │   │   │   │   │   ├── Legacy/
+  │   │   │   │   │   │   │   │   └── MMFeedbackNVSettings.cs
+  │   │   │   │   │   │   │   ├── MMF_Haptics.cs
+  │   │   │   │   │   │   │   ├── MMF_NVClip.cs
+  │   │   │   │   │   │   │   ├── MMF_NVContinuous.cs
+  │   │   │   │   │   │   │   ├── MMF_NVControl.cs
+  │   │   │   │   │   │   │   ├── MMF_NVEmphasis.cs
+  │   │   │   │   │   │   │   └── MMF_NVPreset.cs
+  │   │   │   │   │   ├── PostProcessing/
+  │   │   │   │   │   │   ├── Feedbacks/
+  │   │   │   │   │   │   │   ├── MMF_Bloom.cs
+  │   │   │   │   │   │   │   ├── MMF_ChromaticAberration.cs
+  │   │   │   │   │   │   │   ├── MMF_ColorGrading.cs
+  │   │   │   │   │   │   │   ├── MMF_DepthOfField.cs
+  │   │   │   │   │   │   │   ├── MMF_GlobalPPVolumeAutoBlend.cs
+  │   │   │   │   │   │   │   ├── MMF_LensDistortion.cs
+  │   │   │   │   │   │   │   └── MMF_Vignette.cs
+  │   │   │   │   │   │   ├── Helpers/
+  │   │   │   │   │   │   │   ├── MMGlobalPostProcessingVolumeAutoBlend.cs
+  │   │   │   │   │   │   │   └── MMPostProcessingHelpers.cs
+  │   │   │   │   │   │   ├── Resources/
+  │   │   │   │   │   │   │   ├── MMDefaultPostProcessingProfile.asset
+  │   │   │   │   │   │   │   └── MMDefaultPostProcessingVolume.prefab
+  │   │   │   │   │   │   ├── Shakers/
+  │   │   │   │   │   │   │   ├── MMAutoFocus.cs
+  │   │   │   │   │   │   │   ├── MMBloomShaker.cs
+  │   │   │   │   │   │   │   ├── MMChromaticAberrationShaker.cs
+  │   │   │   │   │   │   │   ├── MMColorGradingShaker.cs
+  │   │   │   │   │   │   │   ├── MMDepthOfFieldShaker.cs
+  │   │   │   │   │   │   │   ├── MMLensDistortionShaker.cs
+  │   │   │   │   │   │   │   └── MMVignetteShaker.cs
+  │   │   │   │   │   │   ├── Springs/
+  │   │   │   │   │   │   │   ├── MMSpringBloomIntensity.cs
+  │   │   │   │   │   │   │   ├── MMSpringChromaticAberrationIntensity.cs
+  │   │   │   │   │   │   │   ├── MMSpringColorGradingContrast.cs
+  │   │   │   │   │   │   │   ├── MMSpringColorGradingHueShift.cs
+  │   │   │   │   │   │   │   ├── MMSpringColorGradingSaturation.cs
+  │   │   │   │   │   │   │   ├── MMSpringColorGradingTemperature.cs
+  │   │   │   │   │   │   │   ├── MMSpringColorGradingTint.cs
+  │   │   │   │   │   │   │   ├── MMSpringDepthOfFieldFocusDistance.cs
+  │   │   │   │   │   │   │   ├── MMSpringLensDistortionIntensity.cs
+  │   │   │   │   │   │   │   ├── MMSpringMotionBlurShutterAngle.cs
+  │   │   │   │   │   │   │   ├── MMSpringVignetteCenter.cs
+  │   │   │   │   │   │   │   ├── MMSpringVignetteColor.cs
+  │   │   │   │   │   │   │   └── MMSpringVignetteIntensity.cs
+  │   │   │   │   │   ├── TextMeshPro/
+  │   │   │   │   │   │   ├── Feedbacks/
+  │   │   │   │   │   │   │   ├── MMF_TMPAlpha.cs
+  │   │   │   │   │   │   │   ├── MMF_TMPCharacterSpacing.cs
+  │   │   │   │   │   │   │   ├── MMF_TMPColor.cs
+  │   │   │   │   │   │   │   ├── MMF_TMPCountTo.cs
+  │   │   │   │   │   │   │   ├── MMF_TMPCountToLong.cs
+  │   │   │   │   │   │   │   ├── MMF_TMPDilate.cs
+  │   │   │   │   │   │   │   ├── MMF_TMPFontSize.cs
+  │   │   │   │   │   │   │   ├── MMF_TMPLineSpacing.cs
+  │   │   │   │   │   │   │   ├── MMF_TMPOutlineColor.cs
+  │   │   │   │   │   │   │   ├── MMF_TMPOutlineWidth.cs
+  │   │   │   │   │   │   │   ├── MMF_TMPParagraphSpacing.cs
+  │   │   │   │   │   │   │   ├── MMF_TMPSoftness.cs
+  │   │   │   │   │   │   │   ├── MMF_TMPText.cs
+  │   │   │   │   │   │   │   ├── MMF_TMPTextReveal.cs
+  │   │   │   │   │   │   │   └── MMF_TMPWordSpacing.cs
+  │   │   │   │   │   │   ├── MMFloatingText/
+  │   │   │   │   │   │   │   ├── Prefabs/
+  │   │   │   │   │   │   │   │   └── MMFloatingTextMeshPro.prefab
+  │   │   │   │   │   │   │   └── MMFloatingTextMeshPro.cs
+  │   │   │   │   │   ├── UIToolkit/
+  │   │   │   │   │   │   ├── Base/
+  │   │   │   │   │   │   │   ├── MMF_UIToolkit.cs
+  │   │   │   │   │   │   │   ├── MMF_UIToolkitBoolBase.cs
+  │   │   │   │   │   │   │   ├── MMF_UIToolkitColorBase.cs
+  │   │   │   │   │   │   │   ├── MMF_UIToolkitFloatBase.cs
+  │   │   │   │   │   │   │   └── MMF_UIToolkitVector2Base.cs
+  │   │   │   │   │   │   ├── Feedbacks/
+  │   │   │   │   │   │   │   ├── MMF_UIToolkitBackgroundColor.cs
+  │   │   │   │   │   │   │   ├── MMF_UIToolkitBorderColor.cs
+  │   │   │   │   │   │   │   ├── MMF_UIToolkitBorderRadius.cs
+  │   │   │   │   │   │   │   ├── MMF_UIToolkitBorderWidth.cs
+  │   │   │   │   │   │   │   ├── MMF_UIToolkitClass.cs
+  │   │   │   │   │   │   │   ├── MMF_UIToolkitFontSize.cs
+  │   │   │   │   │   │   │   ├── MMF_UIToolkitImageTint.cs
+  │   │   │   │   │   │   │   ├── MMF_UIToolkitOpacity.cs
+  │   │   │   │   │   │   │   ├── MMF_UIToolkitRotate.cs
+  │   │   │   │   │   │   │   ├── MMF_UIToolkitScale.cs
+  │   │   │   │   │   │   │   ├── MMF_UIToolkitSize.cs
+  │   │   │   │   │   │   │   ├── MMF_UIToolkitStylesheet.cs
+  │   │   │   │   │   │   │   ├── MMF_UIToolkitText.cs
+  │   │   │   │   │   │   │   ├── MMF_UIToolkitTextColor.cs
+  │   │   │   │   │   │   │   ├── MMF_UIToolkitTransformOrigin.cs
+  │   │   │   │   │   │   │   ├── MMF_UIToolkitTranslate.cs
+  │   │   │   │   │   │   │   └── MMF_UIToolkitVisible.cs
+  │   │   │   │   │   ├── URP/
+  │   │   │   │   │   │   ├── Feedbacks/
+  │   │   │   │   │   │   │   ├── MMF_Bloom_URP.cs
+  │   │   │   │   │   │   │   ├── MMF_ChannelMixer_URP.cs
+  │   │   │   │   │   │   │   ├── MMF_ChromaticAberration_URP.cs
+  │   │   │   │   │   │   │   ├── MMF_ColorAdjustments_URP.cs
+  │   │   │   │   │   │   │   ├── MMF_DepthOfField_URP.cs
+  │   │   │   │   │   │   │   ├── MMF_FilmGrain_URP.cs
+  │   │   │   │   │   │   │   ├── MMF_GlobalPPVolumeAutoBlend_URP.cs
+  │   │   │   │   │   │   │   ├── MMF_LensDistortion_URP.cs
+  │   │   │   │   │   │   │   ├── MMF_Light2D_URP.cs
+  │   │   │   │   │   │   │   ├── MMF_MotionBlur_URP.cs
+  │   │   │   │   │   │   │   ├── MMF_PaniniProjection_URP.cs
+  │   │   │   │   │   │   │   ├── MMF_Vignette_URP.cs
+  │   │   │   │   │   │   │   └── MMF_WhiteBalance_URP.cs
+  │   │   │   │   │   │   ├── Helpers/
+  │   │   │   │   │   │   │   ├── MMGlobalPostProcessingVolumeAutoBlend_URP.cs
+  │   │   │   │   │   │   │   └── MMURPHelpers.cs
+  │   │   │   │   │   │   ├── Shakers/
+  │   │   │   │   │   │   │   ├── MMAutoFocus_URP.cs
+  │   │   │   │   │   │   │   ├── MMBloomShaker_URP.cs
+  │   │   │   │   │   │   │   ├── MMChannelMixerShaker_URP.cs
+  │   │   │   │   │   │   │   ├── MMChromaticAberrationShaker_URP.cs
+  │   │   │   │   │   │   │   ├── MMColorAdjustmentsShaker_URP.cs
+  │   │   │   │   │   │   │   ├── MMDepthOfFieldShaker_URP.cs
+  │   │   │   │   │   │   │   ├── MMFilmGrainShaker_URP.cs
+  │   │   │   │   │   │   │   ├── MMLensDistortionShaker_URP.cs
+  │   │   │   │   │   │   │   ├── MMLight2DShaker_URP.cs
+  │   │   │   │   │   │   │   ├── MMMotionBlurShaker_URP.cs
+  │   │   │   │   │   │   │   ├── MMPaniniProjectionShaker_URP.cs
+  │   │   │   │   │   │   │   ├── MMVignetteShaker_URP.cs
+  │   │   │   │   │   │   │   └── MMWhiteBalanceShaker_URP.cs
+  │   │   │   │   │   │   ├── Springs/
+  │   │   │   │   │   │   │   ├── MMSpringBloomIntensity_URP.cs
+  │   │   │   │   │   │   │   ├── MMSpringChromaticAberrationIntensity_URP.cs
+  │   │   │   │   │   │   │   ├── MMSpringColorAdjustmentsContrast_URP.cs
+  │   │   │   │   │   │   │   ├── MMSpringColorAdjustmentsHueShift_URP.cs
+  │   │   │   │   │   │   │   ├── MMSpringColorAdjustmentsSaturation_URP.cs
+  │   │   │   │   │   │   │   ├── MMSpringDepthOfFieldFocalLength_URP.cs
+  │   │   │   │   │   │   │   ├── MMSpringLensDistortionIntensity_URP.cs
+  │   │   │   │   │   │   │   ├── MMSpringMotionBlurIntensity_URP.cs
+  │   │   │   │   │   │   │   ├── MMSpringPaniniProjectionDistance_URP.cs
+  │   │   │   │   │   │   │   ├── MMSpringVignetteCenter_URP.cs
+  │   │   │   │   │   │   │   ├── MMSpringVignetteColor_URP.cs
+  │   │   │   │   │   │   │   ├── MMSpringVignetteIntensity_URP.cs
+  │   │   │   │   │   │   │   ├── MMSpringWhiteBalanceTemperature_URP.cs
+  │   │   │   │   │   │   │   └── MMSpringWhiteBalanceTint_URP.cs
+  │   │   │   │   │   ├── VisualEffectGraph/
+  │   │   │   │   │   │   ├── Feedbacks/
+  │   │   │   │   │   │   │   ├── MMF_VisualEffect.cs
+  │   │   │   │   │   │   │   └── MMF_VisualEffectSetProperty.cs
+  │   │   │   ├── MMInterface/
+  │   │   │   │   ├── Common/
+  │   │   │   │   │   ├── Animations/
+  │   │   │   │   │   │   ├── Buttons/
+  │   │   │   │   │   │   │   ├── Animations/
+  │   │   │   │   │   │   │   │   ├── DefaultPlaceholders/
+  │   │   │   │   │   │   │   ├── Animators/
+  │   │   │   │   │   │   ├── Popup/
+  │   │   │   │   │   │   ├── Switch/
+  │   │   │   │   │   ├── Scripts/
+  │   │   │   │   │   │   ├── MMCarousel.cs
+  │   │   │   │   │   │   ├── MMCheckbox.cs
+  │   │   │   │   │   │   ├── MMPopup.cs
+  │   │   │   │   │   │   ├── MMRadioButton.cs
+  │   │   │   │   │   │   ├── MMScrollviewButton.cs
+  │   │   │   │   │   │   ├── MMSpriteReplace.cs
+  │   │   │   │   │   │   ├── MMSpriteReplaceCycle.cs
+  │   │   │   │   │   │   └── MMSwitch.cs
+  │   │   │   │   │   ├── Shaders/
+  │   │   │   │   │   ├── Sounds/
+  │   │   │   │   ├── Editor/
+  │   │   │   │   │   ├── DefineSymbols/
+  │   │   │   │   │   │   └── MMInterfaceDefineSymbols.cs
+  │   │   │   │   ├── Styles/
+  │   │   │   │   │   ├── Mini/
+  │   │   │   │   │   │   ├── Fonts/
+  │   │   │   │   │   │   │   ├── Lato/
+  │   │   │   │   │   │   ├── Materials/
+  │   │   │   │   │   │   ├── Prefabs/
+  │   │   │   │   │   │   │   ├── Backgrounds/
+  │   │   │   │   │   │   │   │   ├── DemoBackgroundBlur.prefab
+  │   │   │   │   │   │   │   │   └── DemoBackgroundYellow.prefab
+  │   │   │   │   │   │   │   ├── Buttons/
+  │   │   │   │   │   │   │   │   ├── Blue/
+  │   │   │   │   │   │   │   │   │   ├── ButtonAlt.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHeart.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleStar.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonMain.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonRound.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareHeart.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   └── ButtonSquareStar.prefab
+  │   │   │   │   │   │   │   │   ├── Cyan/
+  │   │   │   │   │   │   │   │   │   ├── ButtonAlt.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHeart.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleStar.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonMain.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonRound.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareHeart.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   └── ButtonSquareStar.prefab
+  │   │   │   │   │   │   │   │   ├── DarkerGrey/
+  │   │   │   │   │   │   │   │   │   ├── ButtonAlt.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHeart.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleStar.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonMain.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonRound.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareHeart.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   └── ButtonSquareStar.prefab
+  │   │   │   │   │   │   │   │   ├── DarkGrey/
+  │   │   │   │   │   │   │   │   │   ├── ButtonAlt.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHeart.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleStar.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonMain.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonRound.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareHeart.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   └── ButtonSquareStar.prefab
+  │   │   │   │   │   │   │   │   ├── Green/
+  │   │   │   │   │   │   │   │   │   ├── ButtonAlt.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHeart.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleStar.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonMain.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonRound.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareHeart.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   └── ButtonSquareStar.prefab
+  │   │   │   │   │   │   │   │   ├── Grey/
+  │   │   │   │   │   │   │   │   │   ├── ButtonAlt.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHeart.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleStar.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonMain.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonRound.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareHeart.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   └── ButtonSquareStar.prefab
+  │   │   │   │   │   │   │   │   ├── HorizontalGradientGreenToBlue/
+  │   │   │   │   │   │   │   │   │   ├── ButtonAlt.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHeart.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleStar.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonMain.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonRound.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareHeart.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   └── ButtonSquareStar.prefab
+  │   │   │   │   │   │   │   │   ├── HorizontalGradientOrangeToPink/
+  │   │   │   │   │   │   │   │   │   ├── ButtonAlt.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHeart.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleStar.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonMain.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonRound.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareHeart.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   └── ButtonSquareStar.prefab
+  │   │   │   │   │   │   │   │   ├── LightGreen/
+  │   │   │   │   │   │   │   │   │   ├── ButtonAlt.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHeart.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleStar.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonMain.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonRound.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareHeart.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   └── ButtonSquareStar.prefab
+  │   │   │   │   │   │   │   │   ├── LightGrey/
+  │   │   │   │   │   │   │   │   │   ├── ButtonAlt.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHeart.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleStar.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonMain.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonRound.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareHeart.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   └── ButtonSquareStar.prefab
+  │   │   │   │   │   │   │   │   ├── Orange/
+  │   │   │   │   │   │   │   │   │   ├── ButtonAlt.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHeart.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleStar.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonMain.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonRound.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   └── ButtonSquareStar.prefab
+  │   │   │   │   │   │   │   │   ├── Pink/
+  │   │   │   │   │   │   │   │   │   ├── ButtonAlt.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHeart.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleStar.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonMain.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonRound.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareHeart.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   └── ButtonSquareStar.prefab
+  │   │   │   │   │   │   │   │   ├── Purple/
+  │   │   │   │   │   │   │   │   │   ├── ButtonAlt.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHeart.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleStar.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonMain.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonRound.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareHeart.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   └── ButtonSquareStar.prefab
+  │   │   │   │   │   │   │   │   ├── VerticalGradientBlueToCyan/
+  │   │   │   │   │   │   │   │   │   ├── ButtonAlt.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHeart.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleStar.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonMain.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonRound.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareHeart.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   └── ButtonSquareStar.prefab
+  │   │   │   │   │   │   │   │   ├── VerticalGradientBlueToPurple/
+  │   │   │   │   │   │   │   │   │   ├── ButtonAlt.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHeart.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleStar.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonMain.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonRound.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareHeart.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   └── ButtonSquareStar.prefab
+  │   │   │   │   │   │   │   │   ├── VerticalGradientGreenToCyan/
+  │   │   │   │   │   │   │   │   │   ├── ButtonAlt.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHeart.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleStar.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonMain.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonRound.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareHeart.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   └── ButtonSquareStar.prefab
+  │   │   │   │   │   │   │   │   ├── VerticalGradientOrangeToViolet/
+  │   │   │   │   │   │   │   │   │   ├── ButtonAlt.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircle.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHeart.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleStar.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonMain.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonRound.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquare.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareHeart.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   └── ButtonSquareStar.prefab
+  │   │   │   │   │   │   │   │   ├── Yellow/
+  │   │   │   │   │   │   │   │   │   ├── ButtonAlt.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHeart.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonCircleStar.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonMain.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonRound.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareArrow.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCheck.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCoin.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareCross.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareDoubleChevron.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareGear.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareHeart.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareHome.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareMusic.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOff.prefab
+  │   │   │   │   │   │   │   │   │   ├── ButtonSquareSoundOn.prefab
+  │   │   │   │   │   │   │   │   │   └── ButtonSquareStar.prefab
+  │   │   │   │   │   │   │   ├── ButtonSwapper.prefab
+  │   │   │   │   │   │   │   ├── ButtonSwapperCycle.prefab
+  │   │   │   │   │   │   │   ├── Checkbox.prefab
+  │   │   │   │   │   │   │   ├── Fader.prefab
+  │   │   │   │   │   │   │   ├── InputPassword.prefab
+  │   │   │   │   │   │   │   ├── InputPasswordDark.prefab
+  │   │   │   │   │   │   │   ├── InputText.prefab
+  │   │   │   │   │   │   │   ├── InputTextDark.prefab
+  │   │   │   │   │   │   │   ├── Page.prefab
+  │   │   │   │   │   │   │   ├── PageDark.prefab
+  │   │   │   │   │   │   │   ├── Palette.prefab
+  │   │   │   │   │   │   │   ├── Popup.prefab
+  │   │   │   │   │   │   │   ├── ProgressBarBlue.prefab
+  │   │   │   │   │   │   │   ├── RadioButton.prefab
+  │   │   │   │   │   │   │   ├── Score.prefab
+  │   │   │   │   │   │   │   ├── ScoreStars.prefab
+  │   │   │   │   │   │   │   ├── Switch.prefab
+  │   │   │   │   │   │   │   ├── TextBase.prefab
+  │   │   │   │   │   │   │   ├── TextBaseDark.prefab
+  │   │   │   │   │   │   │   ├── TextSubtitle.prefab
+  │   │   │   │   │   │   │   ├── TextSubtitleDark.prefab
+  │   │   │   │   │   │   │   ├── TextTitle.prefab
+  │   │   │   │   │   │   │   └── TextTitleDark.prefab
+  │   │   │   │   │   │   ├── Sprites/
+  │   │   │   │   │   │   │   ├── Icons/
+  │   │   │   │   │   │   ├── 1-StyleguideIntro.unity
+  │   │   │   │   │   │   ├── 2-StyleguideButtons.unity
+  │   │   │   │   │   │   ├── 3-StyleguideButtonsAnimations.unity
+  │   │   │   │   │   │   ├── 4-StyleguideForms.unity
+  │   │   │   │   │   │   ├── 5-StyleguideDark.unity
+  │   │   │   │   │   │   ├── AllButtons.unity
+  │   │   │   │   │   │   └── Carousel.unity
+  │   │   │   ├── MMTools/
+  │   │   │   │   ├── Accessories/
+  │   │   │   │   │   ├── Editor/
+  │   │   │   │   │   │   ├── MMActivation/
+  │   │   │   │   │   │   │   └── MMTriggerAndCollisionEditor.cs
+  │   │   │   │   │   │   ├── MMCamera/
+  │   │   │   │   │   │   │   └── MMAspectRatioSafeZonesEditor.cs
+  │   │   │   │   │   │   ├── MMCollisions/
+  │   │   │   │   │   │   │   └── MMMeshToPolygonCollider2D.cs
+  │   │   │   │   │   │   ├── MMCurves/
+  │   │   │   │   │   │   │   └── MMPlotterEditor.cs
+  │   │   │   │   │   │   ├── MMGizmos/
+  │   │   │   │   │   │   │   └── MMGizmoEditor.cs
+  │   │   │   │   │   │   ├── MMGUI/
+  │   │   │   │   │   │   │   └── MMHealthBarEditor.cs
+  │   │   │   │   │   │   ├── MMMaintenance/
+  │   │   │   │   │   │   │   ├── MMCleanEmptyFolders.cs
+  │   │   │   │   │   │   │   ├── MMCleanupMissingScripts.cs
+  │   │   │   │   │   │   │   ├── MMFindMissingScriptsRecursively.cs
+  │   │   │   │   │   │   │   ├── MMFindPrefabsByMono.cs
+  │   │   │   │   │   │   │   ├── MMGroupSelection.cs
+  │   │   │   │   │   │   │   └── MMLockInspector.cs
+  │   │   │   │   │   │   ├── MMMovement/
+  │   │   │   │   │   │   │   ├── MMPathMovement/
+  │   │   │   │   │   │   │   │   ├── MMPathEditor.cs
+  │   │   │   │   │   │   │   │   └── MMPathMovementEditor.cs
+  │   │   │   │   │   │   │   └── MMAutoRotateEditor.cs
+  │   │   │   │   │   │   ├── MMParticles/
+  │   │   │   │   │   │   │   ├── MMRendererSortingLayerEditor.cs
+  │   │   │   │   │   │   │   └── MMTrailRendererSortingLayerEditor.cs
+  │   │   │   │   │   │   ├── MMProcedural/
+  │   │   │   │   │   │   │   └── MMTilemapGeneratorEditor.cs
+  │   │   │   │   │   │   ├── MMUtilities/
+  │   │   │   │   │   │   │   ├── ManagerIconEditor.cs
+  │   │   │   │   │   │   │   ├── MMDebugEditor.cs
+  │   │   │   │   │   │   │   ├── MMLayerPropertyDrawer.cs
+  │   │   │   │   │   │   │   ├── MMScreenshotEditor.cs
+  │   │   │   │   │   │   │   └── MMTransformRandomizerEditor.cs
+  │   │   │   │   │   │   ├── MMVision/
+  │   │   │   │   │   │   │   ├── MMConeOfVision2DInspector.cs
+  │   │   │   │   │   │   │   └── MMConeOfVisionInspector.cs
+  │   │   │   │   │   ├── MMActivation/
+  │   │   │   │   │   │   ├── MMActivationOnStart.cs
+  │   │   │   │   │   │   ├── MMApplicationPlatformActivation.cs
+  │   │   │   │   │   │   ├── MMAutoExecution.cs
+  │   │   │   │   │   │   ├── MMConditionalActivation.cs
+  │   │   │   │   │   │   ├── MMDontDestroyOnLoad.cs
+  │   │   │   │   │   │   ├── MMInputExecution.cs
+  │   │   │   │   │   │   ├── MMOnMouse.cs
+  │   │   │   │   │   │   ├── MMParentingOnStart.cs
+  │   │   │   │   │   │   ├── MMPeriodicExecution.cs
+  │   │   │   │   │   │   ├── MMPlatformActivation.cs
+  │   │   │   │   │   │   ├── MMTimedActivation.cs
+  │   │   │   │   │   │   ├── MMTimedDestruction.cs
+  │   │   │   │   │   │   ├── MMToggleActive.cs
+  │   │   │   │   │   │   ├── MMTriggerAndCollision.cs
+  │   │   │   │   │   │   ├── MMTriggerAndCollisionFilter.cs
+  │   │   │   │   │   │   └── MMTriggerFilter.cs
+  │   │   │   │   │   ├── MMCamera/
+  │   │   │   │   │   │   ├── MMAspectRatioSafeZones.cs
+  │   │   │   │   │   │   ├── MMBillboard.cs
+  │   │   │   │   │   │   ├── MMCameraAspectRatio.cs
+  │   │   │   │   │   │   ├── MMCameraFog.cs
+  │   │   │   │   │   │   ├── MMOrbitalCamera.cs
+  │   │   │   │   │   │   └── MMViewportEdgeTeleporter.cs
+  │   │   │   │   │   ├── MMCinemachine/
+  │   │   │   │   │   │   ├── MMCinemachineZone/
+  │   │   │   │   │   │   │   ├── MMCinemachineZone.cs
+  │   │   │   │   │   │   │   ├── MMCinemachineZone2D.cs
+  │   │   │   │   │   │   │   └── MMCinemachineZone3D.cs
+  │   │   │   │   │   │   ├── MMGyroParallax/
+  │   │   │   │   │   │   │   └── MMGyroParallax.cs
+  │   │   │   │   │   ├── MMCurves/
+  │   │   │   │   │   │   ├── Plotter/
+  │   │   │   │   │   │   │   ├── MMPlotter.cs
+  │   │   │   │   │   │   │   ├── MMPlotterAxis.cs
+  │   │   │   │   │   │   │   └── MMPlotterGenerator.cs
+  │   │   │   │   │   ├── MMDebugMenu/
+  │   │   │   │   │   │   ├── Prefabs/
+  │   │   │   │   │   │   │   ├── MMDebugMenu.prefab
+  │   │   │   │   │   │   │   ├── MMDebugMenuButton.prefab
+  │   │   │   │   │   │   │   ├── MMDebugMenuButtonBorder.prefab
+  │   │   │   │   │   │   │   ├── MMDebugMenuCheckbox.prefab
+  │   │   │   │   │   │   │   ├── MMDebugMenuChoicesThree.prefab
+  │   │   │   │   │   │   │   ├── MMDebugMenuChoicesTwo.prefab
+  │   │   │   │   │   │   │   ├── MMDebugMenuDebugPanel.prefab
+  │   │   │   │   │   │   │   ├── MMDebugMenuSlider.prefab
+  │   │   │   │   │   │   │   ├── MMDebugMenuSpacerBig.prefab
+  │   │   │   │   │   │   │   ├── MMDebugMenuSpacerSmall.prefab
+  │   │   │   │   │   │   │   ├── MMDebugMenuTab.prefab
+  │   │   │   │   │   │   │   ├── MMDebugMenuTabContents.prefab
+  │   │   │   │   │   │   │   ├── MMDebugMenuTabSpacer.prefab
+  │   │   │   │   │   │   │   ├── MMDebugMenuTextLong.prefab
+  │   │   │   │   │   │   │   ├── MMDebugMenuTextSmall.prefab
+  │   │   │   │   │   │   │   ├── MMDebugMenuTextTiny.prefab
+  │   │   │   │   │   │   │   ├── MMDebugMenuTitle.prefab
+  │   │   │   │   │   │   │   ├── MMDebugMenuValue.prefab
+  │   │   │   │   │   │   │   └── MMDebugTouchDisplayPrefab.prefab
+  │   │   │   │   │   │   ├── Scripts/
+  │   │   │   │   │   │   │   ├── Commands/
+  │   │   │   │   │   │   │   │   └── MMDebugMenuCommands.cs
+  │   │   │   │   │   │   │   ├── Events/
+  │   │   │   │   │   │   │   │   ├── MMDebugMenuButtonEvent.cs
+  │   │   │   │   │   │   │   │   ├── MMDebugMenuButtonEventListener.cs
+  │   │   │   │   │   │   │   │   ├── MMDebugMenuCheckboxEvent.cs
+  │   │   │   │   │   │   │   │   ├── MMDebugMenuCheckboxEventListener.cs
+  │   │   │   │   │   │   │   │   ├── MMDebugMenuSliderEvent.cs
+  │   │   │   │   │   │   │   │   └── MMDebugMenuSliderEventListener.cs
+  │   │   │   │   │   │   │   ├── MMDebugMenuItems/
+  │   │   │   │   │   │   │   │   ├── MMDebugMenuItemButton.cs
+  │   │   │   │   │   │   │   │   ├── MMDebugMenuItemCheckbox.cs
+  │   │   │   │   │   │   │   │   ├── MMDebugMenuItemChoices.cs
+  │   │   │   │   │   │   │   │   ├── MMDebugMenuItemSlider.cs
+  │   │   │   │   │   │   │   │   ├── MMDebugMenuItemText.cs
+  │   │   │   │   │   │   │   │   ├── MMDebugMenuItemTitle.cs
+  │   │   │   │   │   │   │   │   └── MMDebugMenuItemValue.cs
+  │   │   │   │   │   │   │   ├── Tabs/
+  │   │   │   │   │   │   │   │   ├── MMDebugMenuDebugTab.cs
+  │   │   │   │   │   │   │   │   ├── MMDebugMenuTab.cs
+  │   │   │   │   │   │   │   │   ├── MMDebugMenuTabContents.cs
+  │   │   │   │   │   │   │   │   └── MMDebugMenuTabManager.cs
+  │   │   │   │   │   │   │   ├── UIClasses/
+  │   │   │   │   │   │   │   │   ├── MMDebugMenuRadioButton.cs
+  │   │   │   │   │   │   │   │   ├── MMDebugMenuSpriteReplace.cs
+  │   │   │   │   │   │   │   │   └── MMDebugMenuSwitch.cs
+  │   │   │   │   │   │   │   ├── MMDebugMenu.cs
+  │   │   │   │   │   │   │   ├── MMDebugMenuData.cs
+  │   │   │   │   │   │   │   └── MMDebugTouchDisplay.cs
+  │   │   │   │   │   │   ├── Sprites/
+  │   │   │   │   │   ├── MMDebugOnScreen/
+  │   │   │   │   │   │   ├── Resources/
+  │   │   │   │   │   │   │   └── MMDebugOnScreenConsole.prefab
+  │   │   │   │   │   │   ├── Sprites/
+  │   │   │   │   │   ├── MMGizmos/
+  │   │   │   │   │   │   └── MMGizmo.cs
+  │   │   │   │   │   ├── MMGUI/
+  │   │   │   │   │   │   ├── Materials/
+  │   │   │   │   │   │   ├── Sprites/
+  │   │   │   │   │   │   ├── MMCountdown.cs
+  │   │   │   │   │   │   ├── MMCursorVisible.cs
+  │   │   │   │   │   │   ├── MMGetFocusOnEnable.cs
+  │   │   │   │   │   │   ├── MMHealthBar.cs
+  │   │   │   │   │   │   ├── MMOnPointer.cs
+  │   │   │   │   │   │   ├── MMParallaxUI.cs
+  │   │   │   │   │   │   ├── MMProgressBarDemoAuto.cs
+  │   │   │   │   │   │   ├── MMPSBToUIConverter.cs
+  │   │   │   │   │   │   ├── MMRadialProgressBar.cs
+  │   │   │   │   │   │   ├── MMRaycastTarget.cs
+  │   │   │   │   │   │   ├── MMSceneName.cs
+  │   │   │   │   │   │   ├── MMSelectionBase.cs
+  │   │   │   │   │   │   ├── MMSliderStep.cs
+  │   │   │   │   │   │   ├── MMTwoSidedUI.cs
+  │   │   │   │   │   │   ├── MMUIFollowMouse.cs
+  │   │   │   │   │   │   └── SelectionBase.cs
+  │   │   │   │   │   ├── MMGyroscope/
+  │   │   │   │   │   │   └── MMGyroscope.cs
+  │   │   │   │   │   ├── MMInput/
+  │   │   │   │   │   │   └── MMAutoInputModule.cs
+  │   │   │   │   │   ├── MMInstantiation/
+  │   │   │   │   │   │   ├── MMRandomBoundsInstantiator.cs
+  │   │   │   │   │   │   ├── MMRandomInstantiator.cs
+  │   │   │   │   │   │   ├── MMSpawnAround.cs
+  │   │   │   │   │   │   └── MMSpawnAroundTester.cs
+  │   │   │   │   │   ├── MMMovement/
+  │   │   │   │   │   │   ├── MMPathMovement/
+  │   │   │   │   │   │   │   ├── MMPath.cs
+  │   │   │   │   │   │   │   └── MMPathMovement.cs
+  │   │   │   │   │   │   ├── MMAim.cs
+  │   │   │   │   │   │   ├── MMAutoRotate.cs
+  │   │   │   │   │   │   ├── MMFaceDirection.cs
+  │   │   │   │   │   │   ├── MMPositionRecorder.cs
+  │   │   │   │   │   │   ├── MMPreventPassingThrough.cs
+  │   │   │   │   │   │   ├── MMPreventPassingThrough2D.cs
+  │   │   │   │   │   │   ├── MMPreventPassingThrough3D.cs
+  │   │   │   │   │   │   ├── MMSquashAndStretch.cs
+  │   │   │   │   │   │   └── MMStayInPlace.cs
+  │   │   │   │   │   ├── MMParticles/
+  │   │   │   │   │   │   ├── MMAutoDestroyParticleSystem.cs
+  │   │   │   │   │   │   ├── MMChangeFogColor.cs
+  │   │   │   │   │   │   ├── MMDelayParticles.cs
+  │   │   │   │   │   │   ├── MMRendererSortingLayer.cs
+  │   │   │   │   │   │   ├── MMRuntimeParticleControl.cs
+  │   │   │   │   │   │   ├── MMTrailRendererSortingLayer.cs
+  │   │   │   │   │   │   └── MMVisibleParticle.cs
+  │   │   │   │   │   ├── MMPerformance/
+  │   │   │   │   │   │   ├── MMFPSCounter.cs
+  │   │   │   │   │   │   ├── MMFPSUnlock.cs
+  │   │   │   │   │   │   └── MMSpeedTest.cs
+  │   │   │   │   │   ├── MMPhysics/
+  │   │   │   │   │   │   ├── MMRigidbodyCenterOfMass.cs
+  │   │   │   │   │   │   └── MMRigidbodyInterface.cs
+  │   │   │   │   │   ├── MMProcedural/
+  │   │   │   │   │   │   ├── MMGridGenerators/
+  │   │   │   │   │   │   │   ├── MMGridGenerator.cs
+  │   │   │   │   │   │   │   ├── MMGridGeneratorFull.cs
+  │   │   │   │   │   │   │   ├── MMGridGeneratorPath.cs
+  │   │   │   │   │   │   │   ├── MMGridGeneratorPerlinNoise.cs
+  │   │   │   │   │   │   │   ├── MMGridGeneratorPerlinNoiseGround.cs
+  │   │   │   │   │   │   │   ├── MMGridGeneratorRandom.cs
+  │   │   │   │   │   │   │   ├── MMGridGeneratorRandomWalk.cs
+  │   │   │   │   │   │   │   ├── MMGridGeneratorRandomWalkAvoider.cs
+  │   │   │   │   │   │   │   └── MMGridGeneratorRandomWalkGround.cs
+  │   │   │   │   │   │   ├── MMTilemapGenerator/
+  │   │   │   │   │   │   │   ├── MMTilemapGenerator.cs
+  │   │   │   │   │   │   │   └── MMTilemapGeneratorLayer.cs
+  │   │   │   │   │   ├── MMPrototypeTextures/
+  │   │   │   │   │   │   ├── MMBRP_Materials/
+  │   │   │   │   │   │   │   ├── Neutral/
+  │   │   │   │   │   │   │   ├── Skybox/
+  │   │   │   │   │   │   ├── Textures/
+  │   │   │   │   │   │   │   ├── MMCheckers/
+  │   │   │   │   │   │   │   ├── MMPlastic/
+  │   │   │   │   │   │   │   ├── MMProtoTextures/
+  │   │   │   │   │   ├── MMShaders/
+  │   │   │   │   │   ├── MMSprites/
+  │   │   │   │   │   │   ├── BezierLineRenderer/
+  │   │   │   │   │   │   │   └── MMBezierLineRenderer.cs
+  │   │   │   │   │   │   ├── MMAutoOrderInLayer.cs
+  │   │   │   │   │   │   ├── MMLineRendererCircle.cs
+  │   │   │   │   │   │   └── MMLineRendererDriver.cs
+  │   │   │   │   │   ├── MMTilemaps/
+  │   │   │   │   │   │   ├── MMTilemap.cs
+  │   │   │   │   │   │   ├── MMTilemapBoolean.cs
+  │   │   │   │   │   │   ├── MMTilemapCleaner.cs
+  │   │   │   │   │   │   ├── MMTilemapGridRenderer.cs
+  │   │   │   │   │   │   └── MMTilemapShadow.cs
+  │   │   │   │   │   ├── MMUtilities/
+  │   │   │   │   │   │   ├── MMApplicationQuit.cs
+  │   │   │   │   │   │   ├── MMDebugController.cs
+  │   │   │   │   │   │   ├── MMLayer.cs
+  │   │   │   │   │   │   ├── MMOpenURL.cs
+  │   │   │   │   │   │   ├── MMSceneRestarter.cs
+  │   │   │   │   │   │   ├── MMSceneViewIcon.cs
+  │   │   │   │   │   │   ├── MMScreenshot.cs
+  │   │   │   │   │   │   └── MMTransformRandomizer.cs
+  │   │   │   │   │   ├── MMVFX/
+  │   │   │   │   │   │   ├── MMBloomDirt/
+  │   │   │   │   │   │   ├── MMBrushes/
+  │   │   │   │   │   │   ├── MMNoise/
+  │   │   │   │   │   │   ├── MMPalette/
+  │   │   │   │   │   │   ├── MMParticles/
+  │   │   │   │   │   │   ├── MMRamps/
+  │   │   │   │   │   │   ├── MMRipple/
+  │   │   │   │   │   │   │   └── MMRipple.prefab
+  │   │   │   │   │   │   ├── Scripts/
+  │   │   │   │   │   │   │   └── MMPanningTexture.cs
+  │   │   │   │   │   ├── MMVision/
+  │   │   │   │   │   │   ├── MMConeOfVision.cs
+  │   │   │   │   │   │   └── MMConeOfVision2D.cs
+  │   │   │   │   ├── Core/
+  │   │   │   │   │   ├── Editor/
+  │   │   │   │   │   │   ├── MMAttributes/
+  │   │   │   │   │   │   │   ├── MMBackgroundColorAttributeDrawer.cs
+  │   │   │   │   │   │   │   ├── MMColorAttributeDrawer.cs
+  │   │   │   │   │   │   │   ├── MMConditionAttributeDrawer.cs
+  │   │   │   │   │   │   │   ├── MMDropdownAttributeDrawer.cs
+  │   │   │   │   │   │   │   ├── MMEnumConditionAttributeDrawer.cs
+  │   │   │   │   │   │   │   ├── MMHiddenAttributeDrawer.cs
+  │   │   │   │   │   │   │   ├── MMInformationDrawer.cs
+  │   │   │   │   │   │   │   ├── MMMenuHelp.cs
+  │   │   │   │   │   │   │   ├── MMMonoBehaviourFieldInfo.cs
+  │   │   │   │   │   │   │   ├── MMMonoBehaviourUITKEditor.cs
+  │   │   │   │   │   │   │   ├── MMNavMeshAreaMaskAttributeDrawer.cs
+  │   │   │   │   │   │   │   ├── MMReadOnlyAttributeDrawer.cs
+  │   │   │   │   │   │   │   └── MMVectorAttributeDrawer.cs
+  │   │   │   │   │   │   ├── MMAudio/
+  │   │   │   │   │   │   │   ├── AudioAnalyzer/
+  │   │   │   │   │   │   │   │   └── MMAudioAnalyzerEditor.cs
+  │   │   │   │   │   │   │   ├── MMSoundManager/
+  │   │   │   │   │   │   │   │   └── MMSoundManagerEditor.cs
+  │   │   │   │   │   │   ├── MMObjectPool/
+  │   │   │   │   │   │   │   └── ObjectBoundsEditor.cs
+  │   │   │   │   │   │   ├── MMPropertyControllers/
+  │   │   │   │   │   │   │   ├── FloatControllerEditor.cs
+  │   │   │   │   │   │   │   └── ShaderControllerEditor.cs
+  │   │   │   │   │   │   ├── MMRadio/
+  │   │   │   │   │   │   │   ├── MMPropertyEmitterDrawer.cs
+  │   │   │   │   │   │   │   ├── MMPropertyPickerDrawer.cs
+  │   │   │   │   │   │   │   ├── MMPropertyReceiverDrawer.cs
+  │   │   │   │   │   │   │   ├── MMRadioSignalEditor.cs
+  │   │   │   │   │   │   │   └── MMRadioSignalGeneratorEditor.cs
+  │   │   │   │   │   │   ├── MMReorderableList/
+  │   │   │   │   │   │   │   ├── MMReorderableList.cs
+  │   │   │   │   │   │   │   └── ReorderableDrawer.cs
+  │   │   │   │   │   │   ├── MMSaveLoad/
+  │   │   │   │   │   │   │   └── MMSaveLoadMenu.cs
+  │   │   │   │   │   │   ├── MMTween/
+  │   │   │   │   │   │   │   └── MMTweenTypeDrawer.cs
+  │   │   │   │   │   ├── MMAttributes/
+  │   │   │   │   │   │   ├── MMBackgroundColorAttribute.cs
+  │   │   │   │   │   │   ├── MMColorAttribute.cs
+  │   │   │   │   │   │   ├── MMConditionAttribute.cs
+  │   │   │   │   │   │   ├── MMDebugLogCommandArgumentCountAttribute.cs
+  │   │   │   │   │   │   ├── MMDebugLogCommandAttribute.cs
+  │   │   │   │   │   │   ├── MMDropdownAttribute.cs
+  │   │   │   │   │   │   ├── MMEnumConditionAttribute.cs
+  │   │   │   │   │   │   ├── MMExecutionOrderAttribute.cs
+  │   │   │   │   │   │   ├── MMHiddenAttribute.cs
+  │   │   │   │   │   │   ├── MMHiddenPropertiesAttribute.cs
+  │   │   │   │   │   │   ├── MMInformationAttribute.cs
+  │   │   │   │   │   │   ├── MMInspectorButtonAttribute.cs
+  │   │   │   │   │   │   ├── MMInspectorButtonBarAttribute.cs
+  │   │   │   │   │   │   ├── MMInspectorGroupAttribute.cs
+  │   │   │   │   │   │   ├── MMMonoBehaviour.cs
+  │   │   │   │   │   │   ├── MMNavMeshAreaMaskAttribute.cs
+  │   │   │   │   │   │   ├── MMReadOnlyAttribute.cs
+  │   │   │   │   │   │   ├── MMReadOnlyWhenPlayingAttribute.cs
+  │   │   │   │   │   │   ├── MMRequiresConstantRepaintAttribute.cs
+  │   │   │   │   │   │   ├── MMRequiresConstantRepaintOnlyWhenPlayingAttribute.cs
+  │   │   │   │   │   │   └── MMVectorAttribute.cs
+  │   │   │   │   │   ├── MMAudio/
+  │   │   │   │   │   │   ├── AudioAnalyzer/
+  │   │   │   │   │   │   │   └── MMAudioAnalyzer.cs
+  │   │   │   │   │   │   ├── MMAudioEvents/
+  │   │   │   │   │   │   │   └── MMAudioEvents.cs
+  │   │   │   │   │   │   ├── MMAudioListener/
+  │   │   │   │   │   │   │   └── MMAudioListener.cs
+  │   │   │   │   │   │   ├── MMPlaylist/
+  │   │   │   │   │   │   │   ├── MMPlaylist.cs
+  │   │   │   │   │   │   │   └── MMPlaylistRemote.cs
+  │   │   │   │   │   │   ├── MMSMPlaylist/
+  │   │   │   │   │   │   │   ├── MMSMPlaylist.cs
+  │   │   │   │   │   │   │   └── MMSMPlaylistManager.cs
+  │   │   │   │   │   │   ├── MMSoundManager/
+  │   │   │   │   │   │   │   ├── Events/
+  │   │   │   │   │   │   │   │   ├── MMSoundManagerAllSoundsControlEvent.cs
+  │   │   │   │   │   │   │   │   ├── MMSoundManagerEvent.cs
+  │   │   │   │   │   │   │   │   ├── MMSoundManagerSoundControlEvent.cs
+  │   │   │   │   │   │   │   │   ├── MMSoundManagerSoundFadeEvent.cs
+  │   │   │   │   │   │   │   │   ├── MMSoundManagerSoundPlayEvent.cs
+  │   │   │   │   │   │   │   │   ├── MMSoundManagerTrackEvent.cs
+  │   │   │   │   │   │   │   │   └── MMSoundManagerTrackFadeEvent.cs
+  │   │   │   │   │   │   │   ├── Settings/
+  │   │   │   │   │   │   │   │   └── MMSoundManagerSettings.asset
+  │   │   │   │   │   │   │   ├── MMSoundManager.cs
+  │   │   │   │   │   │   │   ├── MMSoundManagerAudioPool.cs
+  │   │   │   │   │   │   │   ├── MMSoundManagerPlayOptions.cs
+  │   │   │   │   │   │   │   ├── MMSoundManagerSettings.cs
+  │   │   │   │   │   │   │   ├── MMSoundManagerSettingsSO.cs
+  │   │   │   │   │   │   │   ├── MMSoundManagerSound.cs
+  │   │   │   │   │   │   │   └── MMSoundManagerTrackVolumeSlider.cs
+  │   │   │   │   │   ├── MMEvents/
+  │   │   │   │   │   │   ├── MMEventManager.cs
+  │   │   │   │   │   │   └── MMGameEventListener.cs
+  │   │   │   │   │   ├── MMExtensions/
+  │   │   │   │   │   │   ├── MMAnimatorExtensions.cs
+  │   │   │   │   │   │   ├── MMArrayExtensions.cs
+  │   │   │   │   │   │   ├── MMBoundsExtensions.cs
+  │   │   │   │   │   │   ├── MMCameraExtensions.cs
+  │   │   │   │   │   │   ├── MMColorExtensions.cs
+  │   │   │   │   │   │   ├── MMDictionaryExtensions.cs
+  │   │   │   │   │   │   ├── MMFloatExtensions.cs
+  │   │   │   │   │   │   ├── MMGameObjectExtensions.cs
+  │   │   │   │   │   │   ├── MMLayermaskExtensions.cs
+  │   │   │   │   │   │   ├── MMListExtensions.cs
+  │   │   │   │   │   │   ├── MMRectExtensions.cs
+  │   │   │   │   │   │   ├── MMRectTransformExtensions.cs
+  │   │   │   │   │   │   ├── MMRendererExtensions.cs
+  │   │   │   │   │   │   ├── MMScrollRectExtensions.cs
+  │   │   │   │   │   │   ├── MMSerializedPropertyExtensions.cs
+  │   │   │   │   │   │   ├── MMTransformExtensions.cs
+  │   │   │   │   │   │   ├── MMVector2Extensions.cs
+  │   │   │   │   │   │   ├── MMVector3Extensions.cs
+  │   │   │   │   │   │   └── MMVector4Extensions.cs
+  │   │   │   │   │   ├── MMHelpers/
+  │   │   │   │   │   │   ├── MMArray.cs
+  │   │   │   │   │   │   ├── MMCircularList.cs
+  │   │   │   │   │   │   ├── MMColors.cs
+  │   │   │   │   │   │   ├── MMConsole.cs
+  │   │   │   │   │   │   ├── MMCoroutine.cs
+  │   │   │   │   │   │   ├── MMDebug.cs
+  │   │   │   │   │   │   ├── MMDebugOnScreenConsole.cs
+  │   │   │   │   │   │   ├── MMFade.cs
+  │   │   │   │   │   │   ├── MMGeometry.cs
+  │   │   │   │   │   │   ├── MMGUI.cs
+  │   │   │   │   │   │   ├── MMHelpers.cs
+  │   │   │   │   │   │   ├── MMImage.cs
+  │   │   │   │   │   │   ├── MMInput.cs
+  │   │   │   │   │   │   ├── MMInterval.cs
+  │   │   │   │   │   │   ├── MMLayers.cs
+  │   │   │   │   │   │   ├── MMMaths.cs
+  │   │   │   │   │   │   ├── MMMovement.cs
+  │   │   │   │   │   │   ├── MMScene.cs
+  │   │   │   │   │   │   ├── MMSerializableDictionary.cs
+  │   │   │   │   │   │   ├── MMShufflebag.cs
+  │   │   │   │   │   │   ├── MMString.cs
+  │   │   │   │   │   │   └── MMTime.cs
+  │   │   │   │   │   ├── MMObjectPool/
+  │   │   │   │   │   │   ├── MMMultipleObjectPooler.cs
+  │   │   │   │   │   │   ├── MMObjectBounds.cs
+  │   │   │   │   │   │   ├── MMObjectPool.cs
+  │   │   │   │   │   │   ├── MMObjectPooler.cs
+  │   │   │   │   │   │   ├── MMPoolableObject.cs
+  │   │   │   │   │   │   └── MMSimpleObjectPooler.cs
+  │   │   │   │   │   ├── MMObservable/
+  │   │   │   │   │   │   └── MMObservable.cs
+  │   │   │   │   │   ├── MMPropertyControllers/
+  │   │   │   │   │   │   ├── FloatController.cs
+  │   │   │   │   │   │   ├── LightController.cs
+  │   │   │   │   │   │   ├── ShaderController.cs
+  │   │   │   │   │   │   └── TransformController.cs
+  │   │   │   │   │   ├── MMRadio/
+  │   │   │   │   │   │   ├── MMEmitterReceiver/
+  │   │   │   │   │   │   │   └── MMEmmiterReceiver.cs
+  │   │   │   │   │   │   ├── MMProperty/
+  │   │   │   │   │   │   │   ├── MMPropertyLink/
+  │   │   │   │   │   │   │   │   ├── MMPropertyLink.cs
+  │   │   │   │   │   │   │   │   ├── MMPropertyLinkBool.cs
+  │   │   │   │   │   │   │   │   ├── MMPropertyLinkColor.cs
+  │   │   │   │   │   │   │   │   ├── MMPropertyLinkFloat.cs
+  │   │   │   │   │   │   │   │   ├── MMPropertyLinkInt.cs
+  │   │   │   │   │   │   │   │   ├── MMPropertyLinkQuaternion.cs
+  │   │   │   │   │   │   │   │   ├── MMPropertyLinkString.cs
+  │   │   │   │   │   │   │   │   ├── MMPropertyLinkVector2.cs
+  │   │   │   │   │   │   │   │   ├── MMPropertyLinkVector3.cs
+  │   │   │   │   │   │   │   │   └── MMPropertyLinkVector4.cs
+  │   │   │   │   │   │   │   ├── MMPropertyPicker/
+  │   │   │   │   │   │   │   │   ├── MMPropertyEmitter.cs
+  │   │   │   │   │   │   │   │   ├── MMPropertyPicker.cs
+  │   │   │   │   │   │   │   │   └── MMPropertyReceiver.cs
+  │   │   │   │   │   │   │   └── MMProperty.cs
+  │   │   │   │   │   │   ├── MMRadioSignal/
+  │   │   │   │   │   │   │   ├── MMRadioSignal.cs
+  │   │   │   │   │   │   │   ├── MMRadioSignalAudioAnalyzer.cs
+  │   │   │   │   │   │   │   └── MMRadioSignalGenerator.cs
+  │   │   │   │   │   │   ├── MMRadioBroadcaster.cs
+  │   │   │   │   │   │   └── MMRadioReceiver.cs
+  │   │   │   │   │   ├── MMReorderableList/
+  │   │   │   │   │   │   ├── Attributes/
+  │   │   │   │   │   │   │   └── ReorderableAttribute.cs
+  │   │   │   │   │   │   └── ReorderableArray.cs
+  │   │   │   │   │   ├── MMSaveLoad/
+  │   │   │   │   │   │   ├── IMMPersistent.cs
+  │   │   │   │   │   │   ├── MMPersistenceDataStructures.cs
+  │   │   │   │   │   │   ├── MMPersistenceManager.cs
+  │   │   │   │   │   │   ├── MMPersistent.cs
+  │   │   │   │   │   │   ├── MMPersistentBase.cs
+  │   │   │   │   │   │   ├── MMSaveLoadManager.cs
+  │   │   │   │   │   │   ├── MMSaveLoadManagerMethod.cs
+  │   │   │   │   │   │   ├── MMSaveLoadManagerMethodBinary.cs
+  │   │   │   │   │   │   ├── MMSaveLoadManagerMethodBinaryEncrypted.cs
+  │   │   │   │   │   │   ├── MMSaveLoadManagerMethodJson.cs
+  │   │   │   │   │   │   ├── MMSaveLoadManagerMethodJsonEncrypted.cs
+  │   │   │   │   │   │   ├── MMSaveLoadManagerMethods.cs
+  │   │   │   │   │   │   ├── MMSaveLoadTester.cs
+  │   │   │   │   │   │   └── MMSaveLoadTestScene.unity
+  │   │   │   │   │   ├── MMSceneLoading/
+  │   │   │   │   │   │   ├── LoadingScreens/
+  │   │   │   │   │   │   │   ├── LoadingScreen.unity
+  │   │   │   │   │   │   │   ├── MMAdditiveLoadingScreen.unity
+  │   │   │   │   │   │   │   ├── MMAdditiveLoadingScreenBigText.unity
+  │   │   │   │   │   │   │   ├── MMAdditiveLoadingScreenFastFade.unity
+  │   │   │   │   │   │   │   └── MMAdditiveLoadingScreenSimple.unity
+  │   │   │   │   │   │   ├── Scripts/
+  │   │   │   │   │   │   │   ├── Helpers/
+  │   │   │   │   │   │   │   │   ├── MMLoadScene.cs
+  │   │   │   │   │   │   │   │   ├── MMSceneLoadingImageProgress.cs
+  │   │   │   │   │   │   │   │   └── MMSceneLoadingTextProgress.cs
+  │   │   │   │   │   │   │   ├── Managers/
+  │   │   │   │   │   │   │   │   ├── MMAdditiveSceneLoadingManager.cs
+  │   │   │   │   │   │   │   │   ├── MMSceneLoadingAntiSpill.cs
+  │   │   │   │   │   │   │   │   └── MMSceneLoadingManager.cs
+  │   │   │   │   │   │   ├── Sprites/
+  │   │   │   │   │   ├── MMSingletons/
+  │   │   │   │   │   │   ├── MMPersistentHumbleSingleton.cs
+  │   │   │   │   │   │   ├── MMPersistentSingleton.cs
+  │   │   │   │   │   │   ├── MMReferencedScriptableObject.cs
+  │   │   │   │   │   │   └── MMSingleton.cs
+  │   │   │   │   │   ├── MMStateMachine/
+  │   │   │   │   │   │   └── MMStateMachine.cs
+  │   │   │   │   │   ├── MMTimeManager/
+  │   │   │   │   │   │   └── MMTimeManager.cs
+  │   │   │   │   │   ├── MMTween/
+  │   │   │   │   │   │   ├── MMAnimationCurveGenerator.cs
+  │   │   │   │   │   │   ├── MMFollowTarget.cs
+  │   │   │   │   │   │   ├── MMSignal.cs
+  │   │   │   │   │   │   ├── MMTween.cs
+  │   │   │   │   │   │   ├── MMTweenDefinitions.cs
+  │   │   │   │   │   │   └── MMTweenType.cs
+  │   │   │   │   │   ├── MMUI/
+  │   │   │   │   │   │   ├── MMFader.cs
+  │   │   │   │   │   │   ├── MMFaderDirectional.cs
+  │   │   │   │   │   │   ├── MMFaderRound.cs
+  │   │   │   │   │   │   └── MMProgressBar.cs
+  │   │   │   │   ├── Demos/
+  │   │   │   │   │   ├── MMBezierLineRenderer/
+  │   │   │   │   │   │   └── MMBezierLineRenderer.unity
+  │   │   │   │   │   ├── MMControls/
+  │   │   │   │   │   │   ├── Sprites/
+  │   │   │   │   │   │   └── MMControlsDemo.unity
+  │   │   │   │   │   ├── MMDebugMenu/
+  │   │   │   │   │   │   ├── MMDebugMenu.unity
+  │   │   │   │   │   │   ├── MMDebugMenuDemoData.asset
+  │   │   │   │   │   │   └── MMDebugMenuTestClass.cs
+  │   │   │   │   │   ├── MMFollowTarget/
+  │   │   │   │   │   │   └── MMFollowTargetDemo.unity
+  │   │   │   │   │   ├── MMGhostCamera/
+  │   │   │   │   │   │   ├── Materials/
+  │   │   │   │   │   │   ├── Models/
+  │   │   │   │   │   │   ├── PostProcessing/
+  │   │   │   │   │   │   │   └── MMGhostCameraPostProcessingProfile.asset
+  │   │   │   │   │   │   └── MMGhostCameraDemo.unity
+  │   │   │   │   │   ├── MMGizmos/
+  │   │   │   │   │   │   └── MMGizmoDemo.unity
+  │   │   │   │   │   ├── MMObservable/
+  │   │   │   │   │   │   ├── MMObservableDemo.unity
+  │   │   │   │   │   │   ├── MMObservableDemoObserver.cs
+  │   │   │   │   │   │   ├── MMObservableDemoObserverAutoSleep.cs
+  │   │   │   │   │   │   └── MMObservableDemoSubject.cs
+  │   │   │   │   │   ├── MMPrototypeTextures/
+  │   │   │   │   │   │   ├── MMPrototypeTexturesDemo/
+  │   │   │   │   │   │   │   └── LightingData.asset
+  │   │   │   │   │   │   ├── PostProcessing/
+  │   │   │   │   │   │   │   └── MMPrototypeTexturesPPProfile.asset
+  │   │   │   │   │   │   └── MMPrototypeTexturesDemo.unity
+  │   │   │   │   │   ├── MMRadio/
+  │   │   │   │   │   │   └── MMRadioDemo.unity
+  │   │   │   │   │   ├── MMSceneLoading/
+  │   │   │   │   │   │   ├── LoadingTester.prefab
+  │   │   │   │   │   │   ├── MMSceneLoadingDemoSceneA.unity
+  │   │   │   │   │   │   ├── MMSceneLoadingDemoSceneB.unity
+  │   │   │   │   │   │   └── SceneStartsTester.prefab
+  │   │   │   │   │   ├── MMTween/
+  │   │   │   │   │   │   ├── Camera/
+  │   │   │   │   │   │   │   └── MMPlotterPostProcessingProfile.asset
+  │   │   │   │   │   │   ├── Fonts/
+  │   │   │   │   │   │   │   ├── Lato/
+  │   │   │   │   │   │   │   │   ├── SDF/
+  │   │   │   │   │   │   │   │   │   ├── Lato SDF.asset
+  │   │   │   │   │   │   │   │   │   ├── Lato-Black SDF.asset
+  │   │   │   │   │   │   │   │   │   ├── Lato-BlackItalic SDF.asset
+  │   │   │   │   │   │   │   │   │   ├── Lato-Bold SDF.asset
+  │   │   │   │   │   │   │   │   │   ├── Lato-BoldItalic SDF.asset
+  │   │   │   │   │   │   │   │   │   ├── Lato-Hairline SDF.asset
+  │   │   │   │   │   │   │   │   │   ├── Lato-HairlineItalic SDF.asset
+  │   │   │   │   │   │   │   │   │   ├── Lato-Heavy SDF.asset
+  │   │   │   │   │   │   │   │   │   ├── Lato-HeavyItalic SDF.asset
+  │   │   │   │   │   │   │   │   │   ├── Lato-Italic SDF.asset
+  │   │   │   │   │   │   │   │   │   ├── Lato-Light SDF.asset
+  │   │   │   │   │   │   │   │   │   ├── Lato-LightItalic SDF.asset
+  │   │   │   │   │   │   │   │   │   ├── Lato-Medium SDF.asset
+  │   │   │   │   │   │   │   │   │   ├── Lato-MediumItalic SDF.asset
+  │   │   │   │   │   │   │   │   │   ├── Lato-Semibold SDF.asset
+  │   │   │   │   │   │   │   │   │   ├── Lato-SemiboldItalic SDF.asset
+  │   │   │   │   │   │   │   │   │   ├── Lato-Thin SDF.asset
+  │   │   │   │   │   │   │   │   │   └── Lato-ThinItalic SDF.asset
+  │   │   │   │   │   │   │   │   ├── TTF/
+  │   │   │   │   │   │   ├── Materials/
+  │   │   │   │   │   │   ├── Prefabs/
+  │   │   │   │   │   │   │   ├── Plotter.prefab
+  │   │   │   │   │   │   │   ├── PlotterAxisCanvas.prefab
+  │   │   │   │   │   │   │   └── PlotterPoint.prefab
+  │   │   │   │   │   │   ├── Textures/
+  │   │   │   │   │   │   └── MMTweenPlotter.unity
+  │   │   │   │   ├── Foundation/
+  │   │   │   │   │   ├── Editor/
+  │   │   │   │   │   │   ├── MMAchievements/
+  │   │   │   │   │   │   │   ├── MMAchievementListInspector.cs
+  │   │   │   │   │   │   │   └── MMAchievementMenu.cs
+  │   │   │   │   │   │   ├── MMAI/
+  │   │   │   │   │   │   │   ├── AIActionInspectorDrawer.cs
+  │   │   │   │   │   │   │   ├── AIBrainEditor.cs
+  │   │   │   │   │   │   │   └── AITransitionInspectorDrawer.cs
+  │   │   │   │   │   ├── MMAchievements/
+  │   │   │   │   │   │   ├── Fonts/
+  │   │   │   │   │   │   ├── Prefabs/
+  │   │   │   │   │   │   │   └── AchievementDisplay.prefab
+  │   │   │   │   │   │   ├── Resources/
+  │   │   │   │   │   │   │   └── AchievementDisplay.prefab
+  │   │   │   │   │   │   ├── Scripts/
+  │   │   │   │   │   │   │   ├── MMAchievement.cs
+  │   │   │   │   │   │   │   ├── MMAchievementDisplayer.cs
+  │   │   │   │   │   │   │   ├── MMAchievementDisplayItem.cs
+  │   │   │   │   │   │   │   ├── MMAchievementEvent.cs
+  │   │   │   │   │   │   │   ├── MMAchievementList.cs
+  │   │   │   │   │   │   │   ├── MMAchievementManager.cs
+  │   │   │   │   │   │   │   ├── MMAchievementRules.cs
+  │   │   │   │   │   │   │   └── SerializedMMAchievementManager.cs
+  │   │   │   │   │   │   ├── Sprites/
+  │   │   │   │   │   ├── MMAI/
+  │   │   │   │   │   │   ├── AIAction.cs
+  │   │   │   │   │   │   ├── AIBrain.cs
+  │   │   │   │   │   │   ├── AIDecision.cs
+  │   │   │   │   │   │   ├── AIState.cs
+  │   │   │   │   │   │   └── AITransition.cs
+  │   │   │   │   │   ├── MMAnimation/
+  │   │   │   │   │   │   ├── MMAnimationModifier.cs
+  │   │   │   │   │   │   ├── MMAnimationParameter.cs
+  │   │   │   │   │   │   ├── MMAnimatorMirror.cs
+  │   │   │   │   │   │   ├── MMOffsetAnimation.cs
+  │   │   │   │   │   │   ├── MMRagdoller.cs
+  │   │   │   │   │   │   ├── MMRagdollerIgnore.cs
+  │   │   │   │   │   │   └── MMStopMotionAnimation.cs
+  │   │   │   │   │   ├── MMControls/
+  │   │   │   │   │   │   ├── MMControlsTestInputManager.cs
+  │   │   │   │   │   │   ├── MMSwipeZone.cs
+  │   │   │   │   │   │   ├── MMTouchAxis.cs
+  │   │   │   │   │   │   ├── MMTouchButton.cs
+  │   │   │   │   │   │   ├── MMTouchControls.cs
+  │   │   │   │   │   │   ├── MMTouchFollowerJoystick.cs
+  │   │   │   │   │   │   ├── MMTouchJoystick.cs
+  │   │   │   │   │   │   └── MMTouchRepositionableJoystick.cs
+  │   │   │   │   │   ├── MMGhostCamera/
+  │   │   │   │   │   │   └── MMGhostCamera.cs
+  │   │   │   │   │   ├── MMLoot/
+  │   │   │   │   │   │   ├── MMLoot.cs
+  │   │   │   │   │   │   ├── MMLootTable.cs
+  │   │   │   │   │   │   └── MMLootTableGameObjectSO.cs
+  │   │   │   │   │   ├── MMTime/
+  │   │   │   │   │   │   └── MMCooldown.cs
+  ├── Readme.asset
+  ├── UniversalRenderPipelineGlobalSettings.asset
+  └── VirtualCameraSetup.cs
