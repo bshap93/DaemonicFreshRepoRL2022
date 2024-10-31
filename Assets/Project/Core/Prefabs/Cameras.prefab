@@ -57,6 +57,7 @@ MonoBehaviour:
   timeBetweenAdjustments: 0.005
   isCameraLockedPan: 0
   isCameraLockedZoom: 1
+  playerEventManager: {fileID: 0}
 --- !u!114 &1510541197963219883
 MonoBehaviour:
   m_ObjectHideFlags: 0

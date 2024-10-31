@@ -110,7 +110,6 @@ namespace Project.Gameplay.DungeonGeneration
             }
 
             // Example: Spawn enemies based on difficulty
-            float currentDifficulty = 1.0f; // Example difficulty value
             var enemySpawns = _spawnPointManager.GetAvailableSpawnPoints(SpawnPointType.Enemy);
             foreach (var spawn in enemySpawns)
             {
