@@ -56,6 +56,7 @@ namespace Project.Gameplay.DungeonGeneration
             if (virtualCamera != null)
             {
                 virtualCamera.Follow = _playerInstance.transform;
+                virtualCamera.LookAt = _playerInstance.transform;
                 Debug.Log("Camera following player");
             }
         }

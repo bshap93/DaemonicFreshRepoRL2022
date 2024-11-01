@@ -1017,7 +1017,7 @@ GameObject:
   - component: {fileID: 2186327892260302266}
   - component: {fileID: 4629277661384572290}
   - component: {fileID: 2928857062055690921}
-  - component: {fileID: 5886983926097988750}
+  - component: {fileID: 2147500982725304588}
   m_Layer: 10
   m_Name: PlayerTopDown
   m_TagString: Player
@@ -1243,7 +1243,7 @@ MonoBehaviour:
   WeaponRotatingModel: {fileID: 0}
   RotateToFaceWeaponDirectionSpeed: 10
   AbsoluteThresholdWeapon: 0.5
-  LockVerticalRotation: 1
+  LockVerticalRotation: 0
   RotationSpeedResetSpeed: 2
   RotationOffsetSmoothSpeed: 1
   ForcedRotation: 0
@@ -1564,7 +1564,7 @@ MonoBehaviour:
   TargetDamageResistanceProcessor: {fileID: 0}
   TargetAnimator: {fileID: 0}
   DisableAnimatorLogs: 1
---- !u!114 &5886983926097988750
+--- !u!114 &2147500982725304588
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1585,7 +1585,7 @@ MonoBehaviour:
   BlockingMovementStates: 
   BlockingConditionStates: 
   BlockingWeaponStates: 
-  RotationSpace: 1
+  RotationSpace: 0
   RotationForward: {x: 0, y: 0, z: 1}
   RotationAxis: {x: 0, y: 1, z: 0}
   CameraRotationSpeed: 1
