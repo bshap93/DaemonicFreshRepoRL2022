@@ -519,6 +519,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8639264317532475337}
   - component: {fileID: 2202077426921942116}
+  - component: {fileID: 5988340008919336060}
   m_Layer: 0
   m_Name: Dark-knight_1
   m_TagString: Untagged
@@ -556,7 +557,7 @@ Animator:
   m_GameObject: {fileID: 2679787714724300331}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: c3d247019c67b3f4e888ba49a4679cd7, type: 3}
-  m_Controller: {fileID: 9100000, guid: 646ee61ff3633474b94865fca9f0ca8b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5481ebcb3eb9a594d9b8d57081c3326c, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -567,6 +568,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5988340008919336060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2679787714724300331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16577831eb1538847a3d1802d9a738db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AutoRemoveAfterInitialization: 1
+  AddAnimationParametersButton: 0
 --- !u!1 &2935624977991216314
 GameObject:
   m_ObjectHideFlags: 0
@@ -1070,7 +1085,7 @@ MonoBehaviour:
   PlayerID: Player1
   CharacterAnimator: {fileID: 2202077426921942116}
   UseDefaultMecanim: 1
-  RunAnimatorSanityChecks: 0
+  RunAnimatorSanityChecks: 1
   DisableAnimatorLogs: 1
   CharacterModel: {fileID: 2679787714724300331}
   CharacterHealth: {fileID: 0}
