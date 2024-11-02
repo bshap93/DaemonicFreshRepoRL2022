@@ -10,7 +10,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace Project.UI.CharacterCreation
+namespace Project.UI.CharacterCreation.Scripts
 {
     public class CharacterCreationUI : MonoBehaviour
     {
@@ -18,6 +18,10 @@ namespace Project.UI.CharacterCreation
         [FormerlySerializedAs("traitsPanelGO")] [FormerlySerializedAs("traitsPanel")] [SerializeField]
         GameObject traitsPanelGo;
         [SerializeField] GameObject confirmationPanel;
+
+        [Header("Class Selection")] [SerializeField]
+        Transform classesContainer;
+        [SerializeField] ClassSelectionButton classButtonPrefab;
 
         [Header("Attribute Elements")] [SerializeField]
         TextMeshProUGUI pointsRemainingText;
@@ -35,11 +39,15 @@ namespace Project.UI.CharacterCreation
 
         [SerializeField] ClassSelectionPanel classPanel;
         [SerializeField] TraitsPanel traitsPanel;
+        [SerializeField] int maxTraitSelections = 2;
+
+        CharacterClass _selectedClass;
         CharacterCreationData currentConfig;
 
         CreationStep currentStep = CreationStep.Attributes;
+        int remainingPoints;
 
-        CharacterClass? selectedClass;
+        [Header("Traits")] [SerializeField] TraitsListUI traitsListUI;
 
         void Start()
         {
@@ -129,7 +137,7 @@ namespace Project.UI.CharacterCreation
 
         void OnClassSelected(CharacterClass characterClass)
         {
-            selectedClass = characterClass;
+            _selectedClass = characterClass;
 
             // Show and initialize traits panel with class-specific traits
             traitsPanel.gameObject.SetActive(true);
