@@ -52,13 +52,6 @@ namespace Project.Gameplay.DungeonGeneration
             virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
 
             Debug.Log("Dungeon generation complete! with: " + _playerInstance);
-
-            if (virtualCamera != null)
-            {
-                virtualCamera.Follow = _playerInstance.transform;
-                virtualCamera.LookAt = _playerInstance.transform;
-                Debug.Log("Camera following player");
-            }
         }
 
 
