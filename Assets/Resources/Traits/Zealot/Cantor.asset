@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Gifted
+  m_Name: Cantor
   m_EditorClassIdentifier: Assembly-CSharp:Project.Core.CharacterCreation:CharacterTrait
-  traitName: Gifted
-  description: You gain 10% more XP with every increase.
+  traitName: Cantor
+  description: You can learn hymns that can harness divine powers to affect the world.
   icon: {fileID: 0}
   statModifiers: []
   specialEffects: []
+  isClassSpecific: 0
+  availableForClasses: 

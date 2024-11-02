@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using Project.Core.CharacterCreation;
+using Project.UI.CharacterCreation.Classes.Scripts;
+using Project.UI.CharacterCreation.Traits.Scripts;
 using Project.UI.CharacterCreation.UIElements.Scripts;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Project.UI.CharacterCreation
@@ -12,7 +15,8 @@ namespace Project.UI.CharacterCreation
     public class CharacterCreationUI : MonoBehaviour
     {
         [Header("Panels")] [SerializeField] GameObject attributePanel;
-        [SerializeField] GameObject traitsPanel;
+        [FormerlySerializedAs("traitsPanelGO")] [FormerlySerializedAs("traitsPanel")] [SerializeField]
+        GameObject traitsPanelGo;
         [SerializeField] GameObject confirmationPanel;
 
         [Header("Attribute Elements")] [SerializeField]
@@ -28,15 +32,25 @@ namespace Project.UI.CharacterCreation
         Button nextButton;
         [SerializeField] Button backButton;
         [SerializeField] Button confirmButton;
+
+        [SerializeField] ClassSelectionPanel classPanel;
+        [SerializeField] TraitsPanel traitsPanel;
         CharacterCreationData currentConfig;
 
         CreationStep currentStep = CreationStep.Attributes;
 
+        CharacterClass? selectedClass;
+
         void Start()
         {
+            var availableClasses = RunManager.Instance.GetAvailableClasses();
+            classPanel.Initialize(availableClasses, OnClassSelected);
             currentConfig = new CharacterCreationData();
             InitializeUI();
             ShowCurrentStep();
+
+            // Hide traits until class is selected
+            traitsPanel.gameObject.SetActive(false);
         }
 
         void InitializeUI()
@@ -55,7 +69,7 @@ namespace Project.UI.CharacterCreation
         void ShowCurrentStep()
         {
             attributePanel.SetActive(currentStep == CreationStep.Attributes);
-            traitsPanel.SetActive(currentStep == CreationStep.Traits);
+            traitsPanelGo.SetActive(currentStep == CreationStep.Traits);
             confirmationPanel.SetActive(currentStep == CreationStep.Confirmation);
 
             backButton.gameObject.SetActive(currentStep != CreationStep.Attributes);
@@ -111,6 +125,15 @@ namespace Project.UI.CharacterCreation
             RunManager.Instance.StartNewRun(currentConfig);
             // Transition to game
             // SceneManager.LoadScene("GameScene");
+        }
+
+        void OnClassSelected(CharacterClass characterClass)
+        {
+            selectedClass = characterClass;
+
+            // Show and initialize traits panel with class-specific traits
+            traitsPanel.gameObject.SetActive(true);
+            traitsPanel.Initialize(RunManager.Instance.GetAvailableTraits(), characterClass);
         }
 
         enum CreationStep

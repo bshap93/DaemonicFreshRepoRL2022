@@ -12,10 +12,10 @@ namespace Project.UI.CharacterCreation.Traits.Scripts
         [SerializeField] GameObject traitPrefab; // Single trait UI prefab
         [SerializeField] TextMeshProUGUI descriptionText; // Description panel text
         [SerializeField] int maxTraitSelections = 3; // How many traits can be selected
-
-        readonly List<CharacterCreation.TraitUI> traitUIs = new();
-        CharacterClass currentClass;
         readonly List<CharacterTrait> selectedTraits = new();
+
+        readonly List<TraitUI> traitUIs = new();
+        CharacterClass currentClass;
 
         public void Initialize(List<CharacterTrait> availableTraits, CharacterClass characterClass)
         {
@@ -89,5 +89,6 @@ namespace Project.UI.CharacterCreation.Traits.Scripts
 
             return text;
         }
+
     }
 }

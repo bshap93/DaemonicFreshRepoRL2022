@@ -12,8 +12,11 @@ namespace Project.UI.CharacterCreation.Traits.Scripts
         [SerializeField] Toggle selectionToggle;
         [SerializeField] Button infoButton;
         [SerializeField] Image traitIcon;
+
+        [SerializeField] Image classSpecificIndicator; // Add visual indicator for class-specific traits
         Action<CharacterTrait> onInfoRequested;
         Action<CharacterTrait> onSelected;
+
 
         public CharacterTrait Trait { get; private set; }
 
@@ -33,6 +36,9 @@ namespace Project.UI.CharacterCreation.Traits.Scripts
             // Setup listeners
             selectionToggle.onValueChanged.AddListener(OnToggleChanged);
             infoButton.onClick.AddListener(OnInfoClicked);
+
+            // Show class-specific visual indicator if applicable
+            if (classSpecificIndicator != null) classSpecificIndicator.gameObject.SetActive(isClassSpecific);
         }
 
         void OnToggleChanged(bool isOn)
