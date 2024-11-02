@@ -22,8 +22,8 @@ namespace Project.UI.CharacterCreation.Classes.Scripts
 
             foreach (var classData in availableClasses)
             {
-                var buttonGO = Instantiate(classButtonPrefab, classContainer);
-                var classButton = buttonGO.GetComponent<ClassSelectionButton>();
+                var buttonGo = Instantiate(classButtonPrefab, classContainer);
+                var classButton = buttonGo.GetComponent<ClassSelectionButton>();
                 classButton.Setup(classData, OnClassButtonClicked);
             }
         }

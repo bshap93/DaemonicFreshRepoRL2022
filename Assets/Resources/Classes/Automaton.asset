@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Automaton
   m_EditorClassIdentifier: Assembly-CSharp:Project.Core.CharacterCreation:StartingClass
   className: Automaton
-  description: You have had procedures to open your body to a bevy of magical enhancements
-    with Automaton magic.
+  description: You have had procedcures to allow you to use autonamous spells and
+    your goal is to join the great mage in his deep laboratories.
   classIcon: {fileID: 0}
   defaultTraits: []

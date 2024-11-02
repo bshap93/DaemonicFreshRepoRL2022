@@ -17,5 +17,5 @@ MonoBehaviour:
   icon: {fileID: 0}
   statModifiers: []
   specialEffects: []
-  isClassSpecific: 0
-  availableForClasses: 
+  isClassSpecific: 1
+  availableForClasses: 01000000
