@@ -8,42 +8,64 @@ namespace Project.UI.CharacterCreation.Traits.Scripts
 {
     public class TraitUI : MonoBehaviour
     {
-        [SerializeField] TextMeshProUGUI nameText;
+        [Header("UI Elements")] [SerializeField]
+        TextMeshProUGUI nameText;
         [SerializeField] Toggle selectionToggle;
         [SerializeField] Button infoButton;
         [SerializeField] Image traitIcon;
+        [SerializeField] Image classSpecificIndicator;
 
-        [SerializeField] Image classSpecificIndicator; // Add visual indicator for class-specific traits
+        [Header("Styling")] [SerializeField] Color selectedColor = new(0.8f, 0.8f, 1f);
+        [SerializeField] Color normalColor = Color.white;
         Action<CharacterTrait> onInfoRequested;
-        Action<CharacterTrait> onSelected;
-
+        Action<CharacterTrait, bool> onSelected;
 
         public CharacterTrait Trait { get; private set; }
 
-        public void Initialize(CharacterTrait traitData,
-            Action<CharacterTrait> onSelect,
-            Action<CharacterTrait> onInfo, bool isClassSpecific)
+        void OnDestroy()
+        {
+            // Clean up listeners
+            if (selectionToggle != null) selectionToggle.onValueChanged.RemoveListener(OnToggleChanged);
+
+            if (infoButton != null) infoButton.onClick.RemoveAllListeners();
+        }
+
+        public void Initialize(
+            CharacterTrait traitData,
+            Action<CharacterTrait, bool> onSelect,
+            Action<CharacterTrait> onInfo,
+            bool isClassSpecific)
         {
             Trait = traitData;
             onSelected = onSelect;
             onInfoRequested = onInfo;
 
             // Setup UI elements
-            nameText.text = Trait.traitName;
-            if (Trait.icon != null)
+            if (nameText != null)
+            {
+                nameText.text = Trait.traitName;
+                nameText.fontStyle = FontStyles.Bold;
+            }
+
+            if (traitIcon != null && Trait.icon != null)
+            {
                 traitIcon.sprite = Trait.icon;
+                traitIcon.preserveAspect = true;
+            }
+
+            // Setup class-specific indicator
+            if (classSpecificIndicator != null) classSpecificIndicator.gameObject.SetActive(isClassSpecific);
 
             // Setup listeners
-            selectionToggle.onValueChanged.AddListener(OnToggleChanged);
-            infoButton.onClick.AddListener(OnInfoClicked);
+            if (selectionToggle != null) selectionToggle.onValueChanged.AddListener(OnToggleChanged);
 
-            // Show class-specific visual indicator if applicable
-            if (classSpecificIndicator != null) classSpecificIndicator.gameObject.SetActive(isClassSpecific);
+            if (infoButton != null) infoButton.onClick.AddListener(OnInfoClicked);
         }
 
         void OnToggleChanged(bool isOn)
         {
-            onSelected?.Invoke(Trait);
+            onSelected?.Invoke(Trait, isOn);
+            UpdateVisuals(isOn);
         }
 
         void OnInfoClicked()
@@ -51,9 +73,20 @@ namespace Project.UI.CharacterCreation.Traits.Scripts
             onInfoRequested?.Invoke(Trait);
         }
 
+        void UpdateVisuals(bool isSelected)
+        {
+            // Update background color or any other visual feedback
+            var image = GetComponent<Image>();
+            if (image != null) image.color = isSelected ? selectedColor : normalColor;
+        }
+
         public void SetToggleWithoutNotify(bool value)
         {
-            selectionToggle.SetIsOnWithoutNotify(value);
+            if (selectionToggle != null)
+            {
+                selectionToggle.SetIsOnWithoutNotify(value);
+                UpdateVisuals(value);
+            }
         }
     }
 }

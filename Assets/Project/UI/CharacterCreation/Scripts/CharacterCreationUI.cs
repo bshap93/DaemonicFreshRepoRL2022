@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Project.Core.CharacterCreation;
+using Project.UI.CharacterCreation.UIElements.Scripts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,38 +10,39 @@ namespace Project.UI.CharacterCreation.Scripts
 {
     public class CharacterCreationUI : MonoBehaviour
     {
-        [SerializeField] GameObject classSelectionPanel; // Add this
-        [Header("Panels")] [SerializeField] GameObject attributePanel;
-        [SerializeField] GameObject traitsPanel;
-        [SerializeField] GameObject confirmationPanel;
+        [Header("Panels")]
+        [SerializeField] private GameObject classSelectionPanel;
+        [SerializeField] private GameObject attributePanel;
+        [SerializeField] private GameObject traitsPanel;
+        [SerializeField] private TraitsPanel traitsPanelScript;
+        [SerializeField] private ConfirmationPanel confirmationPanel;
 
-        [Header("Class Selection")] [SerializeField]
-        Transform classContainer;
-        [SerializeField] ClassSelectionButton classButtonPrefab;
-        [SerializeField] VerticalLayoutGroup detailsPanel;
-        [SerializeField] TextMeshProUGUI classNameText;
-        [SerializeField] TextMeshProUGUI classDescriptionText;
-        [SerializeField] Image selectedClassIcon;
+        [Header("Class Selection")]
+        [SerializeField] private Transform classContainer;
+        [SerializeField] private ClassSelectionButton classButtonPrefab;
+        [SerializeField] private VerticalLayoutGroup detailsPanel;
+        [SerializeField] private TextMeshProUGUI classNameText;
+        [SerializeField] private TextMeshProUGUI classDescriptionText;
+        [SerializeField] private Image selectedClassIcon;
+
+        [Header("Attribute Elements")]
+        [SerializeField] private TextMeshProUGUI pointsRemainingText;
+        [SerializeField] private List<AttributeRowUI> attributeRows;
+        [SerializeField] private int startingPoints = 10;
+
+        [Header("Navigation")]
+        [SerializeField] private Button nextButton;
+        [SerializeField] private Button backButton;
+        [SerializeField] private Button confirmButton;
+
+        private CharacterCreationData _currentConfig;
+        private CreationStep _currentStep = CreationStep.ClassSelection;
+        private int _remainingPoints;
+        private StartingClass _selectedClass;  // Change from CharacterClass? to StartingClass
+        private readonly List<ClassSelectionButton> classButtons = new();
 
 
-        [Header("Attribute Elements")] [SerializeField]
-        TextMeshProUGUI pointsRemainingText;
-        [SerializeField] List<AttributeRowUI> attributeRows;
-        [SerializeField] int startingPoints = 10;
 
-
-        [Header("Navigation")] [SerializeField]
-        Button nextButton;
-        [SerializeField] Button backButton;
-        [SerializeField] Button confirmButton;
-
-        CharacterCreationData _currentConfig;
-        CreationStep _currentStep = CreationStep.ClassSelection; // Change initial step
-
-        int _remainingPoints;
-
-        CharacterClass? _selectedClass;
-        readonly List<ClassSelectionButton> classButtons = new();
 
         void Start()
         {
@@ -48,13 +50,15 @@ namespace Project.UI.CharacterCreation.Scripts
             var availableClasses = RunManager.Instance.GetAvailableClasses();
             InitializeClassSelection(availableClasses);
 
-
             // Validate required references
             if (pointsRemainingText == null)
                 Debug.LogError("Points Remaining Text is not assigned in CharacterCreationUI");
 
             if (attributeRows == null || attributeRows.Count == 0)
                 Debug.LogError("Attribute Rows are not assigned in CharacterCreationUI");
+
+            if (traitsPanelScript == null)
+                Debug.LogError("TraitsPanel script not assigned!");
 
             _currentConfig = new CharacterCreationData();
             _remainingPoints = startingPoints;
@@ -120,33 +124,29 @@ namespace Project.UI.CharacterCreation.Scripts
             if (detailsPanel != null) detailsPanel.gameObject.SetActive(false);
         }
 
-        void OnClassButtonClicked(StartingClass classData)
+        private void OnClassButtonClicked(StartingClass classData)
         {
             if (classData == null) return;
 
             // Update selected button visuals
             foreach (var button in classButtons) button.SetSelected(false);
 
-            // Parse and store selected class
-            if (Enum.TryParse(classData.className, out CharacterClass parsedClass))
+            _selectedClass = classData;  // Store the entire StartingClass
+
+            // Update UI
+            if (detailsPanel != null) detailsPanel.gameObject.SetActive(true);
+
+            if (classNameText != null) classNameText.text = classData.className.ToString();
+
+            if (classDescriptionText != null) classDescriptionText.text = classData.description;
+
+            if (selectedClassIcon != null)
             {
-                _selectedClass = parsedClass;
-
-                // Update UI
-                if (detailsPanel != null) detailsPanel.gameObject.SetActive(true);
-
-                if (classNameText != null) classNameText.text = classData.className;
-
-                if (classDescriptionText != null) classDescriptionText.text = classData.description;
-
-                if (selectedClassIcon != null)
-                {
-                    selectedClassIcon.sprite = classData.classIcon;
-                    selectedClassIcon.preserveAspect = true;
-                }
-
-                if (nextButton != null) nextButton.interactable = true;
+                selectedClassIcon.sprite = classData.classIcon;
+                selectedClassIcon.preserveAspect = true;
             }
+
+            if (nextButton != null) nextButton.interactable = true;
         }
 
         void OnAttributePointChanged(int pointChange)
@@ -177,17 +177,74 @@ namespace Project.UI.CharacterCreation.Scripts
             }
         }
 
-        void OnNextClicked()
+        private void OnNextClicked()
         {
-            _currentStep = _currentStep switch
+            switch (_currentStep)
             {
-                CreationStep.ClassSelection => CreationStep.Attributes,
-                CreationStep.Attributes => CreationStep.Traits,
-                CreationStep.Traits => CreationStep.Confirmation,
-                _ => _currentStep
-            };
+                case CreationStep.ClassSelection:
+                    if (_selectedClass != null)
+                    {
+                        _currentStep = CreationStep.Attributes;
+                    }
+                    break;
+
+                case CreationStep.Attributes:
+                    if (_remainingPoints == 0)
+                    {
+                        _currentStep = CreationStep.Traits;
+                        traitsPanelScript.Initialize(RunManager.Instance.GetAvailableTraits(), _selectedClass.ClassType);
+                    }
+                    break;
+
+                case CreationStep.Traits:
+                    if (traitsPanelScript.HasRequiredTraits())
+                    {
+                        _currentStep = CreationStep.Confirmation;
+                        ShowCharacterSummary();
+                    }
+                    else
+                    {
+                        Debug.Log("Please select exactly 2 traits before continuing.");
+                    }
+                    break;
+            }
 
             ShowCurrentStep();
+        }
+
+        private void ShowCharacterSummary()
+        {
+            _currentConfig.selectedClass = _selectedClass;   // Store the enum
+            _currentConfig.attributes = GatherAttributeData();
+            _currentConfig.selectedTraits = traitsPanelScript.GetSelectedTraits();
+
+            confirmationPanel.DisplayCharacterSummary(_currentConfig);
+        }
+
+        CharacterStats GatherAttributeData()
+        {
+            var stats = new CharacterStats();
+            foreach (var row in attributeRows)
+                switch (row.statNameText.text)
+                {
+                    case "Strength":
+                        stats.strength = row.CurrentPoints;
+                        break;
+                    case "Agility":
+                        stats.agility = row.CurrentPoints;
+                        break;
+                    case "Endurance":
+                        stats.endurance = row.CurrentPoints;
+                        break;
+                    case "Intelligence":
+                        stats.intelligence = row.CurrentPoints;
+                        break;
+                    case "Intuition":
+                        stats.intuition = row.CurrentPoints;
+                        break;
+                }
+
+            return stats;
         }
 
         void OnBackClicked()
@@ -247,7 +304,7 @@ namespace Project.UI.CharacterCreation.Scripts
             classSelectionPanel.SetActive(false);
             attributePanel.SetActive(false);
             traitsPanel.SetActive(false);
-            confirmationPanel.SetActive(false);
+            confirmationPanel.gameObject.SetActive(false);  // Access the GameObject
 
             // Then activate the current panel
             switch (_currentStep)
@@ -262,7 +319,7 @@ namespace Project.UI.CharacterCreation.Scripts
                     traitsPanel.SetActive(true);
                     break;
                 case CreationStep.Confirmation:
-                    confirmationPanel.SetActive(true);
+                    confirmationPanel.gameObject.SetActive(true);  // Access the GameObject
                     break;
             }
 
@@ -274,7 +331,7 @@ namespace Project.UI.CharacterCreation.Scripts
             // Set next button interactable state
             nextButton.interactable = _currentStep switch
             {
-                CreationStep.ClassSelection => _selectedClass.HasValue,
+                CreationStep.ClassSelection => _selectedClass != null,  // Check if StartingClass is assigned
                 CreationStep.Attributes => _remainingPoints == 0,
                 CreationStep.Traits => true, // You might want to add validation here later
                 _ => false

@@ -1,21 +1,26 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Project.Core.CharacterCreation;
+using Project.UI.CharacterCreation.Traits.Scripts;
 using TMPro;
 using UnityEngine;
 
-namespace Project.UI.CharacterCreation.Traits.Scripts
+namespace Project.UI.CharacterCreation.Scripts
 {
     public class TraitsPanel : MonoBehaviour
     {
-        [SerializeField] Transform traitContainer; // Parent that holds trait list
-        [SerializeField] GameObject traitPrefab; // Single trait UI prefab
-        [SerializeField] TextMeshProUGUI descriptionText; // Description panel text
-        [SerializeField] int maxTraitSelections = 3; // How many traits can be selected
+        [Header("UI Elements")] [SerializeField]
+        Transform traitContainer; // Where trait buttons spawn
+        [SerializeField] GameObject traitPrefab;
+        [SerializeField] TextMeshProUGUI descriptionText;
+        [SerializeField] TextMeshProUGUI selectionCounterText;
+
+        [Header("Settings")] [SerializeField] int maxTraitSelections = 2;
+        CharacterClass currentClass;
         readonly List<CharacterTrait> selectedTraits = new();
 
+        // Private state
         readonly List<TraitUI> traitUIs = new();
-        CharacterClass currentClass;
 
         public void Initialize(List<CharacterTrait> availableTraits, CharacterClass characterClass)
         {
@@ -23,72 +28,101 @@ namespace Project.UI.CharacterCreation.Traits.Scripts
             ClearTraits();
 
             // Only show traits available for this class
-            var validTraits = availableTraits.Where(t => t.IsAvailableForClass(characterClass)).ToList();
+            var validTraits = availableTraits
+                .Where(t => t.IsAvailableForClass(characterClass))
+                .ToList();
 
             foreach (var trait in validTraits)
             {
                 var traitGO = Instantiate(traitPrefab, traitContainer);
                 var traitUI = traitGO.GetComponent<TraitUI>();
 
-                // Add visual indicator for class-specific traits
-                var isClassSpecific = trait.isClassSpecific;
-
                 traitUI.Initialize(
                     trait,
                     OnTraitSelected,
                     OnTraitInfoRequested,
-                    isClassSpecific
+                    trait.isClassSpecific
                 );
 
                 traitUIs.Add(traitUI);
             }
+
+            UpdateSelectionCounter();
         }
 
-        void ClearTraits()
+        void OnTraitSelected(CharacterTrait trait, bool isSelected)
         {
-            foreach (var traitUI in traitUIs) Destroy(traitUI.gameObject);
-            traitUIs.Clear();
-            selectedTraits.Clear();
-        }
-
-
-        void OnTraitSelected(CharacterTrait trait)
-        {
-            if (selectedTraits.Contains(trait))
+            if (isSelected)
             {
-                selectedTraits.Remove(trait);
-            }
-            else if (selectedTraits.Count < maxTraitSelections)
-            {
-                selectedTraits.Add(trait);
+                if (selectedTraits.Count < maxTraitSelections)
+                {
+                    selectedTraits.Add(trait);
+                }
+                else
+                {
+                    // Too many traits selected, uncheck the toggle
+                    var traitUI = traitUIs.Find(ui => ui.Trait == trait);
+                    traitUI.SetToggleWithoutNotify(false);
+                    return;
+                }
             }
             else
             {
-                // Too many traits selected, uncheck the toggle
-                var traitUI = traitUIs.Find(ui => ui.Trait == trait);
-                traitUI.SetToggleWithoutNotify(false);
+                selectedTraits.Remove(trait);
             }
+
+            UpdateSelectionCounter();
+        }
+
+        void UpdateSelectionCounter()
+        {
+            if (selectionCounterText != null)
+                selectionCounterText.text = $"Selected: {selectedTraits.Count}/{maxTraitSelections}";
         }
 
         void OnTraitInfoRequested(CharacterTrait trait)
         {
-            // Update description panel with trait info
-            descriptionText.text = $"{trait.traitName}\n\n{trait.description}";
+            if (descriptionText != null)
+            {
+                var description = $"{trait.traitName}\n\n{trait.description}";
 
-            // Could also show stat modifications, requirements, etc.
-            var statChanges = GetStatModifierText(trait);
-            descriptionText.text += $"\n\nEffects:\n{statChanges}";
+                // Add stat modifications if any exist
+                if (trait.statModifiers.Any())
+                {
+                    description += "\n\nModifies:";
+                    foreach (var mod in trait.statModifiers)
+                    {
+                        var prefix = mod.value >= 0 ? "+" : "";
+                        description += $"\n{mod.statName}: {prefix}{mod.value}";
+                    }
+                }
+
+                descriptionText.text = description;
+            }
         }
 
-        string GetStatModifierText(CharacterTrait trait)
+        public List<CharacterTrait> GetSelectedTraits()
         {
-            // Format the trait's stat modifications for display
-            var text = "";
-            foreach (var mod in trait.statModifiers)
-                text += $"{mod.statName}: {(mod.value >= 0 ? "+" : "")}{mod.value}\n";
-
-            return text;
+            return new List<CharacterTrait>(selectedTraits);
         }
 
+        public bool HasRequiredTraits()
+        {
+            return selectedTraits.Count == maxTraitSelections;
+        }
+
+        void ClearTraits()
+        {
+            foreach (var traitUI in traitUIs)
+                if (traitUI != null)
+                    Destroy(traitUI.gameObject);
+
+            traitUIs.Clear();
+            selectedTraits.Clear();
+
+            if (descriptionText != null) descriptionText.text = "Select a trait to view its description";
+
+            UpdateSelectionCounter();
+        }
     }
 }
