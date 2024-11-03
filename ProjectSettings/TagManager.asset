@@ -9,6 +9,8 @@ TagManager:
   - Enemy
   - World
   - NoMask
+  - LevelStart
+  - WeaponPrefab
   layers:
   - Default
   - TransparentFX
