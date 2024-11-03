@@ -36,7 +36,7 @@ namespace Project.Core.CharacterCreation
     public enum CharacterClass
     {
         Automaton,
-        Luddite
+        Zealot
     }
 
 

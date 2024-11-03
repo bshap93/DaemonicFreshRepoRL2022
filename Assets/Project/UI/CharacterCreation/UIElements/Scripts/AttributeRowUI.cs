@@ -51,6 +51,11 @@ public class AttributeRowUI : MonoBehaviour
         }
     }
 
+    public void SetIncrementButtonState(bool enabled)
+    {
+        if (incrementButton != null) incrementButton.interactable = enabled;
+    }
+
     void UpdateUI()
     {
         valueText.text = CurrentPoints.ToString();
