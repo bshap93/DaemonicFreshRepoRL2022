@@ -6,31 +6,63 @@ using UnityEngine.UI;
 
 public class ClassSelectionButton : MonoBehaviour
 {
-    [SerializeField] Image classIcon;
+    [Header("UI Elements")] [SerializeField]
+    Image classIcon;
     [SerializeField] TMP_Text className;
     [SerializeField] TMP_Text description;
 
+    [Header("Styling")] [SerializeField] Color selectedColor = new(0.8f, 0.8f, 1f);
+    [SerializeField] Color normalColor = Color.white;
+
+    Image backgroundImage;
+    Button button;
+
     void Awake()
     {
-        // Validate required references
-        if (classIcon == null) Debug.LogError("Class Icon not assigned on ClassSelectionButton", this);
-        if (className == null) Debug.LogError("Class Name text not assigned on ClassSelectionButton", this);
-        if (description == null) Debug.LogError("Description text not assigned on ClassSelectionButton", this);
+        button = GetComponent<Button>();
+        backgroundImage = GetComponent<Image>();
+
+        // Set up button colors
+        var colors = button.colors;
+        colors.normalColor = normalColor;
+        colors.selectedColor = selectedColor;
+        colors.highlightedColor = Color.Lerp(normalColor, selectedColor, 0.5f);
+        button.colors = colors;
     }
 
     public void Setup(StartingClass classData, Action<StartingClass> onSelected)
     {
-        if (classData == null)
+        if (classData == null) return;
+
+        if (classIcon != null)
         {
-            Debug.LogError("Null class data passed to ClassSelectionButton");
-            return;
+            classIcon.sprite = classData.classIcon;
+            classIcon.preserveAspect = true;
         }
 
-        if (classIcon != null) classIcon.sprite = classData.classIcon;
-        if (className != null) className.text = classData.className;
-        if (description != null) description.text = classData.description;
+        if (className != null)
+        {
+            className.text = classData.className;
+            className.fontStyle = FontStyles.Bold;
+        }
 
-        var button = GetComponent<Button>();
-        if (button != null) button.onClick.AddListener(() => onSelected?.Invoke(classData));
+        if (description != null)
+        {
+            description.text = classData.description;
+            description.fontSize = className.fontSize * 0.8f;
+        }
+
+        if (button != null)
+            button.onClick.AddListener(
+                () =>
+                {
+                    onSelected?.Invoke(classData);
+                    SetSelected(true);
+                });
+    }
+
+    public void SetSelected(bool selected)
+    {
+        if (backgroundImage != null) backgroundImage.color = selected ? selectedColor : normalColor;
     }
 }

@@ -14,11 +14,14 @@ namespace Project.UI.CharacterCreation.Scripts
         [SerializeField] GameObject traitsPanel;
         [SerializeField] GameObject confirmationPanel;
 
-        // Add class selection specific fields
         [Header("Class Selection")] [SerializeField]
         Transform classContainer;
         [SerializeField] ClassSelectionButton classButtonPrefab;
+        [SerializeField] VerticalLayoutGroup detailsPanel;
+        [SerializeField] TextMeshProUGUI classNameText;
         [SerializeField] TextMeshProUGUI classDescriptionText;
+        [SerializeField] Image selectedClassIcon;
+
 
         [Header("Attribute Elements")] [SerializeField]
         TextMeshProUGUI pointsRemainingText;
@@ -37,6 +40,7 @@ namespace Project.UI.CharacterCreation.Scripts
         int _remainingPoints;
 
         CharacterClass? _selectedClass;
+        readonly List<ClassSelectionButton> classButtons = new();
 
         void Start()
         {
@@ -92,24 +96,57 @@ namespace Project.UI.CharacterCreation.Scripts
                 return;
             }
 
-            // Clear any existing buttons
-            foreach (Transform child in classContainer) Destroy(child.gameObject);
+            // Clear existing buttons
+            foreach (var button in classButtons)
+                if (button != null)
+                    Destroy(button.gameObject);
+
+            classButtons.Clear();
 
             // Create new buttons
             foreach (var classData in availableClasses)
                 if (classData != null)
                 {
-                    var buttonGo = Instantiate(classButtonPrefab, classContainer);
-                    var classButton = buttonGo.GetComponent<ClassSelectionButton>();
-                    if (classButton != null) classButton.Setup(classData, OnClassButtonClicked);
+                    var buttonGO = Instantiate(classButtonPrefab, classContainer);
+                    var classButton = buttonGO.GetComponent<ClassSelectionButton>();
+                    if (classButton != null)
+                    {
+                        classButton.Setup(classData, OnClassButtonClicked);
+                        classButtons.Add(classButton);
+                    }
                 }
+
+            // Hide details panel initially
+            if (detailsPanel != null) detailsPanel.gameObject.SetActive(false);
         }
 
         void OnClassButtonClicked(StartingClass classData)
         {
-            _selectedClass = (CharacterClass)Enum.Parse(typeof(CharacterClass), classData.className);
-            classDescriptionText.text = $"{classData.className}\n\n{classData.description}";
-            nextButton.interactable = true; // Enable next button once class is selected
+            if (classData == null) return;
+
+            // Update selected button visuals
+            foreach (var button in classButtons) button.SetSelected(false);
+
+            // Parse and store selected class
+            if (Enum.TryParse(classData.className, out CharacterClass parsedClass))
+            {
+                _selectedClass = parsedClass;
+
+                // Update UI
+                if (detailsPanel != null) detailsPanel.gameObject.SetActive(true);
+
+                if (classNameText != null) classNameText.text = classData.className;
+
+                if (classDescriptionText != null) classDescriptionText.text = classData.description;
+
+                if (selectedClassIcon != null)
+                {
+                    selectedClassIcon.sprite = classData.classIcon;
+                    selectedClassIcon.preserveAspect = true;
+                }
+
+                if (nextButton != null) nextButton.interactable = true;
+            }
         }
 
         void OnAttributePointChanged(int pointChange)
