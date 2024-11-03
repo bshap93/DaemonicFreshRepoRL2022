@@ -992,63 +992,6 @@ RectTransform:
   m_AnchoredPosition: {x: -8, y: 1}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &186625241
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 186625243}
-  - component: {fileID: 186625242}
-  - component: {fileID: 186625244}
-  m_Layer: 0
-  m_Name: Test
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &186625242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 186625241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 833cff2a8e8d42d887330505a3d833b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &186625243
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 186625241}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2375.418, y: -364.95654, z: 1193.0814}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &186625244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 186625241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec0d5ecb8c9728c4cacb56edd1b14812, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &190947089
 GameObject:
   m_ObjectHideFlags: 0
@@ -2068,7 +2011,7 @@ RectTransform:
   m_GameObject: {fileID: 520606079}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4297179, y: 0.4297179, z: 0.4297179}
+  m_LocalScale: {x: 0.84082, y: 0.84082, z: 0.84082}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 593546604}
@@ -2076,7 +2019,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -509.1, y: -582.2}
+  m_AnchoredPosition: {x: -509.1, y: -563}
   m_SizeDelta: {x: 291, y: 84}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &520606081
@@ -6357,10 +6300,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1650926645}
-    - targetCorrespondingSourceObject: {fileID: 3758137836904316762, guid: e2b85117e16110e47b05cefa202c03df,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2017800115}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2b85117e16110e47b05cefa202c03df, type: 3}
 --- !u!4 &1457545562 stripped
@@ -7273,11 +7212,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Inventories
-      objectReference: {fileID: 0}
-    - target: {fileID: 9143304461799291846, guid: 019a35edca68d5548bba43b5ba06a39a,
-        type: 3}
-      propertyPath: Content.Array.size
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8906,11 +8840,11 @@ Transform:
   m_GameObject: {fileID: 2017800112}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4926.398, y: 1008.8203, z: -9.5}
+  m_LocalPosition: {x: 4918.898, y: 1010.3203, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1457545562}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2070663057
 GameObject:
@@ -9218,7 +9152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4350bf2b71c28aa4287088b021d7b576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetInventoryName: CarriedInventory
+  TargetInventoryName: SuitMainInventory
   PlayerID: Player1
   Global: 0
   HideOnEmptySlot: 1
@@ -9562,4 +9496,4 @@ SceneRoots:
   - {fileID: 1457545561}
   - {fileID: 985795076}
   - {fileID: 5522963599373051311}
-  - {fileID: 186625243}
+  - {fileID: 2017800115}
