@@ -41,7 +41,7 @@ MonoBehaviour:
   ItemName: Sword1
   ShortDescription: A slightly worn sword carried by you when you first enter.
   Description: 
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300016, guid: febaf98c9e2e16b4693de2178a533b43, type: 3}
   Prefab: {fileID: 0}
   ForcePrefabDropQuantity: 0
   PrefabDropQuantity: 1
