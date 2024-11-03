@@ -1,154 +1,157 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Project.Core.CharacterCreation;
-using Project.UI.CharacterCreation.Classes.Scripts;
-using Project.UI.CharacterCreation.Traits.Scripts;
-using Project.UI.CharacterCreation.UIElements.Scripts;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace Project.UI.CharacterCreation.Scripts
+public class CharacterCreationUI : MonoBehaviour
 {
-    public class CharacterCreationUI : MonoBehaviour
+    [Header("Panels")] [SerializeField] GameObject attributePanel;
+    [SerializeField] GameObject traitsPanel;
+    [SerializeField] GameObject confirmationPanel;
+
+    [Header("Attribute Elements")]
+    [SerializeField] private TextMeshProUGUI pointsRemainingText;
+    [SerializeField] private List<AttributeRowUI> attributeRows;
+    [SerializeField] private int startingPoints = 10;
+    
+    private int remainingPoints;
+
+
+    [Header("Navigation")] [SerializeField]
+    Button nextButton;
+    [SerializeField] Button backButton;
+    [SerializeField] Button confirmButton;
+
+    CharacterCreationData currentConfig;
+    CreationStep currentStep = CreationStep.Attributes;
+
+    void Start()
     {
-        [Header("Panels")] [SerializeField] GameObject attributePanel;
-        [FormerlySerializedAs("traitsPanelGO")] [FormerlySerializedAs("traitsPanel")] [SerializeField]
-        GameObject traitsPanelGo;
-        [SerializeField] GameObject confirmationPanel;
+        currentConfig = new CharacterCreationData();
+        remainingPoints = startingPoints;
+        InitializeUI();
+        ShowCurrentStep();
+    }
 
-        [Header("Class Selection")] [SerializeField]
-        Transform classesContainer;
-        [SerializeField] ClassSelectionButton classButtonPrefab;
+    void InitializeUI()
+    {
 
-        [Header("Attribute Elements")] [SerializeField]
-        TextMeshProUGUI pointsRemainingText;
-        [SerializeField] List<AttributeRowUI> attributeRows;
+        // Set up navigation buttons
+        nextButton.onClick.AddListener(OnNextClicked);
+        backButton.onClick.AddListener(OnBackClicked);
+        confirmButton.onClick.AddListener(OnConfirmClicked);
 
-        [Header("Trait Elements")] [SerializeField]
-        Transform traitContainer;
-        [SerializeField] GameObject traitPrefab;
-        [SerializeField] TextMeshProUGUI traitDescriptionText;
-
-        [Header("Navigation")] [SerializeField]
-        Button nextButton;
-        [SerializeField] Button backButton;
-        [SerializeField] Button confirmButton;
-
-        [SerializeField] ClassSelectionPanel classPanel;
-        [SerializeField] TraitsPanel traitsPanel;
-        [SerializeField] int maxTraitSelections = 2;
-
-        CharacterClass _selectedClass;
-        CharacterCreationData currentConfig;
-
-        CreationStep currentStep = CreationStep.Attributes;
-        int remainingPoints;
-
-        [Header("Traits")] [SerializeField] TraitsListUI traitsListUI;
-
-        void Start()
+        // Set up initial state
+        // Set up attribute rows
+        foreach (var row in attributeRows)
         {
-            var availableClasses = RunManager.Instance.GetAvailableClasses();
-            classPanel.Initialize(availableClasses, OnClassSelected);
-            currentConfig = new CharacterCreationData();
-            InitializeUI();
-            ShowCurrentStep();
-
-            // Hide traits until class is selected
-            traitsPanel.gameObject.SetActive(false);
+            row.Initialize(OnAttributePointChanged);
         }
 
-        void InitializeUI()
+        UpdatePointsDisplay();
+    }
+    
+    private void OnAttributePointChanged(int pointChange)
+    {
+        remainingPoints -= pointChange;
+        UpdatePointsDisplay();
+        
+        // Enable/disable next button based on points remaining
+        nextButton.interactable = remainingPoints == 0;
+    }
+
+    private void UpdatePointsDisplay()
+    {
+        pointsRemainingText.text = $"Points Remaining: {remainingPoints}";
+        
+        // Update increment buttons based on remaining points
+        foreach (var row in attributeRows)
         {
-            // Set up attribute rows
-            foreach (var row in attributeRows) row.OnPointsChanged += UpdateRemainingPoints;
+            row.GetComponent<Button>().interactable = remainingPoints > 0;
+        }
+    }
 
-            // Set up navigation buttons
-            nextButton.onClick.AddListener(OnNextClicked);
-            backButton.onClick.AddListener(OnBackClicked);
-            confirmButton.onClick.AddListener(OnConfirmClicked);
-
-            UpdateRemainingPoints();
+    void OnNextClicked()
+    {
+        if (currentStep == CreationStep.Attributes)
+        {
+            // Only proceed if all points are allocated
+            var usedPoints = attributeRows.Sum(row => row.CurrentPoints);
+            if (usedPoints == RunManager.Instance.StartingAttributePoints) currentStep = CreationStep.Traits;
+        }
+        else if (currentStep == CreationStep.Traits)
+        {
+            currentStep = CreationStep.Confirmation;
         }
 
-        void ShowCurrentStep()
-        {
-            attributePanel.SetActive(currentStep == CreationStep.Attributes);
-            traitsPanelGo.SetActive(currentStep == CreationStep.Traits);
-            confirmationPanel.SetActive(currentStep == CreationStep.Confirmation);
+        ShowCurrentStep();
+    }
 
-            backButton.gameObject.SetActive(currentStep != CreationStep.Attributes);
-            nextButton.gameObject.SetActive(currentStep != CreationStep.Confirmation);
-            confirmButton.gameObject.SetActive(currentStep == CreationStep.Confirmation);
-        }
+    void OnBackClicked()
+    {
+        if (currentStep == CreationStep.Traits)
+            currentStep = CreationStep.Attributes;
+        else if (currentStep == CreationStep.Confirmation) currentStep = CreationStep.Traits;
 
-        void UpdateRemainingPoints()
-        {
-            var used = attributeRows.Sum(row => row.CurrentPoints);
-            var remaining = RunManager.Instance.StartingAttributePoints - used;
-            pointsRemainingText.text = $"Points Remaining: {remaining}";
-            nextButton.interactable = remaining == 0;
-        }
+        ShowCurrentStep();
+    }
 
-        void OnNextClicked()
-        {
-            if (currentStep == CreationStep.Attributes)
+    void OnConfirmClicked()
+    {
+        // Save the final character configuration
+        SaveCharacterStats();
+
+        // Could load the game scene here
+        // SceneManager.LoadScene("GameScene");
+        Debug.Log("Character Creation Completed!");
+    }
+
+    void SaveCharacterStats()
+    {
+        // Save the attribute allocations
+        var stats = new CharacterStats();
+
+        foreach (var row in attributeRows)
+            switch (row.statNameText.text)
             {
-                currentStep = CreationStep.Traits;
-                PopulateTraits();
+                case "Strength":
+                    stats.strength = row.CurrentPoints;
+                    break;
+                case "Agility":
+                    stats.agility = row.CurrentPoints;
+                    break;
+                case "Endurance":
+                    stats.endurance = row.CurrentPoints;
+                    break;
+                case "Intelligence":
+                    stats.intelligence = row.CurrentPoints;
+                    break;
+                case "Intuition":
+                    stats.intuition = row.CurrentPoints;
+                    break;
             }
-            else if (currentStep == CreationStep.Traits)
-            {
-                currentStep = CreationStep.Confirmation;
-                ShowConfirmation();
-            }
 
-            ShowCurrentStep();
-        }
-        void ShowConfirmation()
-        {
-            throw new NotImplementedException();
-        }
-        void PopulateTraits()
-        {
-            throw new NotImplementedException();
-        }
+        currentConfig.attributes = stats;
+    }
 
-        void OnBackClicked()
-        {
-            if (currentStep == CreationStep.Traits)
-                currentStep = CreationStep.Attributes;
-            else if (currentStep == CreationStep.Confirmation)
-                currentStep = CreationStep.Traits;
+    void ShowCurrentStep()
+    {
+        attributePanel.SetActive(currentStep == CreationStep.Attributes);
+        traitsPanel.SetActive(currentStep == CreationStep.Traits);
+        confirmationPanel.SetActive(currentStep == CreationStep.Confirmation);
 
-            ShowCurrentStep();
-        }
+        backButton.gameObject.SetActive(currentStep != CreationStep.Attributes);
+        nextButton.gameObject.SetActive(currentStep != CreationStep.Confirmation);
+        confirmButton.gameObject.SetActive(currentStep == CreationStep.Confirmation);
+    }
 
-        void OnConfirmClicked()
-        {
-            // Save character configuration
-            RunManager.Instance.StartNewRun(currentConfig);
-            // Transition to game
-            // SceneManager.LoadScene("GameScene");
-        }
 
-        void OnClassSelected(CharacterClass characterClass)
-        {
-            _selectedClass = characterClass;
-
-            // Show and initialize traits panel with class-specific traits
-            traitsPanel.gameObject.SetActive(true);
-            traitsPanel.Initialize(RunManager.Instance.GetAvailableTraits(), characterClass);
-        }
-
-        enum CreationStep
-        {
-            Attributes,
-            Traits,
-            Confirmation
-        }
+    enum CreationStep
+    {
+        Attributes,
+        Traits,
+        Confirmation
     }
 }

@@ -143,7 +143,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8114772520292540267}
-  - component: {fileID: 2384086388189148698}
   m_Layer: 5
   m_Name: TraitUI
   m_TagString: Untagged
@@ -174,22 +173,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2384086388189148698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1609693883960116517}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db4aca277d94703aa73adfdf515883c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameText: {fileID: 2650977487232532566}
-  selectionToggle: {fileID: 6277569692542174096}
-  infoButton: {fileID: 9195568771340862013}
-  traitIcon: {fileID: 7068839882496515718}
 --- !u!1 &2449071108703448784
 GameObject:
   m_ObjectHideFlags: 0
