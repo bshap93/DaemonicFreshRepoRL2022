@@ -132,10 +132,19 @@ namespace Project.Gameplay.ItemManagement.ItemClasses
 
         public virtual void RaiseShield()
         {
-            if (ShieldState.CurrentState == ShieldStates.ShieldBreak) return;
+            Debug.Log($"RaiseShield called. Current state: {ShieldState.CurrentState}");
+
+            if (ShieldState.CurrentState == ShieldStates.ShieldBreak)
+            {
+                Debug.Log("Shield is broken, cannot raise");
+                return;
+            }
 
             ShieldState.ChangeState(ShieldStates.ShieldActive);
             ShieldRaiseFeedback?.PlayFeedbacks();
+            
+            Debug.Log("Shield raised successfully");
+
 
             if (_characterMovement != null && ModifyMovementWhileBlocking)
             {

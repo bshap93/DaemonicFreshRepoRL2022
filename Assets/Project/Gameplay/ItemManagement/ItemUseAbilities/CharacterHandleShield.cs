@@ -19,19 +19,25 @@ namespace Project.Gameplay.ItemManagement.ItemUseAbilities
 
         public Shield CurrentShield { get; protected set; }
         public Animator CharacterAnimator { get; protected set; }
+        public override string HelpBoxText()
+        {
+            return "This ability allows the character to use shields for blocking damage.";
+        }
 
         protected override void Initialization()
         {
             base.Initialization();
 
-            // Initialize input button
-            if (_inputManager != null)
-                _shieldButton = new MMInput.IMButton(
-                    _character.PlayerID, "Shield", ShieldButtonDown, ShieldButtonPressed, ShieldButtonUp);
+            Debug.Log($"CharacterHandleShield initialized. InputManager: {_inputManager != null}");
 
-            // Setup shield and animator
-            CharacterAnimator = _animator;
-            SetupShield();
+            if (_inputManager != null)
+            {
+                // Change "Shield" to match exactly what you set in the Input Manager
+                _shieldButton = new MMInput.IMButton(
+                    _character.PlayerID, "Player1_Shield", ShieldButtonDown, ShieldButtonPressed, ShieldButtonUp);
+
+                Debug.Log("Shield button initialized");
+            }
         }
 
         protected virtual void SetupShield()
@@ -43,25 +49,34 @@ namespace Project.Gameplay.ItemManagement.ItemUseAbilities
 
         protected override void HandleInput()
         {
-            // Early exit if conditions aren't met
-            if (!AbilityAuthorized
-                || !InputAuthorized
-                || CurrentShield == null
-                || _inputManager == null
-                || _shieldButton == null)
+            base.HandleInput();
+
+            if (!AbilityAuthorized || !InputAuthorized || CurrentShield == null)
+            {
+                Debug.Log(
+                    $"Shield input blocked. Auth:{AbilityAuthorized} Input:{InputAuthorized} Shield:{CurrentShield != null}");
+
                 return;
+            }
 
-            if (_shieldButton.State.CurrentState == MMInput.ButtonStates.ButtonDown) ShieldStart();
-
-            if (_shieldButton.State.CurrentState == MMInput.ButtonStates.ButtonUp) ShieldStop();
-
-            if (ContinuousPress && _shieldButton.State.CurrentState == MMInput.ButtonStates.ButtonPressed)
-                CurrentShield.RaiseShield();
+            // Use the Input Manager directly to debug
+            if (_inputManager.ShieldButton.State.CurrentState == MMInput.ButtonStates.ButtonDown)
+            {
+                Debug.Log("Shield button pressed");
+                ShieldStart();
+            }
+            else if (_inputManager.ShieldButton.State.CurrentState == MMInput.ButtonStates.ButtonUp)
+            {
+                Debug.Log("Shield button released");
+                ShieldStop();
+            }
         }
 
         public virtual void ShieldStart()
         {
+            Debug.Log("ShieldStart was called");
             if (CurrentShield == null) return;
+            Debug.Log("ShieldStart was called and shield exists");
 
             PlayAbilityStartFeedbacks();
             CurrentShield.RaiseShield();
@@ -75,17 +90,23 @@ namespace Project.Gameplay.ItemManagement.ItemUseAbilities
             CurrentShield.LowerShield();
         }
 
-        protected virtual void ShieldButtonDown()
+        // Make sure these are called
+        public virtual void ShieldButtonDown()
         {
-            if (_shieldButton != null) _shieldButton.State.ChangeState(MMInput.ButtonStates.ButtonDown);
+            Debug.Log("Shield button down called");
+            _shieldButton?.State.ChangeState(MMInput.ButtonStates.ButtonDown);
         }
-        protected virtual void ShieldButtonPressed()
+
+        public virtual void ShieldButtonPressed()
         {
-            if (_shieldButton != null) _shieldButton.State.ChangeState(MMInput.ButtonStates.ButtonPressed);
+            Debug.Log("Shield button pressed called");
+            _shieldButton?.State.ChangeState(MMInput.ButtonStates.ButtonPressed);
         }
-        protected virtual void ShieldButtonUp()
+
+        public virtual void ShieldButtonUp()
         {
-            if (_shieldButton != null) _shieldButton.State.ChangeState(MMInput.ButtonStates.ButtonUp);
+            Debug.Log("Shield button up called");
+            _shieldButton?.State.ChangeState(MMInput.ButtonStates.ButtonUp);
         }
 
         public virtual void EquipShield(Shield newShield)

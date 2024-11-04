@@ -1991,11 +1991,11 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: Player1_Shield
-    descriptiveName: Shield Button
+    descriptiveName: Shield action
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: mouse 2
-    altNegativeButton: joystick button 1
+    positiveButton: mouse 1
+    altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
     dead: 0.001
