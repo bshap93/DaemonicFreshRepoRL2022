@@ -26,6 +26,10 @@ namespace Project.Gameplay.ItemManagement.ItemClasses
             ShieldInterrupted
         }
 
+        // Animation timing constants
+        protected const float RAISE_ANIMATION_TIME = 0.3f;
+        protected const float LOWER_ANIMATION_TIME = 0.2f;
+
         [MMInspectorGroup("ID", true, 7)] [Tooltip("the name of the shield")]
         public string ShieldName;
 
@@ -61,6 +65,8 @@ namespace Project.Gameplay.ItemManagement.ItemClasses
         protected Animator _ownerAnimator;
         protected int _shieldBlockAnimationParameter;
         protected int _shieldBreakAnimationParameter;
+        // Add this field at the top with your other parameters
+        protected int _shieldStateParameter;
 
         protected int _shieldUpAnimationParameter;
         public MMStateMachine<ShieldStates> ShieldState;
@@ -73,12 +79,24 @@ namespace Project.Gameplay.ItemManagement.ItemClasses
         {
             if (_initialized) return;
 
+            // Debug checkpoint
+            Debug.Log($"Initializing shield: {ShieldName}");
+
             ShieldState = new MMStateMachine<ShieldStates>(gameObject, true);
             ShieldState.ChangeState(ShieldStates.ShieldIdle);
             CurrentShieldHealth = MaxShieldHealth;
 
+            // Initialize animator parameters if we already have an owner
+            if (_ownerAnimator != null)
+            {
+                InitializeAnimatorParameters();
+            }
+
             InitializeFeedbacks();
             _initialized = true;
+        
+            // Debug checkpoint
+            Debug.Log($"Shield initialization complete. Animator: {_ownerAnimator != null}, Parameters initialized: {_animatorParameters != null}");
         }
 
         protected virtual void InitializeFeedbacks()
@@ -90,6 +108,9 @@ namespace Project.Gameplay.ItemManagement.ItemClasses
 
         public virtual void SetOwner(Character newOwner, CharacterHandleShield handleShield)
         {
+            // Debug checkpoint
+            Debug.Log($"Setting owner for shield: {ShieldName}");
+
             Owner = newOwner;
             CharacterHandle = handleShield;
 
@@ -97,27 +118,55 @@ namespace Project.Gameplay.ItemManagement.ItemClasses
             {
                 _characterMovement = Owner.FindAbility<CharacterMovement>();
                 _ownerAnimator = handleShield.CharacterAnimator;
-            }
+            
+                // Debug checkpoint
+                Debug.Log($"Owner set. Animator found: {_ownerAnimator != null}");
 
-            InitializeAnimatorParameters();
+                // Re-initialize parameters with new animator
+                InitializeAnimatorParameters();
+            }
+            else
+            {
+                Debug.LogError($"Shield {ShieldName} assigned null owner", this);
+            }
         }
+
 
         protected virtual void InitializeAnimatorParameters()
         {
-            if (_ownerAnimator == null) return;
+            if (_ownerAnimator == null)
+            {
+                Debug.LogWarning($"Cannot initialize animator parameters - no animator found for shield {ShieldName}", this);
+                return;
+            }
+
+            // Debug checkpoint
+            Debug.Log($"Initializing animator parameters for shield: {ShieldName}");
 
             _animatorParameters = new HashSet<int>();
 
             RegisterAnimatorParameter(
-                ShieldUpAnimationParameter, AnimatorControllerParameterType.Bool, out _shieldUpAnimationParameter);
+                "ShieldState", 
+                AnimatorControllerParameterType.Int, 
+                out _shieldStateParameter);
 
             RegisterAnimatorParameter(
-                ShieldBlockAnimationParameter, AnimatorControllerParameterType.Trigger,
+                ShieldUpAnimationParameter, 
+                AnimatorControllerParameterType.Bool, 
+                out _shieldUpAnimationParameter);
+
+            RegisterAnimatorParameter(
+                ShieldBlockAnimationParameter, 
+                AnimatorControllerParameterType.Trigger,
                 out _shieldBlockAnimationParameter);
 
             RegisterAnimatorParameter(
-                ShieldBreakAnimationParameter, AnimatorControllerParameterType.Trigger,
+                ShieldBreakAnimationParameter, 
+                AnimatorControllerParameterType.Trigger,
                 out _shieldBreakAnimationParameter);
+
+            // Debug checkpoint
+            Debug.Log($"Animator parameters initialized. Count: {_animatorParameters.Count}");
         }
 
         protected virtual void RegisterAnimatorParameter(string parameterName,
@@ -140,17 +189,65 @@ namespace Project.Gameplay.ItemManagement.ItemClasses
                 return;
             }
 
-            ShieldState.ChangeState(ShieldStates.ShieldActive);
-            ShieldRaiseFeedback?.PlayFeedbacks();
-            
-            Debug.Log("Shield raised successfully");
-
-
-            if (_characterMovement != null && ModifyMovementWhileBlocking)
+            // First change to start state
+            ShieldState.ChangeState(ShieldStates.ShieldStart);
+            SyncStateToAnimator(ShieldStates.ShieldStart);
+        
+            // Start the raise sequence
+            StartCoroutine(RaiseShieldSequence());
+        }
+        
+        protected virtual IEnumerator RaiseShieldSequence()
+        {
+            yield return new WaitForSeconds(RAISE_ANIMATION_TIME);
+        
+            if (ShieldState.CurrentState == ShieldStates.ShieldStart)
             {
-                _movementMultiplierStorage = _characterMovement.MovementSpeedMultiplier;
-                _characterMovement.MovementSpeedMultiplier = MovementMultiplier;
+                ShieldState.ChangeState(ShieldStates.ShieldActive);
+                SyncStateToAnimator(ShieldStates.ShieldActive);
+            
+                ShieldRaiseFeedback?.PlayFeedbacks();
+
+                if (_characterMovement != null && ModifyMovementWhileBlocking)
+                {
+                    _movementMultiplierStorage = _characterMovement.MovementSpeedMultiplier;
+                    _characterMovement.MovementSpeedMultiplier = MovementMultiplier;
+                }
             }
+        }
+
+        // Add validation method
+        public bool ValidateAnimatorSetup()
+        {
+            if (_ownerAnimator == null)
+            {
+                Debug.LogError($"Shield {ShieldName} has no animator assigned", this);
+                return false;
+            }
+
+            if (_animatorParameters == null || _animatorParameters.Count == 0)
+            {
+                Debug.LogError($"Shield {ShieldName} animator parameters not initialized", this);
+                return false;
+            }
+
+            // Check for required parameters
+            var requiredParameters = new[]
+            {
+                "ShieldState",
+                ShieldUpAnimationParameter,
+                ShieldBlockAnimationParameter,
+                ShieldBreakAnimationParameter
+            };
+
+            foreach (var param in requiredParameters)
+                if (!_animatorParameters.Contains(Animator.StringToHash(param)))
+                {
+                    Debug.LogError($"Shield {ShieldName} missing required animator parameter: {param}", this);
+                    return false;
+                }
+
+            return true;
         }
 
         public virtual void LowerShield()
@@ -158,6 +255,7 @@ namespace Project.Gameplay.ItemManagement.ItemClasses
             if (ShieldState.CurrentState == ShieldStates.ShieldBreak) return;
 
             ShieldState.ChangeState(ShieldStates.ShieldIdle);
+            SyncStateToAnimator(ShieldStates.ShieldIdle);
 
             if (_characterMovement != null && ModifyMovementWhileBlocking)
                 _characterMovement.MovementSpeedMultiplier = _movementMultiplierStorage;
@@ -170,40 +268,135 @@ namespace Project.Gameplay.ItemManagement.ItemClasses
             var reducedDamage = incomingDamage * (1f - BlockingDamageReduction);
             CurrentShieldHealth -= reducedDamage;
 
+            // Temporarily change to block state
+            ShieldState.ChangeState(ShieldStates.ShieldBlock);
+            SyncStateToAnimator(ShieldStates.ShieldBlock);
+        
             ShieldBlockFeedback?.PlayFeedbacks();
-            MMAnimatorExtensions.UpdateAnimatorTrigger(
-                _ownerAnimator, _shieldBlockAnimationParameter, _animatorParameters);
 
-            if (CurrentShieldHealth <= 0) BreakShield();
+            // Start coroutine to return to active state
+            StartCoroutine(ReturnToActiveState());
+
+            if (CurrentShieldHealth <= 0) 
+            {
+                BreakShield();
+            }
 
             return true;
         }
+        
+        protected virtual IEnumerator ReturnToActiveState()
+        {
+            yield return new WaitForSeconds(0.5f); // Adjust time as needed for block animation
+        
+            if (ShieldState.CurrentState == ShieldStates.ShieldBlock)
+            {
+                ShieldState.ChangeState(ShieldStates.ShieldActive);
+                SyncStateToAnimator(ShieldStates.ShieldActive);
+            }
+        }
+
 
         protected virtual void BreakShield()
         {
             ShieldState.ChangeState(ShieldStates.ShieldBreak);
+            SyncStateToAnimator(ShieldStates.ShieldBreak);
+        
             ShieldBreakFeedback?.PlayFeedbacks();
-            MMAnimatorExtensions.UpdateAnimatorTrigger(
-                _ownerAnimator, _shieldBreakAnimationParameter, _animatorParameters);
 
             StartCoroutine(RecoverShieldCoroutine());
         }
 
+
         protected virtual IEnumerator RecoverShieldCoroutine()
         {
             yield return new WaitForSeconds(RecoveryTime);
+        
             CurrentShieldHealth = MaxShieldHealth;
             ShieldState.ChangeState(ShieldStates.ShieldIdle);
+            SyncStateToAnimator(ShieldStates.ShieldIdle);
         }
-
-
         public virtual void UpdateAnimator()
         {
             if (_ownerAnimator == null || _animatorParameters == null) return;
 
+            // Update both the state integer and the bool for compatibility
+            MMAnimatorExtensions.UpdateAnimatorInteger(
+                _ownerAnimator,
+                _shieldStateParameter,
+                (int)ShieldState.CurrentState,
+                _animatorParameters
+            );
+
+            // Keep the existing bool update for backward compatibility
             var shieldUp = ShieldState.CurrentState == ShieldStates.ShieldActive;
             MMAnimatorExtensions.UpdateAnimatorBool(
-                _ownerAnimator, _shieldUpAnimationParameter, shieldUp, _animatorParameters);
+                _ownerAnimator,
+                _shieldUpAnimationParameter,
+                shieldUp,
+                _animatorParameters
+            );
+        }
+        
+        // Add this helper method to sync state to animator
+        protected virtual void SyncStateToAnimator(ShieldStates state)
+        {
+            if (_ownerAnimator == null || _animatorParameters == null)
+            {
+                Debug.LogWarning($"Cannot sync state {state} - animator not initialized", this);
+                return;
+            }
+
+            Debug.Log($"Syncing shield state to animator: {state} ({(int)state})", this);
+
+            // Update the state parameter
+            MMAnimatorExtensions.UpdateAnimatorInteger(
+                _ownerAnimator,
+                _shieldStateParameter,
+                (int)state,
+                _animatorParameters,
+                false
+            );
+
+            // For compatibility, also update the bool parameter
+            bool shieldUp = (state == ShieldStates.ShieldActive || state == ShieldStates.ShieldStart);
+            MMAnimatorExtensions.UpdateAnimatorBool(
+                _ownerAnimator,
+                _shieldUpAnimationParameter,
+                shieldUp,
+                _animatorParameters
+            );
+        }
+        
+        // Add a debug gizmo to visualize the current state
+        protected virtual void OnDrawGizmos()
+        {
+            if (!Application.isPlaying) return;
+
+            Vector3 offset = Vector3.up * 2f;
+            Color stateColor = ShieldState?.CurrentState switch
+            {
+                ShieldStates.ShieldIdle => Color.gray,
+                ShieldStates.ShieldStart => Color.yellow,
+                ShieldStates.ShieldActive => Color.green,
+                ShieldStates.ShieldBlock => Color.blue,
+                ShieldStates.ShieldBreak => Color.red,
+                ShieldStates.ShieldRecover => Color.cyan,
+                _ => Color.white
+            };
+
+            Gizmos.color = stateColor;
+            Gizmos.DrawWireSphere(transform.position + offset, 0.3f);
+
+#if UNITY_EDITOR
+            // Draw state name
+            if (ShieldState != null)
+            {
+                UnityEditor.Handles.Label(
+                    transform.position + offset + Vector3.up * 0.3f,
+                    ShieldState.CurrentState.ToString());
+            }
+#endif
         }
     }
 }

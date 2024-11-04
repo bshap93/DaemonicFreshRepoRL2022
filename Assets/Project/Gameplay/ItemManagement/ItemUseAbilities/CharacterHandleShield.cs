@@ -18,7 +18,6 @@ namespace Project.Gameplay.ItemManagement.ItemUseAbilities
         protected MMInput.IMButton _shieldButton;
 
         public Shield CurrentShield { get; protected set; }
-        public Animator CharacterAnimator { get; protected set; }
         public override string HelpBoxText()
         {
             return "This ability allows the character to use shields for blocking damage.";
@@ -28,25 +27,84 @@ namespace Project.Gameplay.ItemManagement.ItemUseAbilities
         {
             base.Initialization();
 
-            Debug.Log($"CharacterHandleShield initialized. InputManager: {_inputManager != null}");
+            Debug.Log("CharacterHandleShield initializing...");
 
-            if (_inputManager != null)
+            // Ensure we have an animator
+            if (_animator == null && AutomaticallyBindAnimator)
             {
-                // Change "Shield" to match exactly what you set in the Input Manager
-                _shieldButton = new MMInput.IMButton(
-                    _character.PlayerID, "Player1_Shield", ShieldButtonDown, ShieldButtonPressed, ShieldButtonUp);
+                _animator = GetComponent<Animator>();
+                if (_animator == null)
+                {
+                    _animator = GetComponentInChildren<Animator>();
+                }
+            }
 
-                Debug.Log("Shield button initialized");
+            if (_animator == null)
+            {
+                Debug.LogError("No animator found for CharacterHandleShield!", this);
+            }
+
+            // Set up initial shield if we have one
+            SetupShield();
+
+            Debug.Log($"CharacterHandleShield initialized. Animator: {_animator != null}, Initial shield: {InitialShield != null}");
+        }
+        
+        public Animator CharacterAnimator
+        {
+            get 
+            { 
+                // Make sure we always return a valid animator
+                if (_animator == null && AutomaticallyBindAnimator)
+                {
+                    _animator = GetComponent<Animator>();
+                    if (_animator == null)
+                    {
+                        _animator = GetComponentInChildren<Animator>();
+                    }
+                    if (_animator == null)
+                    {
+                        Debug.LogError("Still cannot find animator!", this);
+                    }
+                }
+                return _animator; 
             }
         }
 
         protected virtual void SetupShield()
         {
-            if (ShieldAttachment == null) ShieldAttachment = transform;
+            if (ShieldAttachment == null)
+            {
+                ShieldAttachment = transform;
+                Debug.Log("Using transform as shield attachment point");
+            }
 
-            if (InitialShield != null) EquipShield(InitialShield);
+            if (InitialShield != null)
+            {
+                Debug.Log("Setting up initial shield");
+                EquipShield(InitialShield);
+            }
         }
+        public virtual void EquipShield(Shield newShield)
+        {
+            Debug.Log($"Equipping shield: {(newShield != null ? newShield.ShieldName : "null")}");
 
+            if (CurrentShield != null)
+            {
+                Debug.Log("Destroying current shield");
+                Destroy(CurrentShield.gameObject);
+            }
+
+            if (newShield != null)
+            {
+                Debug.Log("Instantiating new shield");
+                CurrentShield = Instantiate(newShield, ShieldAttachment.position, ShieldAttachment.rotation);
+                CurrentShield.transform.parent = ShieldAttachment;
+                CurrentShield.SetOwner(_character, this);
+                CurrentShield.Initialization();
+                Debug.Log($"Shield equipped successfully: {CurrentShield.name}");
+            }
+        }
         protected override void HandleInput()
         {
             base.HandleInput();
@@ -109,20 +167,6 @@ namespace Project.Gameplay.ItemManagement.ItemUseAbilities
             _shieldButton?.State.ChangeState(MMInput.ButtonStates.ButtonUp);
         }
 
-        public virtual void EquipShield(Shield newShield)
-        {
-            if (CurrentShield != null) Destroy(CurrentShield.gameObject);
-
-            if (newShield != null)
-            {
-                CurrentShield = Instantiate(newShield, ShieldAttachment.position, ShieldAttachment.rotation);
-                CurrentShield.transform.parent = ShieldAttachment;
-                CurrentShield.SetOwner(_character, this);
-                CurrentShield.Initialization();
-                Debug.Log($"Shield equipped successfully: {CurrentShield.name}");
-            }
-        }
-
         protected override void OnDeath()
         {
             base.OnDeath();
@@ -134,5 +178,7 @@ namespace Project.Gameplay.ItemManagement.ItemUseAbilities
             base.OnRespawn();
             SetupShield();
         }
+        
+        
     }
 }
