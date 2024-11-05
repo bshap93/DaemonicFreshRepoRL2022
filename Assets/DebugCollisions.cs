@@ -11,6 +11,5 @@ public class DebugCollisions : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"Trigger with {other.gameObject.name} on layer {LayerMask.LayerToName(other.gameObject.layer)}");
     }
 }
