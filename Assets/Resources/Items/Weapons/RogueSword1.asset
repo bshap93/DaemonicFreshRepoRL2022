@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9529ae2b2ee0d1e4d802b51d271424c3, type: 3}
-  m_Name: Sword1
+  m_Name: RogueSword1
   m_EditorClassIdentifier: 
-  ItemID: Sword1
-  TargetInventoryName: WeaponSlot
+  ItemID: RogueSword1
+  TargetInventoryName: WeaponSlotf
   ForceSlotIndex: 0
   TargetIndex: 0
   Usable: 1
@@ -38,10 +38,10 @@ MonoBehaviour:
     AllowEquipShortcut: 1
     AllowUseShortcut: 1
   Quantity: 1
-  ItemName: Sword1
-  ShortDescription: A slightly worn sword carried by you when you first enter.
+  ItemName: Enemy Sword 1
+  ShortDescription: 
   Description: 
-  Icon: {fileID: 21300016, guid: febaf98c9e2e16b4693de2178a533b43, type: 3}
+  Icon: {fileID: 0}
   Prefab: {fileID: 0}
   ForcePrefabDropQuantity: 0
   PrefabDropQuantity: 1
@@ -96,7 +96,7 @@ MonoBehaviour:
   MovedSound: {fileID: 0}
   DroppedSound: {fileID: 0}
   UseDefaultSoundsIfNull: 1
-  EquippableWeapon: {fileID: 8159000169692753781, guid: 904bd19c73093da479ce55c8e23f91c5,
+  EquippableWeapon: {fileID: 4555794487190781781, guid: 3265319806dfd3f4796f83602d04c32d,
     type: 3}
-  AutoEquipMode: 2
+  AutoEquipMode: 0
   HandleWeaponID: 1
