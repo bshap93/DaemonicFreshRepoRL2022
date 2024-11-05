@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 8927191285216027353}
   - component: {fileID: 8159000169692753781}
   - component: {fileID: 8525771012948114094}
-  m_Layer: 0
+  - component: {fileID: 4697956544679880569}
+  m_Layer: 6
   m_Name: Sword1MeleeWeapon
-  m_TagString: Untagged
+  m_TagString: WeaponPrefab
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,7 +121,7 @@ MonoBehaviour:
   ActiveDuration: 1
   TargetLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   MinDamageCaused: 10
   MaxDamageCaused: 10
   Knockback: 1
@@ -168,6 +169,18 @@ MonoBehaviour:
     m_Bits: 9
   MaximumSlopeElevation: 50
   AvoidNullAim: 1
+--- !u!114 &4697956544679880569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347692590179713027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9ea57a1a0882c347b8b66166604fb49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9140107985515572073
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,7 +192,7 @@ GameObject:
   - component: {fileID: 5596820791566915652}
   - component: {fileID: 4392897844569446427}
   - component: {fileID: 7573093437379378651}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sword_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}

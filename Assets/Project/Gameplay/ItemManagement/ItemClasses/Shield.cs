@@ -5,6 +5,7 @@ using MoreMountains.Tools;
 using MoreMountains.TopDownEngine;
 using Project.Gameplay.ItemManagement.ItemUseAbilities;
 using TopDownEngine.Common.Scripts.Characters.Core;
+using UnityEditor;
 using UnityEngine;
 
 namespace Project.Gameplay.ItemManagement.ItemClasses
@@ -75,28 +76,52 @@ namespace Project.Gameplay.ItemManagement.ItemClasses
         public Character Owner { get; protected set; }
         public CharacterHandleShield CharacterHandle { get; set; }
 
+        // Add a debug gizmo to visualize the current state
+        protected virtual void OnDrawGizmos()
+        {
+            if (!Application.isPlaying) return;
+
+            var offset = Vector3.up * 2f;
+            var stateColor = ShieldState?.CurrentState switch
+            {
+                ShieldStates.ShieldIdle => Color.gray,
+                ShieldStates.ShieldStart => Color.yellow,
+                ShieldStates.ShieldActive => Color.green,
+                ShieldStates.ShieldBlock => Color.blue,
+                ShieldStates.ShieldBreak => Color.red,
+                ShieldStates.ShieldRecover => Color.cyan,
+                _ => Color.white
+            };
+
+            Gizmos.color = stateColor;
+            Gizmos.DrawWireSphere(transform.position + offset, 0.3f);
+
+#if UNITY_EDITOR
+            // Draw state name
+            if (ShieldState != null)
+                Handles.Label(
+                    transform.position + offset + Vector3.up * 0.3f,
+                    ShieldState.CurrentState.ToString());
+#endif
+        }
+
         public virtual void Initialization()
         {
             if (_initialized) return;
 
             // Debug checkpoint
-            Debug.Log($"Initializing shield: {ShieldName}");
 
             ShieldState = new MMStateMachine<ShieldStates>(gameObject, true);
             ShieldState.ChangeState(ShieldStates.ShieldIdle);
             CurrentShieldHealth = MaxShieldHealth;
 
             // Initialize animator parameters if we already have an owner
-            if (_ownerAnimator != null)
-            {
-                InitializeAnimatorParameters();
-            }
+            if (_ownerAnimator != null) InitializeAnimatorParameters();
 
             InitializeFeedbacks();
             _initialized = true;
-        
+
             // Debug checkpoint
-            Debug.Log($"Shield initialization complete. Animator: {_ownerAnimator != null}, Parameters initialized: {_animatorParameters != null}");
         }
 
         protected virtual void InitializeFeedbacks()
@@ -109,7 +134,6 @@ namespace Project.Gameplay.ItemManagement.ItemClasses
         public virtual void SetOwner(Character newOwner, CharacterHandleShield handleShield)
         {
             // Debug checkpoint
-            Debug.Log($"Setting owner for shield: {ShieldName}");
 
             Owner = newOwner;
             CharacterHandle = handleShield;
@@ -118,9 +142,8 @@ namespace Project.Gameplay.ItemManagement.ItemClasses
             {
                 _characterMovement = Owner.FindAbility<CharacterMovement>();
                 _ownerAnimator = handleShield.CharacterAnimator;
-            
+
                 // Debug checkpoint
-                Debug.Log($"Owner set. Animator found: {_ownerAnimator != null}");
 
                 // Re-initialize parameters with new animator
                 InitializeAnimatorParameters();
@@ -136,37 +159,37 @@ namespace Project.Gameplay.ItemManagement.ItemClasses
         {
             if (_ownerAnimator == null)
             {
-                Debug.LogWarning($"Cannot initialize animator parameters - no animator found for shield {ShieldName}", this);
+                Debug.LogWarning(
+                    $"Cannot initialize animator parameters - no animator found for shield {ShieldName}", this);
+
                 return;
             }
 
             // Debug checkpoint
-            Debug.Log($"Initializing animator parameters for shield: {ShieldName}");
 
             _animatorParameters = new HashSet<int>();
 
             RegisterAnimatorParameter(
-                "ShieldState", 
-                AnimatorControllerParameterType.Int, 
+                "ShieldState",
+                AnimatorControllerParameterType.Int,
                 out _shieldStateParameter);
 
             RegisterAnimatorParameter(
-                ShieldUpAnimationParameter, 
-                AnimatorControllerParameterType.Bool, 
+                ShieldUpAnimationParameter,
+                AnimatorControllerParameterType.Bool,
                 out _shieldUpAnimationParameter);
 
             RegisterAnimatorParameter(
-                ShieldBlockAnimationParameter, 
+                ShieldBlockAnimationParameter,
                 AnimatorControllerParameterType.Trigger,
                 out _shieldBlockAnimationParameter);
 
             RegisterAnimatorParameter(
-                ShieldBreakAnimationParameter, 
+                ShieldBreakAnimationParameter,
                 AnimatorControllerParameterType.Trigger,
                 out _shieldBreakAnimationParameter);
 
             // Debug checkpoint
-            Debug.Log($"Animator parameters initialized. Count: {_animatorParameters.Count}");
         }
 
         protected virtual void RegisterAnimatorParameter(string parameterName,
@@ -192,20 +215,20 @@ namespace Project.Gameplay.ItemManagement.ItemClasses
             // First change to start state
             ShieldState.ChangeState(ShieldStates.ShieldStart);
             SyncStateToAnimator(ShieldStates.ShieldStart);
-        
+
             // Start the raise sequence
             StartCoroutine(RaiseShieldSequence());
         }
-        
+
         protected virtual IEnumerator RaiseShieldSequence()
         {
             yield return new WaitForSeconds(RAISE_ANIMATION_TIME);
-        
+
             if (ShieldState.CurrentState == ShieldStates.ShieldStart)
             {
                 ShieldState.ChangeState(ShieldStates.ShieldActive);
                 SyncStateToAnimator(ShieldStates.ShieldActive);
-            
+
                 ShieldRaiseFeedback?.PlayFeedbacks();
 
                 if (_characterMovement != null && ModifyMovementWhileBlocking)
@@ -271,24 +294,21 @@ namespace Project.Gameplay.ItemManagement.ItemClasses
             // Temporarily change to block state
             ShieldState.ChangeState(ShieldStates.ShieldBlock);
             SyncStateToAnimator(ShieldStates.ShieldBlock);
-        
+
             ShieldBlockFeedback?.PlayFeedbacks();
 
             // Start coroutine to return to active state
             StartCoroutine(ReturnToActiveState());
 
-            if (CurrentShieldHealth <= 0) 
-            {
-                BreakShield();
-            }
+            if (CurrentShieldHealth <= 0) BreakShield();
 
             return true;
         }
-        
+
         protected virtual IEnumerator ReturnToActiveState()
         {
             yield return new WaitForSeconds(0.5f); // Adjust time as needed for block animation
-        
+
             if (ShieldState.CurrentState == ShieldStates.ShieldBlock)
             {
                 ShieldState.ChangeState(ShieldStates.ShieldActive);
@@ -301,7 +321,7 @@ namespace Project.Gameplay.ItemManagement.ItemClasses
         {
             ShieldState.ChangeState(ShieldStates.ShieldBreak);
             SyncStateToAnimator(ShieldStates.ShieldBreak);
-        
+
             ShieldBreakFeedback?.PlayFeedbacks();
 
             StartCoroutine(RecoverShieldCoroutine());
@@ -311,7 +331,7 @@ namespace Project.Gameplay.ItemManagement.ItemClasses
         protected virtual IEnumerator RecoverShieldCoroutine()
         {
             yield return new WaitForSeconds(RecoveryTime);
-        
+
             CurrentShieldHealth = MaxShieldHealth;
             ShieldState.ChangeState(ShieldStates.ShieldIdle);
             SyncStateToAnimator(ShieldStates.ShieldIdle);
@@ -337,17 +357,12 @@ namespace Project.Gameplay.ItemManagement.ItemClasses
                 _animatorParameters
             );
         }
-        
+
         // Add this helper method to sync state to animator
         protected virtual void SyncStateToAnimator(ShieldStates state)
         {
-            if (_ownerAnimator == null || _animatorParameters == null)
-            {
-                Debug.LogWarning($"Cannot sync state {state} - animator not initialized", this);
-                return;
-            }
+            if (_ownerAnimator == null || _animatorParameters == null) return;
 
-            Debug.Log($"Syncing shield state to animator: {state} ({(int)state})", this);
 
             // Update the state parameter
             MMAnimatorExtensions.UpdateAnimatorInteger(
@@ -359,44 +374,13 @@ namespace Project.Gameplay.ItemManagement.ItemClasses
             );
 
             // For compatibility, also update the bool parameter
-            bool shieldUp = (state == ShieldStates.ShieldActive || state == ShieldStates.ShieldStart);
+            var shieldUp = state == ShieldStates.ShieldActive || state == ShieldStates.ShieldStart;
             MMAnimatorExtensions.UpdateAnimatorBool(
                 _ownerAnimator,
                 _shieldUpAnimationParameter,
                 shieldUp,
                 _animatorParameters
             );
-        }
-        
-        // Add a debug gizmo to visualize the current state
-        protected virtual void OnDrawGizmos()
-        {
-            if (!Application.isPlaying) return;
-
-            Vector3 offset = Vector3.up * 2f;
-            Color stateColor = ShieldState?.CurrentState switch
-            {
-                ShieldStates.ShieldIdle => Color.gray,
-                ShieldStates.ShieldStart => Color.yellow,
-                ShieldStates.ShieldActive => Color.green,
-                ShieldStates.ShieldBlock => Color.blue,
-                ShieldStates.ShieldBreak => Color.red,
-                ShieldStates.ShieldRecover => Color.cyan,
-                _ => Color.white
-            };
-
-            Gizmos.color = stateColor;
-            Gizmos.DrawWireSphere(transform.position + offset, 0.3f);
-
-#if UNITY_EDITOR
-            // Draw state name
-            if (ShieldState != null)
-            {
-                UnityEditor.Handles.Label(
-                    transform.position + offset + Vector3.up * 0.3f,
-                    ShieldState.CurrentState.ToString());
-            }
-#endif
         }
     }
 }
