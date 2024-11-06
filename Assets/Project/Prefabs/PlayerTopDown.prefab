@@ -951,7 +951,6 @@ GameObject:
   - component: {fileID: 743801165420944651}
   - component: {fileID: 2816136406300888060}
   - component: {fileID: 2088691306547528731}
-  - component: {fileID: 1541303138490427102}
   - component: {fileID: 8058876779074257797}
   m_Layer: 10
   m_Name: PlayerTopDown
@@ -1646,18 +1645,6 @@ MonoBehaviour:
   HandleShieldID: 1
   InputAuthorized: 1
   ContinuousPress: 1
---- !u!114 &1541303138490427102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4194478886614523176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32a4e47fb8d614f4ba736dfc4df47501, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8058876779074257797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1676,7 +1663,7 @@ MonoBehaviour:
   TargetProgressBar: {fileID: 0}
   Size: {x: 1, y: 0.2}
   BackgroundPadding: {x: 0.01, y: 0.01}
-  InitialRotationAngles: {x: 0, y: 0, z: 0}
+  InitialRotationAngles: {x: 0, y: 2.55, z: 0}
   ForegroundColor:
     serializedVersion: 2
     key0: {r: 1, g: 0.09411765, b: 0, a: 1}
