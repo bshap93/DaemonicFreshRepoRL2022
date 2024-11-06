@@ -116,7 +116,7 @@ MonoBehaviour:
   IdleAnimationParameter: 
   StartAnimationParameter: BasicSwing
   DelayBeforeUseAnimationParameter: 
-  SingleUseAnimationParameter: 
+  SingleUseAnimationParameter: BasicSwing
   UseAnimationParameter: 
   DelayBetweenUsesAnimationParameter: 
   StopAnimationParameter: 
