@@ -27269,7 +27269,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8581594461803131888}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fec8eb194a523854fa2120af773404e7, type: 3}
   m_Name: 
@@ -41393,7 +41393,7 @@ MonoBehaviour:
   - StateName: Attacking
     Actions:
       array:
-      - {fileID: 1777946149}
+      - {fileID: 8581594461803131889}
       - {fileID: 5974020122160604285}
     Transitions:
       array:
@@ -42361,7 +42361,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Label: 
   ComparisonMode: 1
-  Distance: 5
+  Distance: 4
 --- !u!4 &6603396484082800407
 Transform:
   m_ObjectHideFlags: 0
@@ -44039,6 +44039,7 @@ GameObject:
   - component: {fileID: 136598486867394518}
   - component: {fileID: 5974020122160604285}
   - component: {fileID: 1777946149}
+  - component: {fileID: 8581594461803131889}
   m_Layer: 13
   m_Name: AIBrain
   m_TagString: Untagged
@@ -44046,6 +44047,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8581594461803131889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8581594461803131888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3d88b8a85c24e7b8fbf9960c4946cc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitializationMode: 0
+  Label: 
+  MinTimeBetweenAttacks: 1
+  MaxTimeBetweenAttacks: 2
+  MinimumAttackDistance: 3
+  TargetHandleWeaponAbility: {fileID: 665977562161982141}
 --- !u!4 &8601203967143009513
 Transform:
   m_ObjectHideFlags: 0
