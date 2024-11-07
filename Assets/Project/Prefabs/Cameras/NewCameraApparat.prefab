@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 858781796547337544}
   - component: {fileID: 5867491240997814689}
   - component: {fileID: 9018943859710519542}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 3529857211992980575}
   - component: {fileID: 3246541301494072411}
   - component: {fileID: 3786355005661725915}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: ButtonRestart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 5215357114791138838}
   - component: {fileID: 2165008859570689067}
   - component: {fileID: 520169229861354495}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: WhiteBand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 7840842453064104518}
   - component: {fileID: 56483689738022931}
   - component: {fileID: 4101586746140703803}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -500,7 +500,7 @@ GameObject:
   - component: {fileID: 4864248050987952999}
   - component: {fileID: 372689499046175818}
   - component: {fileID: 4313360184454363379}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -595,7 +595,7 @@ GameObject:
   - component: {fileID: 1350835576392192598}
   - component: {fileID: 865036920904344230}
   - component: {fileID: 9170191583473102516}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: FPSCounter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -707,8 +707,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 836106851097543206}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.29361543, y: -0.00000012950866, z: 0.00000003977906, w: 0.9559236}
-  m_LocalPosition: {x: -9.769997, y: 6.962086, z: -24.815762}
+  m_LocalRotation: {x: 0.2976542, y: -0.00046847019, z: 0.00014606262, w: 0.95467365}
+  m_LocalPosition: {x: -9.759172, y: 5.179994, z: -22.533783}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -724,7 +724,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.19782352, g: 0.21795294, b: 0.23137255, a: 1}
   m_projectionMatrixMode: 2
   m_GateFitMode: 4
   m_FOVAxisMode: 0
@@ -750,18 +750,18 @@ Camera:
   field of view: 39.64941
   orthographic: 0
   orthographic size: 10
-  m_Depth: 1
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4194087
-  m_RenderingPath: 1
+    m_Bits: 4294967295
+  m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
-  m_AllowMSAA: 0
+  m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 1
+  m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
@@ -772,7 +772,7 @@ Behaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 836106851097543206}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!81 &5437162703780330600
 AudioListener:
   m_ObjectHideFlags: 0
@@ -888,7 +888,7 @@ GameObject:
   - component: {fileID: 7463648486894028500}
   - component: {fileID: 8543417408288107407}
   - component: {fileID: 7679377262000000654}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1121,7 +1121,7 @@ GameObject:
   - component: {fileID: 8307057419358041447}
   - component: {fileID: 931104867913937736}
   - component: {fileID: 224925279290783120}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: PauseSplash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1198,7 +1198,7 @@ GameObject:
   - component: {fileID: 1402724799597235687}
   - component: {fileID: 4253320051305758573}
   - component: {fileID: 2173490665333382377}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1292,7 +1292,7 @@ GameObject:
   - component: {fileID: 4356900463158496507}
   - component: {fileID: 6131545985106564652}
   - component: {fileID: 4921572107301357671}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: HealthBarBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1368,7 +1368,7 @@ GameObject:
   - component: {fileID: 5484941704840783266}
   - component: {fileID: 2473627648902574021}
   - component: {fileID: 1776242852059554421}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1477,7 +1477,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1315049941874845351}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1514,7 +1514,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9015533194702915156}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1554,7 +1554,7 @@ GameObject:
   - component: {fileID: 3027306378676767480}
   - component: {fileID: 4037150666026230901}
   - component: {fileID: 3040311871344742013}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: AchievementsVerticalLayoutGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1643,7 +1643,7 @@ GameObject:
   - component: {fileID: 1677441363103550397}
   - component: {fileID: 2445038410719512068}
   - component: {fileID: 4734660446241658751}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: JoystickKnob
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1787,7 +1787,7 @@ GameObject:
   - component: {fileID: 9039927433846401543}
   - component: {fileID: 2000325374858697662}
   - component: {fileID: 6069955438128734685}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: ButtonResume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1863,7 +1863,7 @@ GameObject:
   - component: {fileID: 385334359208484893}
   - component: {fileID: 1006730181180194836}
   - component: {fileID: 6030052912140337228}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2096,7 +2096,7 @@ GameObject:
   - component: {fileID: 2803365863761642426}
   - component: {fileID: 5932415388372399312}
   - component: {fileID: 5904596756777171744}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: ButtonRestart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2169,7 +2169,7 @@ GameObject:
   - component: {fileID: 8457166714520967212}
   - component: {fileID: 7560480356484961856}
   - component: {fileID: 2449907680905836773}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ButtonY
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2336,7 +2336,7 @@ GameObject:
   - component: {fileID: 8784135646002904927}
   - component: {fileID: 8659645993189249841}
   - component: {fileID: 3254690570838497961}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ButtonB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2506,7 +2506,7 @@ GameObject:
   - component: {fileID: 2068908976241043843}
   - component: {fileID: 7235683190670340221}
   - component: {fileID: 2476632785524759388}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2736,7 +2736,7 @@ GameObject:
   - component: {fileID: 5553499399340735938}
   - component: {fileID: 7086416874801998608}
   - component: {fileID: 7658665339951008170}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: DeathSplash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2810,7 +2810,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6643409138756115276}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2852,7 +2852,7 @@ GameObject:
   - component: {fileID: 6989303283583013839}
   - component: {fileID: 8798245934353782686}
   - component: {fileID: 8986097615335542233}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CM vcam1
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -2867,8 +2867,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3197043594549760315}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2936154, y: -0.00000012950865, z: 0.000000039779042, w: 0.9559237}
-  m_LocalPosition: {x: -9.769997, y: 6.962086, z: -24.815762}
+  m_LocalRotation: {x: 0.29756904, y: -0.00046845217, z: 0.00014601114, w: 0.95470023}
+  m_LocalPosition: {x: -9.759172, y: 5.179994, z: -22.533783}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2897,7 +2897,7 @@ MonoBehaviour:
     m_AmplitudeGain: 0
     m_FrequencyGain: 0
     m_Duration: 0
-    m_NoiseOffsets: {x: 0, y: 0, z: 0}
+    m_NoiseOffsets: {x: 493.60895, y: 389.0471, z: 233.2555}
 --- !u!114 &2894955460428060762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3025,74 +3025,6 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 5421329661408871329}
---- !u!1 &3408354067814511412
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7619524366656263187}
-  - component: {fileID: 6287565234305268811}
-  - component: {fileID: 184529351983534713}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7619524366656263187
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3408354067814511412}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 44, y: -26, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7770289406208207193}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6287565234305268811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3408354067814511412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 5
---- !u!114 &184529351983534713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3408354067814511412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Player1_Horizontal
-  m_VerticalAxis: Player1_Vertical
-  m_SubmitButton: Player1_Jump
-  m_CancelButton: Player1_Pause
-  m_InputActionsPerSecond: 4
-  m_RepeatDelay: 0.25
-  m_ForceModuleActive: 0
 --- !u!1 &3556260714508783408
 GameObject:
   m_ObjectHideFlags: 0
@@ -3105,7 +3037,7 @@ GameObject:
   - component: {fileID: 3955916701442651172}
   - component: {fileID: 1954564586258025514}
   - component: {fileID: 2989493665371322041}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3199,7 +3131,7 @@ GameObject:
   - component: {fileID: 8118007308123658674}
   - component: {fileID: 1811265712246147740}
   - component: {fileID: 3169461368484236630}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: HealthBarFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3276,7 +3208,7 @@ GameObject:
   - component: {fileID: 5419830891937839846}
   - component: {fileID: 6559852736647758371}
   - component: {fileID: 98150945016928900}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ButtonX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3445,7 +3377,7 @@ GameObject:
   - component: {fileID: 242323031269086862}
   - component: {fileID: 4472908729733219943}
   - component: {fileID: 7564508696499021795}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3667,7 +3599,7 @@ GameObject:
   - component: {fileID: 6789877279229147186}
   - component: {fileID: 3616648721865282222}
   - component: {fileID: 5006437040588209155}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3761,7 +3693,7 @@ GameObject:
   - component: {fileID: 2429295337996341441}
   - component: {fileID: 5853534515078672058}
   - component: {fileID: 6834994740077349442}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Arrows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3823,7 +3755,7 @@ GameObject:
   - component: {fileID: 715818142662758163}
   - component: {fileID: 1241317954623361246}
   - component: {fileID: 3169296277676212567}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3915,7 +3847,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6662581681473952430}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3956,7 +3888,7 @@ GameObject:
   - component: {fileID: 664425766984423218}
   - component: {fileID: 4238231605222437625}
   - component: {fileID: 6122071257497303668}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ArrowDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4101,7 +4033,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 113568621891962204}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: NewCameraApparat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4140,7 +4072,7 @@ GameObject:
   - component: {fileID: 7416339593924602387}
   - component: {fileID: 5005520648757276068}
   - component: {fileID: 9144607134532766849}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4307,7 +4239,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8543807988616180017}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4345,7 +4277,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2332161660343793839}
   - component: {fileID: 4282478692324196454}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4699,7 +4631,7 @@ GameObject:
   - component: {fileID: 3102513586994858913}
   - component: {fileID: 1460486849943132358}
   - component: {fileID: 583196761472751421}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ButtonA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4886,7 +4818,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4958773345428526536}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4928,7 +4860,7 @@ GameObject:
   - component: {fileID: 3100667991026356242}
   - component: {fileID: 4293060074373604855}
   - component: {fileID: 5307782761377455403}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: UICamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4948,7 +4880,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7619524366656263187}
   - {fileID: 744304887993735475}
   m_Father: {fileID: 113568621891962204}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5064,6 +4995,7 @@ MonoBehaviour:
   SmoothMovement: 1
   Threshold: {x: 0.1, y: 0.4}
   RotateInputBasedOnCameraDirection: 0
+  ShieldButtonName: Shield
 --- !u!114 &5307782761377455403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5121,7 +5053,7 @@ GameObject:
   - component: {fileID: 7584504983113330944}
   - component: {fileID: 7885837377190709890}
   - component: {fileID: 2508434892452367126}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ArrowUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5268,7 +5200,7 @@ GameObject:
   - component: {fileID: 767386196820519805}
   - component: {fileID: 4652701577547927851}
   - component: {fileID: 4600188754699415112}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: ButtonLevelSelection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5343,7 +5275,7 @@ GameObject:
   - component: {fileID: 22340585178342449}
   - component: {fileID: 3587510674187150958}
   - component: {fileID: 1772218058522366305}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5566,7 +5498,7 @@ GameObject:
   - component: {fileID: 6103477575944303267}
   - component: {fileID: 8293163984916088195}
   - component: {fileID: 4882090906123134177}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Fader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5703,7 +5635,7 @@ GameObject:
   - component: {fileID: 1259731405155542380}
   - component: {fileID: 7290601608382237706}
   - component: {fileID: 5803507611679585364}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: TextTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5800,7 +5732,7 @@ GameObject:
   - component: {fileID: 4363478661144371149}
   - component: {fileID: 1671778535937921030}
   - component: {fileID: 6662285586981384837}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: WhiteBand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5877,7 +5809,7 @@ GameObject:
   - component: {fileID: 2663079086449931312}
   - component: {fileID: 8187763460901024035}
   - component: {fileID: 2510672332193905777}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5971,7 +5903,7 @@ GameObject:
   - component: {fileID: 8358647232152971127}
   - component: {fileID: 4872928612738405727}
   - component: {fileID: 7991062882622610414}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: HealthBarFrontDelayed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6047,7 +5979,7 @@ GameObject:
   - component: {fileID: 958816420316092934}
   - component: {fileID: 2466529526943636670}
   - component: {fileID: 2846112388881764960}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: TextTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6142,7 +6074,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5015343757647305414}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6186,7 +6118,7 @@ GameObject:
   - component: {fileID: 3703146486745556623}
   - component: {fileID: 7160600106539349312}
   - component: {fileID: 5931400793356637507}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PostProcessVolume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6955,7 +6887,7 @@ GameObject:
   - component: {fileID: 3732958896502446328}
   - component: {fileID: 7708541878718672672}
   - component: {fileID: 261747280658849559}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: PauseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7113,7 +7045,7 @@ GameObject:
   - component: {fileID: 1873098319116167450}
   - component: {fileID: 8547047522257472596}
   - component: {fileID: 2287309189113514306}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ButtonRT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7279,7 +7211,7 @@ GameObject:
   - component: {fileID: 7466137793830819969}
   - component: {fileID: 8083643059177814447}
   - component: {fileID: 444940934310169784}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Joystick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7367,7 +7299,7 @@ GameObject:
   - component: {fileID: 1168892429214904108}
   - component: {fileID: 8714564150446392322}
   - component: {fileID: 1923217299698497924}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: ButtonReload
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7438,7 +7370,7 @@ GameObject:
   - component: {fileID: 3551742973684110086}
   - component: {fileID: 2543939126877244727}
   - component: {fileID: 3462869170674042445}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: ButtonLevelSelection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7509,7 +7441,7 @@ GameObject:
   - component: {fileID: 6858830073762015625}
   - component: {fileID: 1304089482687645476}
   - component: {fileID: 489913175574000001}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7590,7 +7522,7 @@ GameObject:
   - component: {fileID: 2378526298240714677}
   - component: {fileID: 7039759849249460843}
   - component: {fileID: 7955672584722458055}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ArrowLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7737,7 +7669,7 @@ GameObject:
   - component: {fileID: 760411058628662165}
   - component: {fileID: 6585267368015593967}
   - component: {fileID: 850928195850267640}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7799,7 +7731,7 @@ GameObject:
   - component: {fileID: 1997194766339010835}
   - component: {fileID: 6184305678166449163}
   - component: {fileID: 4120175952360623981}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: AvatarFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7876,7 +7808,7 @@ GameObject:
   - component: {fileID: 6943400228245679478}
   - component: {fileID: 7284465924183007241}
   - component: {fileID: 8247364371798072726}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ArrowRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}

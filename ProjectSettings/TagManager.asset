@@ -11,6 +11,7 @@ TagManager:
   - NoMask
   - LevelStart
   - WeaponPrefab
+  - Collectable
   layers:
   - Default
   - TransparentFX
