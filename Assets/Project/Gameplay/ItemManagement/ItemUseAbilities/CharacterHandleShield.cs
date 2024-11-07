@@ -1,5 +1,4 @@
-﻿using MoreMountains.Tools;
-using Project.Gameplay.ItemManagement.ItemClasses;
+﻿using Project.Gameplay.ItemManagement.ItemClasses;
 using UnityEngine;
 
 namespace Project.Gameplay.ItemManagement.ItemUseAbilities
