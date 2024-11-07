@@ -1,5 +1,6 @@
 using MoreMountains.Tools;
 using MoreMountains.TopDownEngine;
+using TopDownEngine.Common.Scripts.Characters.CharacterAbilities;
 using UnityEngine;
 using UnityEngine.Serialization;
 

@@ -1,11 +1,10 @@
 ﻿using MoreMountains.Tools;
-using MoreMountains.TopDownEngine;
 using Project.Gameplay.ItemManagement.ItemClasses;
 using UnityEngine;
 
 namespace Project.Gameplay.ItemManagement.ItemUseAbilities
 {
-    public class CharacterHandleShield : CharacterAbility
+    public class CharacterHandleShield : IdentifiableCharacterAbility
     {
         [MMInspectorGroup("Shield", true, 10)] public Shield InitialShield;
         public Transform ShieldAttachment;
@@ -42,6 +41,8 @@ namespace Project.Gameplay.ItemManagement.ItemUseAbilities
         protected override void Initialization()
         {
             base.Initialization();
+
+            AbilityID = HandleShieldID; // Keep compatibility with existing HandleShieldID
 
 
             // Ensure we have an animator
