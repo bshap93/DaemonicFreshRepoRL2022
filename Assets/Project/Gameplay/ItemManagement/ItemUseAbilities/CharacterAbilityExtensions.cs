@@ -1,5 +1,4 @@
 using MoreMountains.TopDownEngine;
-using TopDownEngine.Common.Scripts.Characters.Core;
 using UnityEngine;
 
 namespace Project.Gameplay.ItemManagement.ItemUseAbilities

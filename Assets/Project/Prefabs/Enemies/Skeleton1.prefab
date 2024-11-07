@@ -529,7 +529,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 2
-  m_Radius: 0.5
+  m_Radius: 0.48
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -4403,7 +4403,7 @@ GameObject:
   - component: {fileID: 1700176434102548470}
   - component: {fileID: 5169771081527564023}
   - component: {fileID: 2462482213370101426}
-  - component: {fileID: 834180890683087538}
+  - component: {fileID: 7674135338730812671}
   m_Layer: 13
   m_Name: AIBrain
   m_TagString: Untagged
@@ -4464,13 +4464,14 @@ MonoBehaviour:
   - StateName: Attacking
     Actions:
       array:
-      - {fileID: 834180890683087538}
+      - {fileID: 2462482213370101426}
       - {fileID: 5169771081527564023}
+      - {fileID: 7674135338730812671}
     Transitions:
       array:
       - Decision: {fileID: 7643675883312830881}
         TrueState: Attacking
-        FalseState: Detecting
+        FalseState: Moving
   TimeInThisState: 0
   Target: {fileID: 0}
   _lastKnownTargetPosition: {x: 0, y: 0, z: 0}
@@ -4505,7 +4506,7 @@ MonoBehaviour:
     m_Bits: 1048832
   TargetCheckFrequency: 1
   CanTargetSelf: 0
-  OverlapMaximum: 10
+  OverlapMaximum: 2
 --- !u!114 &288861416873819646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4533,7 +4534,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Label: 
   ComparisonMode: 1
-  Distance: 4
+  Distance: 5.03
 --- !u!114 &6839974407556437461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4560,9 +4561,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97230edd623230e4ea486ef91a6d23e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitializationMode: 0
+  InitializationMode: 1
   Label: 
-  MinimumDistance: 2
+  MinimumDistance: 3
 --- !u!114 &5169771081527564023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4585,7 +4586,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5196489815319161736}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fec8eb194a523854fa2120af773404e7, type: 3}
   m_Name: 
@@ -4597,7 +4598,7 @@ MonoBehaviour:
   AimOrigin: 0
   ShootOffset: {x: 0, y: 0, z: 0}
   LockVerticalAim: 0
---- !u!114 &834180890683087538
+--- !u!114 &7674135338730812671
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4606,15 +4607,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5196489815319161736}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d88b8a85c24e7b8fbf9960c4946cc3, type: 3}
+  m_Script: {fileID: 11500000, guid: 97230edd623230e4ea486ef91a6d23e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   InitializationMode: 0
   Label: 
-  MinTimeBetweenAttacks: 1
-  MaxTimeBetweenAttacks: 2
-  MinimumAttackDistance: 3
-  TargetHandleWeaponAbility: {fileID: 2826212151095437829}
+  MinimumDistance: 0.55
 --- !u!1 &5197236683684759086
 GameObject:
   m_ObjectHideFlags: 0
@@ -8589,46 +8587,45 @@ MonoBehaviour:
         Owner: {fileID: 1772656653630396499}
         DebugActive: 0
         m_ImpulseDefinition:
-          m_ImpulseChannel: 1
-          m_ImpulseShape: 0
-          m_CustomImpulseShape:
+          ImpulseChannel: 1
+          ImpulseShape: 0
+          CustomImpulseShape:
             serializedVersion: 2
             m_Curve: []
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
-          m_ImpulseDuration: 0.2
-          m_ImpulseType: 3
-          m_DissipationRate: 0
-          m_RawSignal: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4,
-            type: 2}
-          m_AmplitudeGain: 1
-          m_FrequencyGain: 1
-          m_RepeatMode: 0
-          m_Randomize: 1
-          m_TimeEnvelope:
-            m_AttackShape:
+          ImpulseDuration: 0.2
+          ImpulseType: 3
+          DissipationRate: 0
+          RawSignal: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+          AmplitudeGain: 1
+          FrequencyGain: 1
+          RepeatMode: 0
+          Randomize: 1
+          TimeEnvelope:
+            AttackShape:
               serializedVersion: 2
               m_Curve: []
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
-            m_DecayShape:
+            DecayShape:
               serializedVersion: 2
               m_Curve: []
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
-            m_AttackTime: 0
-            m_SustainTime: 0.2
-            m_DecayTime: 0.7
-            m_ScaleWithImpact: 1
-            m_HoldForever: 0
-          m_ImpactRadius: 100
-          m_DirectionMode: 0
-          m_DissipationMode: 2
-          m_DissipationDistance: 1000
-          m_PropagationSpeed: 343
+            AttackTime: 0
+            SustainTime: 0.2
+            DecayTime: 0.7
+            ScaleWithImpact: 1
+            HoldForever: 0
+          ImpactRadius: 100
+          DirectionMode: 0
+          DissipationMode: 2
+          DissipationDistance: 1000
+          PropagationSpeed: 343
         Velocity: {x: 1, y: 1, z: 1}
         ClearImpulseOnStop: 0
         DrawGizmos: 0
