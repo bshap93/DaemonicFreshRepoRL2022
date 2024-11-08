@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7073586171907891520}
   - component: {fileID: 4199121017488461089}
+  - component: {fileID: 2738905102594533615}
   m_Layer: 0
   m_Name: Shield1EquippableShield
   m_TagString: Untagged
@@ -52,6 +53,27 @@ MonoBehaviour:
   ShieldRaiseFeedback: {fileID: 0}
   ShieldBlockFeedback: {fileID: 0}
   ShieldBreakFeedback: {fileID: 0}
+--- !u!65 &2738905102594533615
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5961896113817003441}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.6667062, y: 0.5237825, z: 1.1400908}
+  m_Center: {x: 0.020474315, y: -0.04396379, z: 0.07004559}
 --- !u!1 &8851952970606786790
 GameObject:
   m_ObjectHideFlags: 0

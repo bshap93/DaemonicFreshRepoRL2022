@@ -1,91 +1,145 @@
-﻿using MoreMountains.Feedbacks;
+﻿using UnityEngine;
 using MoreMountains.Tools;
 using MoreMountains.TopDownEngine;
-using UnityEngine;
+using MoreMountains.Feedbacks;
 
-namespace Project.Gameplay.Combat
+namespace Project.Gameplay.Combat.Shields
 {
-    /// <summary>
-    ///     Core shield class that handles shield mechanics
-    /// </summary>
     public class Shield : MonoBehaviour
     {
-        [Header("Shield Properties")] [Tooltip("Maximum amount of damage the shield can block")]
+        public enum ShieldStates 
+        { 
+            Inactive,
+            Starting,
+            Active,
+            Blocking,
+            Broken,
+            Interrupted
+        }
+
+        [Header("Shield Properties")]
+        [Tooltip("Maximum health of the shield before it breaks")]
         public float MaxShieldHealth = 100f;
+        [Tooltip("Time shield takes to recover after being broken")]
+        public float RecoveryTime = 2f;
+        [Tooltip("Amount of stamina consumed per block")]
+        public float StaminaConsumption = 10f;
 
-        [Tooltip("Current shield durability")] [MMReadOnly]
-        public float CurrentShieldHealth;
-
-        [Tooltip("Percentage of damage blocked when shield is up (0-1)")]
-        public float DamageReduction = 0.5f;
-
-        [Header("Movement")] [Tooltip("Movement speed multiplier while shield is raised")]
-        public float RaisedMovementMultiplier = 0.5f;
-
-        [Header("Feedback")] public MMFeedbacks ShieldRaiseFeedback;
+        [Header("Feedbacks")]
+        public MMFeedbacks ShieldRaiseFeedback;
+        public MMFeedbacks ShieldLowerFeedback;
         public MMFeedbacks ShieldBlockFeedback;
         public MMFeedbacks ShieldBreakFeedback;
-        protected CharacterMovement _characterMovement;
-        protected bool _isShieldRaised;
-        protected float _originalMovementSpeed;
 
+        public float CurrentShieldHealth { get; protected set; }
+        public ShieldStates CurrentState { get; protected set; }
+        
         protected Character _owner;
+        protected CharacterHandleShield _handler;
+        protected Animator _animator;
+        protected int _shieldStateParameter;
+        protected float _recoveryTimer;
+
+        public virtual void SetOwner(Character owner, CharacterHandleShield handler)
+        {
+            _owner = owner;
+            _handler = handler;
+            _animator = _handler.CharacterAnimator;
+        }
 
         public virtual void Initialization()
         {
             CurrentShieldHealth = MaxShieldHealth;
-            ShieldRaiseFeedback?.Initialization(gameObject);
-            ShieldBlockFeedback?.Initialization(gameObject);
-            ShieldBreakFeedback?.Initialization(gameObject);
+            CurrentState = ShieldStates.Inactive;
+            _shieldStateParameter = Animator.StringToHash("ShieldState");
+            InitializeFeedbacks();
         }
 
-        public virtual void SetOwner(Character character)
+        protected virtual void InitializeFeedbacks()
         {
-            _owner = character;
-            _characterMovement = _owner.FindAbility<CharacterMovement>();
-            if (_characterMovement != null) _originalMovementSpeed = _characterMovement.MovementSpeed;
+            ShieldRaiseFeedback?.Initialization(this.gameObject);
+            ShieldLowerFeedback?.Initialization(this.gameObject);
+            ShieldBlockFeedback?.Initialization(this.gameObject);
+            ShieldBreakFeedback?.Initialization(this.gameObject);
         }
 
         public virtual void RaiseShield()
         {
-            if (_isShieldRaised || CurrentShieldHealth <= 0) return;
+            if (CurrentState != ShieldStates.Inactive) return;
 
-            _isShieldRaised = true;
+            CurrentState = ShieldStates.Starting;
+            UpdateAnimator();
             ShieldRaiseFeedback?.PlayFeedbacks();
-
-            if (_characterMovement != null)
-                _characterMovement.MovementSpeed = _originalMovementSpeed * RaisedMovementMultiplier;
         }
 
         public virtual void LowerShield()
         {
-            if (!_isShieldRaised) return;
+            if (CurrentState == ShieldStates.Inactive || CurrentState == ShieldStates.Broken) return;
 
-            _isShieldRaised = false;
-
-            if (_characterMovement != null) _characterMovement.MovementSpeed = _originalMovementSpeed;
+            CurrentState = ShieldStates.Inactive;
+            UpdateAnimator();
+            ShieldLowerFeedback?.PlayFeedbacks();
         }
 
-        public virtual bool ProcessDamage(float incomingDamage)
+        public virtual void ProcessDamage(float damage)
         {
-            if (!_isShieldRaised || CurrentShieldHealth <= 0) return false;
+            if (CurrentState != ShieldStates.Active && CurrentState != ShieldStates.Starting) return;
 
-            var reducedDamage = incomingDamage * (1f - DamageReduction);
-            CurrentShieldHealth -= reducedDamage;
-
+            CurrentState = ShieldStates.Blocking;
+            UpdateAnimator();
             ShieldBlockFeedback?.PlayFeedbacks();
 
-            if (CurrentShieldHealth <= 0) ShieldBreak();
-
-            return true;
+            CurrentShieldHealth -= damage;
+            if (CurrentShieldHealth <= 0)
+            {
+                BreakShield();
+            }
         }
 
-        protected virtual void ShieldBreak()
+        protected virtual void BreakShield()
         {
-            _isShieldRaised = false;
+            CurrentState = ShieldStates.Broken;
+            UpdateAnimator();
             ShieldBreakFeedback?.PlayFeedbacks();
+            _recoveryTimer = RecoveryTime;
+        }
 
-            if (_characterMovement != null) _characterMovement.MovementSpeed = _originalMovementSpeed;
+        protected virtual void UpdateAnimator()
+        {
+            if (_animator != null)
+            {
+                _animator.SetInteger(_shieldStateParameter, (int)CurrentState);
+            }
+        }
+
+        protected virtual void Update()
+        {
+            // Handle state transitions
+            switch (CurrentState)
+            {
+                case ShieldStates.Starting:
+                    CurrentState = ShieldStates.Active;
+                    UpdateAnimator();
+                    break;
+
+                case ShieldStates.Blocking:
+                    CurrentState = ShieldStates.Active;
+                    UpdateAnimator();
+                    break;
+
+                case ShieldStates.Broken:
+                    if (_recoveryTimer > 0)
+                    {
+                        _recoveryTimer -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        CurrentState = ShieldStates.Inactive;
+                        CurrentShieldHealth = MaxShieldHealth;
+                        UpdateAnimator();
+                    }
+                    break;
+            }
         }
     }
 }

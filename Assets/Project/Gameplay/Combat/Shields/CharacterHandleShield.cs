@@ -1,118 +1,150 @@
-﻿using MoreMountains.TopDownEngine;
+﻿using MoreMountains.Tools;
+using MoreMountains.TopDownEngine;
 using UnityEngine;
 
 namespace Project.Gameplay.Combat.Shields
 {
-    /// <summary>
-    ///     Character ability that handles shield usage
-    /// </summary>
-    public class CharacterHandleShield : CharacterAbility
+    public class CharacterHandleShield : CharacterAbility 
     {
-        protected const float _lowShieldAnimationDuration = 0.2f;
-        protected const string _shieldStateAnimationParameter = "ShieldState";
-        [Header("Shield Settings")] [Tooltip("Shield to equip by default, if any")]
-        public Shield DefaultShield;
-
-        [Tooltip("Where to attach the shield")]
+        [MMInspectorGroup("Shield", true, 10)]
+        public Shield InitialShield;
         public Transform ShieldAttachment;
+        public bool AutomaticallyBindAnimator = true;
+        public int HandleShieldID = 1;
 
-        [Header("Animation")] public string ShieldRaisedAnimationParameter = "ShieldUp";
-        public string ShieldBlockAnimationParameter = "ShieldBlock";
-        public string ShieldBreakAnimationParameter = "ShieldBreak";
-        protected int _shieldBlockAnimationParameterID;
-        protected int _shieldBreakAnimationParameterID;
-
-        protected bool _shieldInput;
-        protected int _shieldRaisedAnimationParameterID;
-        protected int _shieldStateParameterID;
+        [MMInspectorGroup("Input", true, 11)]
+        /// if this is true, this ability can perform as usual, if not, it'll be ignored
+        [Tooltip("if this is true, this ability can perform as usual, if not, it'll be ignored")]
+        public bool InputAuthorized = true;
+        /// if true, the shield will stay up as long as the button is held
+        [Tooltip("if true, the shield will stay up as long as the button is held")]
+        public bool ContinuousPress = true;
 
         public Shield CurrentShield { get; protected set; }
+        public Animator CharacterAnimator { get; set; }
 
-        protected override void PreInitialization()
+        protected bool _shieldActive = false;
+
+        public override string HelpBoxText()
         {
-            base.PreInitialization();
-
-            if (ShieldAttachment == null) ShieldAttachment = transform;
+            return "This ability allows the character to use shields for blocking damage. Uses the Interact button.";
         }
 
         protected override void Initialization()
         {
             base.Initialization();
-            RegisterAnimationParameters();
-
-            // Don't auto-equip shield here since character might be inventory-managed
+            AssignRequiredComponents();
+            SetupShield();
         }
 
-        public virtual void EquipShield(Shield shieldPrefab)
+        protected virtual void AssignRequiredComponents()
         {
+            // Ensure we have an animator
+            if (_animator == null && AutomaticallyBindAnimator)
+            {
+                _animator = GetComponent<Animator>();
+                if (_animator == null) _animator = GetComponentInChildren<Animator>();
+            }
+
+            if (_animator == null) Debug.LogError("No animator found for CharacterHandleShield!", this);
+
+            // Set up shield attachment point
+            if (ShieldAttachment == null)
+            {
+                ShieldAttachment = transform;
+                Debug.Log("Using transform as shield attachment point");
+            }
+        }
+
+        protected virtual void SetupShield()
+        {
+            if (InitialShield != null)
+            {
+                EquipShield(InitialShield);
+            }
+        }
+
+        public virtual void EquipShield(Shield newShield)
+        {
+            // Cleanup existing shield
             if (CurrentShield != null)
             {
                 Destroy(CurrentShield.gameObject);
                 CurrentShield = null;
             }
 
-            if (shieldPrefab != null)
+            if (newShield != null)
             {
-                CurrentShield = Instantiate(shieldPrefab, ShieldAttachment.position, ShieldAttachment.rotation);
-                CurrentShield.transform.parent = ShieldAttachment;
-                CurrentShield.SetOwner(_character);
-                CurrentShield.Initialization();
+                // Instantiate new shield
+                GameObject shieldGO = Instantiate(newShield.gameObject, ShieldAttachment.position, ShieldAttachment.rotation);
+                CurrentShield = shieldGO.GetComponent<Shield>();
+                shieldGO.transform.SetParent(ShieldAttachment);
+                shieldGO.transform.localPosition = Vector3.zero;
+                shieldGO.transform.localRotation = Quaternion.identity;
+
+                // Initialize shield
+                if (CurrentShield != null)
+                {
+                    CurrentShield.SetOwner(_character, this);
+                    CurrentShield.Initialization();
+                }
             }
         }
 
         protected override void HandleInput()
         {
-            if (!AbilityAuthorized || CurrentShield == null) return;
+            if (!AbilityAuthorized || !InputAuthorized || CurrentShield == null)
+            {
+                return;
+            }
 
-            _shieldInput = UnityEngine.Input.GetMouseButton(1);
+            // Use InteractButton instead of a dedicated shield button
+            if (_inputManager.InteractButton.State.CurrentState == MMInput.ButtonStates.ButtonDown)
+            {
+                ShieldStart();
+            }
+            else if (_inputManager.InteractButton.State.CurrentState == MMInput.ButtonStates.ButtonPressed && ContinuousPress)
+            {
+                // Keep shield up while button is held
+                if (!_shieldActive)
+                {
+                    ShieldStart();
+                }
+            }
+            else if (_inputManager.InteractButton.State.CurrentState == MMInput.ButtonStates.ButtonUp)
+            {
+                ShieldStop();
+            }
         }
 
-        public override void ProcessAbility()
+        public virtual void ShieldStart()
         {
-            base.ProcessAbility();
-
-            if (CurrentShield == null) return;
-
-            if (_shieldInput)
-            {
-                CurrentShield.RaiseShield();
-                PlayAbilityStartFeedbacks();
-            }
-            else
-            {
-                CurrentShield.LowerShield();
-                StopStartFeedbacks();
-            }
+            if (!AbilityAuthorized || !InputAuthorized || CurrentShield == null) return;
+            
+            _shieldActive = true;
+            PlayAbilityStartFeedbacks();
+            CurrentShield?.RaiseShield();
         }
 
-        protected virtual void RegisterAnimationParameters()
+        public virtual void ShieldStop()
         {
-            RegisterAnimatorParameter(
-                ShieldRaisedAnimationParameter, AnimatorControllerParameterType.Bool,
-                out _shieldRaisedAnimationParameterID);
+            if (!AbilityAuthorized || !InputAuthorized || CurrentShield == null) return;
 
-            RegisterAnimatorParameter(
-                ShieldBlockAnimationParameter, AnimatorControllerParameterType.Trigger,
-                out _shieldBlockAnimationParameterID);
-
-            RegisterAnimatorParameter(
-                ShieldBreakAnimationParameter, AnimatorControllerParameterType.Trigger,
-                out _shieldBreakAnimationParameterID);
-
-            RegisterAnimatorParameter(
-                _shieldStateAnimationParameter, AnimatorControllerParameterType.Int, out _shieldStateParameterID);
+            _shieldActive = false;
+            PlayAbilityStopFeedbacks();
+            CurrentShield?.LowerShield();
         }
 
         protected override void OnDeath()
         {
             base.OnDeath();
-            if (CurrentShield != null) CurrentShield.LowerShield();
+            ShieldStop();
         }
 
         protected override void OnRespawn()
         {
             base.OnRespawn();
-            // Shield will be managed by inventory system
+            SetupShield();
         }
     }
 }
