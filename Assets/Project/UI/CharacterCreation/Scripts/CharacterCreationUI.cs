@@ -28,10 +28,15 @@ namespace Project.UI.CharacterCreation.Scripts
         [SerializeField] List<AttributeRowUI> attributeRows;
         [SerializeField] int startingPoints = 10;
 
+
+        [Header("Confirmation")] [SerializeField]
+        TMP_InputField characterNameInput;
+        [SerializeField] Button confirmButton;
+
         [Header("Navigation")] [SerializeField]
         Button nextButton;
         [SerializeField] Button backButton;
-        [SerializeField] Button confirmButton;
+
 
         CharacterCreationData _currentConfig;
         CreationStep _currentStep = CreationStep.ClassSelection;
@@ -56,6 +61,8 @@ namespace Project.UI.CharacterCreation.Scripts
 
         void InitializeUI()
         {
+            characterNameInput.onValueChanged.AddListener(OnCharacterNameChanged);
+
             nextButton.onClick.AddListener(OnNextClicked);
             backButton.onClick.AddListener(OnBackClicked);
             confirmButton.onClick.AddListener(OnConfirmClicked);
@@ -65,13 +72,19 @@ namespace Project.UI.CharacterCreation.Scripts
             UpdatePointsDisplay();
         }
 
+        void OnCharacterNameChanged(string playerCharacterName)
+        {
+            confirmButton.interactable = !string.IsNullOrWhiteSpace(name);
+        }
+
+
         void OnClassButtonClicked(StartingClass classData)
         {
             if (classData == null) return;
 
             // Deselect both buttons
-            classButton1.SetSelected(classData == classButton1);
-            classButton2.SetSelected(classData == classButton2);
+            classButton1.SetSelected(false);
+            classButton2.SetSelected(false);
 
             _selectedClass = classData;
 
@@ -95,7 +108,7 @@ namespace Project.UI.CharacterCreation.Scripts
             _remainingPoints -= pointChange;
             UpdatePointsDisplay();
 
-            nextButton.interactable = _remainingPoints == 0;
+            nextButton.interactable = true;
         }
 
         void UpdatePointsDisplay()
@@ -116,12 +129,10 @@ namespace Project.UI.CharacterCreation.Scripts
                     if (_selectedClass != null) _currentStep = CreationStep.Attributes;
                     break;
                 case CreationStep.Attributes:
-                    if (_remainingPoints == 0)
-                    {
-                        _currentStep = CreationStep.Traits;
-                        traitsPanelScript.Initialize(
-                            RunManager.Instance.GetAvailableTraits(), _selectedClass.ClassType);
-                    }
+
+                    _currentStep = CreationStep.Traits;
+                    traitsPanelScript.Initialize(
+                        RunManager.Instance.GetAvailableTraits(), _selectedClass.ClassType);
 
                     break;
                 case CreationStep.Traits:
@@ -146,6 +157,7 @@ namespace Project.UI.CharacterCreation.Scripts
             _currentConfig.selectedClass = _selectedClass;
             _currentConfig.attributes = GatherAttributeData();
             _currentConfig.selectedTraits = traitsPanelScript.GetSelectedTraits();
+
 
             confirmationPanel.DisplayCharacterSummary(_currentConfig);
         }
@@ -206,7 +218,7 @@ namespace Project.UI.CharacterCreation.Scripts
             nextButton.interactable = _currentStep switch
             {
                 CreationStep.ClassSelection => _selectedClass != null,
-                CreationStep.Attributes => _remainingPoints == 0,
+                CreationStep.Attributes => true,
                 CreationStep.Traits => true,
                 _ => false
             };
@@ -237,18 +249,31 @@ namespace Project.UI.CharacterCreation.Scripts
         void SaveCharacterStats()
         {
             // Populate _currentConfig with current values
+            _currentConfig.characterName = characterNameInput.text;
             _currentConfig.selectedClass = _selectedClass;
             _currentConfig.attributes = GatherAttributeData();
             _currentConfig.selectedTraits = traitsPanelScript.GetSelectedTraits();
+            _currentConfig.remainingPoints = _remainingPoints;
+            
+            string sanitizedCharacterName = SanitizeFileName(_currentConfig.characterName);
 
             Debug.Log("Saving character stats for " + _currentConfig.characterName);
 
             // Save _currentConfig using Easy Save 3
             ES3.Save(
-                "CharacterData_" + _currentConfig.characterName, _currentConfig,
+                "CharacterData_" + sanitizedCharacterName, _currentConfig,
                 "Assets/Resources/CharacterSaves/CharacterSaves.es3");
 
             Debug.Log("Saved!");
+        }
+        
+        string SanitizeFileName(string name)
+        {
+            foreach (char c in System.IO.Path.GetInvalidFileNameChars())
+            {
+                name = name.Replace(c.ToString(), "_");
+            }
+            return name;
         }
 
         enum CreationStep
