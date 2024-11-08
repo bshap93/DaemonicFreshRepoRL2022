@@ -137,4 +137,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/TopDownEngine/ThirdParty/MoreMountains/MMTools/Demos/MMSceneLoading/MMSceneLoadingDemoSceneB.unity
     guid: 352d34cac2435634fb99618d19a3929c
+  - enabled: 1
+    path: Assets/Project/Scenes/CharacterCreation.unity
+    guid: cae592decd8dfd04ebb120e5a06b5244
+  - enabled: 1
+    path: Assets/Project/Scenes/OpenAreaTestScene.unity
+    guid: 2377bf3ab44b9014ea5e2a7bb8a31a18
   m_configObjects: {}

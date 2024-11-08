@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.IO;
+using MoreMountains.Tools;
 using Project.Core.CharacterCreation;
 using Project.UI.CharacterCreation.UIElements.Scripts;
 using TMPro;
@@ -254,8 +256,8 @@ namespace Project.UI.CharacterCreation.Scripts
             _currentConfig.attributes = GatherAttributeData();
             _currentConfig.selectedTraits = traitsPanelScript.GetSelectedTraits();
             _currentConfig.remainingPoints = _remainingPoints;
-            
-            string sanitizedCharacterName = SanitizeFileName(_currentConfig.characterName);
+
+            var sanitizedCharacterName = SanitizeFileName(_currentConfig.characterName);
 
             Debug.Log("Saving character stats for " + _currentConfig.characterName);
 
@@ -265,14 +267,13 @@ namespace Project.UI.CharacterCreation.Scripts
                 "Assets/Resources/CharacterSaves/CharacterSaves.es3");
 
             Debug.Log("Saved!");
+
+            MMSceneLoadingManager.LoadScene("Project/Scenes/OpenAreaTestScene");
         }
-        
+
         string SanitizeFileName(string name)
         {
-            foreach (char c in System.IO.Path.GetInvalidFileNameChars())
-            {
-                name = name.Replace(c.ToString(), "_");
-            }
+            foreach (var c in Path.GetInvalidFileNameChars()) name = name.Replace(c.ToString(), "_");
             return name;
         }
 

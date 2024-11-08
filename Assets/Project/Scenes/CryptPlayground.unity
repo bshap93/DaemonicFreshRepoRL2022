@@ -7974,7 +7974,7 @@ PrefabInstance:
     - target: {fileID: 728735127158231592, guid: e8a5f36d2eedece429bc8a78015990d1,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5580456832500494753, guid: e8a5f36d2eedece429bc8a78015990d1,
         type: 3}
@@ -8526,7 +8526,7 @@ PrefabInstance:
     - target: {fileID: 728735127158231592, guid: e8a5f36d2eedece429bc8a78015990d1,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5580456832500494753, guid: e8a5f36d2eedece429bc8a78015990d1,
         type: 3}
@@ -9207,6 +9207,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Skeleton1a
+      objectReference: {fileID: 0}
+    - target: {fileID: 728735127158231592, guid: e8a5f36d2eedece429bc8a78015990d1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5580456832500494753, guid: e8a5f36d2eedece429bc8a78015990d1,
         type: 3}
