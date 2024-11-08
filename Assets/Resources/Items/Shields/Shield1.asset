@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87b1ace509a3444883b01be1c7c43e83, type: 3}
+  m_Script: {fileID: 11500000, guid: 46003dbb830a4e23ba51742b0b0da13a, type: 3}
   m_Name: Shield1
   m_EditorClassIdentifier: 
   ItemID: Shield1
-  TargetInventoryName: MainInventory
+  TargetInventoryName: MainPlayerInventory
   ForceSlotIndex: 0
   TargetIndex: 0
   Usable: 1
@@ -22,7 +22,7 @@ MonoBehaviour:
   Equippable: 1
   EquippableIfInventoryIsFull: 1
   MoveWhenEquipped: 1
-  Droppable: 0
+  Droppable: 1
   CanMoveObject: 1
   CanSwapObject: 1
   DisplayProperties:
@@ -38,10 +38,10 @@ MonoBehaviour:
     AllowEquipShortcut: 1
     AllowUseShortcut: 1
   Quantity: 1
-  ItemName: Basic Shield
+  ItemName: The player's trusty shield from their heyday as a knight.
   ShortDescription: 
   Description: 
-  Icon: {fileID: 21300000, guid: 138796f6771a1ba4c9a72797e7dabeb6, type: 3}
+  Icon: {fileID: 21300006, guid: 678058abcbfe36f42902c11d9e5f64fc, type: 3}
   Prefab: {fileID: 0}
   ForcePrefabDropQuantity: 0
   PrefabDropQuantity: 1
@@ -90,13 +90,13 @@ MonoBehaviour:
   MaximumStack: 1
   MaximumQuantity: 999999999
   ItemClass: 0
-  TargetEquipmentInventoryName: LeftHandSlot
+  TargetEquipmentInventoryName: EquipmentInventory
   EquippedSound: {fileID: 0}
   UsedSound: {fileID: 0}
   MovedSound: {fileID: 0}
   DroppedSound: {fileID: 0}
   UseDefaultSoundsIfNull: 1
-  EquippableShield: {fileID: 6017219140691351932, guid: 0b13b46a6ef0a594a9f8a43ce125deb6,
+  ShieldPrefab: {fileID: 4199121017488461089, guid: 0b13b46a6ef0a594a9f8a43ce125deb6,
     type: 3}
-  AutoEquip: 1
-  HandleShieldID: 1
+  EquipmentInventoryName: EquipmentInventory
+  AutoEquipOnPickup: 1
