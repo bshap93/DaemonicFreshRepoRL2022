@@ -234,40 +234,29 @@ namespace Project.UI.CharacterCreation.Scripts
             Debug.Log("Character Creation Completed!");
         }
 
+        void SaveCharacterStats()
+        {
+            // Populate _currentConfig with current values
+            _currentConfig.selectedClass = _selectedClass;
+            _currentConfig.attributes = GatherAttributeData();
+            _currentConfig.selectedTraits = traitsPanelScript.GetSelectedTraits();
+
+            Debug.Log("Saving character stats for " + _currentConfig.characterName);
+
+            // Save _currentConfig using Easy Save 3
+            ES3.Save(
+                "CharacterData_" + _currentConfig.characterName, _currentConfig,
+                "Assets/Resources/CharacterSaves/CharacterSaves.es3");
+
+            Debug.Log("Saved!");
+        }
+
         enum CreationStep
         {
             ClassSelection,
             Attributes,
             Traits,
             Confirmation
-        }
-        
-        void SaveCharacterStats()
-        {
-            // Save the attribute allocations
-            var stats = new CharacterStats();
-
-            foreach (var row in attributeRows)
-                switch (row.statNameText.text)
-                {
-                    case "Strength":
-                        stats.strength = row.CurrentPoints;
-                        break;
-                    case "Agility":
-                        stats.agility = row.CurrentPoints;
-                        break;
-                    case "Endurance":
-                        stats.endurance = row.CurrentPoints;
-                        break;
-                    case "Intelligence":
-                        stats.intelligence = row.CurrentPoints;
-                        break;
-                    case "Intuition":
-                        stats.intuition = row.CurrentPoints;
-                        break;
-                }
-
-            _currentConfig.attributes = stats;
         }
     }
 }

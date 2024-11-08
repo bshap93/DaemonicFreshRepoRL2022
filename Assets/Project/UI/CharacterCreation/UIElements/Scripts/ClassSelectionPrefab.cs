@@ -8,8 +8,6 @@ namespace Project.UI.CharacterCreation.UIElements.Scripts
 {
     public class ClassSelectionPrefab : MonoBehaviour
     {
-        [Header("UI Elements")] [SerializeField]
-        Image classIcon;
         [SerializeField] TMP_Text className;
 
         [Header("Styling")] [SerializeField] Color selectedColor = new(0.8f, 0.8f, 1f);
@@ -31,11 +29,6 @@ namespace Project.UI.CharacterCreation.UIElements.Scripts
         {
             if (classData == null) return;
 
-            if (classIcon != null)
-            {
-                classIcon.sprite = classData.classIcon;
-                classIcon.preserveAspect = true;
-            }
 
             if (className != null)
             {
