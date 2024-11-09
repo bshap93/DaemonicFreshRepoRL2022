@@ -6575,7 +6575,7 @@ CharacterController:
   m_Height: 1
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.59
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.49, z: 0}
@@ -7139,7 +7139,7 @@ MonoBehaviour:
   TargetProgressBar: {fileID: 0}
   Size: {x: 1, y: 0.2}
   BackgroundPadding: {x: 0.01, y: 0.01}
-  InitialRotationAngles: {x: 0, y: 2.55, z: 0}
+  InitialRotationAngles: {x: 0, y: 0, z: 0}
   ForegroundColor:
     serializedVersion: 2
     key0: {r: 1, g: 0.09411765, b: 0, a: 1}
@@ -7298,8 +7298,8 @@ MonoBehaviour:
   NestDrawnHealthBar: 0
   Billboard: 0
   InstantiatedOnDeath: {fileID: 0}
-  HealthBarOffset: {x: 0, y: 1, z: 0}
-  AlwaysVisible: 1
+  HealthBarOffset: {x: 0, y: 2.6, z: 0}
+  AlwaysVisible: 0
   DisplayDurationOnHit: 1
   HideBarAtZero: 1
   HideBarAtZeroDelay: 1
@@ -8247,8 +8247,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4697412626586329234}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.29664904, y: -0.00046839693, z: 0.00014549893, w: 0.95498645}
-  m_LocalPosition: {x: -16.009163, y: 5.2353864, z: -14.631777}
+  m_LocalRotation: {x: 0.29652545, y: 0.027664399, z: -0.008593466, w: 0.9545855}
+  m_LocalPosition: {x: -10.4098425, y: 2.4504042, z: -22.529892}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
