@@ -1,6 +1,7 @@
 ﻿using MoreMountains.Tools;
 using MoreMountains.TopDownEngine;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Project.Gameplay.Combat.Shields
 {
@@ -19,9 +20,10 @@ namespace Project.Gameplay.Combat.Shields
         [Tooltip("if true, the shield will stay up as long as the button is held")]
         public bool ContinuousPress = true;
         public Animator CharacterAnimator;
-        Shield _currentShield;
 
-        protected bool _shieldActive;
+        [FormerlySerializedAs("_shieldActive")]
+        public bool shieldActive;
+        Shield _currentShield;
 
 
         public Shield CurrentShield { get; protected set; }
@@ -105,9 +107,9 @@ namespace Project.Gameplay.Combat.Shields
 
             if (shieldButtonPressed)
             {
-                if (!_shieldActive) ShieldStart();
+                if (!shieldActive) ShieldStart();
             }
-            else if (_shieldActive)
+            else if (shieldActive)
             {
                 ShieldStop();
             }
@@ -118,7 +120,7 @@ namespace Project.Gameplay.Combat.Shields
         {
             if (!AbilityAuthorized || !InputAuthorized || CurrentShield == null) return;
 
-            _shieldActive = true;
+            shieldActive = true;
             PlayAbilityStartFeedbacks();
             CurrentShield?.RaiseShield();
         }
@@ -127,7 +129,7 @@ namespace Project.Gameplay.Combat.Shields
         {
             if (!AbilityAuthorized || !InputAuthorized || CurrentShield == null) return;
 
-            _shieldActive = false;
+            shieldActive = false;
             PlayAbilityStopFeedbacks();
             CurrentShield?.LowerShield();
         }
