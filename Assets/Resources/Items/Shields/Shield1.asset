@@ -96,7 +96,7 @@ MonoBehaviour:
   MovedSound: {fileID: 0}
   DroppedSound: {fileID: 0}
   UseDefaultSoundsIfNull: 1
-  ShieldPrefab: {fileID: 4199121017488461089, guid: 0b13b46a6ef0a594a9f8a43ce125deb6,
+  ShieldPrefab: {fileID: 7086176435164650944, guid: 0b13b46a6ef0a594a9f8a43ce125deb6,
     type: 3}
   EquipmentInventoryName: EquipmentInventory
   AutoEquipOnPickup: 1

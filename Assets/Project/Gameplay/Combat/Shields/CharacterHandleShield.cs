@@ -4,10 +4,9 @@ using UnityEngine;
 
 namespace Project.Gameplay.Combat.Shields
 {
-    public class CharacterHandleShield : CharacterAbility 
+    public class CharacterHandleShield : CharacterAbility
     {
-        [MMInspectorGroup("Shield", true, 10)]
-        public Shield InitialShield;
+        [MMInspectorGroup("Shield", true, 10)] public Shield InitialShield;
         public Transform ShieldAttachment;
         public bool AutomaticallyBindAnimator = true;
         public int HandleShieldID = 1;
@@ -19,11 +18,13 @@ namespace Project.Gameplay.Combat.Shields
         /// if true, the shield will stay up as long as the button is held
         [Tooltip("if true, the shield will stay up as long as the button is held")]
         public bool ContinuousPress = true;
+        public Animator CharacterAnimator;
+        Shield _currentShield;
+
+        protected bool _shieldActive;
+
 
         public Shield CurrentShield { get; protected set; }
-        public Animator CharacterAnimator { get; set; }
-
-        protected bool _shieldActive = false;
 
         public override string HelpBoxText()
         {
@@ -35,6 +36,12 @@ namespace Project.Gameplay.Combat.Shields
             base.Initialization();
             AssignRequiredComponents();
             SetupShield();
+            if (_currentShield != null) _currentShield.OnShieldRaised += HandleShieldFeedback;
+        }
+
+        void HandleShieldFeedback(bool isRaised)
+        {
+            if (CharacterAnimator != null) CharacterAnimator.SetBool("ShieldUp", isRaised);
         }
 
         protected virtual void AssignRequiredComponents()
@@ -58,10 +65,7 @@ namespace Project.Gameplay.Combat.Shields
 
         protected virtual void SetupShield()
         {
-            if (InitialShield != null)
-            {
-                EquipShield(InitialShield);
-            }
+            if (InitialShield != null) EquipShield(InitialShield);
         }
 
         public virtual void EquipShield(Shield newShield)
@@ -76,7 +80,7 @@ namespace Project.Gameplay.Combat.Shields
             if (newShield != null)
             {
                 // Instantiate new shield
-                GameObject shieldGO = Instantiate(newShield.gameObject, ShieldAttachment.position, ShieldAttachment.rotation);
+                var shieldGO = Instantiate(newShield.gameObject, ShieldAttachment.position, ShieldAttachment.rotation);
                 CurrentShield = shieldGO.GetComponent<Shield>();
                 shieldGO.transform.SetParent(ShieldAttachment);
                 shieldGO.transform.localPosition = Vector3.zero;
@@ -93,34 +97,27 @@ namespace Project.Gameplay.Combat.Shields
 
         protected override void HandleInput()
         {
-            if (!AbilityAuthorized || !InputAuthorized || CurrentShield == null)
-            {
-                return;
-            }
+            if (!AbilityAuthorized || !InputAuthorized || CurrentShield == null) return;
 
-            // Use InteractButton instead of a dedicated shield button
-            if (_inputManager.InteractButton.State.CurrentState == MMInput.ButtonStates.ButtonDown)
+            // Check for RMB on PC or Left Trigger on Controller
+            var shieldButtonPressed =
+                UnityEngine.Input.GetMouseButton(1);
+
+            if (shieldButtonPressed)
             {
-                ShieldStart();
+                if (!_shieldActive) ShieldStart();
             }
-            else if (_inputManager.InteractButton.State.CurrentState == MMInput.ButtonStates.ButtonPressed && ContinuousPress)
-            {
-                // Keep shield up while button is held
-                if (!_shieldActive)
-                {
-                    ShieldStart();
-                }
-            }
-            else if (_inputManager.InteractButton.State.CurrentState == MMInput.ButtonStates.ButtonUp)
+            else if (_shieldActive)
             {
                 ShieldStop();
             }
         }
 
+
         public virtual void ShieldStart()
         {
             if (!AbilityAuthorized || !InputAuthorized || CurrentShield == null) return;
-            
+
             _shieldActive = true;
             PlayAbilityStartFeedbacks();
             CurrentShield?.RaiseShield();

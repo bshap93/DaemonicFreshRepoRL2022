@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7073586171907891520}
-  - component: {fileID: 4199121017488461089}
   - component: {fileID: 2738905102594533615}
+  - component: {fileID: 7086176435164650944}
   m_Layer: 0
   m_Name: Shield1EquippableShield
   m_TagString: Untagged
@@ -34,25 +34,6 @@ Transform:
   - {fileID: 878843701430381491}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4199121017488461089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5961896113817003441}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fede6b7923e49f79d12190588a5c720, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxShieldHealth: 100
-  CurrentShieldHealth: 0
-  DamageReduction: 0.5
-  RaisedMovementMultiplier: 0.5
-  ShieldRaiseFeedback: {fileID: 0}
-  ShieldBlockFeedback: {fileID: 0}
-  ShieldBreakFeedback: {fileID: 0}
 --- !u!65 &2738905102594533615
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -74,6 +55,25 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6667062, y: 0.5237825, z: 1.1400908}
   m_Center: {x: 0.020474315, y: -0.04396379, z: 0.07004559}
+--- !u!114 &7086176435164650944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5961896113817003441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fede6b7923e49f79d12190588a5c720, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxShieldHealth: 100
+  RecoveryTime: 2
+  StaminaConsumption: 10
+  ShieldRaiseFeedback: {fileID: 0}
+  ShieldLowerFeedback: {fileID: 0}
+  ShieldBlockFeedback: {fileID: 0}
+  ShieldBreakFeedback: {fileID: 0}
 --- !u!1 &8851952970606786790
 GameObject:
   m_ObjectHideFlags: 0
