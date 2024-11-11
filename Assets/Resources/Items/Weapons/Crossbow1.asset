@@ -41,7 +41,7 @@ MonoBehaviour:
   ItemName: Crossbow Variant 1
   ShortDescription: A Bone adorned crossbow in basic style.
   Description: 
-  Icon: {fileID: 0}
+  Icon: {fileID: -6256563695458652631, guid: 678058abcbfe36f42902c11d9e5f64fc, type: 3}
   Prefab: {fileID: 0}
   ForcePrefabDropQuantity: 0
   PrefabDropQuantity: 1
@@ -98,5 +98,5 @@ MonoBehaviour:
   UseDefaultSoundsIfNull: 1
   EquippableWeapon: {fileID: 9038232527781784105, guid: 70d965effe2376640b576a7fcd463139,
     type: 3}
-  AutoEquipMode: 0
+  AutoEquipMode: 1
   HandleWeaponID: 1
