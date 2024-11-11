@@ -561,6 +561,7 @@ GameObject:
   - component: {fileID: 7019751742468466247}
   - component: {fileID: 9038232527781784105}
   - component: {fileID: 683059814720472440}
+  - component: {fileID: 9200601151226328568}
   m_Layer: 10
   m_Name: CrossbowWeapon
   m_TagString: Untagged
@@ -662,12 +663,13 @@ MonoBehaviour:
   ProjectileSpawnOffset: {x: 0, y: 0, z: 0}
   DefaultProjectileDirection: {x: 0, y: 0, z: 1}
   ProjectilesPerShot: 1
-  SpawnTransforms: []
+  SpawnTransforms:
+  - {fileID: 3585192239389504310}
   SpawnTransformsMode: 1
   Spread: {x: 0, y: 0, z: 0}
   RotateWeaponOnSpread: 0
   RandomSpread: 1
-  SpawnPosition: {x: 0.256, y: 1.185, z: 0.187}
+  SpawnPosition: {x: 0.256, y: 1.1849998, z: 0.6189247}
   ObjectPooler: {fileID: 0}
   SpawnFeedbacks: []
   TestShootButton: 0
@@ -683,10 +685,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0514d297deadac74fb15a7b7326ff0d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AimControl: 2
+  AimControl: 3
   AimControlActive: 1
   RotationMode: 0
-  WeaponRotationSpeed: 1
+  WeaponRotationSpeed: 10
   MinimumAngle: -180
   MaximumAngle: 180
   MinimumMagnitude: 0.2
@@ -711,6 +713,25 @@ MonoBehaviour:
     m_Bits: 9
   MaximumSlopeElevation: 50
   AvoidNullAim: 1
+--- !u!114 &9200601151226328568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4609475775961207531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b7277539b95c0d45895792ecc99ce66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MutualizeWaitingPools: 0
+  NestWaitingPool: 1
+  NestUnderThis: 0
+  GameObjectToPool: {fileID: 5284049741612835464, guid: 51dce61919a50604292ba296fc6fc262,
+    type: 3}
+  PoolSize: 20
+  PoolCanExpand: 1
 --- !u!1 &7516958715960331525
 GameObject:
   m_ObjectHideFlags: 0
