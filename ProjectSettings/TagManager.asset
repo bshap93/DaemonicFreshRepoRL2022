@@ -12,6 +12,7 @@ TagManager:
   - LevelStart
   - WeaponPrefab
   - Collectable
+  - Feedback
   layers:
   - Default
   - TransparentFX
