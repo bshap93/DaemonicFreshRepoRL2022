@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96e5ab856f9f496f9c950c778daa6b18, type: 3}
   m_Name: Medkit
   m_EditorClassIdentifier: 
-  ItemID: 
-  TargetInventoryName: MainInventory
+  ItemID: Medkit
+  TargetInventoryName: MainPlayerInventory
   ForceSlotIndex: 0
   TargetIndex: 0
-  Usable: 0
+  Usable: 1
   Consumable: 1
   ConsumeQuantity: 1
   Equippable: 0

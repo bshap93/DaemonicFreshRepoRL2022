@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96e5ab856f9f496f9c950c778daa6b18, type: 3}
-  m_Name: HealthPotion1
+  m_Name: Carrots
   m_EditorClassIdentifier: 
-  ItemID: HealthPotion1
+  ItemID: Carrots
   TargetInventoryName: MainPlayerInventory
   ForceSlotIndex: 0
   TargetIndex: 0
@@ -38,11 +38,11 @@ MonoBehaviour:
     AllowEquipShortcut: 1
     AllowUseShortcut: 1
   Quantity: 1
-  ItemName: 
-  ShortDescription: 
+  ItemName: Carrots
+  ShortDescription: A few carrots, still fresh and seemingly edible
   Description: 
-  Icon: {fileID: 0}
-  Prefab: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 44ceee0fc7689cf4f8d6175ba9b65eee, type: 3}
+  Prefab: {fileID: 9022520988057576563, guid: ba9f1eea489d1b449b279d2be5e1c01f, type: 3}
   ForcePrefabDropQuantity: 0
   PrefabDropQuantity: 1
   DropProperties:
