@@ -1,9 +1,7 @@
 using System.Threading.Tasks;
-using Core.SaveSystem.Scripts;
 using DunGen;
 using Project.Core.SaveSystem;
 using Project.Gameplay.DungeonGeneration;
-using Unity.AI.Navigation.Samples;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -11,57 +9,52 @@ namespace Project.Core.GameInitialization
 {
     public class GameInitiator : MonoBehaviour
     {
-        private static GameInitiator _instance;
-        private NewSaveManager _saveManager;
-        [FormerlySerializedAs("_dungeonManager")] 
-        [SerializeField] NewDungeonManager dungeonManager;
-        private RuntimeDungeon _runtimeDungeon;
+        static GameInitiator _instance;
+        [FormerlySerializedAs("_dungeonManager")] [SerializeField]
+        NewDungeonManager dungeonManager;
+        RuntimeDungeon _runtimeDungeon;
+        NewSaveManager _saveManager;
 
-        private void Awake()
+        void Awake()
         {
             if (_instance != null)
             {
                 Destroy(gameObject);
                 return;
             }
-        
+
             _instance = this;
-        
+
             // Find references in our prefab structure
             // dungeonManager = GetComponentInChildren<NewDungeonManager>();
             _runtimeDungeon = GetComponentInChildren<RuntimeDungeon>();
-        
+
             if (dungeonManager == null || _runtimeDungeon == null)
-            {
                 Debug.LogError("Missing required components in PortableSystems prefab!");
-            }
         }
 
-        private async void Start()
+        async void Start()
         {
             await InitializeCore();
         }
 
-        private async Task InitializeCore()
+        async Task InitializeCore()
         {
             // Add SaveManager dynamically
             _saveManager = gameObject.AddComponent<NewSaveManager>();
 
             // Try to load previous save, or start new game
-            if (!await LoadLastGame())
-            {
-                await StartNewGame();
-            }
+            if (!await LoadLastGame()) await StartNewGame();
         }
 
-        private async Task<bool> LoadLastGame()
+        async Task<bool> LoadLastGame()
         {
             return await Task.FromResult(_saveManager.LoadGame());
         }
 
-        private async Task StartNewGame()
+        async Task StartNewGame()
         {
-            int seed = Random.Range(0, int.MaxValue);
+            var seed = Random.Range(0, int.MaxValue);
             await dungeonManager.GenerateNewDungeon(seed);
         }
     }

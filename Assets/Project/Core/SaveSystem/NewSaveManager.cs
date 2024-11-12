@@ -2,85 +2,29 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Characters.Player.Scripts;
-using Cysharp.Threading.Tasks;
-using Library.Characters.Player.Scripts;
 using Project.Gameplay.DungeonGeneration.Spawning;
 using UnityEngine;
 
 namespace Project.Core.SaveSystem
 {
-
 // Helper class to implement the ISaveable interface
-    public interface ISaveable
-    {
-        void SaveState(SaveData saveData);
-        void LoadState(SaveData saveData);
-    }
+
 
 // Save Manager to handle saving/loading
     public class NewSaveManager : MonoBehaviour
     {
         // Track level transitions for save/load
-        private Dictionary<string, LevelTransitionData> levelTransitions = new();
-        
-        private SpawnPointManager spawnPointManager;
-        
+        readonly Dictionary<string, LevelTransitionData> levelTransitions = new();
 
-
-        private SpawnPoint FindSpawnPoint(string spawnPointId)
-        {
-            return spawnPointManager.GetSpawnPointById(spawnPointId);
-        }
-        
-        public void SetLastTransitionPoint(string levelId, string spawnPointId, SpawnDirection direction)
-        {
-            levelTransitions[levelId] = new LevelTransitionData
-            {
-                levelId = levelId,
-                lastSpawnPointId = spawnPointId,
-                direction = direction,
-                playerPosition = PlayerCharacter.Instance.transform.position,
-                playerRotation = PlayerCharacter.Instance.transform.rotation
-            };
-        }
-        public LevelTransitionData GetLevelTransitionData(string levelId)
-        {
-            return levelTransitions.TryGetValue(levelId, out var data) ? data : null;
-        }
-        
-        public Task HandleLevelTransition(string targetLevelId, string targetSpawnPointId, SpawnDirection direction)
-        {
-            // Save current level state
-            SaveGame();
-
-            // Load new level
-            // TODO: Implement level loading
-        
-            // Find target spawn point and position player
-            var spawnPoint = FindSpawnPoint(targetSpawnPointId);
-            if (spawnPoint != null)
-            {
-                PlayerCharacter.Instance.transform.position = spawnPoint.transform.position;
-                PlayerCharacter.Instance.transform.rotation = spawnPoint.transform.rotation;
-            
-                // Notify spawn point of transition
-                spawnPoint.OnLevelTransition(direction);
-            }
-
-            return Task.CompletedTask;
-        }
+        SpawnPointManager spawnPointManager;
         public static NewSaveManager Instance { get; private set; }
         public SaveData CurrentSave { get; private set; }
-    
+
         void Awake()
         {
             spawnPointManager = FindObjectOfType<SpawnPointManager>();
-            if (spawnPointManager == null)
-            {
-                Debug.LogError("No SpawnPointManager found in scene!");
-            }
-            
+            if (spawnPointManager == null) Debug.LogError("No SpawnPointManager found in scene!");
+
             if (Instance == null)
             {
                 Instance = this;
@@ -93,23 +37,67 @@ namespace Project.Core.SaveSystem
             }
         }
 
+
+        SpawnPoint FindSpawnPoint(string spawnPointId)
+        {
+            return spawnPointManager.GetSpawnPointById(spawnPointId);
+        }
+
+        public void SetLastTransitionPoint(string levelId, string spawnPointId, SpawnDirection direction)
+        {
+            var playerGameObject = GameObject.FindGameObjectWithTag("Player");
+            levelTransitions[levelId] = new LevelTransitionData
+            {
+                levelId = levelId,
+                lastSpawnPointId = spawnPointId,
+                direction = direction,
+                playerPosition = playerGameObject.transform.position,
+                playerRotation = playerGameObject.transform.rotation
+            };
+        }
+        public LevelTransitionData GetLevelTransitionData(string levelId)
+        {
+            return levelTransitions.TryGetValue(levelId, out var data) ? data : null;
+        }
+
+        public Task HandleLevelTransition(string targetLevelId, string targetSpawnPointId, SpawnDirection direction)
+        {
+            // Save current level state
+            SaveGame();
+
+            // Load new level
+            // TODO: Implement level loading
+
+            var playerGameObject = GameObject.FindGameObjectWithTag("Player");
+
+            // Find target spawn point and position player
+            var spawnPoint = FindSpawnPoint(targetSpawnPointId);
+            if (spawnPoint != null)
+            {
+                playerGameObject.transform.position = spawnPoint.transform.position;
+                playerGameObject.transform.rotation = spawnPoint.transform.rotation;
+
+                // Notify spawn point of transition
+                spawnPoint.OnLevelTransition(direction);
+            }
+
+            return Task.CompletedTask;
+        }
+
         public void SaveGame(string slot = "default")
         {
             try
             {
                 // Collect save data from all ISaveable objects
                 var saveables = FindObjectsOfType<MonoBehaviour>().OfType<ISaveable>();
-                foreach (var saveable in saveables)
-                {
-                    saveable.SaveState(CurrentSave);
-                }
-            
+                foreach (var saveable in saveables) saveable.SaveState(CurrentSave);
+
                 // Update timestamp
                 CurrentSave.timestamp = DateTime.Now;
-            
+
                 // Save using Easy Save 3
                 ES3.Save($"save_{slot}", CurrentSave);
-            
+
                 Debug.Log($"Game saved successfully to slot: {slot}");
             }
             catch (Exception e)
@@ -129,14 +117,11 @@ namespace Project.Core.SaveSystem
                 }
 
                 CurrentSave = ES3.Load<SaveData>($"save_{slot}");
-            
+
                 // Load data into all ISaveable objects
                 var saveables = FindObjectsOfType<MonoBehaviour>().OfType<ISaveable>();
-                foreach (var saveable in saveables)
-                {
-                    saveable.LoadState(CurrentSave);
-                }
-            
+                foreach (var saveable in saveables) saveable.LoadState(CurrentSave);
+
                 Debug.Log($"Game loaded successfully from slot: {slot}");
                 return true;
             }
@@ -146,6 +131,5 @@ namespace Project.Core.SaveSystem
                 return false;
             }
         }
-
     }
 }

@@ -1,21 +1,22 @@
-using MoreMountains.Tools;
 using MoreMountains.TopDownEngine;
 using UnityEngine;
 
-public class BarrelDestruction : MonoBehaviour
+public class ContainerDestruction : MonoBehaviour
 {
     public GameObject brokenBarrelPrefab;
     public GameObject deathFeedbackPrefab;
     public float transitionDuration = 0.5f; // Duration for fading effect
 
     Health _health;
+    Loot _loot; // Reference to the Loot component
     Renderer _renderer;
-    private MMLootGameObject _lootSpawner; 
+
 
     void Awake()
     {
         _health = GetComponent<Health>();
         _renderer = GetComponent<Renderer>();
+        _loot = GetComponent<Loot>();
         _health.OnDeath += OnDeath;
     }
 
@@ -31,6 +32,10 @@ public class BarrelDestruction : MonoBehaviour
 
         // Instantiate the broken barrel at the same position
         Instantiate(brokenBarrelPrefab, transform.position, transform.rotation);
+
+        // Spawn loot at the barrel's position
+        if (_loot != null)
+            Instantiate(_loot.GameObjectToLoot, transform.position + new Vector3(0, 0.5f, 0), transform.rotation);
 
         // Destroy the original barrel
         Destroy(gameObject);
