@@ -1,13 +1,13 @@
-using System;
+﻿using System;
 using MoreMountains.InventoryEngine;
 using UnityEngine;
 
 namespace Project.Gameplay.ItemManagement.InventoryItemTypes
 {
     [CreateAssetMenu(
-        fileName = "InventoryCollectable", menuName = "Roguelike/Items/InventoryCollectable", order = 1)]
+        fileName = "InventoryConsumable", menuName = "Roguelike/Items/InventoryConsumable", order = 2)]
     [Serializable]
-    public class InventoryCollectable : InventoryItem
+    public class InventoryConsumable : InventoryItem
     {
     }
 }

@@ -3,14 +3,17 @@ using UnityEngine;
 
 public class BarrelDestruction : MonoBehaviour
 {
-    public GameObject brokenBarrelPrefab; // Broken barrel prefab
-    public GameObject deathFeedbackPrefab; // Temporary feedback prefab
+    public GameObject brokenBarrelPrefab;
+    public GameObject deathFeedbackPrefab;
+    public float transitionDuration = 0.5f; // Duration for fading effect
 
     Health _health;
+    Renderer _renderer;
 
     void Awake()
     {
         _health = GetComponent<Health>();
+        _renderer = GetComponent<Renderer>();
         _health.OnDeath += OnDeath;
     }
 
