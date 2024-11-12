@@ -1,3 +1,4 @@
+using MoreMountains.Tools;
 using MoreMountains.TopDownEngine;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class BarrelDestruction : MonoBehaviour
 
     Health _health;
     Renderer _renderer;
+    private MMLootGameObject _lootSpawner; 
 
     void Awake()
     {
