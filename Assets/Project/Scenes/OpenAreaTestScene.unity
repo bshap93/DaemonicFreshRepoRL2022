@@ -29013,59 +29013,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4144747097341429341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7011475476522061639}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Priority:
-    Enabled: 1
-    m_Value: 10
-  OutputChannel: 1
-  StandbyUpdate: 2
-  m_StreamingVersion: 20230301
-  m_LegacyPriority: 0
-  m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 4424028274011124146}
-  m_Lens:
-    FieldOfView: 39.64941
-    OrthographicSize: 10
-    NearClipPlane: 0.1
-    FarClipPlane: 5000
-    Dutch: 0
-    ModeOverride: 3
-    GateFit: 4
-    m_SensorSize: {x: 1, y: 1}
-    LensShift: {x: 0, y: 0}
-    FocusDistance: 11.87
-    Iso: 200
-    ShutterSpeed: 0.005
-    Aperture: 16
-    BladeCount: 5
-    Curvature: {x: 2, y: 11}
-    BarrelClipping: 0.25
-    Anamorphism: 0
-  BlendHint: 0
-  m_OnCameraLiveEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ExcludedPropertiesInInspector:
-  - m_Script
-  m_LockStageInInspector: 
-  m_LegacyTransitions:
-    m_BlendHint: 0
-    m_InheritPosition: 0
-    m_OnCameraLive:
-      m_PersistentCalls:
-        m_Calls: []
-  m_ComponentOwner: {fileID: 2725794477129373257}
 --- !u!225 &4157886839590695696
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -33186,14 +33133,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7011475476522061639}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.37919283, y: 0.59683573, z: -0.3791929, w: 0.5968356}
-  m_LocalPosition: {x: -23.064543, y: 13.599139, z: -7.7916665}
+  m_LocalRotation: {x: 0.3409, y: 0.00000002900549, z: -0.000000010518004, w: 0.9400996}
+  m_LocalPosition: {x: -13.416668, y: 2.9387603, z: -17.51819}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2725794477129373257}
   m_Father: {fileID: 8888451486523715768}
-  m_LocalEulerAnglesHint: {x: 34.513, y: 3.32, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
 --- !u!114 &5449701693762579474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33870,10 +33817,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpiderEnemy1
       objectReference: {fileID: 0}
-    - target: {fileID: 6124155656595590436, guid: 65521660c22d30b448ad8ff06972eef8,
+    - target: {fileID: 5296421802336000371, guid: 65521660c22d30b448ad8ff06972eef8,
         type: 3}
-      propertyPath: InitialHealth
-      value: 100
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -35564,8 +35511,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2580413447412690090}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.37919277, y: 0.5968358, z: -0.37919292, w: 0.5968356}
-  m_LocalPosition: {x: -23.064543, y: 13.599139, z: -7.7916665}
+  m_LocalRotation: {x: 0.34090003, y: 0.000000029005493, z: -0.000000010518005, w: 0.94009954}
+  m_LocalPosition: {x: -13.416668, y: 2.9387603, z: -17.51819}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -37346,11 +37293,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5441530954070222385}
   - component: {fileID: 7011475476522061642}
-  - component: {fileID: 7011475476522061643}
-  - component: {fileID: 7011475476522061644}
+  - component: {fileID: 7011475476522061646}
+  - component: {fileID: 7011475476522061645}
   - component: {fileID: 6291726433912337205}
   - component: {fileID: 1577344120573667914}
-  - component: {fileID: 4144747097341429341}
+  - component: {fileID: 7011475476522061647}
   m_Layer: 10
   m_Name: CM vcam1
   m_TagString: MainCamera
@@ -37401,7 +37348,36 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
---- !u!114 &7011475476522061643
+--- !u!114 &7011475476522061645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7011475476522061639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f38bda98361e1de48a4ca2bd86ea3c17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Composition:
+    ScreenPosition: {x: 0, y: 0}
+    DeadZone:
+      Enabled: 0
+      Size: {x: 0.96, y: 0.73}
+    HardLimits:
+      Enabled: 0
+      Size: {x: 1.24, y: 1.1}
+      Offset: {x: 0, y: 0}
+  CenterOnActivate: 1
+  TargetOffset: {x: 0, y: 1.88, z: 0}
+  Damping: {x: 0.5, y: 0.5}
+  Lookahead:
+    Enabled: 0
+    Time: 0
+    Smoothing: 0
+    IgnoreY: 0
+--- !u!114 &7011475476522061646
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -37413,15 +37389,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b5d7c088409d9a40b7b09aa707777f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetOffset: {x: 0, y: 22.73, z: 0}
+  TargetOffset: {x: 0, y: 8, z: -0.17}
   TrackerSettings:
-    BindingMode: 1
+    BindingMode: 4
     PositionDamping: {x: 1, y: 1, z: 1}
     AngularDampingMode: 0
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
   OrbitStyle: 0
-  Radius: 11.7
+  Radius: 12.06
   Orbits:
     Top:
       Radius: 2
@@ -37445,7 +37421,7 @@ MonoBehaviour:
       Time: 2
     Restrictions: 0
   VerticalAxis:
-    Value: 8.3
+    Value: 17.5
     Center: 17.5
     Range: {x: -10, y: 45}
     Wrap: 0
@@ -37464,7 +37440,7 @@ MonoBehaviour:
       Wait: 1
       Time: 2
     Restrictions: 0
---- !u!114 &7011475476522061644
+--- !u!114 &7011475476522061647
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -37473,26 +37449,47 @@ MonoBehaviour:
   m_GameObject: {fileID: 7011475476522061639}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f38bda98361e1de48a4ca2bd86ea3c17, type: 3}
+  m_Script: {fileID: 11500000, guid: 89875cdc57c54474a8a74efd9b2a3b5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Composition:
-    ScreenPosition: {x: 0, y: 0}
-    DeadZone:
+  ScanRecursively: 1
+  SuppressInputWhileBlending: 1
+  IgnoreTimeScale: 0
+  m_ControllerManager:
+    Controllers:
+    - Name: Look Orbit X
+      Owner: {fileID: 7011475476522061646}
       Enabled: 1
-      Size: {x: 0.5, y: 0.5}
-    HardLimits:
+      Input:
+        LegacyInput: Player1_Horizontal
+        LegacyGain: 200
+        CancelDeltaTime: 0
+      InputValue: 0
+      Driver:
+        AccelTime: 0.2
+        DecelTime: 0.2
+    - Name: Look Orbit Y
+      Owner: {fileID: 7011475476522061646}
       Enabled: 0
-      Size: {x: 1.3, y: 0.8}
-      Offset: {x: 0, y: 0}
-  CenterOnActivate: 1
-  TargetOffset: {x: 0, y: -0.25, z: 0}
-  Damping: {x: 0.5, y: 0.5}
-  Lookahead:
-    Enabled: 0
-    Time: 0
-    Smoothing: 0
-    IgnoreY: 0
+      Input:
+        LegacyInput: Mouse Y
+        LegacyGain: -200
+        CancelDeltaTime: 0
+      InputValue: 0
+      Driver:
+        AccelTime: 0.05
+        DecelTime: 0.05
+    - Name: Orbit Scale
+      Owner: {fileID: 7011475476522061646}
+      Enabled: 1
+      Input:
+        LegacyInput: Mouse ScrollWheel
+        LegacyGain: 200
+        CancelDeltaTime: 0
+      InputValue: 0
+      Driver:
+        AccelTime: 0
+        DecelTime: 0
 --- !u!1 &7022241810138339953
 GameObject:
   m_ObjectHideFlags: 0
@@ -38499,7 +38496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FacingDirection: 2
-  ForceAssignation: 0
+  ForceAssignation: 1
   CheckPointOrder: 0
 --- !u!114 &7264307440630076984
 MonoBehaviour:

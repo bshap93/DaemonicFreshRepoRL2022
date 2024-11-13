@@ -1168,8 +1168,12 @@ MonoBehaviour:
         DebugActive: 0
         Sfx: {fileID: 0}
         RandomSfx:
-        - {fileID: 8300000, guid: be44cb6f27524434590cd8085936800d, type: 3}
-        - {fileID: 8300000, guid: 1222f64592d31fd4c87d496330682b8a, type: 3}
+        - {fileID: 8300000, guid: 44bdd9521f1eefc42b214adcbf37d2c4, type: 3}
+        - {fileID: 8300000, guid: 3ffa31dd3b9931448b3f4bd667b242cd, type: 3}
+        - {fileID: 8300000, guid: bbc60c6461fdb924aab034e033b66239, type: 3}
+        - {fileID: 8300000, guid: a60137a46ac024d4a81a62bd7648dfce, type: 3}
+        - {fileID: 8300000, guid: d5e18af3cbc1d934eac37660f2786001, type: 3}
+        - {fileID: 8300000, guid: 642c70b18370d7b42976504d5457fdd6, type: 3}
         TestPlayButton:
           ButtonText: Debug Play Sound
         TestStopButton:
@@ -1178,8 +1182,8 @@ MonoBehaviour:
         PoolSize: 10
         UseLegacyEventsMode: 0
         StopSoundOnFeedbackStop: 1
-        MinVolume: 0.01
-        MaxVolume: 0.02
+        MinVolume: 0.26
+        MaxVolume: 0.41
         MinPitch: 1
         MaxPitch: 1
         SfxAudioMixerGroup: {fileID: 0}
@@ -7755,6 +7759,13 @@ MonoBehaviour:
   moveSpeed: 0
   attackPower: 0
   defense: 0
+  strength: 0
+  agility: 0
+  endurance: 0
+  intelligence: 0
+  intuition: 0
+  playerClass: 
+  chosenTraits: []
 --- !u!1 &4210891894166820022
 GameObject:
   m_ObjectHideFlags: 0
