@@ -109,12 +109,18 @@ namespace Project.Core.SaveSystem
             }
         }
 
+        // Check if a save exists in the specified slot
+        public bool HasSave(int slot = 0)
+        {
+            return ES3.KeyExists($"save_slot_{slot}");
+        }
 
-        public bool LoadGame(string slot = "default")
+
+        public bool LoadGame(int slot = 0)
         {
             try
             {
-                if (!ES3.KeyExists($"save_{slot}"))
+                if (HasSave(slot))
                 {
                     Debug.LogWarning($"No save file found in slot: {slot}");
                     return false;
@@ -157,6 +163,12 @@ namespace Project.Core.SaveSystem
                 Debug.LogError($"Error loading game: {e.Message}");
                 return false;
             }
+        }
+
+        // Clear current save data (used for starting new game)
+        public void ClearCurrentSave()
+        {
+            CurrentSave = new SaveData(); // Reset save data to default
         }
 
 
