@@ -2,6 +2,7 @@
 using System.IO;
 using MoreMountains.Tools;
 using Project.Core.CharacterCreation;
+using Project.Core.SaveSystem;
 using Project.UI.CharacterCreation.UIElements.Scripts;
 using TMPro;
 using UnityEngine;
@@ -248,28 +249,27 @@ namespace Project.UI.CharacterCreation.Scripts
             Debug.Log("Character Creation Completed!");
         }
 
+
         void SaveCharacterStats()
         {
-            // Populate _currentConfig with current values
-            _currentConfig.characterName = characterNameInput.text;
-            _currentConfig.selectedClass = _selectedClass;
-            _currentConfig.attributes = GatherAttributeData();
-            _currentConfig.selectedTraits = traitsPanelScript.GetSelectedTraits();
-            _currentConfig.remainingPoints = _remainingPoints;
+            var saveData = NewSaveManager.Instance.CurrentSave;
 
-            var sanitizedCharacterName = SanitizeFileName(_currentConfig.characterName);
+            saveData.characterCreationData = new CharacterCreationData
+            {
+                characterName = characterNameInput.text,
+                selectedClass = _selectedClass,
+                attributes = GatherAttributeData(),
+                selectedTraits = traitsPanelScript.GetSelectedTraits(),
+                remainingPoints = _remainingPoints
+            };
 
-            Debug.Log("Saving character stats for " + _currentConfig.characterName);
+            Debug.Log(
+                $"Saving Character Data: Class - {_selectedClass.className}, Attributes - {saveData.characterCreationData.attributes}");
 
-            // Save _currentConfig using Easy Save 3
-            ES3.Save(
-                "CharacterData_" + sanitizedCharacterName, _currentConfig,
-                "Assets/Resources/CharacterSaves/CharacterSaves.es3");
-
-            Debug.Log("Saved!");
-
+            NewSaveManager.Instance.SaveGame();
             MMSceneLoadingManager.LoadScene("Project/Scenes/OpenAreaTestScene");
         }
+
 
         string SanitizeFileName(string name)
         {

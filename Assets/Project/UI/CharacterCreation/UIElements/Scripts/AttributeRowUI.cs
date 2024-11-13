@@ -1,17 +1,9 @@
 ﻿using System;
+using Project.Core.CharacterCreation;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-[Serializable]
-public enum StatType
-{
-    Strength,
-    Agility,
-    Endurance,
-    Intelligence,
-    Intuition
-}
 
 // Update AttributeRowUI to include the stat type
 public class AttributeRowUI : MonoBehaviour

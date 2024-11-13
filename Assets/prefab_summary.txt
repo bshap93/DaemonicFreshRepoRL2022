@@ -1,0 +1,213 @@
+GameObject: PlayerTopDown
+  - Transform
+  - DungenCharacter
+  - Character
+  - CharacterController
+  - Rigidbody
+  - TopDownController3D
+  - CharacterOrientation3D
+  - CharacterCrouch
+  - CharacterJump3D
+  - CharacterMovement
+  - CharacterRun
+  - CharacterButtonActivation
+  - CharacterPause
+  - CharacterTimeControl
+  - Health
+  - CharacterRotateCamera
+  - CharacterHandleWeapon
+  - WeaponModelEnabler
+  - MMHealthBar
+  - CharacterHandleShield
+  - CharacterInventory
+  - SpawnedCharacterEquipment
+  - CharacterPersistence
+GameObject: Dark-knight_1
+  - Transform
+  - Animator
+  - CharacterAnimationParametersInitializer
+  - WeaponIK
+  - WeaponIKDisabler
+GameObject: Feedbacks
+  - Transform
+GameObject: WalkParticles
+  - Transform
+  - ParticleSystem
+  - ParticleSystemRenderer
+GameObject: TouchTheGroundParticles
+  - Transform
+  - ParticleSystem
+  - ParticleSystemRenderer
+GameObject: RunFeedbacks
+  - Transform
+  - MMF_Player
+GameObject: RunParticles
+  - Transform
+  - ParticleSystem
+  - ParticleSystemRenderer
+GameObject: WalkFeedbacks
+  - Transform
+  - MMF_Player
+GameObject: WalkParticles
+  - Transform
+  - ParticleSystem
+  - ParticleSystemRenderer
+GameObject: DamageFeedback
+  - Transform
+  - MMF_Player
+GameObject: DeathFeedback
+  - Transform
+  - MMF_Player
+GameObject: ShieldUp
+  - Transform
+  - MMF_Player
+GameObject: RestoreSuitEffect
+  - Transform
+  - ParticleSystem
+  - ParticleSystemRenderer
+GameObject: Dark Knight_LOD0
+  - Transform
+  - SkinnedMeshRenderer
+GameObject: root
+  - Transform
+GameObject: pelvis
+  - Transform
+GameObject: bag
+  - Transform
+  - MeshFilter
+  - MeshRenderer
+GameObject: Scabbard_LOD0
+  - Transform
+  - MeshFilter
+  - MeshRenderer
+GameObject: Scabbard_LOD1
+  - Transform
+  - MeshFilter
+  - MeshRenderer
+GameObject: spine_01
+  - Transform
+GameObject: spine_02
+  - Transform
+GameObject: spine_03
+  - Transform
+GameObject: clavicle_l
+  - Transform
+GameObject: upperarm_l
+  - Transform
+GameObject: lowerarm_l
+  - Transform
+GameObject: hand_l
+  - Transform
+GameObject: index_01_l
+  - Transform
+GameObject: index_02_l
+  - Transform
+GameObject: index_03_l
+  - Transform
+GameObject: middle_01_l
+  - Transform
+GameObject: middle_02_l
+  - Transform
+GameObject: middle_03_l
+  - Transform
+GameObject: pinky_01_l
+  - Transform
+GameObject: pinky_02_l
+  - Transform
+GameObject: pinky_03_l
+  - Transform
+GameObject: ring_01_l
+  - Transform
+GameObject: ring_02_l
+  - Transform
+GameObject: ring_03_l
+  - Transform
+GameObject: thumb_01_l
+  - Transform
+GameObject: thumb_02_l
+  - Transform
+GameObject: thumb_03_l
+  - Transform
+GameObject: WeaponsL
+  - Transform
+GameObject: lowerarm_twist_01_l
+  - Transform
+GameObject: upperarm_twist_01_l
+  - Transform
+GameObject: clavicle_r
+  - Transform
+GameObject: upperarm_r
+  - Transform
+GameObject: lowerarm_r
+  - Transform
+GameObject: hand_r
+  - Transform
+GameObject: index_01_r
+  - Transform
+GameObject: index_02_r
+  - Transform
+GameObject: index_03_r
+  - Transform
+GameObject: middle_01_r
+  - Transform
+GameObject: middle_02_r
+  - Transform
+GameObject: middle_03_r
+  - Transform
+GameObject: pinky_01_r
+  - Transform
+GameObject: pinky_02_r
+  - Transform
+GameObject: pinky_03_r
+  - Transform
+GameObject: ring_01_r
+  - Transform
+GameObject: ring_02_r
+  - Transform
+GameObject: ring_03_r
+  - Transform
+GameObject: thumb_01_r
+  - Transform
+GameObject: thumb_02_r
+  - Transform
+GameObject: thumb_03_r
+  - Transform
+GameObject: WeaponsRightAttachment
+  - Transform
+GameObject: lowerarm_twist_01_r
+  - Transform
+GameObject: upperarm_twist_01_r
+  - Transform
+GameObject: neck_01
+  - Transform
+GameObject: head
+  - Transform
+GameObject: eyeL
+  - Transform
+GameObject: eyeR
+  - Transform
+GameObject: jaw
+  - Transform
+GameObject: thigh_l
+  - Transform
+GameObject: calf_l
+  - Transform
+GameObject: foot_l
+  - Transform
+GameObject: ball_l
+  - Transform
+GameObject: thigh_r
+  - Transform
+GameObject: calf_r
+  - Transform
+GameObject: foot_r
+  - Transform
+GameObject: ball_r
+  - Transform
+GameObject: WeaponAttachContainer
+  - Transform
+GameObject: WeaponAttach
+  - Transform
+  - MMWiggle
+GameObject: lookfocus
+  - Transform

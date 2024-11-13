@@ -1,19 +1,20 @@
+// GameInitiator.cs
+
 using System.Threading.Tasks;
 using DunGen;
+using MoreMountains.TopDownEngine;
 using Project.Core.SaveSystem;
 using Project.Gameplay.DungeonGeneration;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Project.Core.GameInitialization
 {
     public class GameInitiator : MonoBehaviour
     {
         static GameInitiator _instance;
-        [FormerlySerializedAs("_dungeonManager")] [SerializeField]
-        NewDungeonManager dungeonManager;
         RuntimeDungeon _runtimeDungeon;
         NewSaveManager _saveManager;
+        NewDungeonManager dungeonManager;
 
         void Awake()
         {
@@ -26,11 +27,15 @@ namespace Project.Core.GameInitialization
             _instance = this;
 
             // Find references in our prefab structure
-            // dungeonManager = GetComponentInChildren<NewDungeonManager>();
+            dungeonManager = GetComponentInChildren<NewDungeonManager>();
             _runtimeDungeon = GetComponentInChildren<RuntimeDungeon>();
 
             if (dungeonManager == null || _runtimeDungeon == null)
                 Debug.LogError("Missing required components in PortableSystems prefab!");
+
+            // Check if NewSaveManager is already in the scene
+            _saveManager = NewSaveManager.Instance;
+            if (_saveManager == null) _saveManager = gameObject.AddComponent<NewSaveManager>();
         }
 
         async void Start()
@@ -40,10 +45,7 @@ namespace Project.Core.GameInitialization
 
         async Task InitializeCore()
         {
-            // Add SaveManager dynamically
-            _saveManager = gameObject.AddComponent<NewSaveManager>();
-
-            // Try to load previous save, or start new game
+            // Load previous save or start a new game
             if (!await LoadLastGame()) await StartNewGame();
         }
 
@@ -56,6 +58,14 @@ namespace Project.Core.GameInitialization
         {
             var seed = Random.Range(0, int.MaxValue);
             await dungeonManager.GenerateNewDungeon(seed);
+
+            if (NewSaveManager.Instance.LoadGame())
+                Debug.Log("Save data loaded successfully");
+            else
+                Debug.LogError("Failed to load save data");
+
+            var initialSpawnPoint = FindObjectOfType<CheckPoint>();
+            if (initialSpawnPoint == null) Debug.LogError("No Checkpoint found for initial spawn!");
         }
     }
 }

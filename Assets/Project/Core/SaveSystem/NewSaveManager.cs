@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Project.Core.CharacterCreation;
 using Project.Gameplay.DungeonGeneration.Spawning;
+using Project.Gameplay.Player;
 using UnityEngine;
 
 namespace Project.Core.SaveSystem
@@ -23,7 +25,7 @@ namespace Project.Core.SaveSystem
         void Awake()
         {
             spawnPointManager = FindObjectOfType<SpawnPointManager>();
-            if (spawnPointManager == null) Debug.LogError("No SpawnPointManager found in scene!");
+            if (spawnPointManager == null) Debug.LogWarning("No SpawnPointManager found in scene!");
 
             if (Instance == null)
             {
@@ -106,6 +108,7 @@ namespace Project.Core.SaveSystem
             }
         }
 
+
         public bool LoadGame(string slot = "default")
         {
             try
@@ -116,7 +119,13 @@ namespace Project.Core.SaveSystem
                     return false;
                 }
 
+                // Load the complete save file
                 CurrentSave = ES3.Load<SaveData>($"save_{slot}");
+
+                // Load character creation data into the gameplay scene if applicable
+                if (CurrentSave.characterCreationData != null)
+                    // Use characterCreationData to set initial player state
+                    ApplyCharacterCreationData(CurrentSave.characterCreationData);
 
                 // Load data into all ISaveable objects
                 var saveables = FindObjectsOfType<MonoBehaviour>().OfType<ISaveable>();
@@ -129,6 +138,25 @@ namespace Project.Core.SaveSystem
             {
                 Debug.LogError($"Error loading game: {e.Message}");
                 return false;
+            }
+        }
+
+
+        void ApplyCharacterCreationData(CharacterCreationData creationData)
+        {
+            var playerGameObject = GameObject.FindGameObjectWithTag("Player");
+            if (playerGameObject != null)
+            {
+                var playerStats = playerGameObject.GetComponent<PlayerStats>();
+
+                Debug.Log("Applying Character Creation Data...");
+                playerStats.SetClass(creationData.selectedClass);
+                playerStats.ApplyAttributes(creationData.attributes);
+                playerStats.SetTraits(creationData.selectedTraits);
+            }
+            else
+            {
+                Debug.LogError("Player GameObject not found when applying character data.");
             }
         }
     }

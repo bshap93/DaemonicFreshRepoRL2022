@@ -18163,6 +18163,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4424028274011124146}
   - component: {fileID: 7264307440630076983}
+  - component: {fileID: 7264307440630076984}
   m_Layer: 0
   m_Name: InitialSpawnPoint
   m_TagString: Untagged
@@ -29129,6 +29130,18 @@ MonoBehaviour:
   FacingDirection: 2
   ForceAssignation: 0
   CheckPointOrder: 0
+--- !u!114 &7264307440630076984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851598278749699070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4805999c34b24f40be6be5fde5e6c44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &7274179132498798920
 RectTransform:
   m_ObjectHideFlags: 0
