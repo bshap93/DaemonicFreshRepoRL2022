@@ -157,9 +157,9 @@ namespace Project.UI.CharacterCreation.Scripts
 
         void ShowCharacterSummary()
         {
-            _currentConfig.selectedClass = _selectedClass;
+            _currentConfig.selectedClassName = _selectedClass.className;
             _currentConfig.attributes = GatherAttributeData();
-            _currentConfig.selectedTraits = traitsPanelScript.GetSelectedTraits();
+            _currentConfig.selectedTraitNames = traitsPanelScript.GetSelectedTraits().ConvertAll(t => t.traitName);
 
 
             confirmationPanel.DisplayCharacterSummary(_currentConfig);
@@ -257,14 +257,16 @@ namespace Project.UI.CharacterCreation.Scripts
             saveData.characterCreationData = new CharacterCreationData
             {
                 characterName = characterNameInput.text,
-                selectedClass = _selectedClass,
+                selectedClassName = _selectedClass.className,
                 attributes = GatherAttributeData(),
-                selectedTraits = traitsPanelScript.GetSelectedTraits(),
+                selectedTraitNames = traitsPanelScript.GetSelectedTraits().ConvertAll(t => t.traitName),
                 remainingPoints = _remainingPoints
             };
 
             Debug.Log(
-                $"Saving Character Data: Class - {_selectedClass.className}, Attributes - {saveData.characterCreationData.attributes}");
+                $"Saving Character Data: Class - {saveData.characterCreationData.selectedClassName}, " +
+                $"Traits - {string.Join(", ", saveData.characterCreationData.selectedTraitNames)}");
+
 
             NewSaveManager.Instance.SaveGame();
             MMSceneLoadingManager.LoadScene("Project/Scenes/OpenAreaTestScene");

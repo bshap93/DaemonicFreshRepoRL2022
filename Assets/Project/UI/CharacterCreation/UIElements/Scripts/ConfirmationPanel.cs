@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Project.Core.CharacterCreation;
+﻿using Project.Core.CharacterCreation;
 using TMPro;
 using UnityEngine;
 
@@ -14,7 +13,7 @@ namespace Project.UI.CharacterCreation.UIElements.Scripts
         public void DisplayCharacterSummary(CharacterCreationData data)
         {
             // Display class
-            classSummaryText.text = $"Class: {data.selectedClass}";
+            classSummaryText.text = $"Class: {data.selectedClassName}";
 
             // Display attributes
             attributesSummaryText.text = "Attributes:\n" +
@@ -25,7 +24,7 @@ namespace Project.UI.CharacterCreation.UIElements.Scripts
                                          $"Intuition: {data.attributes.intuition}";
 
             // Display traits
-            var traitNames = data.selectedTraits.Select(t => t.traitName);
+            var traitNames = data.selectedTraitNames;
             traitsSummaryText.text = "Selected Traits:\n" + string.Join("\n", traitNames);
         }
     }

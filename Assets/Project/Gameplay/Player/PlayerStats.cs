@@ -10,70 +10,117 @@ namespace Project.Gameplay.Player
     [Serializable]
     public class PlayerStats : MonoBehaviour
     {
-        // Final stats after applying attributes and traits
-        public float maxHealth;
-        public float currentHealth;
-        public float moveSpeed;
-        public float attackPower;
-        public float defense;
-        // Base stats directly from the selected class
-        Dictionary<StatType, float> baseStats = new();
+        // Base Stats
+        [SerializeField] float maxHealth;
+        [SerializeField] float currentHealth;
+        [SerializeField] float moveSpeed;
+        [SerializeField] float attackPower;
+        [SerializeField] float defense;
 
-        // Reference to character creation data for easier tracking
-        CharacterCreationData characterCreationData;
+        // Attributes assigned by the player
+        [SerializeField] int strength;
+        [SerializeField] int agility;
+        [SerializeField] int endurance;
+        [SerializeField] int intelligence;
+        [SerializeField] int intuition;
 
-        // Initialization with character creation data
+        // Character creation data for reference
+        [SerializeField] string playerClass; // Stores the class name
+        [SerializeField] List<string> chosenTraits; // Stores the trait names
+
+        // Runtime references to ScriptableObjects for class and traits
+        StartingClass startingClass;
+        List<CharacterTrait> traits = new();
+
         public void Initialize(CharacterCreationData creationData)
         {
-            characterCreationData = creationData;
+            // Store names for reference
+            playerClass = creationData.selectedClassName;
+            chosenTraits = new List<string>(creationData.selectedTraitNames);
 
-            // Apply base stats from class
-            SetClass(characterCreationData.selectedClass);
+            // Load StartingClass and CharacterTrait ScriptableObjects
+            LoadStartingClass(playerClass);
+            LoadTraits(chosenTraits);
 
-            // Apply allocated attributes
-            ApplyAttributes(characterCreationData.attributes);
+            // Assign attributes directly from creation data
+            SetAttributes(creationData);
 
-            // Apply selected traits
-            SetTraits(characterCreationData.selectedTraits);
+            // Set class and base stats
+            ApplyBaseStatsFromClass();
+            ApplyAttributesToBaseStats();
 
-            // Set current health to max health at start
+            // Initialize current health to max health
             currentHealth = maxHealth;
+
+            Debug.Log(
+                $"Initialized Player Stats: Class={playerClass}, MaxHealth={maxHealth}, MoveSpeed={moveSpeed}, AttackPower={attackPower}, Defense={defense}");
         }
 
-        public void SetClass(StartingClass selectedClass)
+        void LoadStartingClass(string className)
         {
-            if (selectedClass == null)
+            startingClass = Resources.Load<StartingClass>($"Classes/{className}");
+            if (startingClass == null) Debug.LogError($"Class {className} not found in Resources.");
+        }
+
+        void LoadTraits(List<string> traitNames)
+        {
+            traits = new List<CharacterTrait>();
+            foreach (var traitName in traitNames)
             {
-                Debug.LogWarning("Selected class is null. Cannot set base stats.");
+                var trait = Resources.Load<CharacterTrait>($"Traits/{traitName}");
+                if (trait != null)
+                    traits.Add(trait);
+                else
+                    Debug.LogError($"Trait {traitName} not found in Resources.");
+            }
+        }
+
+        void SetAttributes(CharacterCreationData creationData)
+        {
+            strength = creationData.attributes.strength;
+            agility = creationData.attributes.agility;
+            endurance = creationData.attributes.endurance;
+            intelligence = creationData.attributes.intelligence;
+            intuition = creationData.attributes.intuition;
+        }
+
+        void ApplyBaseStatsFromClass()
+        {
+            if (startingClass == null)
+            {
+                Debug.LogWarning("Starting class is null; cannot apply base stats.");
                 return;
             }
 
-            // Populate baseStats dictionary
-            foreach (var stat in selectedClass.baseStats) baseStats[stat.Key] = stat.Value;
+            // Apply base stats from the class
+            if (startingClass.baseStats.TryGetValue(StatType.Endurance, out var enduranceBase))
+                maxHealth = enduranceBase * 10;
 
-            // Calculate stats based on base values
-            maxHealth = baseStats.ContainsKey(StatType.Endurance) ? baseStats[StatType.Endurance] * 10 : 100;
-            moveSpeed = baseStats.ContainsKey(StatType.Agility) ? baseStats[StatType.Agility] * 0.5f : 5;
-            attackPower = baseStats.ContainsKey(StatType.Strength) ? baseStats[StatType.Strength] * 2 : 10;
-            defense = baseStats.ContainsKey(StatType.Endurance) ? baseStats[StatType.Endurance] : 5;
+            if (startingClass.baseStats.TryGetValue(StatType.Agility, out var agilityBase))
+                moveSpeed = agilityBase * 0.5f;
 
-            Debug.Log($"Class set to: {selectedClass.className} with base stats applied.");
+            if (startingClass.baseStats.TryGetValue(StatType.Strength, out var strengthBase))
+                attackPower = strengthBase * 2;
+
+            if (startingClass.baseStats.TryGetValue(StatType.Endurance, out var defenseBase))
+                defense = defenseBase;
         }
 
-        public void ApplyAttributes(CharacterStats attributes)
+        void ApplyAttributesToBaseStats()
         {
-            // Apply attribute values on top of base stats
-            maxHealth += attributes.endurance * 10;
-            moveSpeed += attributes.agility * 0.5f;
-            attackPower += attributes.strength * 2;
-            defense += attributes.endurance;
+            // Modify base stats by adding attribute bonuses
+            maxHealth += endurance * 10;
+            moveSpeed += agility * 0.5f;
+            attackPower += strength * 2;
+            defense += endurance;
 
-            Debug.Log("Attributes applied to player stats");
+            Debug.Log(
+                $"Attributes applied to base stats: MaxHealth={maxHealth}, MoveSpeed={moveSpeed}, AttackPower={attackPower}, Defense={defense}");
         }
 
-        public void SetTraits(List<CharacterTrait> selectedTraits)
+        public void ApplyTraits()
         {
-            foreach (var trait in selectedTraits)
+            foreach (var trait in traits)
             {
                 foreach (var modifier in trait.statModifiers)
                     if (modifier.type == CharacterTrait.ModifierType.Additive)
@@ -82,7 +129,6 @@ namespace Project.Gameplay.Player
                         else if (modifier.statName == "defense") defense += modifier.value;
                     }
 
-                // Handle other types of modifiers here if needed
                 Debug.Log($"Trait applied: {trait.traitName}");
             }
         }
@@ -90,19 +136,12 @@ namespace Project.Gameplay.Player
         public void DisplayStats()
         {
             Debug.Log(
-                $"Character Stats - MaxHealth: {maxHealth}, CurrentHealth: {currentHealth}, MoveSpeed: {moveSpeed}, AttackPower: {attackPower}, Defense: {defense}");
-        }
+                $"Class: {playerClass}, Max Health: {maxHealth}, Current Health: {currentHealth}, Move Speed: {moveSpeed}, Attack Power: {attackPower}, Defense: {defense}");
 
-        public Dictionary<string, float> GetAllStats()
-        {
-            return new Dictionary<string, float>
-            {
-                { "Max Health", maxHealth },
-                { "Current Health", currentHealth },
-                { "Move Speed", moveSpeed },
-                { "Attack Power", attackPower },
-                { "Defense", defense }
-            };
+            Debug.Log(
+                $"Attributes - Strength: {strength}, Agility: {agility}, Endurance: {endurance}, Intelligence: {intelligence}, Intuition: {intuition}");
+
+            Debug.Log($"Chosen Traits: {string.Join(", ", chosenTraits)}");
         }
     }
 }

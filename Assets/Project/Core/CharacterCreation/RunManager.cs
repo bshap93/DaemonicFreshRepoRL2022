@@ -9,6 +9,8 @@ namespace Project.Core.CharacterCreation
         int startingAttributePoints = 10;
         [SerializeField] List<CharacterTrait> availableTraits;
         [SerializeField] List<StartingClass> availableClasses;
+        [SerializeField] string selectedClassName;
+        [SerializeField] List<string> selectedTraitNames;
         public static RunManager Instance { get; private set; }
 
         public RunConfig CurrentRun { get; private set; }
@@ -33,21 +35,6 @@ namespace Project.Core.CharacterCreation
             // Load trait and class definitions from ScriptableObjects
             availableTraits = new List<CharacterTrait>(Resources.LoadAll<CharacterTrait>("Traits"));
             availableClasses = new List<StartingClass>(Resources.LoadAll<StartingClass>("Classes"));
-        }
-
-        public void StartNewRun(CharacterCreationData creationData)
-        {
-            CurrentRun = new RunConfig
-            {
-                seed = Random.Range(int.MinValue, int.MaxValue),
-                baseStats = creationData.attributes,
-                traits = creationData.selectedTraits,
-                startingClass = creationData.selectedClass
-            };
-
-            SaveRun();
-            // Start the actual game/level
-            // SceneManager.LoadScene("GameScene");
         }
 
         public void SaveRun()

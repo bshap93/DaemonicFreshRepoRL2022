@@ -94,6 +94,7 @@ namespace Project.Core.SaveSystem
                 var saveables = FindObjectsOfType<MonoBehaviour>().OfType<ISaveable>();
                 foreach (var saveable in saveables) saveable.SaveState(CurrentSave);
 
+
                 // Update timestamp
                 CurrentSave.timestamp = DateTime.Now;
 
@@ -122,6 +123,18 @@ namespace Project.Core.SaveSystem
                 // Load the complete save file
                 CurrentSave = ES3.Load<SaveData>($"save_{slot}");
 
+                Debug.Log($"CurrentSave: {CurrentSave}");
+                Debug.Log($"CurrentSave.timestamp: {CurrentSave.timestamp}");
+                Debug.Log($"CurrentSave.characterCreationData: {CurrentSave.characterCreationData}");
+                Debug.Log(
+                    $"CurrentSave.characterCreationData.selectedClass: {CurrentSave.characterCreationData.selectedClassName}");
+
+                Debug.Log(
+                    $"CurrentSave.characterCreationData.attributes: {CurrentSave.characterCreationData.attributes}");
+
+                Debug.Log(
+                    $"CurrentSave.characterCreationData.selectedTraits: {CurrentSave.characterCreationData.selectedTraitNames}");
+
                 // Load character creation data into the gameplay scene if applicable
                 if (CurrentSave.characterCreationData != null)
                     // Use characterCreationData to set initial player state
@@ -132,6 +145,11 @@ namespace Project.Core.SaveSystem
                 foreach (var saveable in saveables) saveable.LoadState(CurrentSave);
 
                 Debug.Log($"Game loaded successfully from slot: {slot}");
+                if (CurrentSave.characterCreationData != null)
+                    Debug.Log($"Loaded Character: Class - {CurrentSave.characterCreationData.selectedClassName}");
+                else
+                    Debug.Log("No character creation data found in save file.");
+
                 return true;
             }
             catch (Exception e)
@@ -142,21 +160,21 @@ namespace Project.Core.SaveSystem
         }
 
 
-        void ApplyCharacterCreationData(CharacterCreationData creationData)
+        public void ApplyCharacterCreationData(CharacterCreationData creationData)
         {
             var playerGameObject = GameObject.FindGameObjectWithTag("Player");
             if (playerGameObject != null)
             {
                 var playerStats = playerGameObject.GetComponent<PlayerStats>();
 
-                Debug.Log("Applying Character Creation Data...");
-                playerStats.SetClass(creationData.selectedClass);
-                playerStats.ApplyAttributes(creationData.attributes);
-                playerStats.SetTraits(creationData.selectedTraits);
+                // Call Initialize to load and apply character data
+                playerStats.Initialize(creationData);
+
+                Debug.Log("Character data applied in PlayerStats");
             }
             else
             {
-                Debug.LogError("Player GameObject not found when applying character data.");
+                Debug.LogError("Player GameObject not found in Gameplay Scene.");
             }
         }
     }

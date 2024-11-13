@@ -8,9 +8,9 @@ namespace Project.Core.CharacterCreation
     public class CharacterCreationData
     {
         public string characterName;
-        public List<CharacterTrait> selectedTraits = new();
+        public List<string> selectedTraitNames = new();
         public int remainingPoints;
-        public StartingClass selectedClass;
+        public string selectedClassName;
         public CharacterStats attributes = new();
     }
 
@@ -27,22 +27,19 @@ namespace Project.Core.CharacterCreation
     public class StartingClass : ScriptableObject
     {
         // Keep existing fields (don't modify these)
-        public string className;        // Keep for backwards compatibility
+        public string className; // Keep for backwards compatibility
         public string description;
         public Sprite classIcon;
         public List<CharacterTrait> defaultTraits = new();
         public Dictionary<StatType, int> baseStats = new();
 
         // Add new properties/methods that work with existing data
-        public CharacterClass ClassType 
+        public CharacterClass ClassType
         {
-            get 
+            get
             {
                 // Parse the existing className to get enum value
-                if (Enum.TryParse<CharacterClass>(className, out var result))
-                {
-                    return result;
-                }
+                if (Enum.TryParse<CharacterClass>(className, out var result)) return result;
                 Debug.LogError($"Invalid class name {className} in {name}");
                 return default;
             }

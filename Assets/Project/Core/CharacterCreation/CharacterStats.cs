@@ -6,20 +6,20 @@ namespace Project.Core.CharacterCreation
     [Serializable]
     public class CharacterStats
     {
-        public float health;
-        public float stamina;
-        public float strength;
-        public float agility;
-        public float endurance;
-        public float intelligence;
-        public float intuition;
+        public int health;
+        public int stamina;
+        public int strength;
+        public int agility;
+        public int endurance;
+        public int intelligence;
+        public int intuition;
 
 
         // Add other base stats as needed
 
-        public Dictionary<string, float> GetModifiedStats(List<CharacterTrait> traits)
+        public Dictionary<string, int> GetModifiedStats(List<CharacterTrait> traits)
         {
-            var modified = new Dictionary<string, float>();
+            var modified = new Dictionary<string, int>();
             // Apply trait modifications
             return modified;
         }
