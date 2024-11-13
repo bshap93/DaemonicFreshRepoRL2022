@@ -6880,6 +6880,7 @@ GameObject:
   - component: {fileID: 972333610728565172}
   - component: {fileID: 8294267455872793848}
   - component: {fileID: 436030599449463590}
+  - component: {fileID: 5605469439708390913}
   m_Layer: 10
   m_Name: PlayerTopDown
   m_TagString: Player
@@ -7715,6 +7716,27 @@ MonoBehaviour:
   MainInventoryName: MainPlayerInventory
   EquipmentInventoryName: EquipmentInventory
   StartingShield: {fileID: 11400000, guid: 6b059f67fe8075d499ef580cfa135283, type: 2}
+--- !u!114 &5605469439708390913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4194478886614523176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b1c0fc1f870c9e4b908bfb73e021bf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AbilityStartSfx: {fileID: 0}
+  AbilityInProgressSfx: {fileID: 0}
+  AbilityStopSfx: {fileID: 0}
+  AbilityStartFeedbacks: {fileID: 0}
+  AbilityStopFeedbacks: {fileID: 0}
+  AbilityPermitted: 1
+  BlockingMovementStates: 
+  BlockingConditionStates: 
+  BlockingWeaponStates: 
 --- !u!1 &4210891894166820022
 GameObject:
   m_ObjectHideFlags: 0
