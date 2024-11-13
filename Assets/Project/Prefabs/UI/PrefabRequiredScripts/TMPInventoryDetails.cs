@@ -2,7 +2,6 @@ using System.Collections;
 using MoreMountains.Tools;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace MoreMountains.InventoryEngine
 {
@@ -23,8 +22,6 @@ namespace MoreMountains.InventoryEngine
         /// the weight container TMP object
         public TMP_Text TMPWeight;
         /// reference to the weight icon image component
-        public Image WeightIcon;
-
         [Header("Default Values")]
         /// the default weight to display when none is provided
         public string DefaultWeight = "0.0";
@@ -49,6 +46,26 @@ namespace MoreMountains.InventoryEngine
                     "Both Text and TMP_Text components are assigned for Quantity. Only TMP_Text will be used.");
         }
 
+        protected virtual float GetItemWeight(InventoryItem item)
+        {
+            if (item == null) return 0f;
+
+            // Try to get the Weight property through reflection
+            var weightProperty = item.GetType().GetProperty("Weight");
+            if (weightProperty != null)
+                try
+                {
+                    return (float)weightProperty.GetValue(item, null);
+                }
+                catch
+                {
+                    return 0f;
+                }
+
+            // If no Weight property exists, return 0
+            return 0f;
+        }
+
         protected override IEnumerator FillDetailFields(InventoryItem item, float initialDelay)
         {
             yield return new WaitForSeconds(initialDelay);
@@ -62,8 +79,9 @@ namespace MoreMountains.InventoryEngine
             // Handle weight display
             if (TMPWeight != null)
             {
-                float weight = item.Weight * item.Quantity;
-                TMPWeight.text = weight.ToString("F1");
+                var itemWeight = GetItemWeight(item);
+                var totalWeight = itemWeight * item.Quantity;
+                TMPWeight.text = totalWeight.ToString("F1");
             }
 
             if (HideOnEmptySlot && !Hidden && item.Quantity == 0)

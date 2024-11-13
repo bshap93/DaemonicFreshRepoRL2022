@@ -4532,7 +4532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86fd837a0abc28d4d91c55590bd2c090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
+  Item: {fileID: 11400000, guid: 41215bf07e99c254b827cbf556271696, type: 2}
   Quantity: 1
   RemainingQuantity: 1
   PickableIfInventoryIsFull: 0
@@ -14585,7 +14585,7 @@ MonoBehaviour:
   TargetTransform: {fileID: 0}
   Persistent: 0
   ResetThisInventorySaveOnStart: 0
-  DrawContentInInspector: 0
+  DrawContentInInspector: 1
 --- !u!114 &64029189182330278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17406,7 +17406,7 @@ MonoBehaviour:
   PlayerID: Player1
   NumberOfRows: 3
   NumberOfColumns: 3
-  TargetChoiceInventory: {fileID: 0}
+  TargetChoiceInventory: {fileID: 8509161480059194163}
   ItemClass: 0
   DrawEmptySlots: 1
   AllowMovingObjectsToThisInventory: 0
@@ -28992,7 +28992,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: InventoryDetails
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7623356374234338652, guid: eebc815adffdf4141a622feed78ef243, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

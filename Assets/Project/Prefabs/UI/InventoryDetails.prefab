@@ -571,7 +571,7 @@ GameObject:
   - component: {fileID: 5435032373382231866}
   - component: {fileID: 8069174865339012664}
   m_Layer: 0
-  m_Name: QuantityIcon
+  m_Name: WeightIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -872,7 +872,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6064450046525395838}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4350bf2b71c28aa4287088b021d7b576, type: 3}
   m_Name: 
@@ -923,6 +923,8 @@ MonoBehaviour:
   TMPShortDescription: {fileID: 892062328307056837}
   TMPDescription: {fileID: 4074997644409809444}
   TMPQuantity: {fileID: 1434148164565796849}
+  TMPWeight: {fileID: 6368434862278870174}
+  DefaultWeight: 0.0
 --- !u!1 &6501301303590225030
 GameObject:
   m_ObjectHideFlags: 0

@@ -38,11 +38,11 @@ MonoBehaviour:
     AllowEquipShortcut: 1
     AllowUseShortcut: 1
   Quantity: 1
-  ItemName: 
-  ShortDescription: 
-  Description: 
-  Icon: {fileID: 21300010, guid: 81046f1715164154b8148fb9de9f7d87, type: 3}
-  Prefab: {fileID: 0}
+  ItemName: Coin Purse
+  ShortDescription: "A small bag of coins.\t"
+  Description: The brown burlap coin sack is unadorned yet glints with a faint laqeur.
+  Icon: {fileID: 21300000, guid: 7ce014cc7d1ec7a479e5647afd0faa3d, type: 3}
+  Prefab: {fileID: 6961256126607717036, guid: ebda6216028c66e439db0626d36c6bec, type: 3}
   ForcePrefabDropQuantity: 0
   PrefabDropQuantity: 1
   DropProperties:
