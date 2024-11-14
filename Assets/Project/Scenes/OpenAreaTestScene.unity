@@ -29989,11 +29989,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CoinPurseCollectable
       objectReference: {fileID: 0}
-    - target: {fileID: 9051826716377210585, guid: ebda6216028c66e439db0626d36c6bec,
-        type: 3}
-      propertyPath: PickedMMFeedbacks
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
