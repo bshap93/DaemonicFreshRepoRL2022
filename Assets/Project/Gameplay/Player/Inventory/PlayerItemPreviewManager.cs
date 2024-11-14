@@ -1,50 +1,69 @@
 ﻿using System.Collections.Generic;
 using Project.Gameplay.ItemManagement;
-using Project.Prefabs.UI.PrefabRequiredScripts;
+using Project.UI.HUD;
 using UnityEngine;
 
-namespace Project.Gameplay.Player.Inventory
+public class PlayerItemPreviewManager : MonoBehaviour
 {
-    public class PlayerItemPreviewManager : MonoBehaviour
+    PreviewManager _previewManager;
+    ItemPreviewTrigger currentItem;
+    readonly List<ItemPreviewTrigger> nearbyItems = new();
+
+    void Start()
     {
-        public TMPInventoryDetails InventoryDetails; // Reference to the preview UI script
-        readonly List<ItemPreviewTrigger> nearbyItems = new();
+        _previewManager = FindObjectOfType<PreviewManager>();
+        if (_previewManager == null) Debug.LogWarning("PreviewManager not found in the scene.");
+    }
 
-        void Update()
-        {
-            // Continuously update the preview based on the nearest item
-            DisplayNearestItem();
-        }
+    void Update()
+    {
+        DisplayNearestItem();
+    }
 
-        void DisplayNearestItem()
+    void DisplayNearestItem()
+    {
+        if (nearbyItems.Count == 0 || _previewManager == null)
         {
-            if (nearbyItems.Count == 0)
+            if (currentItem != null)
             {
-                InventoryDetails.HidePreview();
-                return;
+                _previewManager.HidePreview();
+                currentItem = null;
             }
 
-            // Sort items by distance from the player
-            nearbyItems.Sort(
-                (a, b) =>
-                    Vector3.Distance(transform.position, a.transform.position)
-                        .CompareTo(Vector3.Distance(transform.position, b.transform.position)));
-
-            // Display the closest item's preview
-            InventoryDetails.DisplayPreview(nearbyItems[0].Item);
+            return;
         }
 
-        public void RegisterItem(ItemPreviewTrigger item)
-        {
-            if (!nearbyItems.Contains(item)) nearbyItems.Add(item);
-        }
+        // Sort to get the closest item
+        nearbyItems.Sort(
+            (a, b) =>
+                Vector3.Distance(transform.position, a.transform.position)
+                    .CompareTo(Vector3.Distance(transform.position, b.transform.position)));
 
-        public void UnregisterItem(ItemPreviewTrigger item)
+        // Only update if the closest item has changed
+        var closestItem = nearbyItems[0];
+        if (closestItem != currentItem)
         {
-            if (nearbyItems.Contains(item))
+            _previewManager.ShowPreview(closestItem.Item);
+            currentItem = closestItem;
+        }
+    }
+
+    public void RegisterItem(ItemPreviewTrigger item)
+    {
+        if (!nearbyItems.Contains(item)) nearbyItems.Add(item);
+    }
+
+    public void UnregisterItem(ItemPreviewTrigger item)
+    {
+        if (nearbyItems.Contains(item))
+        {
+            nearbyItems.Remove(item);
+
+            // Reset current item if it was removed
+            if (currentItem == item)
             {
-                nearbyItems.Remove(item);
-                DisplayNearestItem(); // Update preview after removing an item
+                _previewManager.HidePreview();
+                currentItem = null;
             }
         }
     }

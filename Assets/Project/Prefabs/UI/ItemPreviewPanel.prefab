@@ -639,7 +639,7 @@ RectTransform:
   m_GameObject: {fileID: 6064450046525395838}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.37965, z: 1}
+  m_LocalScale: {x: 1.1620467, y: 0.37965003, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8994411829089626280}
@@ -724,17 +724,17 @@ MonoBehaviour:
   DefaultQuantity: 3
   DefaultIcon: {fileID: 21300000, guid: a9144889a5f3a4f48b95d99a9de25c36, type: 3}
   HideOnStart: 1
-  Icon: {fileID: 0}
+  Icon: {fileID: 2949624008567421680}
   Title: {fileID: 0}
   ShortDescription: {fileID: 0}
   Description: {fileID: 0}
   Quantity: {fileID: 0}
-  TMPTitle: {fileID: 0}
-  TMPShortDescription: {fileID: 0}
+  TMPTitle: {fileID: 4084418196026046664}
+  TMPShortDescription: {fileID: 5012170128660759083}
   TMPDescription: {fileID: 0}
-  TMPQuantity: {fileID: 0}
-  TMPWeight: {fileID: 0}
-  DefaultWeight: 0.0
+  TMPQuantity: {fileID: 3297170496429266819}
+  TMPWeight: {fileID: 675976833926071541}
+  DefaultWeight: 1
 --- !u!1 &8581683660823087186
 GameObject:
   m_ObjectHideFlags: 0

@@ -38,7 +38,7 @@ MonoBehaviour:
     AllowEquipShortcut: 1
     AllowUseShortcut: 1
   Quantity: 1
-  ItemName: 
+  ItemName: Health Potion
   ShortDescription: 
   Description: 
   Icon: {fileID: 0}

@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 1768902551313302483}
   - component: {fileID: 8054307471572692400}
   - component: {fileID: 8261190747472310325}
+  - component: {fileID: 1103086810894857882}
+  - component: {fileID: 3579556112167805733}
+  - component: {fileID: 9010585616326294765}
   m_Layer: 0
   m_Name: HealthPotion1Consumable
   m_TagString: Untagged
@@ -60,6 +63,58 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Item: {fileID: 11400000, guid: c84e006aa5a42e44680b4542ff116da9, type: 2}
+--- !u!135 &1103086810894857882
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430786023743036610}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.84
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3579556112167805733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430786023743036610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3beb49fcc5880ec40a513dd74067c683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Item: {fileID: 11400000, guid: c84e006aa5a42e44680b4542ff116da9, type: 2}
+  Quantity: 1
+  RemainingQuantity: 1
+  PickableIfInventoryIsFull: 0
+  DisableObjectWhenDepleted: 0
+  RequirePlayerTag: 1
+--- !u!114 &9010585616326294765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430786023743036610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77e0d492c98cc9842a3d2b9be4fbe53d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ManualPicker: {fileID: 3579556112167805733}
 --- !u!1 &4850141832504324331
 GameObject:
   m_ObjectHideFlags: 0
