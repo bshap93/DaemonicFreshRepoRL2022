@@ -781,7 +781,6 @@ GameObject:
   - component: {fileID: 583953547431352438}
   - component: {fileID: 523956551836806642}
   - component: {fileID: 5054938154797174131}
-  - component: {fileID: 7623356374234338652}
   - component: {fileID: 3642531839241295061}
   m_Layer: 5
   m_Name: InventoryDetails
@@ -865,33 +864,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &7623356374234338652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6064450046525395838}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4350bf2b71c28aa4287088b021d7b576, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TargetInventoryName: MainPlayerInventory
-  PlayerID: Player1
-  Global: 0
-  HideOnEmptySlot: 1
-  DefaultTitle: ????
-  DefaultShortDescription: ????
-  DefaultDescription: You haven't found this item yet.
-  DefaultQuantity: ??
-  DefaultIcon: {fileID: 0}
-  HideOnStart: 1
-  Icon: {fileID: 5167547690431229607}
-  Title: {fileID: 0}
-  ShortDescription: {fileID: 0}
-  Description: {fileID: 0}
-  Quantity: {fileID: 0}
 --- !u!114 &3642531839241295061
 MonoBehaviour:
   m_ObjectHideFlags: 0

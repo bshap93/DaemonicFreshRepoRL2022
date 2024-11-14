@@ -1,9 +1,10 @@
 using System.Collections;
+using MoreMountains.InventoryEngine;
 using MoreMountains.Tools;
 using TMPro;
 using UnityEngine;
 
-namespace MoreMountains.InventoryEngine
+namespace Project.Prefabs.UI.PrefabRequiredScripts
 {
     public class TMPInventoryDetails : InventoryDetails
     {
@@ -101,6 +102,23 @@ namespace MoreMountains.InventoryEngine
             if (TMPQuantity != null) TMPQuantity.text = DefaultQuantity;
             if (TMPWeight != null) TMPWeight.text = DefaultWeight;
             if (Icon != null) Icon.sprite = DefaultIcon;
+        }
+
+        public void DisplayPreview(InventoryItem item)
+        {
+            if (item == null) return;
+
+            // Display only the item's name and short description
+            if (TMPTitle != null) TMPTitle.text = item.ItemName;
+            if (TMPShortDescription != null) TMPShortDescription.text = item.ShortDescription;
+
+            // Ensure the panel is visible
+            if (_canvasGroup != null) _canvasGroup.alpha = 1;
+        }
+
+        public void HidePreview()
+        {
+            if (_canvasGroup != null) _canvasGroup.alpha = 0;
         }
     }
 }
