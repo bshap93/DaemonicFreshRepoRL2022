@@ -7354,7 +7354,7 @@ MonoBehaviour:
   ImmuneToKnockback: 0
   ImmuneToKnockbackIfZeroDamage: 0
   KnockbackForceMultiplier: 1
-  DestroyOnDeath: 1
+  DestroyOnDeath: 0
   DelayBeforeDestruction: 0
   PointsWhenDestroyed: 0
   RespawnAtInitialLocation: 0
@@ -30832,9 +30832,7 @@ MonoBehaviour:
         DebugActive: 0
         Sfx: {fileID: 0}
         RandomSfx:
-        - {fileID: 8300000, guid: ccec37d734aad9b49a1a39a8a7262bbd, type: 3}
-        - {fileID: 8300000, guid: 4e4e706c4c03d554fbf42a015cc10055, type: 3}
-        - {fileID: 8300000, guid: 497123663b0cc014c96d9984ce147c73, type: 3}
+        - {fileID: 8300000, guid: 4fae115d22d7e4b7cb3e4a17de3ada4c, type: 3}
         TestPlayButton:
           ButtonText: Debug Play Sound
         TestStopButton:
