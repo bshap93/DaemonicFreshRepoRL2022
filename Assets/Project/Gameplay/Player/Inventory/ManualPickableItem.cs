@@ -47,13 +47,12 @@ namespace Project.Gameplay.Player.Inventory
             if (CheckIfPickable())
             {
                 base.PickItem(picker);
-        
+
                 // Unregister from the preview manager before destroying
                 var previewManager = FindObjectOfType<PlayerItemPreviewManager>();
-                if (previewManager != null)
-                {
-                    previewManager.UnregisterItem(GetComponent<ItemPreviewTrigger>());
-                }
+                if (previewManager != null) previewManager.UnregisterItem(GetComponent<ItemPreviewTrigger>());
+
+                if (_pickupPromptManager != null) _pickupPromptManager.HidePickupPrompt();
 
                 // Destroy the item to fully remove it
                 Destroy(gameObject);

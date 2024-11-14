@@ -5,6 +5,11 @@ public class PickupPromptManager : MonoBehaviour
     public GameObject PickupPromptUI; // Reference to the pickup prompt UI element
     public GameObject PreviewPanelUI;
 
+    void Start()
+    {
+        PickupPromptUI.SetActive(false);
+    }
+
     public void ShowPickupPrompt()
     {
         if (PickupPromptUI != null) PickupPromptUI.SetActive(true);
