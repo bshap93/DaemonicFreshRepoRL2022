@@ -8,28 +8,23 @@ namespace Project.Prefabs.UI.PrefabRequiredScripts
 {
     public class TMPInventoryDetails : InventoryDetails
     {
-        [Header("TMP Components")]
-        [MMInformation(
-            "Bind your TextMeshPro components here. These will be used instead of the basic Text components.",
-            MMInformationAttribute.InformationType.Info, false)]
-        /// the title container TMP object
-        public TMP_Text TMPTitle;
-        /// the short description container TMP object
+        public enum DisplayMode
+        {
+            Inventory,
+            Preview
+        }
+
+        public DisplayMode CurrentMode = DisplayMode.Inventory;
+
+        [Header("TMP Components")] public TMP_Text TMPTitle;
         public TMP_Text TMPShortDescription;
-        /// the description container TMP object
         public TMP_Text TMPDescription;
-        /// the quantity container TMP object
         public TMP_Text TMPQuantity;
-        /// the weight container TMP object
         public TMP_Text TMPWeight;
-        /// reference to the weight icon image component
-        [Header("Default Values")]
-        /// the default weight to display when none is provided
         public string DefaultWeight = "0.0";
 
         protected virtual void OnValidate()
         {
-            // Warn if both regular Text and TMP_Text components are assigned
             if (TMPTitle != null && Title != null)
                 Debug.LogWarning(
                     "Both Text and TMP_Text components are assigned for Title. Only TMP_Text will be used.");
@@ -50,8 +45,6 @@ namespace Project.Prefabs.UI.PrefabRequiredScripts
         protected virtual float GetItemWeight(InventoryItem item)
         {
             if (item == null) return 0f;
-
-            // Try to get the Weight property through reflection
             var weightProperty = item.GetType().GetProperty("Weight");
             if (weightProperty != null)
                 try
@@ -63,7 +56,6 @@ namespace Project.Prefabs.UI.PrefabRequiredScripts
                     return 0f;
                 }
 
-            // If no Weight property exists, return 0
             return 0f;
         }
 
@@ -71,24 +63,25 @@ namespace Project.Prefabs.UI.PrefabRequiredScripts
         {
             yield return new WaitForSeconds(initialDelay);
 
-            if (TMPTitle != null) TMPTitle.text = item.ItemName;
-            if (TMPShortDescription != null) TMPShortDescription.text = item.ShortDescription;
-            if (TMPDescription != null) TMPDescription.text = item.Description;
-            if (TMPQuantity != null) TMPQuantity.text = item.Quantity.ToString();
-            if (Icon != null) Icon.sprite = item.Icon;
-
-            // Handle weight display
-            if (TMPWeight != null)
+            if (CurrentMode == DisplayMode.Inventory)
             {
-                var itemWeight = GetItemWeight(item);
-                var totalWeight = itemWeight * item.Quantity;
-                TMPWeight.text = totalWeight.ToString("F1");
-            }
+                if (TMPTitle != null) TMPTitle.text = item.ItemName;
+                if (TMPShortDescription != null) TMPShortDescription.text = item.ShortDescription;
+                if (TMPDescription != null) TMPDescription.text = item.Description;
+                if (TMPQuantity != null) TMPQuantity.text = item.Quantity.ToString();
+                if (Icon != null) Icon.sprite = item.Icon;
 
-            if (HideOnEmptySlot && !Hidden && item.Quantity == 0)
-            {
-                StartCoroutine(MMFade.FadeCanvasGroup(_canvasGroup, _fadeDelay, 0f));
-                Hidden = true;
+                if (TMPWeight != null)
+                {
+                    var itemWeight = GetItemWeight(item);
+                    TMPWeight.text = (itemWeight * item.Quantity).ToString("F1");
+                }
+
+                if (HideOnEmptySlot && !Hidden && item.Quantity == 0)
+                {
+                    StartCoroutine(MMFade.FadeCanvasGroup(_canvasGroup, _fadeDelay, 0f));
+                    Hidden = true;
+                }
             }
         }
 
@@ -106,19 +99,19 @@ namespace Project.Prefabs.UI.PrefabRequiredScripts
 
         public void DisplayPreview(InventoryItem item)
         {
+            CurrentMode = DisplayMode.Preview;
             if (item == null) return;
 
-            // Display only the item's name and short description
             if (TMPTitle != null) TMPTitle.text = item.ItemName;
             if (TMPShortDescription != null) TMPShortDescription.text = item.ShortDescription;
 
-            // Ensure the panel is visible
             if (_canvasGroup != null) _canvasGroup.alpha = 1;
         }
 
         public void HidePreview()
         {
             if (_canvasGroup != null) _canvasGroup.alpha = 0;
+            CurrentMode = DisplayMode.Inventory;
         }
     }
 }

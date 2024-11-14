@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1103086810894857882}
   - component: {fileID: 3579556112167805733}
   - component: {fileID: 9010585616326294765}
+  - component: {fileID: 2132691102246505418}
   m_Layer: 0
   m_Name: HealthPotion1Consumable
   m_TagString: Untagged
@@ -102,6 +103,7 @@ MonoBehaviour:
   PickableIfInventoryIsFull: 0
   DisableObjectWhenDepleted: 0
   RequirePlayerTag: 1
+  pickupPromptManager: {fileID: 0}
 --- !u!114 &9010585616326294765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,6 +117,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ManualPicker: {fileID: 3579556112167805733}
+--- !u!114 &2132691102246505418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430786023743036610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fcec89ce61a4797a1546debdd33b80a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Item: {fileID: 11400000, guid: c84e006aa5a42e44680b4542ff116da9, type: 2}
+  Quantity: 1
 --- !u!1 &4850141832504324331
 GameObject:
   m_ObjectHideFlags: 0

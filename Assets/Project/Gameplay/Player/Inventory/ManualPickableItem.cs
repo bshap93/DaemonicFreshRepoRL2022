@@ -1,61 +1,67 @@
-﻿using MoreMountains.TopDownEngine;
-using Project.Gameplay.ItemManagement;
+﻿using MoreMountains.InventoryEngine;
 using UnityEngine;
 
 namespace Project.Gameplay.Player.Inventory
 {
-    public class ManualPickableItem : PickableItem
+    public class ManualPickableItem : MonoBehaviour
     {
-        public bool DestroyOnPick = true;
+        public InventoryItem Item; // The item to be picked up
+        public int Quantity = 1;
+        GameObject _collidingObject; // Reference to the player in range
         bool _isPlayerInRange;
         PickupPromptManager _pickupPromptManager;
+        MoreMountains.InventoryEngine.Inventory _targetInventory; // Reference to the inventory in PortableSystems
 
-        protected override void Start()
+        void Start()
         {
-            base.Start();
             _pickupPromptManager = FindObjectOfType<PickupPromptManager>();
+
+            // Locate PortableSystems and retrieve the appropriate inventory
+            var portableSystems = GameObject.Find("PortableSystems");
+            if (portableSystems != null)
+                // Assuming the first Inventory component in PortableSystems is the target.
+                _targetInventory = portableSystems.GetComponentInChildren<MoreMountains.InventoryEngine.Inventory>();
+
+            if (_targetInventory == null) Debug.LogWarning("Target inventory not found in PortableSystems.");
         }
 
         void Update()
         {
-            if (_isPlayerInRange && UnityEngine.Input.GetKeyDown(KeyCode.F)) // Replace "F" with your preferred key
-                PickItem(_collidingObject); // Use _collidingObject to specify the picker
+            if (_isPlayerInRange && UnityEngine.Input.GetKeyDown(KeyCode.F)) PickItem();
         }
 
-        public override void OnTriggerEnter(Collider collider)
+        void OnTriggerEnter(Collider collider)
         {
             if (collider.CompareTag("Player"))
             {
                 _isPlayerInRange = true;
-                _collidingObject = collider.gameObject; // Set _collidingObject to avoid null reference
+                _collidingObject = collider.gameObject; // Store the player reference
                 _pickupPromptManager?.ShowPickupPrompt();
             }
         }
 
-        public void OnTriggerExit(Collider collider)
+        void OnTriggerExit(Collider collider)
         {
             if (collider.CompareTag("Player"))
             {
                 _isPlayerInRange = false;
+                _collidingObject = null; // Clear the player reference
                 _pickupPromptManager?.HidePickupPrompt();
-                _collidingObject = null; // Clear _collidingObject when player exits
             }
         }
 
-        public override void PickItem(GameObject picker)
+        void PickItem()
         {
-            if (CheckIfPickable())
+            if (Item == null || _targetInventory == null)
             {
-                base.PickItem(picker);
+                Debug.LogWarning("Item or target inventory is null. Cannot pick up the item.");
+                return;
+            }
 
-                // Unregister from the preview manager before destroying
-                var previewManager = FindObjectOfType<PlayerItemPreviewManager>();
-                if (previewManager != null) previewManager.UnregisterItem(GetComponent<ItemPreviewTrigger>());
-
-                if (_pickupPromptManager != null) _pickupPromptManager.HidePickupPrompt();
-
-                // Destroy the item to fully remove it
-                Destroy(gameObject);
+            if (_targetInventory.AddItem(Item, Quantity)) // Assume AddItem adds item and returns success
+            {
+                _pickupPromptManager?.HidePickupPrompt();
+                Destroy(gameObject); // Remove the item from the scene after pickup
             }
             else
             {
