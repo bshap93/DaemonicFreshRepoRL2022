@@ -1,3 +1,4 @@
+using MoreMountains.InventoryEngine;
 using UnityEngine;
 
 public class PickupPromptManager : MonoBehaviour
@@ -23,5 +24,14 @@ public class PickupPromptManager : MonoBehaviour
     public void HidePreviewPanel()
     {
         if (PreviewPanelUI != null) PreviewPanelUI.SetActive(false);
+    }
+
+    public void ShowPreviewPanel(InventoryItem item)
+    {
+        if (PreviewPanelUI != null)
+        {
+            PreviewPanelUI.SetActive(true);
+            Debug.Log("Showing preview for item: " + item.ItemName);
+        }
     }
 }

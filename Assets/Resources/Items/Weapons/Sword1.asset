@@ -42,7 +42,7 @@ MonoBehaviour:
   ShortDescription: A slightly worn sword carried by you when you first enter.
   Description: 
   Icon: {fileID: 21300016, guid: febaf98c9e2e16b4693de2178a533b43, type: 3}
-  Prefab: {fileID: 0}
+  Prefab: {fileID: 5024540751157044470, guid: 0c832623fc0365c48961b56a0c05b42c, type: 3}
   ForcePrefabDropQuantity: 0
   PrefabDropQuantity: 1
   DropProperties:
