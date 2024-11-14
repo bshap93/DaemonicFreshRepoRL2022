@@ -1,18 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PickupPromptManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject PickupPromptUI; // Reference to the pickup prompt UI element
+    public GameObject PreviewPanelUI;
+
+    public void ShowPickupPrompt()
     {
-        
+        if (PickupPromptUI != null) PickupPromptUI.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void HidePickupPrompt()
     {
-        
+        if (PickupPromptUI != null) PickupPromptUI.SetActive(false);
+    }
+
+    public void HidePreviewPanel()
+    {
+        if (PreviewPanelUI != null) PreviewPanelUI.SetActive(false);
     }
 }

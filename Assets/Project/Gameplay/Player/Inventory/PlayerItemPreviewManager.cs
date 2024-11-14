@@ -3,67 +3,74 @@ using Project.Gameplay.ItemManagement;
 using Project.UI.HUD;
 using UnityEngine;
 
-public class PlayerItemPreviewManager : MonoBehaviour
+namespace Project.Gameplay.Player.Inventory
 {
-    PreviewManager _previewManager;
-    ItemPreviewTrigger currentItem;
-    readonly List<ItemPreviewTrigger> nearbyItems = new();
-
-    void Start()
+    public class PlayerItemPreviewManager : MonoBehaviour
     {
-        _previewManager = FindObjectOfType<PreviewManager>();
-        if (_previewManager == null) Debug.LogWarning("PreviewManager not found in the scene.");
-    }
+        PreviewManager _previewManager;
+        ItemPreviewTrigger currentItem;
+        readonly List<ItemPreviewTrigger> nearbyItems = new();
 
-    void Update()
-    {
-        DisplayNearestItem();
-    }
-
-    void DisplayNearestItem()
-    {
-        if (nearbyItems.Count == 0 || _previewManager == null)
+        void Start()
         {
-            if (currentItem != null)
+            _previewManager = FindObjectOfType<PreviewManager>();
+            if (_previewManager == null) Debug.LogWarning("PreviewManager not found in the scene.");
+        }
+
+        void Update()
+        {
+            DisplayNearestItem();
+        }
+
+        void DisplayNearestItem()
+        {
+            // Remove null or destroyed items from the list
+            nearbyItems.RemoveAll(item => item == null);
+
+            if (nearbyItems.Count == 0 || _previewManager == null)
             {
-                _previewManager.HidePreview();
-                currentItem = null;
+                if (currentItem != null)
+                {
+                    _previewManager.HidePreview();
+                    currentItem = null;
+                }
+
+                return;
             }
 
-            return;
-        }
+            // Sort to get the closest item
+            nearbyItems.Sort(
+                (a, b) =>
+                    Vector3.Distance(transform.position, a.transform.position)
+                        .CompareTo(Vector3.Distance(transform.position, b.transform.position)));
 
-        // Sort to get the closest item
-        nearbyItems.Sort(
-            (a, b) =>
-                Vector3.Distance(transform.position, a.transform.position)
-                    .CompareTo(Vector3.Distance(transform.position, b.transform.position)));
-
-        // Only update if the closest item has changed
-        var closestItem = nearbyItems[0];
-        if (closestItem != currentItem)
-        {
-            _previewManager.ShowPreview(closestItem.Item);
-            currentItem = closestItem;
-        }
-    }
-
-    public void RegisterItem(ItemPreviewTrigger item)
-    {
-        if (!nearbyItems.Contains(item)) nearbyItems.Add(item);
-    }
-
-    public void UnregisterItem(ItemPreviewTrigger item)
-    {
-        if (nearbyItems.Contains(item))
-        {
-            nearbyItems.Remove(item);
-
-            // Reset current item if it was removed
-            if (currentItem == item)
+            // Only update if the closest item has changed
+            var closestItem = nearbyItems[0];
+            if (closestItem != currentItem)
             {
-                _previewManager.HidePreview();
-                currentItem = null;
+                _previewManager.ShowPreview(closestItem.Item);
+                currentItem = closestItem;
+            }
+        }
+
+
+        public void RegisterItem(ItemPreviewTrigger item)
+        {
+            if (!nearbyItems.Contains(item)) nearbyItems.Add(item);
+        }
+
+        public void UnregisterItem(ItemPreviewTrigger item)
+        {
+            if (nearbyItems.Contains(item))
+            {
+                nearbyItems.Remove(item);
+
+                // Reset current item if it was removed
+                if (currentItem == item)
+                {
+                    _previewManager.HidePreview();
+                    currentItem = null;
+                }
             }
         }
     }
