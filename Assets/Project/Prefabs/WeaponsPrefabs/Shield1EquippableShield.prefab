@@ -93,7 +93,7 @@ MonoBehaviour:
   CooldownDuration: 0
   InitialDelay: 0
   CanPlay: 1
-  CanPlayWhileAlreadyPlaying: 1
+  CanPlayWhileAlreadyPlaying: 0
   ChanceToPlay: 100
   FeedbacksIntensity: 1
   Events:
@@ -135,7 +135,7 @@ MonoBehaviour:
   - rid: 4950072073530900482
   KeepPlayModeChanges: 0
   PerformanceMode: 0
-  StopFeedbacksOnDisable: 0
+  StopFeedbacksOnDisable: 1
   PlayCount: 0
   references:
     version: 2
@@ -158,13 +158,13 @@ MonoBehaviour:
           InitialDelay: 0
           CooldownDuration: 0
           InterruptsOnStop: 1
-          NumberOfRepeats: 1
-          RepeatForever: 1
+          NumberOfRepeats: 0
+          RepeatForever: 0
           DelayBetweenRepeats: 1
           PlayCount: 0
-          LimitPlayCount: 1
+          LimitPlayCount: 0
           MaxPlayCount: 1
-          SetPlayCountToZeroOnReset: 0
+          SetPlayCountToZeroOnReset: 1
           MMFeedbacksDirectionCondition: 0
           PlayDirection: 0
           ConstantIntensity: 0
@@ -805,6 +805,7 @@ MonoBehaviour:
   BlockAngle: 360
   ShieldForward: {fileID: 3329706741920355084}
   ShieldIsActive: 0
+  GizmoDistance: 1
 --- !u!1 &8851952970606786790
 GameObject:
   m_ObjectHideFlags: 0
