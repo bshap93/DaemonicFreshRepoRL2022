@@ -17,6 +17,8 @@ namespace Project.Gameplay.Combat.Shields
             Interrupted
         }
 
+        public ShieldProtectionArea ShieldProtectionArea;
+
 
         [Header("Shield Properties")] [Tooltip("Maximum health of the shield before it breaks")]
         public float MaxShieldHealth = 100f;
@@ -99,20 +101,28 @@ namespace Project.Gameplay.Combat.Shields
         {
             if (CurrentState != ShieldStates.Inactive) return;
 
+            Debug.Log("Raising shield");
+
+
             CurrentState = ShieldStates.Starting;
             UpdateAnimator();
             ShieldRaiseFeedback?.PlayFeedbacks();
             OnShieldRaised?.Invoke(true); // Raise event for animation feedback
+
+            if (ShieldProtectionArea != null) ShieldProtectionArea.ShieldIsActive = true;
         }
 
         public virtual void LowerShield()
         {
             if (CurrentState == ShieldStates.Inactive || CurrentState == ShieldStates.Broken) return;
 
+
             CurrentState = ShieldStates.Inactive;
             UpdateAnimator();
             ShieldLowerFeedback?.PlayFeedbacks();
             OnShieldRaised?.Invoke(false); // Raise event for animation feedback
+
+            if (ShieldProtectionArea != null) ShieldProtectionArea.enabled = false;
         }
 
         public virtual void ProcessDamage(float damage)

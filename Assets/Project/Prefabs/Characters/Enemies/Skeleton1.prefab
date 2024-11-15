@@ -463,7 +463,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5580456832500494753
 Transform:
   m_ObjectHideFlags: 0
@@ -478,7 +478,6 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4120401373807358357}
-  - {fileID: 5036477306626293074}
   - {fileID: 2606114590234877567}
   - {fileID: 9159105890916563740}
   - {fileID: 1295543520344511946}
@@ -531,7 +530,7 @@ CharacterController:
   m_Height: 2
   m_Radius: 0.48
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.59
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.95, z: 0}
@@ -974,19 +973,19 @@ MonoBehaviour:
   PreventTakeSelfDamage: 0
   ImmuneToKnockback: 0
   ImmuneToKnockbackIfZeroDamage: 0
-  KnockbackForceMultiplier: 1
+  KnockbackForceMultiplier: 2
   DestroyOnDeath: 0
   DelayBeforeDestruction: 0
   PointsWhenDestroyed: 0
   RespawnAtInitialLocation: 0
-  DisableControllerOnDeath: 1
+  DisableControllerOnDeath: 0
   DisableModelOnDeath: 0
   DisableCollisionsOnDeath: 0
   DisableChildCollisionsOnDeath: 0
   ChangeLayerOnDeath: 0
   ChangeLayersRecursivelyOnDeath: 0
   LayerOnDeath:
-    _layerIndex: 0
+    _layerIndex: 23
   DeathMMFeedbacks: {fileID: 0}
   ResetColorOnRevive: 1
   ColorMaterialPropertyName: _Color
@@ -7920,77 +7919,3 @@ Transform:
   m_Children: []
   m_Father: {fileID: 686033083522938171}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &3486644324744085738
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 5580456832500494753}
-    m_Modifications:
-    - target: {fileID: 5746151531428578419, guid: 2fd35a46f442b79488a27354e18ec625,
-        type: 3}
-      propertyPath: m_Name
-      value: DeathFeedback
-      objectReference: {fileID: 0}
-    - target: {fileID: 8468497824966147512, guid: 2fd35a46f442b79488a27354e18ec625,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8468497824966147512, guid: 2fd35a46f442b79488a27354e18ec625,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8468497824966147512, guid: 2fd35a46f442b79488a27354e18ec625,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8468497824966147512, guid: 2fd35a46f442b79488a27354e18ec625,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.0000026673076
-      objectReference: {fileID: 0}
-    - target: {fileID: 8468497824966147512, guid: 2fd35a46f442b79488a27354e18ec625,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8468497824966147512, guid: 2fd35a46f442b79488a27354e18ec625,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8468497824966147512, guid: 2fd35a46f442b79488a27354e18ec625,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8468497824966147512, guid: 2fd35a46f442b79488a27354e18ec625,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8468497824966147512, guid: 2fd35a46f442b79488a27354e18ec625,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8468497824966147512, guid: 2fd35a46f442b79488a27354e18ec625,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2fd35a46f442b79488a27354e18ec625, type: 3}
---- !u!4 &5036477306626293074 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8468497824966147512, guid: 2fd35a46f442b79488a27354e18ec625,
-    type: 3}
-  m_PrefabInstance: {fileID: 3486644324744085738}
-  m_PrefabAsset: {fileID: 0}

@@ -144,6 +144,6 @@ EditorBuildSettings:
     path: Assets/Project/Scenes/Menus/MainMenu.unity
     guid: 8c66c171efb4c614eaf5748189022d07
   - enabled: 1
-    path: Assets/Project/Scenes/OpenAreaTestScene.unity
+    path: Assets/Project/Scenes/Prototyping/OpenAreaTestScene.unity
     guid: 18eeb52d1b648e4478f5a89992388d93
   m_configObjects: {}
