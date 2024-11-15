@@ -1112,7 +1112,7 @@ MonoBehaviour:
           InterruptsOnStop: 1
           NumberOfRepeats: 0
           RepeatForever: 1
-          DelayBetweenRepeats: 0.005
+          DelayBetweenRepeats: -0.35
           PlayCount: 0
           LimitPlayCount: 0
           MaxPlayCount: 3
@@ -1182,7 +1182,7 @@ MonoBehaviour:
           ButtonText: Debug Play Sound
         TestStopButton:
           ButtonText: Debug Stop Sound
-        PlayMethod: 1
+        PlayMethod: 3
         PoolSize: 10
         UseLegacyEventsMode: 0
         StopSoundOnFeedbackStop: 1
@@ -7782,7 +7782,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbc3aae4b6c14e1884ba48c95d9a83e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InventoryDetails: {fileID: 0}
 --- !u!1 &4210891894166820022
 GameObject:
   m_ObjectHideFlags: 0
