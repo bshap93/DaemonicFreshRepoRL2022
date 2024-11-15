@@ -7,6 +7,8 @@ namespace Project.Gameplay.Player.Health
 {
     public class ShieldedHealth : MoreMountains.TopDownEngine.Health
     {
+        GameObject _shield;
+        Shield _shieldComponent;
         ShieldProtectionArea _shieldProtection;
 
         protected override void Awake()
@@ -29,6 +31,8 @@ namespace Project.Gameplay.Player.Health
                 Debug.Log(
                     $"Shield blocked damage from {instigator.name}, _shieldProtection: {_shieldProtection != null}, _shieldProtection.ISBlocking: {_shieldProtection.IsBlocking(instigator.transform.position)}");
 
+                _shieldComponent.ShieldBlockFeedback?.PlayFeedbacks();
+
                 return; // Exit early if shield blocks damage
             }
 
@@ -39,6 +43,8 @@ namespace Project.Gameplay.Player.Health
         void AssignShield(ShieldProtectionArea shield)
         {
             _shieldProtection = shield;
+            _shield = shield.gameObject;
+            _shieldComponent = _shield.GetComponent<Shield>();
             Debug.Log("Shield assigned to ShieldedHealth.");
         }
     }

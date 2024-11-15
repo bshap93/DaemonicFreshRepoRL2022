@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4152906451469921850}
   - component: {fileID: 4794434303631735377}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BlockFeedback
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,12 +158,12 @@ MonoBehaviour:
           InitialDelay: 0
           CooldownDuration: 0
           InterruptsOnStop: 1
-          NumberOfRepeats: 0
-          RepeatForever: 0
+          NumberOfRepeats: 1
+          RepeatForever: 1
           DelayBetweenRepeats: 1
           PlayCount: 0
-          LimitPlayCount: 0
-          MaxPlayCount: 3
+          LimitPlayCount: 1
+          MaxPlayCount: 1
           SetPlayCountToZeroOnReset: 0
           MMFeedbacksDirectionCondition: 0
           PlayDirection: 0
@@ -216,11 +216,11 @@ MonoBehaviour:
         DebugActive: 0
         Sfx: {fileID: 0}
         RandomSfx:
-        - {fileID: 8300000, guid: f615093d9b1f74c07abd72ade51f086b, type: 3}
-        - {fileID: 8300000, guid: 1e0ac232ebaed46a087953dd394e6961, type: 3}
-        - {fileID: 8300000, guid: 9a26d6304469d4ed8b874b9305704e63, type: 3}
-        - {fileID: 8300000, guid: 1d21c3f87e44440e0939231128c37d2e, type: 3}
-        - {fileID: 8300000, guid: 4796d5b8a3e2a4328be2c0c874bd1969, type: 3}
+        - {fileID: 8300000, guid: 6635fbceb5ac140588857369e6071ca8, type: 3}
+        - {fileID: 8300000, guid: 89e83e0c790874b37b45fbc574ebb489, type: 3}
+        - {fileID: 8300000, guid: df1c76a27376b4cc7a3d542990361d99, type: 3}
+        - {fileID: 8300000, guid: fc07fda25267f47ceaf1546f771d262d, type: 3}
+        - {fileID: 8300000, guid: d12fce62c4bb84055a48c6c5be8f9477, type: 3}
         TestPlayButton:
           ButtonText: Debug Play Sound
         TestStopButton:
@@ -361,7 +361,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6457650938171389596}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EquipFeedback
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,7 +392,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3329706741920355084}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ShieldForward
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -424,7 +424,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2091260670752218581}
   - component: {fileID: 4020693992533028218}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RaiseFeedback
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -687,7 +687,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5699062583198951595}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Feedbacks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -724,7 +724,7 @@ GameObject:
   - component: {fileID: 2738905102594533615}
   - component: {fileID: 7086176435164650944}
   - component: {fileID: 5337622635536975667}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Shield1EquippableShield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -816,7 +816,7 @@ GameObject:
   - component: {fileID: 878843701430381491}
   - component: {fileID: 8307632507813967132}
   - component: {fileID: 8141724359249945519}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dark Knight_Shield_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
