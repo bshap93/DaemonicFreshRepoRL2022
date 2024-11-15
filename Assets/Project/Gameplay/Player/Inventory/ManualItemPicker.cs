@@ -11,11 +11,11 @@ namespace Project.Gameplay.Player.Inventory
 
         [Header("Feedbacks")] [Tooltip("Feedbacks to play when the item is picked up")]
         public MMFeedbacks PickedMMFeedbacks; // Feedbacks to play when the item is picked up
+
         GameObject _collidingObject; // Reference to the player in range
         bool _isInRange;
         PickupPromptManager _pickupPromptManager;
         MoreMountains.InventoryEngine.Inventory _targetInventory;
-
 
         void Start()
         {
@@ -55,7 +55,7 @@ namespace Project.Gameplay.Player.Inventory
                 _isInRange = false;
                 _collidingObject = null;
                 _pickupPromptManager?.HidePickupPrompt();
-                _pickupPromptManager?.HidePreviewPanel(); // Hide preview when exiting
+                _pickupPromptManager?.HidePreviewPanel(); // Ensure preview hides on exit
             }
         }
 
@@ -69,11 +69,15 @@ namespace Project.Gameplay.Player.Inventory
 
             if (_targetInventory.AddItem(Item, Quantity))
             {
+                // Hide the prompt and preview panel on successful pickup
                 _pickupPromptManager?.HidePickupPrompt();
-                _pickupPromptManager?.HidePreviewPanel(); // Hide preview on successful pickup
+                _pickupPromptManager?.HidePreviewPanel();
 
                 // Play feedbacks on successful pickup
                 if (PickedMMFeedbacks != null) PickedMMFeedbacks.PlayFeedbacks();
+
+                // Double-check preview panel state before destroying
+                if (_pickupPromptManager != null) _pickupPromptManager.HidePreviewPanel();
 
                 Destroy(gameObject);
             }
