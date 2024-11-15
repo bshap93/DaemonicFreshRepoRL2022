@@ -7,6 +7,7 @@ namespace Project.Gameplay.Player.Health
 {
     public class ShieldedHealth : MoreMountains.TopDownEngine.Health
     {
+        Shield _shield;
         ShieldProtectionArea _shieldProtection;
 
         protected override void Awake()
@@ -26,7 +27,7 @@ namespace Project.Gameplay.Player.Health
             // Check if the shield blocks the damage
             if (_shieldProtection != null && _shieldProtection.IsBlocking(instigator.transform.position))
             {
-                Debug.Log($"Shield blocked damage from {instigator.name}");
+                _shield.PlayBlockFeedback();
                 return; // Exit early if shield blocks damage
             }
 
@@ -34,10 +35,10 @@ namespace Project.Gameplay.Player.Health
             base.Damage(damage, instigator, flickerDuration, invincibilityDuration, damageDirection, typedDamages);
         }
 
-        void AssignShield(ShieldProtectionArea shield)
+        void AssignShield(ShieldProtectionArea shieldPa)
         {
-            _shieldProtection = shield;
-            Debug.Log("Shield assigned to ShieldedHealth.");
+            _shieldProtection = shieldPa;
+            _shield = shieldPa.gameObject.GetComponent<Shield>();
         }
     }
 }

@@ -101,8 +101,6 @@ namespace Project.Gameplay.Combat.Shields
         {
             if (CurrentState != ShieldStates.Inactive) return;
 
-            Debug.Log("Raising shield");
-
 
             CurrentState = ShieldStates.Starting;
             UpdateAnimator();
@@ -131,6 +129,7 @@ namespace Project.Gameplay.Combat.Shields
 
             CurrentState = ShieldStates.Blocking;
             UpdateAnimator();
+            Debug.Log("Shield blocking damage");
             ShieldBlockFeedback?.PlayFeedbacks();
 
             CurrentShieldHealth -= damage;
@@ -148,6 +147,31 @@ namespace Project.Gameplay.Combat.Shields
         protected virtual void UpdateAnimator()
         {
             if (_animator != null) _animator.SetInteger(_shieldStateParameter, (int)CurrentState);
+        }
+
+        /// <summary>
+        ///     Determines if the shield blocks an attack and plays feedback if successful.
+        /// </summary>
+        public bool TryBlockAttack(Vector3 attackPosition)
+        {
+            if (ShieldProtectionArea != null && ShieldProtectionArea.IsBlocking(attackPosition))
+            {
+                PlayBlockFeedback();
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        ///     Plays the shield block feedback.
+        /// </summary>
+        public void PlayBlockFeedback()
+        {
+            if (ShieldBlockFeedback != null)
+                ShieldBlockFeedback.PlayFeedbacks();
+            else
+                Debug.LogWarning("ShieldBlockFeedback is not assigned!");
         }
     }
 }

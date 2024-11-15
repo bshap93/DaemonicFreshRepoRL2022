@@ -111,6 +111,7 @@ namespace Project.Gameplay.Combat.Shields
             }
             else if (shieldActive)
             {
+                Debug.Log("ShieldStop");
                 ShieldStop();
             }
         }
