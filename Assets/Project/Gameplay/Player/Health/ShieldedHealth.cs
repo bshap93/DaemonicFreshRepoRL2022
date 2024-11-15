@@ -26,7 +26,9 @@ namespace Project.Gameplay.Player.Health
             // Check if the shield blocks the damage
             if (_shieldProtection != null && _shieldProtection.IsBlocking(instigator.transform.position))
             {
-                Debug.Log($"Shield blocked damage from {instigator.name}");
+                Debug.Log(
+                    $"Shield blocked damage from {instigator.name}, _shieldProtection: {_shieldProtection != null}, _shieldProtection.ISBlocking: {_shieldProtection.IsBlocking(instigator.transform.position)}");
+
                 return; // Exit early if shield blocks damage
             }
 

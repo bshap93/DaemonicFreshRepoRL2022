@@ -116,13 +116,14 @@ namespace Project.Gameplay.Combat.Shields
         {
             if (CurrentState == ShieldStates.Inactive || CurrentState == ShieldStates.Broken) return;
 
+            Debug.Log("Lowering shield");
 
             CurrentState = ShieldStates.Inactive;
             UpdateAnimator();
             ShieldLowerFeedback?.PlayFeedbacks();
             OnShieldRaised?.Invoke(false); // Raise event for animation feedback
 
-            if (ShieldProtectionArea != null) ShieldProtectionArea.enabled = false;
+            if (ShieldProtectionArea != null) ShieldProtectionArea.ShieldIsActive = false;
         }
 
         public virtual void ProcessDamage(float damage)
