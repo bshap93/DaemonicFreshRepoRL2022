@@ -41,7 +41,7 @@ MonoBehaviour:
   ItemName: The player's trusty shield from their heyday as a knight.
   ShortDescription: 
   Description: 
-  Icon: {fileID: 21300006, guid: 678058abcbfe36f42902c11d9e5f64fc, type: 3}
+  Icon: {fileID: 21300000, guid: 523463462f39f114d84f983a2d60c738, type: 3}
   Prefab: {fileID: 7551000699400255735, guid: f0e18eecb4c045c4a8c06420b1aacc18, type: 3}
   ForcePrefabDropQuantity: 0
   PrefabDropQuantity: 1
