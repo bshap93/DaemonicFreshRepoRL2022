@@ -7222,8 +7222,8 @@ MonoBehaviour:
   BlockingWeaponStates: 
   JumpProportionalToPress: 1
   MinimumPressTime: 0.4
-  JumpForce: 800
-  JumpHeight: 4
+  JumpForce: 200
+  JumpHeight: 1
   CanJumpOnTooSteepSlopes: 1
   ResetJumpsOnTooSteepSlopes: 0
   NumberOfJumps: 1
@@ -25466,8 +25466,9 @@ MonoBehaviour:
         DebugActive: 0
         Sfx: {fileID: 0}
         RandomSfx:
-        - {fileID: 8300000, guid: 2f3c8a8656f624f10bf3de81b4434f11, type: 3}
-        - {fileID: 8300000, guid: d805c4854186f49fea81d997724e0d9c, type: 3}
+        - {fileID: 8300000, guid: ccec37d734aad9b49a1a39a8a7262bbd, type: 3}
+        - {fileID: 8300000, guid: 4e4e706c4c03d554fbf42a015cc10055, type: 3}
+        - {fileID: 8300000, guid: 497123663b0cc014c96d9984ce147c73, type: 3}
         TestPlayButton:
           ButtonText: Debug Play Sound
         TestStopButton:
@@ -25477,9 +25478,9 @@ MonoBehaviour:
         UseLegacyEventsMode: 0
         StopSoundOnFeedbackStop: 1
         MinVolume: 0.292
-        MaxVolume: 0.524
-        MinPitch: 0.8
-        MaxPitch: 1.3
+        MaxVolume: 0.43
+        MinPitch: 1.05
+        MaxPitch: 1.35
         SfxAudioMixerGroup: {fileID: 0}
         Priority: 128
         PanStereo: 0
