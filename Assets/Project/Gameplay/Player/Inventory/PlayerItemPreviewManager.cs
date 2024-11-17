@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using MoreMountains.InventoryEngine;
 using Project.Gameplay.ItemManagement;
 using Project.UI.HUD;
 using UnityEngine;
@@ -7,9 +8,11 @@ namespace Project.Gameplay.Player.Inventory
 {
     public class PlayerItemPreviewManager : MonoBehaviour
     {
+        readonly List<ItemPreviewTrigger> nearbyItems = new();
         PreviewManager _previewManager;
         ItemPreviewTrigger currentItem;
-        readonly List<ItemPreviewTrigger> nearbyItems = new();
+        public InventoryItem CurrentPreviewedItem => currentItem?.Item; // Exposes the current item's InventoryItem
+
 
         void Start()
         {

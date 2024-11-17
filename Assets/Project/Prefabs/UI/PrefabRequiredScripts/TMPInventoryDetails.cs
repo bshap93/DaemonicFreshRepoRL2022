@@ -23,6 +23,7 @@ namespace Project.Prefabs.UI.PrefabRequiredScripts
         public TMP_Text TMPWeight;
         public string DefaultWeight = "0.0";
 
+
         protected virtual void OnValidate()
         {
             if (TMPTitle != null && Title != null)
@@ -104,6 +105,10 @@ namespace Project.Prefabs.UI.PrefabRequiredScripts
 
             if (TMPTitle != null) TMPTitle.text = item.ItemName;
             if (TMPShortDescription != null) TMPShortDescription.text = item.ShortDescription;
+            if (TMPDescription != null) TMPDescription.text = item.Description;
+            if (TMPQuantity != null) TMPQuantity.text = item.Quantity.ToString();
+            if (Icon != null) Icon.sprite = item.Icon;
+
 
             if (_canvasGroup != null) _canvasGroup.alpha = 1;
         }

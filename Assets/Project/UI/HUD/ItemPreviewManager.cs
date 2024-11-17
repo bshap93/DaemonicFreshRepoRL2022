@@ -7,13 +7,16 @@ namespace Project.UI.HUD
     public class PreviewManager : MonoBehaviour
     {
         public TMPInventoryDetails InventoryDetails;
+        public InventoryItem CurrentPreviewedItem { get; set; }
+
 
         public void ShowPreview(InventoryItem item)
         {
             if (InventoryDetails != null)
             {
-                Debug.Log("Showing preview for item: " + item.ItemName);
                 InventoryDetails.DisplayPreview(item);
+
+                CurrentPreviewedItem = item;
 
                 // Make sure CanvasGroup is visible
                 var canvasGroup = InventoryDetails.GetComponent<CanvasGroup>();
@@ -31,6 +34,7 @@ namespace Project.UI.HUD
             if (InventoryDetails != null)
             {
                 var canvasGroup = InventoryDetails.GetComponent<CanvasGroup>();
+                CurrentPreviewedItem = null;
                 if (canvasGroup != null)
                 {
                     canvasGroup.alpha = 0;

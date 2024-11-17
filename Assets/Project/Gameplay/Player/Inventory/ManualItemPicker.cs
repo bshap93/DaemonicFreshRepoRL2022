@@ -1,6 +1,9 @@
 using MoreMountains.Feedbacks;
 using MoreMountains.InventoryEngine;
+using Project.Gameplay.ItemManagement;
+using Project.UI.HUD;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Project.Gameplay.Player.Inventory
 {
@@ -9,17 +12,24 @@ namespace Project.Gameplay.Player.Inventory
         public InventoryItem Item; // The item to be picked up
         public int Quantity = 1;
 
-        [Header("Feedbacks")] [Tooltip("Feedbacks to play when the item is picked up")]
-        public MMFeedbacks PickedMMFeedbacks; // Feedbacks to play when the item is picked up
+        [FormerlySerializedAs("PickedMMFeedbacks")]
+        [Header("Feedbacks")]
+        [Tooltip("Feedbacks to play when the item is picked up")]
+        public MMFeedbacks pickedMmFeedbacks; // Feedbacks to play when the item is picked up
 
-        GameObject _collidingObject; // Reference to the player in range
         bool _isInRange;
         PickupPromptManager _pickupPromptManager;
+        PreviewManager _previewManager;
         MoreMountains.InventoryEngine.Inventory _targetInventory;
 
         void Start()
         {
             _pickupPromptManager = FindObjectOfType<PickupPromptManager>();
+            if (_pickupPromptManager == null) Debug.LogWarning("PickupPromptManager not found in the scene.");
+
+            _previewManager = FindObjectOfType<PreviewManager>();
+            if (_previewManager == null) Debug.LogWarning("PlayerItemPreviewManager not found in the scene.");
+
 
             // Locate PortableSystems and retrieve the appropriate inventory
             var portableSystems = GameObject.Find("PortableSystems");
@@ -29,7 +39,7 @@ namespace Project.Gameplay.Player.Inventory
             if (_targetInventory == null) Debug.LogWarning("Target inventory not found in PortableSystems.");
 
             // Initialize feedbacks
-            if (PickedMMFeedbacks != null) PickedMMFeedbacks.Initialization(gameObject);
+            if (pickedMmFeedbacks != null) pickedMmFeedbacks.Initialization(gameObject);
         }
 
         void Update()
@@ -37,12 +47,11 @@ namespace Project.Gameplay.Player.Inventory
             if (_isInRange && UnityEngine.Input.GetKeyDown(KeyCode.F)) PickItem();
         }
 
-        void OnTriggerEnter(Collider collider)
+        void OnTriggerEnter(Collider itemPickerCollider)
         {
-            if (collider.CompareTag("Player"))
+            if (itemPickerCollider.CompareTag("Player"))
             {
                 _isInRange = true;
-                _collidingObject = collider.gameObject;
                 _pickupPromptManager?.ShowPickupPrompt();
                 _pickupPromptManager?.ShowPreviewPanel(Item); // Show preview when entering
             }
@@ -53,7 +62,6 @@ namespace Project.Gameplay.Player.Inventory
             if (collider.CompareTag("Player"))
             {
                 _isInRange = false;
-                _collidingObject = null;
                 _pickupPromptManager?.HidePickupPrompt();
                 _pickupPromptManager?.HidePreviewPanel(); // Ensure preview hides on exit
             }
@@ -61,11 +69,7 @@ namespace Project.Gameplay.Player.Inventory
 
         void PickItem()
         {
-            if (Item == null || _targetInventory == null)
-            {
-                Debug.LogWarning("Item or target inventory is null. Cannot pick up the item.");
-                return;
-            }
+            if (Item == null || _targetInventory == null || _previewManager.CurrentPreviewedItem != Item) return;
 
             if (_targetInventory.AddItem(Item, Quantity))
             {
@@ -74,10 +78,17 @@ namespace Project.Gameplay.Player.Inventory
                 _pickupPromptManager?.HidePreviewPanel();
 
                 // Play feedbacks on successful pickup
-                if (PickedMMFeedbacks != null) PickedMMFeedbacks.PlayFeedbacks();
+                if (pickedMmFeedbacks != null) pickedMmFeedbacks.PlayFeedbacks();
 
-                // Double-check preview panel state before destroying
-                if (_pickupPromptManager != null) _pickupPromptManager.HidePreviewPanel();
+
+                // Inform PlayerItemPreviewManager to update the preview
+                var playerItemPreviewManager = FindObjectOfType<PlayerItemPreviewManager>();
+                if (playerItemPreviewManager != null)
+                {
+                    Debug.Log("Unregistering item from preview manager.");
+                    playerItemPreviewManager.UnregisterItem(GetComponent<ItemPreviewTrigger>());
+                }
+
 
                 Destroy(gameObject);
             }
