@@ -101,7 +101,6 @@ namespace Project.Gameplay.Combat.Shields
         {
             if (CurrentState != ShieldStates.Inactive) return;
 
-            Debug.Log("Raising shield");
 
 
             CurrentState = ShieldStates.Starting;
@@ -116,7 +115,6 @@ namespace Project.Gameplay.Combat.Shields
         {
             if (CurrentState == ShieldStates.Inactive || CurrentState == ShieldStates.Broken) return;
 
-            Debug.Log("Lowering shield");
 
             CurrentState = ShieldStates.Inactive;
             UpdateAnimator();

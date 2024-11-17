@@ -23,10 +23,20 @@ namespace Project.Gameplay.Combat.Shields
 
         [FormerlySerializedAs("_shieldActive")]
         public bool shieldActive;
+
+        CharacterHandleWeapon _characterHandleWeapon;
         Shield _currentShield;
 
 
         public Shield CurrentShield { get; protected set; }
+
+        protected override void Start()
+        {
+            base.Initialization();
+
+            _characterHandleWeapon = GetComponent<CharacterHandleWeapon>();
+        }
+
 
         public override string HelpBoxText()
         {
@@ -121,8 +131,10 @@ namespace Project.Gameplay.Combat.Shields
             if (!AbilityAuthorized || !InputAuthorized || CurrentShield == null) return;
 
             shieldActive = true;
+
             PlayAbilityStartFeedbacks();
             CurrentShield?.RaiseShield();
+            if (_characterHandleWeapon != null) _characterHandleWeapon.enabled = false;
         }
 
         public virtual void ShieldStop()
@@ -130,6 +142,7 @@ namespace Project.Gameplay.Combat.Shields
             if (!AbilityAuthorized || !InputAuthorized || CurrentShield == null) return;
 
             shieldActive = false;
+            if (_characterHandleWeapon != null) _characterHandleWeapon.enabled = true;
             PlayAbilityStopFeedbacks();
             CurrentShield?.LowerShield();
         }
