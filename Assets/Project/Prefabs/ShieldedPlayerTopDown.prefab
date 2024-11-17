@@ -6882,7 +6882,6 @@ GameObject:
   - component: {fileID: 2186327892260302266}
   - component: {fileID: 4629277661384572290}
   - component: {fileID: 2147500982725304588}
-  - component: {fileID: 6467453092964463827}
   - component: {fileID: 743801165420944651}
   - component: {fileID: 8058876779074257797}
   - component: {fileID: 8294267455872793848}
@@ -6890,6 +6889,7 @@ GameObject:
   - component: {fileID: 5605469439708390913}
   - component: {fileID: 3927299879870572010}
   - component: {fileID: 2190125629540307051}
+  - component: {fileID: 6467453092964463827}
   - component: {fileID: 972333610728565172}
   m_Layer: 10
   m_Name: ShieldedPlayerTopDown
@@ -7406,47 +7406,6 @@ MonoBehaviour:
   CameraInterpolationSpeed: 0.2
   InputAuthorized: 1
   AutoSetupInputManager: 1
---- !u!114 &6467453092964463827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4194478886614523176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a07c6668aa55403790d27b575279549, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AbilityStartSfx: {fileID: 0}
-  AbilityInProgressSfx: {fileID: 0}
-  AbilityStopSfx: {fileID: 0}
-  AbilityStartFeedbacks: {fileID: 0}
-  AbilityStopFeedbacks: {fileID: 0}
-  AbilityPermitted: 1
-  BlockingMovementStates: 
-  BlockingConditionStates: 
-  BlockingWeaponStates: 
-  InitialWeapon: {fileID: 8159000169692753781, guid: 904bd19c73093da479ce55c8e23f91c5,
-    type: 3}
-  CanPickupWeapons: 1
-  WeaponUseFeedback: {fileID: 0}
-  WeaponAttachment: {fileID: 7005164097417099851}
-  ProjectileSpawn: {fileID: 0}
-  AutomaticallyBindAnimator: 1
-  AmmoDisplayID: 0
-  AutoIK: 1
-  ContinuousPress: 0
-  GettingHitInterruptsAttack: 0
-  UseSecondaryAxisThresholdToShoot: 0
-  ForceWeaponAimControl: 0
-  ForcedWeaponAimControl: 1
-  ForceAlwaysShoot: 0
-  BufferInput: 0
-  NewInputExtendsBuffer: 0
-  MaximumBufferDuration: 0.25
-  RequiresPerfectTile: 0
-  CurrentWeapon: {fileID: 0}
 --- !u!114 &743801165420944651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7753,6 +7712,46 @@ MonoBehaviour:
   intuition: 0
   playerClass: 
   chosenTraits: []
+--- !u!114 &6467453092964463827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4194478886614523176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a07c6668aa55403790d27b575279549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AbilityStartSfx: {fileID: 0}
+  AbilityInProgressSfx: {fileID: 0}
+  AbilityStopSfx: {fileID: 0}
+  AbilityStartFeedbacks: {fileID: 0}
+  AbilityStopFeedbacks: {fileID: 0}
+  AbilityPermitted: 1
+  BlockingMovementStates: 
+  BlockingConditionStates: 
+  BlockingWeaponStates: 
+  InitialWeapon: {fileID: 0}
+  CanPickupWeapons: 1
+  WeaponUseFeedback: {fileID: 0}
+  WeaponAttachment: {fileID: 7005164097417099851}
+  ProjectileSpawn: {fileID: 0}
+  AutomaticallyBindAnimator: 1
+  AmmoDisplayID: 0
+  AutoIK: 1
+  ContinuousPress: 0
+  GettingHitInterruptsAttack: 0
+  UseSecondaryAxisThresholdToShoot: 0
+  ForceWeaponAimControl: 0
+  ForcedWeaponAimControl: 1
+  ForceAlwaysShoot: 0
+  BufferInput: 0
+  NewInputExtendsBuffer: 0
+  MaximumBufferDuration: 0.25
+  RequiresPerfectTile: 0
+  CurrentWeapon: {fileID: 0}
 --- !u!114 &972333610728565172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7774,8 +7773,7 @@ MonoBehaviour:
   BlockingMovementStates: 
   BlockingConditionStates: 
   BlockingWeaponStates: 
-  InitialShield: {fileID: 7086176435164650944, guid: 0b13b46a6ef0a594a9f8a43ce125deb6,
-    type: 3}
+  InitialShield: {fileID: 0}
   ShieldAttachment: {fileID: 4547365059969702342}
   AutomaticallyBindAnimator: 1
   HandleShieldID: 1
