@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 5243515455946337366}
   - component: {fileID: 2810126591167004253}
   - component: {fileID: 1578103003615265700}
-  - component: {fileID: 2870201074864602805}
+  - component: {fileID: -5695865116631086298}
   m_Layer: 0
   m_Name: CrossbowWeapon
   m_TagString: Untagged
@@ -248,7 +248,7 @@ MonoBehaviour:
   DelayBeforeUseReleaseInterruption: 1
   TimeBetweenUses: 1
   TimeBetweenUsesReleaseInterruption: 1
-  UseBurstMode: 1
+  UseBurstMode: 0
   BurstLength: 3
   BurstTimeBetweenShots: 0.1
   MagazineBased: 1
@@ -373,7 +373,7 @@ MonoBehaviour:
     type: 3}
   PoolSize: 41
   PoolCanExpand: 1
---- !u!114 &2870201074864602805
+--- !u!114 &-5695865116631086298
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
