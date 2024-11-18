@@ -429,7 +429,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.12
+  m_Radius: 1.65
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &9051826716377210585
 MonoBehaviour:
@@ -445,4 +445,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Item: {fileID: 11400000, guid: 41215bf07e99c254b827cbf556271696, type: 2}
   Quantity: 1
-  PickedMMFeedbacks: {fileID: 6675615112046986700}
+  pickedMmFeedbacks: {fileID: 6675615112046986700}
