@@ -30,8 +30,8 @@ namespace Project.Core.SaveSystem
     [Serializable]
     public class PlayerSaveData
     {
-        public Vector3 position;
-        public Quaternion rotation;
+        public SerializableVector3 position;
+        public SerializableQuaternion rotation;
         public float currentHealth;
         public float maxHealth;
         public InventorySaveData inventory;
@@ -39,14 +39,58 @@ namespace Project.Core.SaveSystem
 
         public PlayerSaveData()
         {
-            position = Vector3.zero;
-            rotation = Quaternion.identity;
+            position = new SerializableVector3(Vector3.zero);
+            rotation = new SerializableQuaternion(Quaternion.identity);
             currentHealth = 100f;
             maxHealth = 100f;
             inventory = new InventorySaveData();
             stats = new Dictionary<string, float>();
         }
     }
+    
+    [Serializable]
+    public struct SerializableVector3
+    {
+        public float x;
+        public float y;
+        public float z;
+
+        public SerializableVector3(Vector3 vector)
+        {
+            x = vector.x;
+            y = vector.y;
+            z = vector.z;
+        }
+
+        public Vector3 ToVector3()
+        {
+            return new Vector3(x, y, z);
+        }
+    }
+
+    [Serializable]
+    public struct SerializableQuaternion
+    {
+        public float x;
+        public float y;
+        public float z;
+        public float w;
+
+        public SerializableQuaternion(Quaternion quaternion)
+        {
+            x = quaternion.x;
+            y = quaternion.y;
+            z = quaternion.z;
+            w = quaternion.w;
+        }
+
+        public Quaternion ToQuaternion()
+        {
+            return new Quaternion(x, y, z, w);
+        }
+    }
+
+
 
     [Serializable]
     public class InventorySaveData

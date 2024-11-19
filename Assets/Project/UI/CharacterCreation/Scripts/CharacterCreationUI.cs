@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using MoreMountains.Tools;
 using Project.Core.CharacterCreation;
 using Project.Core.SaveSystem;
@@ -271,17 +270,10 @@ namespace Project.UI.CharacterCreation.Scripts
                 $"Saving Character Data: Class - {saveData.characterCreationData.selectedClassName}, " +
                 $"Traits - {string.Join(", ", saveData.characterCreationData.selectedTraitNames)}");
 
-
             NewSaveManager.Instance.SaveGame();
             MMSceneLoadingManager.LoadScene(firstSceneName);
         }
 
-
-        string SanitizeFileName(string name)
-        {
-            foreach (var c in Path.GetInvalidFileNameChars()) name = name.Replace(c.ToString(), "_");
-            return name;
-        }
 
         enum CreationStep
         {

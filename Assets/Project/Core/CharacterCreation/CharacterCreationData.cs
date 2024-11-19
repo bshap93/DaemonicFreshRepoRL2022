@@ -14,6 +14,7 @@ namespace Project.Core.CharacterCreation
         public CharacterStats attributes = new();
     }
 
+    [Serializable]
     public enum StatType
     {
         Strength,

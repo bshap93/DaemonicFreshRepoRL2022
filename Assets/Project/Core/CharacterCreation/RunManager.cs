@@ -13,7 +13,7 @@ namespace Project.Core.CharacterCreation
         [SerializeField] List<string> selectedTraitNames;
         public static RunManager Instance { get; private set; }
 
-        public RunConfig CurrentRun { get; private set; }
+        public RunConfig CurrentRun { get; }
         public int StartingAttributePoints => startingAttributePoints;
 
         void Awake()
@@ -35,22 +35,6 @@ namespace Project.Core.CharacterCreation
             // Load trait and class definitions from ScriptableObjects
             availableTraits = new List<CharacterTrait>(Resources.LoadAll<CharacterTrait>("Traits"));
             availableClasses = new List<StartingClass>(Resources.LoadAll<StartingClass>("Classes"));
-        }
-
-        public void SaveRun()
-        {
-            ES3.Save("currentRun", CurrentRun);
-        }
-
-        public bool LoadRun()
-        {
-            if (ES3.KeyExists("currentRun"))
-            {
-                CurrentRun = ES3.Load<RunConfig>("currentRun");
-                return true;
-            }
-
-            return false;
         }
 
         public List<CharacterTrait> GetAvailableTraits()
