@@ -1170,6 +1170,8 @@ MonoBehaviour:
   availableClasses:
   - {fileID: 11400000, guid: 5bc05086c167b9c4889773e7f76251c6, type: 2}
   - {fileID: 11400000, guid: 569545a3879821a45bab04afe5a8d0e2, type: 2}
+  selectedClassName: 
+  selectedTraitNames: []
 --- !u!4 &182821995
 Transform:
   m_ObjectHideFlags: 0
@@ -6733,6 +6735,7 @@ MonoBehaviour:
   confirmButton: {fileID: 154276176}
   nextButton: {fileID: 1412369212}
   backButton: {fileID: 1884022884}
+  firstSceneName: AboveGroundStagingArea
 --- !u!222 &66483429826421192
 CanvasRenderer:
   m_ObjectHideFlags: 0

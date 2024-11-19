@@ -6,6 +6,7 @@ using Project.Core.SaveSystem;
 using Project.UI.CharacterCreation.UIElements.Scripts;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Project.UI.CharacterCreation.Scripts
@@ -39,6 +40,9 @@ namespace Project.UI.CharacterCreation.Scripts
         [Header("Navigation")] [SerializeField]
         Button nextButton;
         [SerializeField] Button backButton;
+
+        [FormerlySerializedAs("FirstSceneName")]
+        public string firstSceneName = "AboveGroundStagingArea";
 
 
         CharacterCreationData _currentConfig;
@@ -269,7 +273,7 @@ namespace Project.UI.CharacterCreation.Scripts
 
 
             NewSaveManager.Instance.SaveGame();
-            MMSceneLoadingManager.LoadScene("Project/Scenes/OpenAreaTestScene");
+            MMSceneLoadingManager.LoadScene(firstSceneName);
         }
 
 

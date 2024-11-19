@@ -42206,6 +42206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3462616318765102731}
   - component: {fileID: 6464191528042547735}
+  - component: {fileID: 6464191528042547736}
   m_Layer: 0
   m_Name: PortableSystems
   m_TagString: Untagged
@@ -74496,6 +74497,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56e5771b9827ddd43990ecc87cfb8c71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6464191528042547736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2726265874031161304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccd64fb2b591a6d4f9038ef20d47c176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6471558018947527229
