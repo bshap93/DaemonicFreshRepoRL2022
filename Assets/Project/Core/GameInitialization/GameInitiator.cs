@@ -56,6 +56,15 @@ namespace Project.Core.GameInitialization
         {
             this.MMEventStopListening();
         }
+
+        public void OnMMEvent(MMCameraEvent eventType)
+        {
+            if (eventType.EventType == MMCameraEventTypes.SetTargetCharacter)
+            {
+                Debug.Log("SetTargetCharacter event received. Applying CharacterCreationData...");
+                ApplyCharacterCreationDataToPlayer(eventType.TargetCharacter.gameObject);
+            }
+        }
         public void OnMMEvent(TopDownEngineEvent engineEvent)
         {
             if (engineEvent.EventType == TopDownEngineEventTypes.CharacterSwitch)
@@ -68,15 +77,26 @@ namespace Project.Core.GameInitialization
 
         async Task InitializeCore()
         {
-            // Load previous save or start a new game
-            // if (!await LoadLastGame()) await StartNewGame();
-            await StartNewGame();
+            var hasSave = await LoadLastGame(); // Attempt to load the last save
+            SaveStateManager.Instance.IsSaveLoaded = hasSave;
+
+            if (!hasSave)
+            {
+                Debug.Log("No valid save found. Starting a new game.");
+                await StartNewGame();
+            }
+            else
+            {
+                Debug.Log("Valid save loaded.");
+            }
         }
 
         async Task<bool> LoadLastGame()
         {
-            return await Task.FromResult(_saveManager.LoadGame());
+            var saveLoaded = _saveManager.LoadGame();
+            return await Task.FromResult(saveLoaded);
         }
+
 
         async Task StartNewGame()
         {
@@ -85,34 +105,10 @@ namespace Project.Core.GameInitialization
 
             // Spawn the player
             var initialSpawnPoint = FindObjectOfType<CheckPoint>();
-            if (initialSpawnPoint == null)
-            {
-                Debug.LogError("No CheckPoint found for initial spawn!");
-            }
-
-            // var playerGameObject = GameObject.FindGameObjectWithTag("Player");
-            // if (playerGameObject == null)
-            // {
-            //     Debug.LogError("No TopDownController found in scene!");
-            //     return;
-            // }
-            //
-            // // Apply CharacterCreationData to the player after it spawns
-            // NewSaveManager.Instance.ApplyCharacterCreationDataToPlayer();
+            if (initialSpawnPoint == null) Debug.LogError("No CheckPoint found for initial spawn!");
         }
 
-        public void OnMMEvent(MMCameraEvent eventType)
-        {
-            if (eventType.EventType == MMCameraEventTypes.SetTargetCharacter)
-            {
-                Debug.Log("SetTargetCharacter event received. Applying CharacterCreationData...");
-                ApplyCharacterCreationDataToPlayer(eventType.TargetCharacter.gameObject);
-            }
-            
-
-        }
-        
-        private void ApplyCharacterCreationDataToPlayer(GameObject playerGameObject)
+        void ApplyCharacterCreationDataToPlayer(GameObject playerGameObject)
         {
             if (playerGameObject != null)
             {
