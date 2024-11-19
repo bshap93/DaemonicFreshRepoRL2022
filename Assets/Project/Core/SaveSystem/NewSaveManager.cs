@@ -120,10 +120,12 @@ namespace Project.Core.SaveSystem
         {
             try
             {
-                if (HasSave(slot))
+                if (!HasSave(slot))
                 {
-                    Debug.LogWarning($"No save file found in slot: {slot}");
-                    return false;
+                    Debug.LogWarning($"No save file found in slot: {slot}. Creating default save.");
+                    ClearCurrentSave(); // Initialize a new save
+                    SaveGame(slot.ToString()); // Save the default data
+                    return true; // Default save created successfully
                 }
 
                 // Load the complete save file
