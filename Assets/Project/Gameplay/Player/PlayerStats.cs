@@ -6,6 +6,7 @@ using MoreMountains.TopDownEngine;
 using Project.Core.CharacterCreation;
 using Project.Gameplay.Player.Health;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Project.Gameplay.Player
 {
@@ -15,9 +16,11 @@ namespace Project.Gameplay.Player
         // Base Stats
         [SerializeField] float maxHealth;
         [SerializeField] float currentHealth;
-        [SerializeField] float moveSpeed;
+        [FormerlySerializedAs("moveSpeed")] [SerializeField]
+        float moveSpeedMult;
         [SerializeField] float attackPower;
-        [SerializeField] float defense;
+        [FormerlySerializedAs("defense")] [SerializeField]
+        float damageMult;
 
         // Attributes assigned by the player
         [SerializeField] int strength;
@@ -33,6 +36,11 @@ namespace Project.Gameplay.Player
         // Runtime references to ScriptableObjects for class and traits
         StartingClass startingClass;
         List<CharacterTrait> traits = new();
+
+        public int Strength => strength;
+        public int AttackPower => (int)attackPower;
+
+        public event Action OnStatsUpdated;
 
         public void Initialize(CharacterCreationData creationData)
         {
@@ -55,7 +63,7 @@ namespace Project.Gameplay.Player
             currentHealth = maxHealth;
 
             Debug.Log(
-                $"Initialized Player Stats: Class={playerClass}, MaxHealth={maxHealth}, MoveSpeed={moveSpeed}, AttackPower={attackPower}, Defense={defense}");
+                $"Initialized Player Stats: Class={playerClass}, MaxHealth={maxHealth}, MoveSpeed={moveSpeedMult}, AttackPower={attackPower}, Defense={damageMult}");
         }
 
         void LoadStartingClass(string className)
@@ -99,22 +107,22 @@ namespace Project.Gameplay.Player
                 maxHealth = enduranceBase * 10;
 
             if (startingClass.baseStats.TryGetValue(StatType.Agility, out var agilityBase))
-                moveSpeed = agilityBase * 0.5f;
+                moveSpeedMult = agilityBase * 0.5f;
 
             if (startingClass.baseStats.TryGetValue(StatType.Strength, out var strengthBase))
                 attackPower = strengthBase * 2;
 
             if (startingClass.baseStats.TryGetValue(StatType.Endurance, out var defenseBase))
-                defense = defenseBase;
+                damageMult = defenseBase;
         }
 
         void ApplyAttributesToBaseStats()
         {
             // Modify base stats by adding attribute bonuses
             maxHealth += endurance * 2 + 20;
-            moveSpeed += agility * 0.5f;
+            moveSpeedMult = 1 + (agility - 2) * 0.05f;
             attackPower += strength * 2;
-            defense += endurance;
+            damageMult = 0.9f + endurance * 0.05f;
 
             var playerHealth = gameObject.GetComponent<HealthAlt>();
 
@@ -125,10 +133,14 @@ namespace Project.Gameplay.Player
             }
 
             var damageResistance = gameObject.GetComponent<DamageResistanceProcessor>().DamageResistanceList[0];
-            if (damageResistance != null) damageResistance.DamageMultiplier = 0.9f + endurance * 0.05f;
+            if (damageResistance != null) damageResistance.DamageMultiplier = damageMult;
+
+            var characterMovement = gameObject.GetComponent<CharacterMovement>();
+            // 6 is the base movement speed for the character, multiplied by the moveSpeedMult
+            if (characterMovement != null) characterMovement.WalkSpeed = moveSpeedMult * 6;
 
             Debug.Log(
-                $"Attributes applied to base stats: MaxHealth={maxHealth}, MoveSpeed={moveSpeed}, AttackPower={attackPower}, Defense={defense}");
+                $"Attributes applied to base stats: MaxHealth={maxHealth}, MoveSpeed={moveSpeedMult}, AttackPower={attackPower}, Defense={damageMult}");
         }
 
         public void ApplyTraits()
@@ -138,8 +150,8 @@ namespace Project.Gameplay.Player
                 foreach (var modifier in trait.statModifiers)
                     if (modifier.type == CharacterTrait.ModifierType.Additive)
                     {
-                        if (modifier.statName == "moveSpeed") moveSpeed += modifier.value;
-                        else if (modifier.statName == "defense") defense += modifier.value;
+                        if (modifier.statName == "moveSpeed") moveSpeedMult += modifier.value;
+                        else if (modifier.statName == "defense") damageMult += modifier.value;
                     }
 
                 Debug.Log($"Trait applied: {trait.traitName}");
@@ -149,12 +161,24 @@ namespace Project.Gameplay.Player
         public void DisplayStats()
         {
             Debug.Log(
-                $"Class: {playerClass}, Max Health: {maxHealth}, Current Health: {currentHealth}, Move Speed: {moveSpeed}, Attack Power: {attackPower}, Defense: {defense}");
+                $"Class: {playerClass}, Max Health: {maxHealth}, Current Health: {currentHealth}, Move Speed: {moveSpeedMult}, Attack Power: {attackPower}, Defense: {damageMult}");
 
             Debug.Log(
                 $"Attributes - Strength: {strength}, Agility: {agility}, Endurance: {endurance}, Intelligence: {intelligence}, Intuition: {intuition}");
 
             Debug.Log($"Chosen Traits: {string.Join(", ", chosenTraits)}");
+        }
+
+        public void LevelUp()
+        {
+            Debug.Log("Player leveled up!");
+            NotifyStatUpdates();
+        }
+
+
+        void NotifyStatUpdates()
+        {
+            OnStatsUpdated?.Invoke();
         }
     }
 }
