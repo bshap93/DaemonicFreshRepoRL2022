@@ -7254,7 +7254,7 @@ GameObject:
   - component: {fileID: 4473471485751944869}
   - component: {fileID: 9078600043551628577}
   m_Layer: 10
-  m_Name: ShieldedPlayerTopDown
+  m_Name: PlayerPreEquippedSword
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7362,8 +7362,8 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
+  m_UseGravity: 1
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -7778,6 +7778,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5df7bdd36239463aa15de19fb34795ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
   moveSpeedMult: 0
   attackPower: 0
   damageMult: 0
@@ -7809,7 +7811,8 @@ MonoBehaviour:
   BlockingMovementStates: 
   BlockingConditionStates: 
   BlockingWeaponStates: 
-  InitialShield: {fileID: 0}
+  InitialShield: {fileID: 7086176435164650944, guid: 0b13b46a6ef0a594a9f8a43ce125deb6,
+    type: 3}
   ShieldAttachment: {fileID: 4547365059969702342}
   AutomaticallyBindAnimator: 1
   HandleShieldID: 1
@@ -8039,7 +8042,8 @@ MonoBehaviour:
   BlockingMovementStates: 
   BlockingConditionStates: 
   BlockingWeaponStates: 
-  InitialWeapon: {fileID: 0}
+  InitialWeapon: {fileID: 8159000169692753781, guid: 904bd19c73093da479ce55c8e23f91c5,
+    type: 3}
   CanPickupWeapons: 1
   WeaponUseFeedback: {fileID: 0}
   WeaponAttachment: {fileID: 7005164097417099851}
@@ -8096,8 +8100,8 @@ MonoBehaviour:
   Model: {fileID: 0}
   CurrentHealth: 0
   Invulnerable: 0
-  InitialHealth: 20
-  MaximumHealth: 20
+  InitialHealth: 100
+  MaximumHealth: 100
   ResetHealthOnEnable: 0
   ImmuneToDamage: 0
   DamageMMFeedbacks: {fileID: 3664632713051404768}
@@ -8123,7 +8127,7 @@ MonoBehaviour:
   ColorMaterialPropertyName: _Color
   UseMaterialPropertyBlocks: 0
   MasterHealth: {fileID: 0}
-  TargetDamageResistanceProcessor: {fileID: 0}
+  TargetDamageResistanceProcessor: {fileID: 9078600043551628577}
   TargetAnimator: {fileID: 0}
   DisableAnimatorLogs: 1
 --- !u!114 &9078600043551628577

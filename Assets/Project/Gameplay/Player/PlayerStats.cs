@@ -14,8 +14,8 @@ namespace Project.Gameplay.Player
     public class PlayerStats : MonoBehaviour
     {
         // Base Stats
-        [SerializeField] float maxHealth;
-        [SerializeField] float currentHealth;
+        // [SerializeField] float maxHealth;
+        // [SerializeField] float currentHealth;
         [FormerlySerializedAs("moveSpeed")] [SerializeField]
         float moveSpeedMult;
         [SerializeField] float attackPower;
@@ -60,10 +60,12 @@ namespace Project.Gameplay.Player
             ApplyAttributesToBaseStats();
 
             // Initialize current health to max health
-            currentHealth = maxHealth;
+            // currentHealth = maxHealth;
+            var playerHealth = gameObject.GetComponent<HealthAlt>();
+            if (playerHealth != null) playerHealth.CurrentHealth = playerHealth.MaximumHealth;
 
-            Debug.Log(
-                $"Initialized Player Stats: Class={playerClass}, MaxHealth={maxHealth}, MoveSpeed={moveSpeedMult}, AttackPower={attackPower}, Defense={damageMult}");
+            // Debug.Log(
+            //     $"Initialized Player Stats: Class={playerClass}, MaxHealth={maxHealth}, MoveSpeed={moveSpeedMult}, AttackPower={attackPower}, Defense={damageMult}");
         }
 
         void LoadStartingClass(string className)
@@ -102,9 +104,10 @@ namespace Project.Gameplay.Player
                 return;
             }
 
+            var playerHealth = gameObject.GetComponent<HealthAlt>();
             // Apply base stats from the class
             if (startingClass.baseStats.TryGetValue(StatType.Endurance, out var enduranceBase))
-                maxHealth = enduranceBase * 10;
+                playerHealth.MaximumHealth = enduranceBase * 10;
 
             if (startingClass.baseStats.TryGetValue(StatType.Agility, out var agilityBase))
                 moveSpeedMult = agilityBase * 0.5f;
@@ -118,18 +121,20 @@ namespace Project.Gameplay.Player
 
         void ApplyAttributesToBaseStats()
         {
+            var playerHealth = gameObject.GetComponent<HealthAlt>();
             // Modify base stats by adding attribute bonuses
-            maxHealth += endurance * 2 + 20;
+            playerHealth.MaximumHealth = endurance * 2 + 20;
             moveSpeedMult = 1 + (agility - 2) * 0.05f;
             attackPower += strength * 2;
             damageMult = 0.9f + endurance * 0.05f;
 
-            var playerHealth = gameObject.GetComponent<HealthAlt>();
 
             if (playerHealth != null)
             {
-                playerHealth.MaximumHealth = maxHealth;
-                playerHealth.InitialHealth = maxHealth;
+                playerHealth.InitialHealth = playerHealth.MaximumHealth;
+                // currentHealth = maxHealth;
+                playerHealth.CurrentHealth = playerHealth.InitialHealth;
+                // playerHealth.CurrentHealth = currentHealth;
             }
 
             var damageResistance = gameObject.GetComponent<DamageResistanceProcessor>().DamageResistanceList[0];
@@ -139,8 +144,8 @@ namespace Project.Gameplay.Player
             // 6 is the base movement speed for the character, multiplied by the moveSpeedMult
             if (characterMovement != null) characterMovement.WalkSpeed = moveSpeedMult * 6;
 
-            Debug.Log(
-                $"Attributes applied to base stats: MaxHealth={maxHealth}, MoveSpeed={moveSpeedMult}, AttackPower={attackPower}, Defense={damageMult}");
+            // Debug.Log(
+            //     $"Attributes applied to base stats: MaxHealth={maxHealth}, MoveSpeed={moveSpeedMult}, AttackPower={attackPower}, Defense={damageMult}");
         }
 
         public void ApplyTraits()
@@ -160,9 +165,9 @@ namespace Project.Gameplay.Player
 
         public void DisplayStats()
         {
-            Debug.Log(
-                $"Class: {playerClass}, Max Health: {maxHealth}, Current Health: {currentHealth}, Move Speed: {moveSpeedMult}, Attack Power: {attackPower}, Defense: {damageMult}");
-
+            // Debug.Log(
+            //     $"Class: {playerClass}, Max Health: {maxHealth}, Current Health: {currentHealth}, Move Speed: {moveSpeedMult}, Attack Power: {attackPower}, Defense: {damageMult}");
+            //
             Debug.Log(
                 $"Attributes - Strength: {strength}, Agility: {agility}, Endurance: {endurance}, Intelligence: {intelligence}, Intuition: {intuition}");
 
