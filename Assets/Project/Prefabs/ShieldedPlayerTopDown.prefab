@@ -8165,8 +8165,7 @@ MonoBehaviour:
   BlockingMovementStates: 
   BlockingConditionStates: 
   BlockingWeaponStates: 
-  InitialTorch: {fileID: 7008384287521584254, guid: 4745d1d7800129342a1b23f92c31715a,
-    type: 3}
+  InitialTorch: {fileID: 0}
   TorchAttachment: {fileID: 4547365059969702342}
   AutomaticallyBindAnimator: 1
   TorchBurnTime: 60

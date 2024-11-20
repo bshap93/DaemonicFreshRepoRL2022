@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7003655236470751458}
   - component: {fileID: 6995254199807741296}
   - component: {fileID: 7036185553184147030}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: OldHandTorch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,8 +116,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7013795465368730450}
-  - component: {fileID: 7429552503827268885}
-  m_Layer: 0
+  - component: {fileID: -4569373451646711147}
+  m_Layer: 10
   m_Name: OldHandTorch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ Transform:
   - {fileID: 7010012312445092194}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7429552503827268885
+--- !u!114 &-4569373451646711147
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -149,13 +149,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7008384287521584254}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 376808973974494ebd3533bdb5f073ce, type: 3}
+  m_Script: {fileID: 11500000, guid: 7dbd61d607dc71b46bb61638494049f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxBurnTime: 500
-  TorchLitFeedback: {fileID: 0}
-  TorchBurnedOutFeedback: {fileID: 0}
-  TorchExtinguishedFeedback: {fileID: 0}
 --- !u!1001 &9095055936378899541
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -167,6 +163,18 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 191d9228e2aba784ea4ba9db9f4c65b7, type: 3}
       propertyPath: m_Name
       value: torch_flame_flare
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 191d9228e2aba784ea4ba9db9f4c65b7, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 191d9228e2aba784ea4ba9db9f4c65b7, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 191d9228e2aba784ea4ba9db9f4c65b7, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 191d9228e2aba784ea4ba9db9f4c65b7, type: 3}
       propertyPath: m_LocalPosition.x
