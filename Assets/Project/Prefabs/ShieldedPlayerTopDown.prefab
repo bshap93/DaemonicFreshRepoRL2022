@@ -7253,6 +7253,7 @@ GameObject:
   - component: {fileID: 3122707553842577923}
   - component: {fileID: 4473471485751944869}
   - component: {fileID: 9078600043551628577}
+  - component: {fileID: 3730508844039164129}
   m_Layer: 10
   m_Name: ShieldedPlayerTopDown
   m_TagString: Player
@@ -8143,6 +8144,35 @@ MonoBehaviour:
   IgnoreUnknownDamageTypes: 0
   DamageResistanceList:
   - {fileID: 557013825266843806}
+--- !u!114 &3730508844039164129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4194478886614523176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddb2240e4e7ca8241b20d1b75999e209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AbilityStartSfx: {fileID: 0}
+  AbilityInProgressSfx: {fileID: 0}
+  AbilityStopSfx: {fileID: 0}
+  AbilityStartFeedbacks: {fileID: 0}
+  AbilityStopFeedbacks: {fileID: 0}
+  AbilityPermitted: 1
+  BlockingMovementStates: 
+  BlockingConditionStates: 
+  BlockingWeaponStates: 
+  InitialTorch: {fileID: 7008384287521584254, guid: 4745d1d7800129342a1b23f92c31715a,
+    type: 3}
+  TorchAttachment: {fileID: 4547365059969702342}
+  AutomaticallyBindAnimator: 1
+  TorchBurnTime: 60
+  TorchLitFeedback: {fileID: 0}
+  TorchExtinguishedFeedback: {fileID: 0}
+  TorchBurnOutFeedback: {fileID: 0}
 --- !u!1 &4210891894166820022
 GameObject:
   m_ObjectHideFlags: 0
