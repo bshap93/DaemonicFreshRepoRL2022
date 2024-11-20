@@ -84,10 +84,7 @@ namespace Project.Gameplay.Player.Inventory
                 // Inform PlayerItemPreviewManager to update the preview
                 var playerItemPreviewManager = FindObjectOfType<PlayerItemPreviewManager>();
                 if (playerItemPreviewManager != null)
-                {
-                    Debug.Log("Unregistering item from preview manager.");
                     playerItemPreviewManager.UnregisterItem(GetComponent<ItemPreviewTrigger>());
-                }
 
 
                 Destroy(gameObject);

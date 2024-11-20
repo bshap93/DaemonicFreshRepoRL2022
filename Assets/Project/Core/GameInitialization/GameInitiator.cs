@@ -62,6 +62,7 @@ namespace Project.Core.GameInitialization
             if (eventType.EventType == MMCameraEventTypes.SetTargetCharacter)
             {
                 Debug.Log("SetTargetCharacter event received. Applying CharacterCreationData...");
+                MMGameEvent.Trigger("SaveInventory");
                 ApplyCharacterCreationDataToPlayer(eventType.TargetCharacter.gameObject);
             }
         }
