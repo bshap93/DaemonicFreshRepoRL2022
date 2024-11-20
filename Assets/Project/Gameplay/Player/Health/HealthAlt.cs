@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Project.Gameplay.Player.Health
 {
-    public class ShieldedHealth : MoreMountains.TopDownEngine.Health
+    public class HealthAlt : MoreMountains.TopDownEngine.Health
     {
         GameObject _shield;
         Shield _shieldComponent;

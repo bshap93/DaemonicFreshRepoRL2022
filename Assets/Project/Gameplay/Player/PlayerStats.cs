@@ -2,7 +2,9 @@
 
 using System;
 using System.Collections.Generic;
+using MoreMountains.TopDownEngine;
 using Project.Core.CharacterCreation;
+using Project.Gameplay.Player.Health;
 using UnityEngine;
 
 namespace Project.Gameplay.Player
@@ -109,10 +111,21 @@ namespace Project.Gameplay.Player
         void ApplyAttributesToBaseStats()
         {
             // Modify base stats by adding attribute bonuses
-            maxHealth += endurance * 10;
+            maxHealth += endurance * 2 + 20;
             moveSpeed += agility * 0.5f;
             attackPower += strength * 2;
             defense += endurance;
+
+            var playerHealth = gameObject.GetComponent<HealthAlt>();
+
+            if (playerHealth != null)
+            {
+                playerHealth.MaximumHealth = maxHealth;
+                playerHealth.InitialHealth = maxHealth;
+            }
+
+            var damageResistance = gameObject.GetComponent<DamageResistanceProcessor>().DamageResistanceList[0];
+            if (damageResistance != null) damageResistance.DamageMultiplier = 0.9f + endurance * 0.05f;
 
             Debug.Log(
                 $"Attributes applied to base stats: MaxHealth={maxHealth}, MoveSpeed={moveSpeed}, AttackPower={attackPower}, Defense={defense}");

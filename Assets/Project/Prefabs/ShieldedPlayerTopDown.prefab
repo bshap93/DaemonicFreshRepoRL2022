@@ -950,6 +950,71 @@ Transform:
   - {fileID: 961298762555628936}
   m_Father: {fileID: 8813121843214617589}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3354249636761388345
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2407353696639340065}
+  - component: {fileID: 557013825266843806}
+  m_Layer: 10
+  m_Name: BaseInitialDmgResistance
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2407353696639340065
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3354249636761388345}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 662117004259261350}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &557013825266843806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3354249636761388345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aba29e69abb9854eb38bd7085b3f72c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Priority: 0
+  Label: BaseDamageResistance
+  DamageTypeMode: 0
+  TypeResistance: {fileID: 0}
+  DamageModifierMode: 0
+  DamageMultiplier: 1
+  FlatDamageReduction: 10
+  ClampDamage: 0
+  DamageModifierClamps: {x: 0, y: 10}
+  PreventCharacterConditionChange: 0
+  PreventMovementModifier: 0
+  ImmuneToKnockback: 0
+  KnockbackModifierMode: 0
+  KnockbackMultiplier: 1
+  FlatKnockbackMagnitudeReduction: 10
+  ClampKnockback: 0
+  KnockbackMaxMagnitude: 10
+  OnDamageReceived: {fileID: 0}
+  InterruptibleFeedback: 0
+  AlwaysInterruptFeedbackBeforePlay: 0
+  TriggerFeedbackIfDamageIsZero: 0
 --- !u!1 &3382199287575625383
 GameObject:
   m_ObjectHideFlags: 0
@@ -7170,7 +7235,6 @@ GameObject:
   - component: {fileID: 480837730819593433}
   - component: {fileID: 6289006766398840859}
   - component: {fileID: 4127841894714719289}
-  - component: {fileID: 5803042190346638802}
   - component: {fileID: 2278241992207679201}
   - component: {fileID: 4271847320414966272}
   - component: {fileID: 2186327892260302266}
@@ -7188,6 +7252,7 @@ GameObject:
   - component: {fileID: 6467453092964463827}
   - component: {fileID: 3122707553842577923}
   - component: {fileID: 4473471485751944869}
+  - component: {fileID: 9078600043551628577}
   m_Layer: 10
   m_Name: ShieldedPlayerTopDown
   m_TagString: Player
@@ -7452,37 +7517,6 @@ MonoBehaviour:
   OffsetCrawl: {x: 0, y: 0, z: 0}
   OffsetSpeed: 5
   InATunnel: 0
---- !u!114 &5803042190346638802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4194478886614523176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c752f2958a762a144a00333487ac892f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AbilityStartSfx: {fileID: 0}
-  AbilityInProgressSfx: {fileID: 0}
-  AbilityStopSfx: {fileID: 0}
-  AbilityStartFeedbacks: {fileID: 0}
-  AbilityStopFeedbacks: {fileID: 0}
-  AbilityPermitted: 1
-  BlockingMovementStates: 
-  BlockingConditionStates: 
-  BlockingWeaponStates: 
-  JumpProportionalToPress: 1
-  MinimumPressTime: 0.4
-  JumpForce: 200
-  JumpHeight: 1
-  CanJumpOnTooSteepSlopes: 1
-  ResetJumpsOnTooSteepSlopes: 0
-  NumberOfJumps: 1
-  NumberOfJumpsLeft: 0
-  JumpStartFeedback: {fileID: 0}
-  JumpStopFeedback: {fileID: 0}
 --- !u!114 &2278241992207679201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7526,7 +7560,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4194478886614523176}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d103439fc2940e347937487a70ea01e3, type: 3}
   m_Name: 
@@ -7540,8 +7574,8 @@ MonoBehaviour:
   BlockingMovementStates: 
   BlockingConditionStates: 
   BlockingWeaponStates: 
-  RunSpeed: 16
-  AutoRun: 0
+  RunSpeed: 6
+  AutoRun: 1
   AutoRunThreshold: 0.6
 --- !u!114 &2186327892260302266
 MonoBehaviour:
@@ -8058,7 +8092,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4194478886614523176}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84f8393584ab4a39a96c55b7910ef6c2, type: 3}
+  m_Script: {fileID: 11500000, guid: c3cc980f5ea7692419e201c28d3ae49c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Model: {fileID: 0}
@@ -8091,9 +8125,26 @@ MonoBehaviour:
   ColorMaterialPropertyName: _Color
   UseMaterialPropertyBlocks: 0
   MasterHealth: {fileID: 0}
-  TargetDamageResistanceProcessor: {fileID: 0}
+  TargetDamageResistanceProcessor: {fileID: 9078600043551628577}
   TargetAnimator: {fileID: 0}
   DisableAnimatorLogs: 1
+--- !u!114 &9078600043551628577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4194478886614523176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a6f32aaa00064e488ee9421aeb0d5f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AutoFillDamageResistanceList: 1
+  IgnoreDisabledResistances: 1
+  IgnoreUnknownDamageTypes: 0
+  DamageResistanceList:
+  - {fileID: 557013825266843806}
 --- !u!1 &4210891894166820022
 GameObject:
   m_ObjectHideFlags: 0
@@ -13213,6 +13264,38 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2160416970281701643}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4464906731131448627
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 662117004259261350}
+  m_Layer: 10
+  m_Name: DamageResistances
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &662117004259261350
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4464906731131448627}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2407353696639340065}
+  m_Father: {fileID: 1571460652576475118}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4489072680784853910
 GameObject:
@@ -24398,6 +24481,7 @@ Transform:
   m_Children:
   - {fileID: 6774490069290155328}
   - {fileID: 708097630255321932}
+  - {fileID: 662117004259261350}
   m_Father: {fileID: 145866661030460284}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7918377494249135769
