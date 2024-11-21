@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8525771012948114094}
   - component: {fileID: 4697956544679880569}
   - component: {fileID: 6950613393440731353}
+  - component: {fileID: -4700794017798197811}
   m_Layer: 6
   m_Name: Sword1MeleeWeapon
   m_TagString: WeaponPrefab
@@ -196,6 +197,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9caefbb3279435643ac0ad66b108b30a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-4700794017798197811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347692590179713027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5b6e47ae7a546d69f90113810d02f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttachmentType: 0
 --- !u!1 &2751175779318470138
 GameObject:
   m_ObjectHideFlags: 0

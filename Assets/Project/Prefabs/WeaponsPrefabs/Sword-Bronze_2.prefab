@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2947604817881881027}
   - component: {fileID: 8296301458365659855}
   - component: {fileID: 5092493718376313218}
+  - component: {fileID: -752748228252397800}
   m_Layer: 0
   m_Name: Sword-Bronze_2
   m_TagString: Untagged
@@ -199,6 +200,19 @@ MonoBehaviour:
     m_Bits: 9
   MaximumSlopeElevation: 50
   AvoidNullAim: 1
+--- !u!114 &-752748228252397800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962934848113800508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5b6e47ae7a546d69f90113810d02f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttachmentType: 0
 --- !u!1 &2945178543272326116
 GameObject:
   m_ObjectHideFlags: 0

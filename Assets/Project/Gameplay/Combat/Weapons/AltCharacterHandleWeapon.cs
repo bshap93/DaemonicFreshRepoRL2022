@@ -30,6 +30,8 @@ namespace Project.Gameplay.Combat.Weapons
         [Tooltip("The position the weapon will be attached to. If left blank, will be this.transform.")]
         public new Transform WeaponAttachment;
 
+        public WeaponIK WeaponIK;
+
         /// <summary>
         ///     Sets the weapon attachment based on WeaponAttachmentType.
         /// </summary>
@@ -77,6 +79,92 @@ namespace Project.Gameplay.Combat.Weapons
             CurrentWeapon.InitializeComboWeapons();
             CurrentWeapon.InitializeAnimatorParameters();
             InitializeAnimatorParameters();
+        }
+
+        public override void ChangeWeapon(Weapon newWeapon, string weaponID, bool combo = false)
+        {
+            if (CurrentWeapon != null)
+            {
+                CurrentWeapon.TurnWeaponOff();
+
+                if (!combo)
+                {
+                    ShootStop();
+
+                    if (_weaponAim != null) _weaponAim.RemoveReticle();
+
+                    if (_character._animator != null)
+                    {
+                        var parameters = _character._animator.parameters;
+                        foreach (var parameter in parameters)
+                            if (parameter.name == CurrentWeapon.EquippedAnimationParameter)
+                                MMAnimatorExtensions.UpdateAnimatorBool(
+                                    _animator, CurrentWeapon.EquippedAnimationParameter, false);
+                    }
+
+                    Destroy(CurrentWeapon.gameObject);
+                }
+            }
+
+            if (newWeapon != null)
+            {
+                // Fetch WeaponAttachmentType from the WeaponAttachmentTypeComponent
+                var attachmentTypeComponent = newWeapon.GetComponent<WeaponAttachmentTypeComponent>();
+                WeaponAttachmentType = attachmentTypeComponent != null
+                    ? attachmentTypeComponent.AttachmentType
+                    : WeaponAttachmentType.Other;
+
+                var useWeaponIK = attachmentTypeComponent != null && attachmentTypeComponent.UseWeaponIK;
+
+
+                // Toggle WeaponIK based on WeaponAttachmentTypeComponent
+                ToggleWeaponIK(useWeaponIK);
+
+                // Set WeaponAttachment before instantiating the weapon
+                SetWeaponAttachment();
+
+                InstantiateWeapon(newWeapon, weaponID, combo);
+            }
+            else
+            {
+                CurrentWeapon = null;
+                HandleWeaponModel(null, null);
+
+
+                // Toggle WeaponIK off if no weapon is equipped
+                ToggleWeaponIK(false);
+            }
+
+            OnWeaponChange?.Invoke();
+        }
+
+
+        void SetWeaponAttachment()
+        {
+            WeaponAttachment = transform; // Default to the character's transform
+
+            foreach (var point in AttachmentPointList)
+                if (point.Type == WeaponAttachmentType)
+                {
+                    WeaponAttachment = point.Attachment;
+                    break;
+                }
+
+            Debug.Log($"WeaponAttachment set to {WeaponAttachment.name} for {WeaponAttachmentType}");
+        }
+
+        void ToggleWeaponIK(bool enable)
+        {
+            // Find the child object containing WeaponIK
+            if (WeaponIK != null)
+            {
+                WeaponIK.enabled = enable;
+                Debug.Log($"WeaponIK {(enable ? "enabled" : "disabled")}");
+            }
+            else
+            {
+                Debug.LogWarning("WeaponIKObject not found. Please ensure the hierarchy is correct.");
+            }
         }
 
         [Serializable]
