@@ -1,10 +1,11 @@
 using MoreMountains.TopDownEngine;
+using Project.Gameplay.Combat.Weapons;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace Project.Gameplay.Combat
 {
-    public class CustomCharacterHandleWeapon : CharacterHandleWeapon
+    public class CustomAltCharacterHandleWeapon : AltCharacterHandleWeapon
     {
         // Define attachment points in the character prefab
         [FormerlySerializedAs("MeleeWeaponAttachment")]

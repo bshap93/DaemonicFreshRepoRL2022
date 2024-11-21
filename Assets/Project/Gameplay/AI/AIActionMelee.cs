@@ -1,5 +1,6 @@
 ﻿using MoreMountains.Tools;
 using MoreMountains.TopDownEngine;
+using Project.Gameplay.Combat.Weapons;
 using UnityEngine;
 
 namespace Project.Gameplay.AI
@@ -17,7 +18,7 @@ namespace Project.Gameplay.AI
         public float MinimumAttackDistance = 1.5f;
 
         [Header("Weapon Handling")] [Tooltip("The CharacterHandleWeapon ability this AI action should pilot")]
-        public CharacterHandleWeapon TargetHandleWeaponAbility;
+        public AltCharacterHandleWeapon TargetHandleWeaponAbility;
         protected bool _attackInProgress;
         protected Character _character;
 
@@ -34,7 +35,7 @@ namespace Project.Gameplay.AI
             _orientation3D = _character?.FindAbility<CharacterOrientation3D>();
 
             if (TargetHandleWeaponAbility == null)
-                TargetHandleWeaponAbility = _character?.FindAbility<CharacterHandleWeapon>();
+                TargetHandleWeaponAbility = _character?.FindAbility<AltCharacterHandleWeapon>();
 
             // Set initial next attack time
             SetNextAttackTime();

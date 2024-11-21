@@ -1,17 +1,18 @@
 using MoreMountains.Tools;
 using MoreMountains.TopDownEngine;
+using Project.Gameplay.Combat.Weapons;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 public class WeaponAimDebug : MonoBehaviour
 {
     [FormerlySerializedAs("_brain")] public AIBrain brain;
-    protected CharacterHandleWeapon _handleWeapon;
+    protected AltCharacterHandleWeapon _handleWeapon;
     protected WeaponAim _weaponAim;
 
     void Start()
     {
-        _handleWeapon = GetComponent<CharacterHandleWeapon>();
+        _handleWeapon = GetComponent<AltCharacterHandleWeapon>();
     }
 
     void Update()

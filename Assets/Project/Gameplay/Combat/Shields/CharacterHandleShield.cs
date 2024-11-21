@@ -1,5 +1,6 @@
 ﻿using MoreMountains.Tools;
 using MoreMountains.TopDownEngine;
+using Project.Gameplay.Combat.Weapons;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -24,7 +25,7 @@ namespace Project.Gameplay.Combat.Shields
         [FormerlySerializedAs("_shieldActive")]
         public bool shieldActive;
 
-        CharacterHandleWeapon _characterHandleWeapon;
+        AltCharacterHandleWeapon _altCharacterHandleWeapon;
         Shield _currentShield;
 
 
@@ -34,7 +35,7 @@ namespace Project.Gameplay.Combat.Shields
         {
             base.Initialization();
 
-            _characterHandleWeapon = GetComponent<CharacterHandleWeapon>();
+            _altCharacterHandleWeapon = GetComponent<AltCharacterHandleWeapon>();
         }
 
 
@@ -134,7 +135,7 @@ namespace Project.Gameplay.Combat.Shields
 
             PlayAbilityStartFeedbacks();
             CurrentShield?.RaiseShield();
-            if (_characterHandleWeapon != null) _characterHandleWeapon.enabled = false;
+            if (_altCharacterHandleWeapon != null) _altCharacterHandleWeapon.enabled = false;
         }
 
         public virtual void ShieldStop()
@@ -142,7 +143,7 @@ namespace Project.Gameplay.Combat.Shields
             if (!AbilityAuthorized || !InputAuthorized || CurrentShield == null) return;
 
             shieldActive = false;
-            if (_characterHandleWeapon != null) _characterHandleWeapon.enabled = true;
+            if (_altCharacterHandleWeapon != null) _altCharacterHandleWeapon.enabled = true;
             PlayAbilityStopFeedbacks();
             CurrentShield?.LowerShield();
         }
